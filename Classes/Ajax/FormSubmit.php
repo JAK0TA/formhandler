@@ -8,6 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Typoheads\Formhandler\Finisher\AbstractFinisher;
+use Typoheads\Formhandler\Finisher\ResponseError;
 use Typoheads\Formhandler\Validator\AjaxFormValidator;
 
 /**
@@ -43,6 +44,9 @@ class FormSubmit extends AbstractAjax {
     }
 
     $output = $this->runFinishers();
+    if (!empty($output['error'])) {
+      return new HtmlResponse(json_encode(['success' => false, 'errors' => $output]) ?: '', 200);
+    }
 
     return new HtmlResponse(json_encode(['success' => true, 'data' => $output]) ?: '', 200);
   }
@@ -97,6 +101,15 @@ class FormSubmit extends AbstractAjax {
               $finisher->init($this->gp, $tsConfig['config.']);
               $finisher->validateConfig();
 
+              // Check Error in finisher prozess for view output
+              if (1 === (int) $this->utilityFuncs->getSingle($tsConfig['config.'], 'checkError')) {
+                $finisherResponse = $finisher->process();
+                if (!empty($finisherResponse['error'])) {
+                  $this->globals->getSession()?->set('finished', false);
+
+                  return $this->setErrorResponse($finisherResponse['message'], $className);
+                }
+              }
               // if the finisher returns HTML (e.g. Typoheads\Formhandler\Finisher\SubmittedOK)
               if (1 === (int) $this->utilityFuncs->getSingle($tsConfig['config.'], 'returns')) {
                 $this->globals->getSession()?->set('finished', true);
@@ -118,5 +131,23 @@ class FormSubmit extends AbstractAjax {
     }
 
     return null;
+  }
+
+  /**
+   * build error object for template.
+   *
+   * @param string $message
+   * @param string $className
+   */
+  private function setErrorResponse($message, $className): array {
+    $path = explode('\\', $className);
+    $className = array_pop($path);
+    $resonseError = new ResponseError();
+    $resonseError->failed = $className;
+    $resonseError->message = $message;
+
+    return [
+      'error' => $resonseError,
+    ];
   }
 }
