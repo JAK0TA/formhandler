@@ -8,7 +8,6 @@ use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Typoheads\Formhandler\Finisher\AbstractFinisher;
-use Typoheads\Formhandler\Finisher\ResponseError;
 use Typoheads\Formhandler\Validator\AjaxFormValidator;
 
 /**
@@ -34,7 +33,7 @@ class FormSubmit extends AbstractAjax {
     $this->pi_initPIflexForm();
 
     $this->formValuePrefix = $this->utilityFuncs->getSingle($this->settings, 'formValuesPrefix');
-    $this->gp = (array) (GeneralUtility::_GP($this->formValuePrefix) ?? []);
+    $this->gp = GeneralUtility::_GP($this->formValuePrefix);
 
     /** @var AjaxFormValidator $validator */
     $validator = GeneralUtility::makeInstance(AjaxFormValidator::class);
@@ -107,7 +106,7 @@ class FormSubmit extends AbstractAjax {
                 if (!empty($finisherResponse['error'])) {
                   $this->globals->getSession()?->set('finished', false);
 
-                  return $this->setErrorResponse($finisherResponse['message'], $className);
+                  return $finisherResponse;
                 }
               }
               // if the finisher returns HTML (e.g. Typoheads\Formhandler\Finisher\SubmittedOK)
@@ -131,23 +130,5 @@ class FormSubmit extends AbstractAjax {
     }
 
     return null;
-  }
-
-  /**
-   * build error object for template.
-   *
-   * @param string $message
-   * @param string $className
-   */
-  private function setErrorResponse($message, $className): array {
-    $path = explode('\\', $className);
-    $className = array_pop($path);
-    $resonseError = new ResponseError();
-    $resonseError->failed = $className;
-    $resonseError->message = $message;
-
-    return [
-      'error' => $resonseError,
-    ];
   }
 }
