@@ -24,6 +24,13 @@ use Typoheads\Formhandler\Component\AbstractComponent;
  */
 abstract class AbstractFinisher extends AbstractComponent {
   /**
+   * defined Error Class.
+   *
+   * @var ResponseError
+   */
+  protected $error;
+
+  /**
    * Initialize the class variables.
    *
    * @param array<string, mixed> $gp       GET and POST variable array
