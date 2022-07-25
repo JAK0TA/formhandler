@@ -25,10 +25,8 @@ use Typoheads\Formhandler\Component\AbstractComponent;
 abstract class AbstractFinisher extends AbstractComponent {
   /**
    * defined Error Class.
-   *
-   * @var ResponseError
    */
-  protected $error;
+  protected ResponseError $error;
 
   /**
    * Initialize the class variables.

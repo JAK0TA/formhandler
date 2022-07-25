@@ -16,11 +16,11 @@ namespace Typoheads\Formhandler\Finisher;
  */
 class ResponseError {
   /** String $failed */
-  public $failed;
+  public string $failed = '';
 
   /** string $fieldSelector */
-  public $fieldSelector;
+  public string $fieldSelector = '';
 
   /** String $message */
-  public $message;
+  public string $message = '';
 }
