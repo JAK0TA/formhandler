@@ -42,9 +42,9 @@ class FormSubmit extends AbstractAjax {
       return new HtmlResponse(json_encode(['success' => false, 'errors' => $errors]) ?: '', 200);
     }
 
-    $output = $this->runFinishers();
-    if (is_array($output) && !empty($output['error'])) {
-      return new HtmlResponse(json_encode(['success' => false, 'errors' => $output]) ?: '', 200);
+    $output = $this->runFinishers($errors);
+    if (!empty($errors)) {
+      return new HtmlResponse(json_encode(['success' => false, 'errors' => $errors]) ?: '', 200);
     }
 
     return new HtmlResponse(json_encode(['success' => true, 'data' => $output]) ?: '', 200);
@@ -83,9 +83,11 @@ class FormSubmit extends AbstractAjax {
   /**
    * Process finishers.
    *
+   * @param array<string, mixed> $errors
+   *
    * @return mixed Output of a Finisher
    */
-  protected function runFinishers(): mixed {
+  protected function runFinishers(array &$errors): mixed {
     if (isset($this->settings['finishers.']) && is_array($this->settings['finishers.']) && 1 !== (int) $this->utilityFuncs->getSingle($this->settings['finishers.'], 'disable')) {
       ksort($this->settings['finishers.']);
 
@@ -100,24 +102,28 @@ class FormSubmit extends AbstractAjax {
               $finisher->init($this->gp, $tsConfig['config.']);
               $finisher->validateConfig();
 
-              // Check Error in finisher prozess for view output
-              if (1 === (int) $this->utilityFuncs->getSingle($tsConfig['config.'], 'checkError')) {
-                $finisherResponse = $finisher->process();
-                if (!empty($finisherResponse['error'])) {
-                  $this->globals->getSession()?->set('finished', false);
+              $finisherError = null;
 
-                  return $finisherResponse;
-                }
+              // Process finisher
+              $finisherReturn = $finisher->process($finisherError);
+
+              // Check for error from finisher
+              if (!empty($finisherError)) {
+                $this->globals->getSession()?->set('finished', false);
+                $errors[$className] = $finisherError;
+
+                return null;
               }
+
               // if the finisher returns HTML (e.g. Typoheads\Formhandler\Finisher\SubmittedOK)
               if (1 === (int) $this->utilityFuncs->getSingle($tsConfig['config.'], 'returns')) {
                 $this->globals->getSession()?->set('finished', true);
 
-                return $finisher->process();
+                return $finisherReturn;
               }
-              $return = $finisher->process();
-              if (is_array($return)) {
-                $this->gp = $return;
+
+              if (is_array($finisherReturn)) {
+                $this->gp = $finisherReturn;
                 $this->globals->setGP($this->gp);
               }
             }
