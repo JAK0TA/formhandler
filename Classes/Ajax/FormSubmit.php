@@ -110,7 +110,8 @@ class FormSubmit extends AbstractAjax {
               // Check for error from finisher
               if (!empty($finisherError)) {
                 $this->globals->getSession()?->set('finished', false);
-                $errors[$className] = $finisherError;
+                $errors[$className] = [];
+                $errors[$className][] = $finisherError;
 
                 return null;
               }
