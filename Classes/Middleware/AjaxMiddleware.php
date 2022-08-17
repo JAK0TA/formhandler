@@ -155,7 +155,6 @@ class AjaxMiddleware implements MiddlewareInterface {
   private function ajaxSubmit(array $queryParams, array $pathParams, array $requestBody): ResponseInterface {
     $this->init();
 
-    /** @var FormSubmit $form */
     $form = GeneralUtility::makeInstance(FormSubmit::class);
     $form->init($this->componentManager, $this->globals, $this->settings, $this->utilityFuncs);
 
@@ -171,21 +170,14 @@ class AjaxMiddleware implements MiddlewareInterface {
     $id = (int) ($_GET['pid'] ?? $_GET['id'] ?? 0);
 
     $this->componentManager = GeneralUtility::makeInstance(Manager::class);
-
-    /** @var \Typoheads\Formhandler\Utility\GeneralUtility $utilityFuncs */
-    $utilityFuncs = GeneralUtility::makeInstance(\Typoheads\Formhandler\Utility\GeneralUtility::class);
-    $this->utilityFuncs = $utilityFuncs;
+    $this->utilityFuncs = GeneralUtility::makeInstance(\Typoheads\Formhandler\Utility\GeneralUtility::class);
     $this->utilityFuncs->initializeTSFE($this->request);
 
     $elementUID = (int) $_GET['uid'];
 
-    /** @var ConnectionPool $connectionPool */
-    $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
-    $queryBuilder = $connectionPool->getQueryBuilderForTable('tt_content');
+    $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
+    $queryBuilder->setRestrictions(GeneralUtility::makeInstance(FrontendRestrictionContainer::class));
 
-    /** @var FrontendRestrictionContainer $frontendRestrictionContainer */
-    $frontendRestrictionContainer = GeneralUtility::makeInstance(FrontendRestrictionContainer::class);
-    $queryBuilder->setRestrictions($frontendRestrictionContainer);
     $row = $queryBuilder
       ->select('*')
       ->from('tt_content')
@@ -200,11 +192,9 @@ class AjaxMiddleware implements MiddlewareInterface {
       $GLOBALS['TSFE']->cObj->current = 'tt_content_'.$elementUID;
     }
 
-    /** @var Globals $globals */
-    $globals = GeneralUtility::makeInstance(Globals::class);
-    $this->globals = $globals;
-
+    $this->globals = GeneralUtility::makeInstance(Globals::class);
     $this->globals->setCObj($GLOBALS['TSFE']->cObj);
+
     $randomID = htmlspecialchars(strval(GeneralUtility::_GP('randomID')));
     $this->globals->setRandomID($randomID);
     $this->globals->setAjaxMode(true);

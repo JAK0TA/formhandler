@@ -125,10 +125,7 @@ class LoadDB extends AbstractPreProcessor {
     $table = $this->utilityFuncs->getSingle($settings, 'table');
     $sql = $this->getQuery($table, $settings);
 
-    /** @var ConnectionPool $connectionPool */
-    $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
-
-    $connection = $connectionPool->getConnectionForTable($table);
+    $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable($table);
     $this->utilityFuncs->debugMessage($sql);
     $stmt = $connection->executeQuery($sql);
 

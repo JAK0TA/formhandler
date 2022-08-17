@@ -28,7 +28,6 @@ class File extends AbstractGenerator {
    * Renders the XML file.
    */
   public function process(mixed &$error = null): array|string {
-    /** @var ViewFile $view */
     $view = GeneralUtility::makeInstance(ViewFile::class);
     $this->filename = '';
     if (1 == intval($this->settings['storeInTempFile'])) {

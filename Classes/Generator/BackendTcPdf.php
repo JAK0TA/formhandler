@@ -65,8 +65,6 @@ class BackendTcPdf extends AbstractComponent {
     $exportFields = (array) ($this->settings['exportFields'] ?? []);
 
     // init pdf object
-
-    /** @var TemplateTCPDF $pdf */
     $pdf = GeneralUtility::makeInstance(TemplateTCPDF::class);
 
     $pdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);

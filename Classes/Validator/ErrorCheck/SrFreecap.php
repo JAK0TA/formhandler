@@ -30,9 +30,7 @@ class SrFreecap extends AbstractErrorCheck {
     if (ExtensionManagementUtility::isLoaded('sr_freecap')) {
       require_once ExtensionManagementUtility::extPath('sr_freecap').'pi2/class.tx_srfreecap_pi2.php';
 
-      /** @var PiBaseApi $freeCap */
-      $freeCap = GeneralUtility::makeInstance(PiBaseApi::class);
-      if (!$freeCap->checkWord(strval($this->gp[$this->formFieldName] ?? ''))) {
+      if (!GeneralUtility::makeInstance(PiBaseApi::class)->checkWord(strval($this->gp[$this->formFieldName] ?? ''))) {
         $checkFailed = $this->getCheckFailed();
       }
     }

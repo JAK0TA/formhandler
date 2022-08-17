@@ -93,11 +93,8 @@ class PredefinedForm {
    * @return array<string, mixed> The TypoScript setup
    */
   private function loadTS(int $pageUid): array {
-    /** @var RootlineUtility $rootlineUtility */
-    $rootlineUtility = GeneralUtility::makeInstance(RootlineUtility::class, $pageUid);
-    $rootLine = $rootlineUtility->get();
+    $rootLine = GeneralUtility::makeInstance(RootlineUtility::class, $pageUid)->get();
 
-    /** @var ExtendedTemplateService $TSObj */
     $TSObj = GeneralUtility::makeInstance(ExtendedTemplateService::class);
     $TSObj->tt_track = false;
     $TSObj->runThroughTemplates($rootLine);

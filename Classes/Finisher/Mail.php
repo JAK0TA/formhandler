@@ -132,7 +132,6 @@ class Mail extends AbstractFinisher {
    * @param array<string, mixed> &$settings The E-Mail settings
    */
   protected function fillLangMarkersInSettings(array &$settings): void {
-    /** @var MarkerBasedTemplateService $templateService */
     $templateService = GeneralUtility::makeInstance(MarkerBasedTemplateService::class);
 
     foreach ($settings as &$value) {

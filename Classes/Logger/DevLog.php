@@ -44,9 +44,7 @@ class DevLog extends AbstractLogger {
       }
     }
 
-    /** @var LogManager $logManager */
-    $logManager = GeneralUtility::makeInstance(LogManager::class);
-    $logManager->getLogger(__CLASS__)->log($severity, $message, $logParams);
+    GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__)->log($severity, $message, $logParams);
 
     return $this->gp;
   }

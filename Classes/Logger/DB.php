@@ -85,9 +85,7 @@ class DB extends AbstractLogger {
     }
 
     // query the database
-    /** @var ConnectionPool $connectionPool */
-    $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
-    $conn = $connectionPool->getConnectionForTable($table);
+    $conn = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable($table);
 
     $conn->insert($table, $fields);
     $insertedUID = (int) $conn->lastInsertId($table);

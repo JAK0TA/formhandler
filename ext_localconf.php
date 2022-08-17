@@ -40,9 +40,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1638582370] = [
   'class' => SubmittedValues::class,
 ];
 
-/** @var IconRegistry $iconRegistry */
-$iconRegistry = GeneralUtility::makeInstance(IconRegistry::class);
-$iconRegistry->registerIcon(
+GeneralUtility::makeInstance(IconRegistry::class)->registerIcon(
   'formhandler-foldericon',
   BitmapIconProvider::class,
   ['source' => 'EXT:formhandler/Resources/Public/Images/pagetreeicon.png']

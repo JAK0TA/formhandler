@@ -100,16 +100,17 @@ class RemoveFile extends AbstractAjax {
       if (null !== $field && is_array($sessionFiles) && !empty($sessionFiles[$field])) {
         $markers = [];
 
-        /** @var Form $view */
         $view = GeneralUtility::makeInstance(Form::class);
         $view->setSettings($this->settings);
         $view->fillFileMarkers($markers);
         $langMarkers = $this->utilityFuncs->getFilledLangMarkers($markers['###'.$this->fieldName.'_uploadedFiles###'], $this->langFiles);
 
-        /** @var MarkerBasedTemplateService $templateService */
-        $templateService = GeneralUtility::makeInstance(MarkerBasedTemplateService::class);
-
-        $markers['###'.$this->fieldName.'_uploadedFiles###'] = trim($templateService->substituteMarkerArray($markers['###'.$this->fieldName.'_uploadedFiles###'], $langMarkers));
+        $markers['###'.$this->fieldName.'_uploadedFiles###'] = trim(
+          GeneralUtility::makeInstance(MarkerBasedTemplateService::class)->substituteMarkerArray(
+            $markers['###'.$this->fieldName.'_uploadedFiles###'],
+            $langMarkers
+          )
+        );
         $content = $markers['###'.$this->fieldName.'_uploadedFiles###'];
       }
     }

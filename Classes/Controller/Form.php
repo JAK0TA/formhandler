@@ -10,8 +10,11 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Typoheads\Formhandler\AjaxHandler\AbstractAjaxHandler;
 use Typoheads\Formhandler\Debugger\AbstractDebugger;
 use Typoheads\Formhandler\Finisher\AbstractFinisher;
+use Typoheads\Formhandler\Finisher\Mail;
+use Typoheads\Formhandler\Finisher\Redirect;
 use Typoheads\Formhandler\Session\AbstractSession;
 use Typoheads\Formhandler\Validator\AbstractValidator;
+use Typoheads\Formhandler\Validator\DefaultValidator;
 use Typoheads\Formhandler\View\AbstractView;
 
 /**
@@ -138,17 +141,15 @@ class Form extends AbstractController {
    */
   public function validateConfig(): void {
     $options = [
-      ['to_email', 'sEMAILADMIN', 'finishers', $this->utilityFuncs->prepareClassName('\Typoheads\Formhandler\Finisher\Mail')],
-      ['to_email', 'sEMAILUSER', 'finishers', $this->utilityFuncs->prepareClassName('\Typoheads\Formhandler\Finisher\Mail')],
-      ['redirect_page', 'sMISC', 'finishers', $this->utilityFuncs->prepareClassName('\Typoheads\Formhandler\Finisher\Redirect')],
-      ['required_fields', 'sMISC', 'validators', $this->utilityFuncs->prepareClassName('\Typoheads\Formhandler\Validator\DefaultValidator')],
+      ['to_email', 'sEMAILADMIN', 'finishers', Mail::class],
+      ['to_email', 'sEMAILUSER', 'finishers', Mail::class],
+      ['redirect_page', 'sMISC', 'finishers', Redirect::class],
+      ['required_fields', 'sMISC', 'validators', DefaultValidator::class],
     ];
     foreach ($options as $idx => $option) {
       $fieldName = $option[0];
       $flexformSection = $option[1];
       $component = $option[2];
-
-      /** @var string $componentName */
       $componentName = $option[3];
       $value = $this->utilityFuncs->pi_getFFvalue($this->cObj->data['pi_flexform'], $fieldName, $flexformSection);
 
@@ -156,7 +157,6 @@ class Form extends AbstractController {
       $isConfigOk = false;
       if (isset($this->settings[$component.'.']) && is_array($this->settings[$component.'.'])) {
         foreach ($this->settings[$component.'.'] as $finisher) {
-          /** @var string $className */
           $className = $this->utilityFuncs->getPreparedClassName($finisher);
           if ($className == $componentName || @is_subclass_of($className, $componentName)) {
             $isConfigOk = true;
@@ -183,9 +183,7 @@ class Form extends AbstractController {
         if (strlen(trim($file)) > 0) {
           $file = $this->utilityFuncs->resolveRelPathFromSiteRoot($file);
 
-          /** @var PageRenderer $pageRenderer */
-          $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-          $pageRenderer->addCssFile(
+          GeneralUtility::makeInstance(PageRenderer::class)->addCssFile(
             $file,
             $fileOptions['alternate'] ? 'alternate stylesheet' : 'stylesheet',
             $fileOptions['media'] ? $fileOptions['media'] : 'all',
@@ -254,9 +252,7 @@ class Form extends AbstractController {
         if (strlen(trim($file)) > 0) {
           $file = $this->utilityFuncs->resolveRelPathFromSiteRoot($file);
 
-          /** @var PageRenderer $pageRenderer */
-          $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-          $pageRenderer->addJsFile(
+          GeneralUtility::makeInstance(PageRenderer::class)->addJsFile(
             $file,
             $fileOptions['type'] ? $fileOptions['type'] : 'text/javascript',
             empty($fileOptions['disableCompression']),
@@ -281,9 +277,7 @@ class Form extends AbstractController {
         if (strlen(trim($file)) > 0) {
           $file = $this->utilityFuncs->resolveRelPathFromSiteRoot($file);
 
-          /** @var PageRenderer $pageRenderer */
-          $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-          $pageRenderer->addJsFooterFile(
+          GeneralUtility::makeInstance(PageRenderer::class)->addJsFooterFile(
             $file,
             $fileOptions['type'] ? $fileOptions['type'] : 'text/javascript',
             empty($fileOptions['disableCompression']),
@@ -724,9 +718,7 @@ class Form extends AbstractController {
       $tstamp = intval($gp['tstamp'] ?? 0);
       $hash = $gp['hash'];
       if ($tstamp && false === strpos($hash, ' ')) {
-        /** @var ConnectionPool $connectionPool */
-        $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
-        $conn = $connectionPool->getConnectionForTable('tx_formhandler_log');
+        $conn = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('tx_formhandler_log');
         $stmt = $conn->select(['params'], 'tx_formhandler_log', ['tstamp' => $tstamp, 'unique_hash' => $hash]);
         if (1 === $stmt->rowCount()) {
           $row = (array) ($stmt->fetchAssociative() ?: ['params']);

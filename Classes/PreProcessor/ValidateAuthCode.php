@@ -52,9 +52,7 @@ class ValidateAuthCode extends AbstractPreProcessor {
           $this->utilityFuncs->throwException('validateauthcode_insufficient_params');
         }
 
-        /** @var ConnectionPool ConnectionPool */
-        $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
-        $connection = $connectionPool->getConnectionForTable($table);
+        $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable($table);
         $queryBuilder = $connection->createQueryBuilder();
 
         // Check if table is valid
@@ -93,10 +91,7 @@ class ValidateAuthCode extends AbstractPreProcessor {
         }
         if (1 !== (int) $this->utilityFuncs->getSingle($this->settings, 'showDeleted')) {
           // Enable fields
-
-          /** @var FrontendRestrictionContainer $frontendRestrictionContainer */
-          $frontendRestrictionContainer = GeneralUtility::makeInstance(FrontendRestrictionContainer::class);
-          $queryBuilder->setRestrictions($frontendRestrictionContainer);
+          $queryBuilder->setRestrictions(GeneralUtility::makeInstance(FrontendRestrictionContainer::class));
           $queryBuilder->getRestrictions()->removeByType(HiddenRestriction::class);
         } else {
           $queryBuilder->getRestrictions()->removeAll();

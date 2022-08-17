@@ -74,10 +74,7 @@ class LogDataRepository extends Repository {
    * Initializes the repository.
    */
   public function initializeObject(): void {
-    /** @var Typo3QuerySettings $querySettings */
-    $querySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
-    $querySettings->setRespectStoragePage(false);
-    $this->setDefaultQuerySettings($querySettings);
+    $this->setDefaultQuerySettings(GeneralUtility::makeInstance(Typo3QuerySettings::class)->setRespectStoragePage(false));
   }
 
   /**

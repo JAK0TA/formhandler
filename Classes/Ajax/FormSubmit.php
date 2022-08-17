@@ -35,9 +35,7 @@ class FormSubmit extends AbstractAjax {
     $this->formValuePrefix = $this->utilityFuncs->getSingle($this->settings, 'formValuesPrefix');
     $this->gp = (array) (GeneralUtility::_GP($this->formValuePrefix) ?? []);
 
-    /** @var AjaxFormValidator $validator */
-    $validator = GeneralUtility::makeInstance(AjaxFormValidator::class);
-    $validator->validateAjaxForm($this->gp, $errors);
+    GeneralUtility::makeInstance(AjaxFormValidator::class)->validateAjaxForm($this->gp, $errors);
     if (!empty($errors)) {
       return new HtmlResponse(json_encode(['success' => false, 'errors' => $errors]) ?: '', 200);
     }

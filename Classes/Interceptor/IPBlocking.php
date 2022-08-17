@@ -96,7 +96,6 @@ class IPBlocking extends AbstractInterceptor {
   private function check(int $value, string $unit, int $maxValue, bool $addIPToWhere = true): void {
     $timestamp = $this->utilityFuncs->getTimestamp($value, $unit);
 
-    /** @var ConnectionPool $connectionPool */
     $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
     $queryBuilder = $connectionPool->getQueryBuilderForTable($this->logTable);
 

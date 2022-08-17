@@ -1,15 +1,22 @@
 <?php
 
+use TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider;
+use TYPO3\CMS\Core\Imaging\IconRegistry;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+use Typoheads\Formhandler\Controller\ModuleController;
+
 if (!defined('TYPO3')) {
   exit('Access denied.');
 }
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
+ExtensionUtility::registerModule(
   'Formhandler',
   'web',
   'log',
   'bottom',
   [
-    \Typoheads\Formhandler\Controller\ModuleController::class => 'index, view, selectFields, export',
+    ModuleController::class => 'index, view, selectFields, export',
   ],
   [
     'access' => 'user,group',
@@ -17,11 +24,10 @@ if (!defined('TYPO3')) {
     'labels' => 'LLL:EXT:formhandler/Resources/Private/Language/locallang_mod.xlf',
   ]
 );
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_formhandler_log');
+ExtensionManagementUtility::allowTableOnStandardPages('tx_formhandler_log');
 // REGISTER ICONS FOR USE IN BACKEND WIZARD
-$iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
-$iconRegistry->registerIcon(
+GeneralUtility::makeInstance(IconRegistry::class)->registerIcon(
   'formhandlerElement',
-  \TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class,
+  BitmapIconProvider::class,
   ['source' => 'EXT:formhandler/Resources/Public/Icons/Extension.png']
 );

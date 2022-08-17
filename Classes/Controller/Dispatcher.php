@@ -51,17 +51,9 @@ class Dispatcher extends AbstractPlugin {
    * @return string rendered view
    */
   public function main(?string $content, array $setup): string {
-    /** @var Manager $componentManager */
-    $componentManager = GeneralUtility::makeInstance(Manager::class);
-    $this->componentManager = $componentManager;
-
-    /** @var Globals $globals */
-    $globals = GeneralUtility::makeInstance(Globals::class);
-    $this->globals = $globals;
-
-    /** @var \Typoheads\Formhandler\Utility\GeneralUtility $utilityFuncs */
-    $utilityFuncs = GeneralUtility::makeInstance(\Typoheads\Formhandler\Utility\GeneralUtility::class);
-    $this->utilityFuncs = $utilityFuncs;
+    $this->componentManager = GeneralUtility::makeInstance(Manager::class);
+    $this->globals = GeneralUtility::makeInstance(Globals::class);
+    $this->utilityFuncs = GeneralUtility::makeInstance(\Typoheads\Formhandler\Utility\GeneralUtility::class);
 
     try {
       // init flexform
@@ -103,9 +95,8 @@ class Dispatcher extends AbstractPlugin {
       $controller = GeneralUtility::makeInstance($this->utilityFuncs->prepareClassName($controllerClass));
 
       if (isset($content)) {
-        /** @var Content $contentClass */
         $contentClass = GeneralUtility::makeInstance(
-          $this->utilityFuncs->prepareClassName('Controller\Content'),
+          Content::class,
           $content
         );
         $controller->setContent($contentClass);
@@ -127,9 +118,7 @@ class Dispatcher extends AbstractPlugin {
         DebuggerUtility::var_dump($e);
       }
 
-      /** @var LogManager $logManager */
-      $logManager = GeneralUtility::makeInstance(LogManager::class);
-      $logManager->getLogger(__CLASS__)->error(
+      GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__)->error(
         $e->getFile().'('.$e->getLine().')'.' '.$e->getMessage(),
         ['formhandler']
       );

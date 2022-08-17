@@ -181,10 +181,7 @@ class DB extends AbstractFinisher {
       return false;
     }
 
-    /** @var ConnectionPool $connectionPool */
-    $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
-
-    $queryBuilder = $connectionPool->getQueryBuilderForTable($this->table);
+    $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($this->table);
     $queryBuilder
       ->getRestrictions()
       ->removeAll()
@@ -239,10 +236,7 @@ class DB extends AbstractFinisher {
    * @param array<string, string> $queryFields
    */
   protected function doUpdate(int $uid, array $queryFields, string $andWhere): bool {
-    /** @var ConnectionPool $connectionPool */
-    $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
-
-    $queryBuilder = $connectionPool->getQueryBuilderForTable($this->table);
+    $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($this->table);
     $queryBuilder
       ->getRestrictions()
       ->removeAll()
@@ -279,9 +273,7 @@ class DB extends AbstractFinisher {
 
   protected function getConnection(): Connection {
     if (null === $this->connection) {
-      /** @var ConnectionPool $connectionPool */
-      $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
-      $this->connection = $connectionPool->getConnectionForTable($this->table);
+      $this->connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable($this->table);
     }
 
     return $this->connection;
@@ -401,9 +393,7 @@ class DB extends AbstractFinisher {
             case 'saltedpassword':
               $field = $this->utilityFuncs->getSingle($options['special.'], 'field');
 
-              /** @var PasswordHashFactory $passwordHashFactory */
-              $passwordHashFactory = GeneralUtility::makeInstance(PasswordHashFactory::class);
-              $hashInstance = $passwordHashFactory->getDefaultHashInstance('FE');
+              $hashInstance = GeneralUtility::makeInstance(PasswordHashFactory::class)->getDefaultHashInstance('FE');
               $encryptedPassword = $hashInstance->getHashedPassword(strval($this->gp[$field] ?? ''));
 
               $fieldValue = $encryptedPassword;

@@ -376,12 +376,9 @@ class GeneralUtility implements SingletonInterface {
   }
 
   public static function generateRandomID(): string {
-    /** @var Random $random */
-    $random = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(Random::class);
-
     return md5(
       Globals::getFormValuesPrefix().
-      $random->generateRandomBytes(10)
+      \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(Random::class)->generateRandomBytes(10)
     );
   }
 
@@ -389,11 +386,9 @@ class GeneralUtility implements SingletonInterface {
    * @param array<string, mixed> $specialParams
    */
   public static function getAjaxUrl(string $path, array $specialParams): string {
-    /** @var Context $context */
-    $context = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(Context::class);
     $params = [
       'id' => $GLOBALS['TSFE']->id,
-      'L' => $context->getPropertyFromAspect('language', 'id'),
+      'L' => \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('language', 'id'),
       'randomID' => Globals::getRandomID(),
     ];
     $params = array_merge($params, $specialParams);
@@ -811,16 +806,13 @@ class GeneralUtility implements SingletonInterface {
       $site = $request->getAttribute('site');
 
       if (!$site instanceof SiteInterface) {
-        /** @var SiteFinder $siteFinder */
-        $siteFinder = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(SiteFinder::class);
-        $sites = $siteFinder->getAllSites();
+        $sites = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(SiteFinder::class)->getAllSites();
         $site = reset($sites);
       }
       if (is_bool($site)) {
         return;
       }
 
-      /** @var Context $context */
       $context = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(Context::class);
       $context->setAspect('typoscript', new TypoScriptAspect(true));
 
@@ -1257,10 +1249,7 @@ class GeneralUtility implements SingletonInterface {
    */
   public static function resolvePath(string $path): string {
     if (MathUtility::canBeInterpretedAsInteger($path)) {
-      /** @var ResourceFactory $resourceFactory */
-      $resourceFactory = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(ResourceFactory::class);
-
-      $file = $resourceFactory->getFileObject(intval($path));
+      $file = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(ResourceFactory::class)->getFileObject(intval($path));
       $path = $file->getForLocalProcessing(false);
     } else {
       $path = explode('/', $path);

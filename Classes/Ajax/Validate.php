@@ -62,10 +62,8 @@ class Validate extends AbstractAjax {
       Globals::setFormValuesPrefix($this->utilityFuncs->getSingle($this->settings, 'formValuesPrefix'));
       $gp = $this->utilityFuncs->getMergedGP();
 
-      /** @var Ajax $validator */
-      $validator = GeneralUtility::makeInstance(Ajax::class);
       $errors = [];
-      $valid = $validator->validateAjax($field, $gp, $errors);
+      $valid = GeneralUtility::makeInstance(Ajax::class)->validateAjax($field, $gp, $errors);
 
       $ajaxConfig = [];
       if (isset($this->settings['ajax.']) && is_array($this->settings['ajax.']) && isset($this->settings['ajax.']['config.']) && is_array($this->settings['ajax.']['config.'])) {
@@ -106,7 +104,6 @@ class Validate extends AbstractAjax {
    * @return AjaxValidation The view class
    */
   protected function initView(string $content): AjaxValidation {
-    /** @var AjaxValidation $view */
     $view = GeneralUtility::makeInstance(AjaxValidation::class);
     $view->setLangFiles($this->utilityFuncs->readLanguageFiles([], $this->settings));
     $view->setSettings($this->settings);

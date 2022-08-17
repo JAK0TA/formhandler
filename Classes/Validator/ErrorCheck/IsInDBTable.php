@@ -39,13 +39,8 @@ class IsInDBTable extends AbstractErrorCheck {
       $additionalWhere = $this->utilityFuncs->getSingle($params, 'additionalWhere');
       $showHidden = intval($this->utilityFuncs->getSingle($params, 'showHidden'));
       if (!empty($checkTable) && !empty($checkField)) {
-        /** @var ConnectionPool $connectionPool */
-        $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
-        $queryBuilder = $connectionPool->getQueryBuilderForTable($checkTable);
-
-        /** @var FrontendRestrictionContainer $frontendRestrictionContainer */
-        $frontendRestrictionContainer = GeneralUtility::makeInstance(FrontendRestrictionContainer::class);
-        $queryBuilder->setRestrictions($frontendRestrictionContainer);
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($checkTable);
+        $queryBuilder->setRestrictions(GeneralUtility::makeInstance(FrontendRestrictionContainer::class));
         $queryBuilder
           ->select($checkField)
           ->from($checkTable)

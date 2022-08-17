@@ -8,7 +8,6 @@ use SJBR\SrFreecap\PiBaseApi;
 use ThinkopenAt\Captcha\Utility;
 use tx_jmrecaptcha;
 use TYPO3\CMS\Core\Core\Environment;
-use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -530,9 +529,7 @@ class Form extends AbstractView {
     if (stristr($this->template, '###SR_FREECAP_IMAGE###') && ExtensionManagementUtility::isLoaded('sr_freecap')) {
       require_once ExtensionManagementUtility::extPath('sr_freecap').'pi2/class.tx_srfreecap_pi2.php';
 
-      /** @var PiBaseApi $freeCap */
-      $freeCap = GeneralUtility::makeInstance(PiBaseApi::class);
-      $markers = array_merge($markers, $freeCap->makeCaptcha());
+      $markers = array_merge($markers, GeneralUtility::makeInstance(PiBaseApi::class)->makeCaptcha());
     }
     if (stristr($this->template, '###RECAPTCHA###') && ExtensionManagementUtility::isLoaded('jm_recaptcha')) {
       require_once ExtensionManagementUtility::extPath('jm_recaptcha').'class.tx_jmrecaptcha.php';

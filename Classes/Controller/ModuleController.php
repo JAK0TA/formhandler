@@ -111,7 +111,6 @@ class ModuleController extends ActionController {
    */
   public function indexAction(Demand $demand = null, int $page = null): ResponseInterface {
     if (null === $demand) {
-      /** @var Demand $demand */
       $demand = GeneralUtility::makeInstance(Demand::class);
 
       if (!isset($this->gp['demand']) || (isset($this->gp['demand']) && is_array($this->gp['demand']) && !isset($this->gp['demand']['pid']))) {
@@ -149,10 +148,7 @@ class ModuleController extends ActionController {
     $this->gp = $this->request->getArguments();
     $this->componentManager = GeneralUtility::makeInstance(Manager::class);
     $this->utilityFuncs = GeneralUtility::makeInstance(\Typoheads\Formhandler\Utility\GeneralUtility::class);
-
-    /** @var PageRenderer $pageRenderer */
-    $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-    $this->pageRenderer = $pageRenderer;
+    $this->pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
 
     $this->pageRenderer->loadRequireJsModule('TYPO3/CMS/Backend/DateTimePicker');
 

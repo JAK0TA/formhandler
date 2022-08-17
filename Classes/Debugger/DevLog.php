@@ -36,9 +36,7 @@ class DevLog extends AbstractDebugger {
           $data = $messageData['data'];
         }
 
-        /** @var LogManager $logManager */
-        $logManager = GeneralUtility::makeInstance(LogManager::class);
-        $logManager->getLogger(__CLASS__)->debug($message, $data);
+        GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__)->debug($message, $data);
       }
     }
   }
