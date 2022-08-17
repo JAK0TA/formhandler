@@ -510,12 +510,7 @@ class Form extends AbstractView {
     if (isset($this->settings['useDefaultStepBarStyles']) && (bool) $this->settings['useDefaultStepBarStyles']) {
       $css = implode("\n", $css);
       $css = self::inline2TempFile($css, 'css');
-
-      /** @var Typo3Version $typo3Version */
-      $typo3Version = GeneralUtility::makeInstance(Typo3Version::class);
-      if (version_compare($typo3Version->getVersion(), '4.3.0') >= 0) {
-        $css = '<link rel="stylesheet" type="text/css" href="'.htmlspecialchars($css).'" />';
-      }
+      $css = '<link rel="stylesheet" type="text/css" href="'.htmlspecialchars($css).'" />';
       $GLOBALS['TSFE']->additionalHeaderData[$this->extKey.'_'.$classprefix] .= $css;
     }
 
