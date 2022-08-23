@@ -2,7 +2,7 @@
   "name": "jakota/formhandler",
   "type": "typo3-cms-extension",
   "description": "The swiss army knife for all kinds of mailforms, completely new written using the MVC concept. Result: Flexibility, Flexibility, Flexibility  :-).",
-  "homepage": "https://gitlab.com/jakota/intern/composer_extensions/formhandler",
+  "homepage": "https://github.com/JAK0TA/formhandler",
   "license": "GPL-2.0-or-later",
   "repositories": [
     {
