@@ -771,7 +771,7 @@ class Form extends AbstractView {
       $errorMessage = implode('', $errorMessages);
       $errorMessage = $this->utilityFuncs->wrap($errorMessage, $singleErrorTemplate, 'totalWrap');
       $clearErrorMessage = $errorMessage;
-      if ($this->settings['addErrorAnchors']) {
+      if ($this->settings['addErrorAnchors'] ?? false) {
         $errorMessage = '<a name="'.$field.'-'.$this->globals->getRandomID().'">'.$errorMessage.'</a>';
       }
       $langMarkers = $this->utilityFuncs->getFilledLangMarkers($errorMessage, $this->langFiles);
@@ -779,7 +779,7 @@ class Form extends AbstractView {
       $markers['###error_'.$field.'###'] = $errorMessage;
       $markers['###ERROR_'.strtoupper($field).'###'] = $errorMessage;
       $errorMessage = $clearErrorMessage;
-      if ($this->settings['addErrorAnchors']) {
+      if ($this->settings['addErrorAnchors'] ?? false) {
         $baseUrl = strval(GeneralUtility::getIndpEnv('REQUEST_URI'));
         if ($this->globals->isAjaxMode()) {
           $baseUrl = strval(GeneralUtility::getIndpEnv('HTTP_REFERER'));
