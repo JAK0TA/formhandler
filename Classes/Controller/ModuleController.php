@@ -113,7 +113,7 @@ class ModuleController extends ActionController {
     if (null === $demand) {
       $demand = GeneralUtility::makeInstance(Demand::class);
 
-      if (is_array($this->gp['demand']) && !isset($this->gp['demand']['pid'])) {
+      if (is_array($this->gp['demand'] ?? false) && !isset($this->gp['demand']['pid'])) {
         $demand->setPid($this->id);
       }
     }
