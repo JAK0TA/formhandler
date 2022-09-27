@@ -1,0 +1,37 @@
+{
+  "name": "formhandler",
+  "version": "1.0.0",
+  "description": "Build rock solid, state of the art forms in TYPO3 the painless way.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack",
+    "dev": "cross-env NODE_ENV=development webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JAK0TA/formhandler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JAK0TA/formhandler/issues"
+  },
+  "homepage": "https://github.com/JAK0TA/formhandler#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.18.0",
+    "@typescript-eslint/parser": "^5.18.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.12.0",
+    "glob": "^7.2.0",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.5.5",
+    "webpack": "^5.68.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "recaptcha-v3": "^1.10.0"
+  }
+}

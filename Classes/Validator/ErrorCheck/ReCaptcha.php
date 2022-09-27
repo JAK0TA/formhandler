@@ -9,6 +9,7 @@ use ReCaptcha\ReCaptcha as GoogleRecaptcha;
 use ReCaptcha\Response;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * Validates a ReCaptcha token.
@@ -26,16 +27,28 @@ class ReCaptcha extends AbstractErrorCheck {
       return $this->getCheckFailed();
     }
 
+    // recaptcha field does not exist
+    if (!isset($this->gp['ReCaptcha'])) {
+      return $this->getCheckFailed();
+    }
+
     $recapcha = GeneralUtility::makeInstance(GoogleRecaptcha::class, $privkey);
 
     /** @var array<string, mixed> $params */
     $params = $this->settings['params'];
-    $captchaToken = strval($this->gp[strval($this->utilityFuncs->getSingle($params, 'captchaField'))]);
     $this->expectedAction = $this->utilityFuncs->getSingle($params, 'action') ?: $this->expectedAction;
-    $this->scoreThreshold = floatval($this->utilityFuncs->getSingle($params, 'threshold')) ?: $this->scoreThreshold;
+    $this->scoreThreshold = $this->utilityFuncs->getSingle($params, 'threshold') ?: $this->scoreThreshold;
+
+    DebuggerUtility::var_dump($this->expectedAction);
 
     /** @var Response $resp */
-    $resp = $recapcha->setExpectedAction($this->expectedAction)->setScoreThreshold($this->scoreThreshold)->verify(strval($captchaToken));
+    $resp = $recapcha->setExpectedAction($this->expectedAction)->setScoreThreshold($this->scoreThreshold)->verify(strval($this->gp['ReCaptcha']));
+
+    DebuggerUtility::var_dump($resp);
+    DebuggerUtility::var_dump($this->gp);
+    DebuggerUtility::var_dump($this->gp['ReCaptcha']);
+
+    exit;
 
     if (!$resp->isSuccess()) {
       return $this->getCheckFailed();
@@ -50,6 +63,5 @@ class ReCaptcha extends AbstractErrorCheck {
    */
   public function init(array $gp, array $settings): void {
     parent::init($gp, $settings);
-    $this->mandatoryParameters = ['captchaField'];
   }
 }

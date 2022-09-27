@@ -5,6 +5,7 @@
 *.iws
 /vendor
 /public
+/node_modules
 
 # System Files
 .DS_Store
