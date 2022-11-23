@@ -41,6 +41,11 @@ class TYPO3Mailer extends AbstractMailer implements MailerInterface {
     $this->emailObj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(MailMessage::class);
   }
 
+  public function init(array $gp, array $settings): void {
+    parent::init($gp, $settings);
+    $this->emailObj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(MailMessage::class);
+  }
+
   /* (non-PHPdoc)
    * @see Classes/Mailer/Tx_FormhandlerMailerInterface#addAttachment()
   */
