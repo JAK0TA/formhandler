@@ -181,7 +181,7 @@ class Mail extends AbstractFinisher {
       'langFile' => 'lang_file',
     ];
     foreach ($defaultOptions as $key => $option) {
-      $fileName = $this->utilityFuncs->pi_getFFvalue($this->cObj->data['pi_flexform'], $option);
+      $fileName = $this->utilityFuncs->pi_getFFvalue($this->cObj->data['pi_flexform'] ?? [], $option);
       if ($fileName) {
         $this->settings[$key] = $fileName;
       }

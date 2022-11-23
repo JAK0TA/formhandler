@@ -151,7 +151,7 @@ class Form extends AbstractController {
       $flexformSection = $option[1];
       $component = $option[2];
       $componentName = $option[3];
-      $value = $this->utilityFuncs->pi_getFFvalue($this->cObj->data['pi_flexform'], $fieldName, $flexformSection);
+      $value = $this->utilityFuncs->pi_getFFvalue($this->cObj->data['pi_flexform'] ?? [], $fieldName, $flexformSection);
 
       // Check if a Mail Finisher can be found in the config
       $isConfigOk = false;

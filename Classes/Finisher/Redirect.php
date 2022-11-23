@@ -35,7 +35,7 @@ class Redirect extends AbstractFinisher {
   public function init(array $gp, array $tsConfig): void {
     $this->gp = $gp;
     $this->settings = $tsConfig;
-    $redirect = $this->utilityFuncs->pi_getFFvalue($this->cObj->data['pi_flexform'], 'redirect_page', 'sMISC');
+    $redirect = $this->utilityFuncs->pi_getFFvalue($this->cObj->data['pi_flexform'] ?? [], 'redirect_page', 'sMISC');
     if ($redirect) {
       $this->settings['redirectPage'] = $redirect;
     }

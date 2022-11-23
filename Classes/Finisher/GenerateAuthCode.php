@@ -75,7 +75,7 @@ class GenerateAuthCode extends AbstractFinisher {
         if (isset($this->settings['authCodePage'])) {
           $authCodePage = $this->utilityFuncs->getSingle($this->settings, 'authCodePage');
         } else {
-          $authCodePage = $this->utilityFuncs->pi_getFFvalue($this->cObj->data['pi_flexform'], 'redirect_page', 'sMISC');
+          $authCodePage = $this->utilityFuncs->pi_getFFvalue($this->cObj->data['pi_flexform'] ?? [], 'redirect_page', 'sMISC');
         }
         if (!$authCodePage) {
           $authCodePage = $GLOBALS['TSFE']->id;
