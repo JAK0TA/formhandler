@@ -438,7 +438,7 @@ class GeneralUtility implements SingletonInterface {
       return $conditionResult;
     }
 
-    $conditionOperator = trim($valueConditions[1]);
+    $conditionOperator = trim($valueConditions[1] ?? '');
     $fieldName = trim($valueConditions[0]);
 
     switch ($conditionOperator) {
