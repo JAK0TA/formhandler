@@ -53,6 +53,7 @@ class Dispatcher extends AbstractPlugin {
   public function main(?string $content, array $setup): string {
     $this->componentManager = GeneralUtility::makeInstance(Manager::class);
     $this->globals = GeneralUtility::makeInstance(Globals::class);
+    $this->globals->clear();
     $this->utilityFuncs = GeneralUtility::makeInstance(\Typoheads\Formhandler\Utility\GeneralUtility::class);
 
     try {
