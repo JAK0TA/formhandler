@@ -33,7 +33,11 @@ class DateRange extends Date {
       $max = $this->utilityFuncs->getSingle($params, 'max');
       $pattern = $this->utilityFuncs->getSingle($params, 'pattern');
       preg_match('/^[d|m|y]*(.)[d|m|y]*/i', $pattern, $res);
-      $sep = $res[1];
+      $sep = $res[1] ?? '';
+
+      if (empty($sep)) {
+        $sep = '-';
+      }
 
       // normalisation of format
       $pattern = $this->utilityFuncs->normalizeDatePattern($pattern, $sep);
