@@ -82,7 +82,7 @@ class ModuleController extends ActionController {
         );
 
         /** @var AbstractGenerator $generator */
-        $generator = GeneralUtility::makeInstance($className, $this->componentManager, $this->configuration, $this->globals, $this->utilityFuncs);
+        $generator = GeneralUtility::makeInstance($className, $this->componentManager, $this->utilityFuncs);
         $this->settings['pdf']['config']['records'] = $convertedLogDataRows;
         $this->settings['pdf']['config']['exportFields'] = $fields;
         $generator->init([], $this->settings['pdf']['config']);
@@ -94,7 +94,7 @@ class ModuleController extends ActionController {
         );
 
         /** @var AbstractGenerator $generator */
-        $generator = GeneralUtility::makeInstance($className, $this->componentManager, $this->configuration, $this->globals, $this->utilityFuncs);
+        $generator = GeneralUtility::makeInstance($className, $this->componentManager, $this->utilityFuncs);
         $this->settings['csv']['config']['records'] = $convertedLogDataRows;
         $this->settings['csv']['config']['exportFields'] = $fields;
         $generator->init([], $this->settings['csv']['config']);
