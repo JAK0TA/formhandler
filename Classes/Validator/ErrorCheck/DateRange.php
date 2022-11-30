@@ -36,7 +36,7 @@ class DateRange extends Date {
       $sep = $res[1] ?? '';
 
       if (empty($sep)) {
-        $sep = '-';
+        return $this->getCheckFailed();
       }
 
       // normalisation of format
