@@ -28,7 +28,7 @@ class File extends AbstractGenerator {
    * Renders the XML file.
    */
   public function process(mixed &$error = null): array|string {
-    $view = GeneralUtility::makeInstance(ViewFile::class);
+    $view = GeneralUtility::makeInstance(ViewFile::class, $this->componentManager, $this->configuration, $this->globals, $this->utilityFuncs);
     $this->filename = '';
     if (1 == intval($this->settings['storeInTempFile'])) {
       $this->outputPath = $this->utilityFuncs->getDocumentRoot();

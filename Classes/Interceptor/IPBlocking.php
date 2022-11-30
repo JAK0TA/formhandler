@@ -211,7 +211,7 @@ class IPBlocking extends AbstractInterceptor {
     $emailClass = $this->utilityFuncs->getPreparedClassName((array) ($this->settings['mailer.'] ?? []), 'Mailer\HtmlMail');
 
     /** @var TYPO3Mailer $emailObj */
-    $emailObj = GeneralUtility::makeInstance($emailClass);
+    $emailObj = GeneralUtility::makeInstance($emailClass, $this->componentManager, $this->configuration, $this->globals, $this->utilityFuncs);
     $emailObj->init($this->gp, []);
 
     // set e-mail options

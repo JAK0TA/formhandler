@@ -54,7 +54,7 @@ class Validate extends AbstractAjax {
         $sessionClass = $this->utilityFuncs->getPreparedClassName(isset($ts['session.']) ? $ts['session.'] : [], 'Session\PHP');
 
         /** @var AbstractSession $session */
-        $session = GeneralUtility::makeInstance($sessionClass);
+        $session = GeneralUtility::makeInstance($sessionClass, $this->componentManager, $this->configuration, $this->globals, $this->utilityFuncs);
         Globals::setSession($session);
       }
       $this->settings = (array) (Globals::getSession()?->get('settings') ?? []);
@@ -63,7 +63,7 @@ class Validate extends AbstractAjax {
       $gp = $this->utilityFuncs->getMergedGP();
 
       $errors = [];
-      $valid = GeneralUtility::makeInstance(Ajax::class)->validateAjax($field, $gp, $errors);
+      $valid = GeneralUtility::makeInstance(Ajax::class, $this->componentManager, $this->configuration, $this->globals, $this->utilityFuncs)->validateAjax($field, $gp, $errors);
 
       $ajaxConfig = [];
       if (isset($this->settings['ajax.']) && is_array($this->settings['ajax.']) && isset($this->settings['ajax.']['config.']) && is_array($this->settings['ajax.']['config.'])) {
@@ -104,7 +104,7 @@ class Validate extends AbstractAjax {
    * @return AjaxValidation The view class
    */
   protected function initView(string $content): AjaxValidation {
-    $view = GeneralUtility::makeInstance(AjaxValidation::class);
+    $view = GeneralUtility::makeInstance(AjaxValidation::class, $this->componentManager, $this->configuration, $this->globals, $this->utilityFuncs);
     $view->setLangFiles($this->utilityFuncs->readLanguageFiles([], $this->settings));
     $view->setSettings($this->settings);
     $templateName = 'AJAX';

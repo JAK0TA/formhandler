@@ -56,7 +56,7 @@ class SubmittedOK extends AbstractFinisher {
     $viewClass = $this->utilityFuncs->prepareClassName($viewClass);
 
     /** @var AbstractView $view */
-    $view = GeneralUtility::makeInstance($viewClass);
+    $view = GeneralUtility::makeInstance($viewClass, $this->componentManager, $this->configuration, $this->globals, $this->utilityFuncs);
 
     // show TEMPLATE_SUBMITTEDOK
     $view->setTemplate($this->template, 'SUBMITTEDOK'.$this->globals->getTemplateSuffix());

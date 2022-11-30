@@ -201,7 +201,7 @@ class JQuery extends AbstractAjaxHandler {
           contentID: "'.$this->cObj->data['uid'].'",
           randomID: "'.$this->globals->getRandomID().'",
           formValuesPrefix: "'.$this->globals->getFormValuesPrefix().'",
-          lang: "'.GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('language', 'id').'",
+          lang: "'.GeneralUtility::makeInstance(Context::class, $this->componentManager, $this->configuration, $this->globals, $this->utilityFuncs)->getPropertyFromAspect('language', 'id').'",
           submitButtonSelector: "'.$submitButtonSelector.'",
           ajaxSubmit: '.($isAjaxSubmit ? 'true' : 'false').',
           autoDisableSubmitButton: '.($autoDisableSubmitButton ? 'true' : 'false').',

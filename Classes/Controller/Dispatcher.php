@@ -93,7 +93,7 @@ class Dispatcher extends AbstractPlugin {
       }
 
       /** @var AbstractController $controller */
-      $controller = GeneralUtility::makeInstance($this->utilityFuncs->prepareClassName($controllerClass));
+      $controller = GeneralUtility::makeInstance($this->utilityFuncs->prepareClassName($controllerClass), $this->componentManager, new Configuration(), $this->globals, $this->utilityFuncs);
 
       if (isset($content)) {
         $contentClass = GeneralUtility::makeInstance(

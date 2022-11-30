@@ -38,7 +38,7 @@ class Submit extends AbstractAjax {
       $class = $this->utilityFuncs->getPreparedClassName($this->settings['ajax.'], 'AjaxHandler\JQuery');
 
       /** @var AbstractAjaxHandler $ajaxHandler */
-      $ajaxHandler = GeneralUtility::makeInstance($class);
+      $ajaxHandler = GeneralUtility::makeInstance($class, $this->componentManager, $this->configuration, $this->globals, $this->utilityFuncs);
       $this->globals->setAjaxHandler($ajaxHandler);
 
       $ajaxHandler->init((array) ($this->settings['ajax.']['config.'] ?? []));

@@ -35,7 +35,7 @@ class FormSubmit extends AbstractAjax {
     $this->formValuePrefix = $this->utilityFuncs->getSingle($this->settings, 'formValuesPrefix');
     $this->gp = (array) (GeneralUtility::_GP($this->formValuePrefix) ?? []);
 
-    GeneralUtility::makeInstance(AjaxFormValidator::class)->validateAjaxForm($this->gp, $errors);
+    GeneralUtility::makeInstance(AjaxFormValidator::class, $this->componentManager, $this->configuration, $this->globals, $this->utilityFuncs)->validateAjaxForm($this->gp, $errors);
     if (!empty($errors)) {
       return new HtmlResponse(json_encode(['success' => false, 'errors' => $errors]) ?: '', 200);
     }
@@ -95,7 +95,7 @@ class FormSubmit extends AbstractAjax {
           if (is_array($tsConfig) && !empty($className)) {
             if (1 !== (int) $this->utilityFuncs->getSingle($tsConfig, 'disable')) {
               /** @var AbstractFinisher $finisher */
-              $finisher = GeneralUtility::makeInstance($className);
+              $finisher = GeneralUtility::makeInstance($className, $this->componentManager, $this->configuration, $this->globals, $this->utilityFuncs);
               $tsConfig['config.'] = $this->addDefaultComponentConfig($tsConfig['config.'] ?? []);
               $finisher->init($this->gp, $tsConfig['config.']);
               $finisher->validateConfig();

@@ -39,7 +39,7 @@ abstract class AbstractInterceptor extends AbstractComponent {
           $this->utilityFuncs->debugMessage('calling_class', [$className]);
 
           /** @var AbstractLogger $obj */
-          $obj = GeneralUtility::makeInstance($className);
+          $obj = GeneralUtility::makeInstance($className, $this->componentManager, $this->configuration, $this->globals, $this->utilityFuncs);
           if ($markAsSpam) {
             $tsConfig['config.']['markAsSpam'] = 1;
           }

@@ -296,7 +296,7 @@ class Mail extends AbstractFinisher {
                 $generatorClass = $this->utilityFuncs->getPreparedClassName($options);
                 if ($generatorClass) {
                   /** @var AbstractGenerator $generator */
-                  $generator = GeneralUtility::makeInstance($generatorClass);
+                  $generator = GeneralUtility::makeInstance($generatorClass, $this->componentManager, $this->configuration, $this->globals, $this->utilityFuncs);
                   $generator->init($this->gp, $options['config.']);
                   $generator->getLink([]);
                   $file = strval($generator->process());
@@ -471,7 +471,7 @@ class Mail extends AbstractFinisher {
     $viewClass = $this->utilityFuncs->prepareClassName($viewClass);
 
     /** @var AbstractView $view */
-    $view = GeneralUtility::makeInstance($viewClass);
+    $view = GeneralUtility::makeInstance($viewClass, $this->componentManager, $this->configuration, $this->globals, $this->utilityFuncs);
 
     $view->setLangFiles($this->globals->getLangFiles());
     $view->setPredefined($this->predefined);

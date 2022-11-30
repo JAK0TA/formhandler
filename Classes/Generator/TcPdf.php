@@ -34,7 +34,7 @@ class TcPdf extends AbstractGenerator {
     $pdf->AddPage();
     $pdf->SetFont('Helvetica', '', 12);
 
-    $view = GeneralUtility::makeInstance(PDF::class);
+    $view = GeneralUtility::makeInstance(PDF::class, $this->componentManager, $this->configuration, $this->globals, $this->utilityFuncs);
     $this->filename = '';
     if (1 == intval($this->settings['storeInTempFile'])) {
       $this->outputPath = $this->utilityFuncs->getDocumentRoot();

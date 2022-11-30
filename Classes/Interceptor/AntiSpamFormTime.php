@@ -60,7 +60,7 @@ class AntiSpamFormTime extends AbstractInterceptor {
       $viewClass = $this->utilityFuncs->prepareClassName($viewClass);
 
       /** @var AbstractView $view */
-      $view = GeneralUtility::makeInstance($viewClass);
+      $view = GeneralUtility::makeInstance($viewClass, $this->componentManager, $this->configuration, $this->globals, $this->utilityFuncs);
       $view->setLangFiles($this->globals->getLangFiles());
       $view->setPredefined($this->predefined);
 

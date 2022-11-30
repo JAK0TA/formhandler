@@ -142,13 +142,13 @@ class AjaxFormValidator extends AbstractValidator {
             $fullClassName = $this->utilityFuncs->prepareClassName('\\Typoheads\\Formhandler\\Validator\\ErrorCheck\\'.$classNameFix);
 
             /** @var ?AbstractErrorCheck $errorCheckObject */
-            $errorCheckObject = GeneralUtility::makeInstance($fullClassName);
+            $errorCheckObject = GeneralUtility::makeInstance($fullClassName, $this->componentManager, $this->configuration, $this->globals, $this->utilityFuncs);
           } else {
             // Look for the whole error check name, maybe it is a custom check like Tx_SomeExt_ErrorCheck_Something
             $fullClassName = $this->utilityFuncs->prepareClassName($check['check']);
 
             /** @var ?AbstractErrorCheck $errorCheckObject */
-            $errorCheckObject = GeneralUtility::makeInstance($fullClassName);
+            $errorCheckObject = GeneralUtility::makeInstance($fullClassName, $this->componentManager, $this->configuration, $this->globals, $this->utilityFuncs);
           }
           if (null === $errorCheckObject) {
             $this->utilityFuncs->debugMessage('check_not_found', [$fullClassName], 2);
