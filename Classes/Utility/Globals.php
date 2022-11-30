@@ -68,6 +68,25 @@ class Globals implements SingletonInterface {
     self::$debuggers[] = $debugger;
   }
 
+  public static function clear(): void {
+    self::$ajaxHandler = null;
+    self::$ajaxMode = false;
+    self::$cObj = null;
+    self::$debuggers = [];
+    self::$formID = '';
+    self::$formValuesPrefix = '';
+    self::$gp = [];
+    self::$langFiles = [];
+    self::$overrideSettings = [];
+    self::$predef = '';
+    self::$randomID = '';
+    self::$session = null;
+    self::$settings = [];
+    self::$submitted = false;
+    self::$templateCode = '';
+    self::$templateSuffix = '';
+  }
+
   public static function getAjaxHandler(): ?AbstractAjaxHandler {
     return self::$ajaxHandler;
   }
