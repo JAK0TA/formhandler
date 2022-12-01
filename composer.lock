@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0522c6cda9b1e648d3c0c69c647000e5",
+    "content-hash": "99db988d712f487a4fe0f466bbc92b68",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -2102,16 +2102,16 @@
         },
         {
             "name": "symfony/cache",
-            "version": "v6.1.8",
+            "version": "v6.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache.git",
-                "reference": "ffa53c4e0f18828751a57a3f6bc32f7147c03867"
+                "reference": "64cb231dfb25677097d18503d1ad4d016b19f19c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/cache/zipball/ffa53c4e0f18828751a57a3f6bc32f7147c03867",
-                "reference": "ffa53c4e0f18828751a57a3f6bc32f7147c03867",
+                "url": "https://api.github.com/repos/symfony/cache/zipball/64cb231dfb25677097d18503d1ad4d016b19f19c",
+                "reference": "64cb231dfb25677097d18503d1ad4d016b19f19c",
                 "shasum": ""
             },
             "require": {
@@ -2120,7 +2120,7 @@
                 "psr/log": "^1.1|^2|^3",
                 "symfony/cache-contracts": "^1.1.7|^2|^3",
                 "symfony/service-contracts": "^1.1|^2|^3",
-                "symfony/var-exporter": "^5.4|^6.0"
+                "symfony/var-exporter": "^6.2"
             },
             "conflict": {
                 "doctrine/dbal": "<2.13.1",
@@ -2178,7 +2178,7 @@
                 "psr6"
             ],
             "support": {
-                "source": "https://github.com/symfony/cache/tree/v6.1.8"
+                "source": "https://github.com/symfony/cache/tree/v6.2.0"
             },
             "funding": [
                 {
@@ -2194,7 +2194,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-14T10:13:26+00:00"
+            "time": "2022-11-24T11:58:37+00:00"
         },
         {
             "name": "symfony/cache-contracts",
@@ -3041,16 +3041,16 @@
         },
         {
             "name": "symfony/lock",
-            "version": "v6.1.7",
+            "version": "v6.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/lock.git",
-                "reference": "98d6c4b6608d15e403a228c15afb4f3e71b22a57"
+                "reference": "684533e2ce27e68ce57d5bf194372c31e51612ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/lock/zipball/98d6c4b6608d15e403a228c15afb4f3e71b22a57",
-                "reference": "98d6c4b6608d15e403a228c15afb4f3e71b22a57",
+                "url": "https://api.github.com/repos/symfony/lock/zipball/684533e2ce27e68ce57d5bf194372c31e51612ef",
+                "reference": "684533e2ce27e68ce57d5bf194372c31e51612ef",
                 "shasum": ""
             },
             "require": {
@@ -3058,7 +3058,8 @@
                 "psr/log": "^1|^2|^3"
             },
             "conflict": {
-                "doctrine/dbal": "<2.13"
+                "doctrine/dbal": "<2.13",
+                "symfony/cache": "<6.2"
             },
             "require-dev": {
                 "doctrine/dbal": "^2.13|^3.0",
@@ -3098,7 +3099,7 @@
                 "semaphore"
             ],
             "support": {
-                "source": "https://github.com/symfony/lock/tree/v6.1.7"
+                "source": "https://github.com/symfony/lock/tree/v6.2.0"
             },
             "funding": [
                 {
@@ -3114,7 +3115,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-28T16:23:08+00:00"
+            "time": "2022-11-02T09:08:04+00:00"
         },
         {
             "name": "symfony/mailer",
@@ -4583,16 +4584,16 @@
         },
         {
             "name": "symfony/string",
-            "version": "v6.1.7",
+            "version": "v6.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "823f143370880efcbdfa2dbca946b3358c4707e5"
+                "reference": "145702685e0d12f81d755c71127bfff7582fdd36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/823f143370880efcbdfa2dbca946b3358c4707e5",
-                "reference": "823f143370880efcbdfa2dbca946b3358c4707e5",
+                "url": "https://api.github.com/repos/symfony/string/zipball/145702685e0d12f81d755c71127bfff7582fdd36",
+                "reference": "145702685e0d12f81d755c71127bfff7582fdd36",
                 "shasum": ""
             },
             "require": {
@@ -4608,6 +4609,7 @@
             "require-dev": {
                 "symfony/error-handler": "^5.4|^6.0",
                 "symfony/http-client": "^5.4|^6.0",
+                "symfony/intl": "^6.2",
                 "symfony/translation-contracts": "^2.0|^3.0",
                 "symfony/var-exporter": "^5.4|^6.0"
             },
@@ -4648,7 +4650,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v6.1.7"
+                "source": "https://github.com/symfony/string/tree/v6.2.0"
             },
             "funding": [
                 {
@@ -4664,20 +4666,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-10T09:34:31+00:00"
+            "time": "2022-11-30T17:13:47+00:00"
         },
         {
             "name": "symfony/var-exporter",
-            "version": "v6.1.3",
+            "version": "v6.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-exporter.git",
-                "reference": "b49350f45cebbba6e5286485264b912f2bcfc9ef"
+                "reference": "0437f26ca0c648071cc15ddacd26152cc65f4cd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-exporter/zipball/b49350f45cebbba6e5286485264b912f2bcfc9ef",
-                "reference": "b49350f45cebbba6e5286485264b912f2bcfc9ef",
+                "url": "https://api.github.com/repos/symfony/var-exporter/zipball/0437f26ca0c648071cc15ddacd26152cc65f4cd6",
+                "reference": "0437f26ca0c648071cc15ddacd26152cc65f4cd6",
                 "shasum": ""
             },
             "require": {
@@ -4717,10 +4719,12 @@
                 "export",
                 "hydrate",
                 "instantiate",
+                "lazy loading",
+                "proxy",
                 "serialize"
             ],
             "support": {
-                "source": "https://github.com/symfony/var-exporter/tree/v6.1.3"
+                "source": "https://github.com/symfony/var-exporter/tree/v6.2.0"
             },
             "funding": [
                 {
@@ -4736,7 +4740,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-07-04T16:01:56+00:00"
+            "time": "2022-11-25T08:33:31+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -5656,6 +5660,63 @@
     ],
     "packages-dev": [
         {
+            "name": "bnf/phpstan-psr-container",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bnf/phpstan-psr-container.git",
+                "reference": "38242e71616aa677a0fdd08af8edc4a730a24f67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bnf/phpstan-psr-container/zipball/38242e71616aa677a0fdd08af8edc4a730a24f67",
+                "reference": "38242e71616aa677a0fdd08af8edc4a730a24f67",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0|^8.0",
+                "phpstan/phpstan": "^1.0",
+                "psr/container": "^1.0|^2.0"
+            },
+            "type": "phpstan-extension",
+            "extra": {
+                "phpstan": {
+                    "includes": [
+                        "extension.neon"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bnf\\PhpstanPsrContainer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Franzke",
+                    "email": "benjaminfranzke@gmail.com",
+                    "homepage": "https://bnfr.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHPStan dynamic return type extension for PSR-11 ContainerInterface",
+            "keywords": [
+                "PHPStan",
+                "PSR-11",
+                "service-provider",
+                "static"
+            ],
+            "support": {
+                "issues": "https://github.com/bnf/phpstan-psr-container/issues",
+                "source": "https://github.com/bnf/phpstan-psr-container/tree/1.0.1"
+            },
+            "time": "2022-04-26T04:03:19+00:00"
+        },
+        {
             "name": "composer/pcre",
             "version": "3.1.0",
             "source": {
@@ -6206,27 +6267,35 @@
         },
         {
             "name": "saschaegerer/phpstan-typo3",
-            "version": "dev-prerelease",
+            "version": "1.8.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/tlueder/phpstan-typo3.git",
-                "reference": "c8b9e698e3bd0f32c1c66e928dbef2d884d5b83c"
+                "url": "https://github.com/sascha-egerer/phpstan-typo3.git",
+                "reference": "a5121d6e610ced02445a8ac7deb91cd31bb02b71"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sascha-egerer/phpstan-typo3/zipball/a5121d6e610ced02445a8ac7deb91cd31bb02b71",
+                "reference": "a5121d6e610ced02445a8ac7deb91cd31bb02b71",
+                "shasum": ""
             },
             "require": {
-                "nikic/php-parser": ">= 4.13",
+                "bnf/phpstan-psr-container": "^1.0",
+                "nikic/php-parser": "^4.15.1",
                 "php": "^7.2 || ^8.0",
-                "phpstan/phpstan": "^1.6",
-                "typo3/cms-core": "^8.7 || ^9.5 || ^10.4 || ^11.2",
-                "typo3/cms-extbase": "^8.7 || ^9.5 || ^10.4 || ^11.2"
+                "phpstan/phpstan": "^1.8.9",
+                "typo3/cms-core": "^10.4 || ^11.5 || ^12.0",
+                "typo3/cms-extbase": "^10.4 || ^11.5 || ^12.0"
             },
             "require-dev": {
-                "consistence-community/coding-standard": "^3.10",
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
-                "phing/phing": "^2.17",
-                "php-parallel-lint/php-parallel-lint": "^1.3",
-                "phpstan/phpstan-strict-rules": "^1.0",
-                "phpunit/phpunit": "^9.5",
-                "slevomat/coding-standard": "^6.3"
+                "consistence-community/coding-standard": "^3.10.1",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
+                "phing/phing": "^2.17.4",
+                "php-parallel-lint/php-parallel-lint": "^1.3.2",
+                "phpstan/phpstan-strict-rules": "^1.4.4",
+                "phpunit/phpunit": "^8.5.30",
+                "slevomat/coding-standard": "^6.4.1",
+                "symfony/polyfill-php80": "^1.26.0"
             },
             "type": "phpstan-extension",
             "extra": {
@@ -6244,19 +6313,26 @@
                     "SaschaEgerer\\PhpstanTypo3\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SaschaEgerer\\PhpstanTypo3\\Tests\\": "tests/"
-                },
-                "files": [
-                    "tests/Unit/Type/data/repository-stub-files.php"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "TYPO3 CMS class reflection extension for PHPStan",
-            "time": "2022-08-20T19:38:19+00:00"
+            "support": {
+                "issues": "https://github.com/sascha-egerer/phpstan-typo3/issues",
+                "source": "https://github.com/sascha-egerer/phpstan-typo3/tree/1.8.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sascha-egerer",
+                    "type": "github"
+                },
+                {
+                    "url": "https://liberapay.com/sascha.egerer",
+                    "type": "liberapay"
+                }
+            ],
+            "time": "2022-11-06T09:11:41+00:00"
         },
         {
             "name": "sebastian/diff",
@@ -6373,16 +6449,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v6.1.3",
+            "version": "v6.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "a6506e99cfad7059b1ab5cab395854a0a0c21292"
+                "reference": "ba6e55359f8f755fe996c58a81e00eaa67a35877"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/a6506e99cfad7059b1ab5cab395854a0a0c21292",
-                "reference": "a6506e99cfad7059b1ab5cab395854a0a0c21292",
+                "url": "https://api.github.com/repos/symfony/process/zipball/ba6e55359f8f755fe996c58a81e00eaa67a35877",
+                "reference": "ba6e55359f8f755fe996c58a81e00eaa67a35877",
                 "shasum": ""
             },
             "require": {
@@ -6414,7 +6490,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/v6.1.3"
+                "source": "https://github.com/symfony/process/tree/v6.2.0"
             },
             "funding": [
                 {
@@ -6430,11 +6506,11 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-27T17:24:16+00:00"
+            "time": "2022-11-02T09:08:04+00:00"
         },
         {
             "name": "symfony/stopwatch",
-            "version": "v6.1.5",
+            "version": "v6.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stopwatch.git",
@@ -6476,7 +6552,7 @@
             "description": "Provides a way to profile code",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/stopwatch/tree/v6.1.5"
+                "source": "https://github.com/symfony/stopwatch/tree/v6.2.0"
             },
             "funding": [
                 {
@@ -6631,9 +6707,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "saschaegerer/phpstan-typo3": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
