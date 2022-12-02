@@ -203,7 +203,7 @@ class AjaxMiddleware implements MiddlewareInterface {
       $sessionClass = $this->utilityFuncs->getPreparedClassName(isset($ts['session.']) ? $ts['session.'] : [], 'Session\PHP');
 
       /** @var ?AbstractSession $sessionClassTemp */
-      $sessionClassTemp = GeneralUtility::makeInstance($sessionClass, $this->componentManager, $this->globals, $this->utilityFuncs);
+      $sessionClassTemp = GeneralUtility::makeInstance($sessionClass);
       $this->globals->setSession($sessionClassTemp);
     }
 
@@ -228,7 +228,7 @@ class AjaxMiddleware implements MiddlewareInterface {
     $class = $this->utilityFuncs->getPreparedClassName($className, 'Ajax\RemoveFile');
 
     /** @var AbstractAjax $removeFile */
-    $removeFile = GeneralUtility::makeInstance($class, $this->componentManager, $this->globals, $this->utilityFuncs);
+    $removeFile = GeneralUtility::makeInstance($class);
     $removeFile->init($this->componentManager, $this->globals, $this->settings, $this->utilityFuncs);
 
     return $removeFile->main();
@@ -251,7 +251,7 @@ class AjaxMiddleware implements MiddlewareInterface {
     $class = $this->utilityFuncs->getPreparedClassName($className, 'Ajax\Submit');
 
     /** @var AbstractAjax $submit */
-    $submit = GeneralUtility::makeInstance($class, $this->componentManager, $this->globals, $this->utilityFuncs);
+    $submit = GeneralUtility::makeInstance($class);
     $submit->init($this->componentManager, $this->globals, $this->settings, $this->utilityFuncs);
 
     return $submit->main();
@@ -274,7 +274,7 @@ class AjaxMiddleware implements MiddlewareInterface {
     $class = $this->utilityFuncs->getPreparedClassName($className, 'Ajax\Validate');
 
     /** @var AbstractAjax $validate */
-    $validate = GeneralUtility::makeInstance($class, $this->componentManager, $this->globals, $this->utilityFuncs);
+    $validate = GeneralUtility::makeInstance($class);
     $validate->init($this->componentManager, $this->globals, $this->settings, $this->utilityFuncs);
 
     return $validate->main();
