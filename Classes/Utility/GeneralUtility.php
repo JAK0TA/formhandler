@@ -275,11 +275,11 @@ class GeneralUtility implements SingletonInterface {
   /**
    * Redirects to a specified page or URL.
    *
-   * @param string               $redirect           Page id or URL to redirect to
+   * @param int|string           $redirect           Page id or URL to redirect to
    * @param bool                 $correctRedirectUrl replace &amp; with & in URL
    * @param array<string, mixed> $additionalParams
    */
-  public static function doRedirect(string $redirect, bool $correctRedirectUrl, array $additionalParams = [], string $headerStatusCode = ''): void {
+  public static function doRedirect(int|string $redirect, bool $correctRedirectUrl, array $additionalParams = [], string $headerStatusCode = ''): void {
     // these parameters have to be added to the redirect url
     $addParams = [];
     if (\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('L')) {
@@ -297,7 +297,7 @@ class GeneralUtility implements SingletonInterface {
       }
     }
 
-    $url = Globals::getCObj()?->getTypoLink_URL($redirect, $addParams) ?? '';
+    $url = Globals::getCObj()?->getTypoLink_URL((string)$redirect, $addParams) ?? '';
 
     // correct the URL by replacing &amp;
     if ($correctRedirectUrl) {
