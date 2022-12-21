@@ -465,7 +465,7 @@ class Mail extends AbstractFinisher {
   protected function parseTemplate(string $mode, string $suffix): string {
     // set view
     $viewClass = '\Typoheads\Formhandler\View\Mail';
-    if (isset($this->settings['view'])) {
+    if (!empty($this->settings['view'])) {
       $viewClass = $this->utilityFuncs->getSingle($this->settings, 'view');
     }
     $viewClass = $this->utilityFuncs->prepareClassName($viewClass);
@@ -477,10 +477,10 @@ class Mail extends AbstractFinisher {
     $view->setPredefined($this->predefined);
     $view->setComponentSettings($this->emailSettings);
     $templateCode = $this->globals->getTemplateCode();
-    if (isset($this->settings['templateFile'])) {
+    if (!empty($this->settings['templateFile'])) {
       $templateCode = $this->utilityFuncs->readTemplateFile('', $this->settings);
     }
-    if (isset($this->emailSettings['templateFile'])) {
+    if (!empty($this->emailSettings['templateFile'])) {
       $templateCode = $this->utilityFuncs->readTemplateFile('', $this->emailSettings);
     }
 
