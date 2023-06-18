@@ -28,6 +28,12 @@ use Typoheads\Formhandler\Utility\Globals;
  * An abstract view for Formhandler.
  */
 abstract class AbstractView extends AbstractPlugin {
+
+    /**
+     * The prefix id
+     */
+    public string $prefixId = 'Tx_Formhandler';
+
   /**
    * The Formhandler component manager.
    */
