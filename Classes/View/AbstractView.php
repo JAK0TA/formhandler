@@ -31,8 +31,10 @@ abstract class AbstractView extends AbstractPlugin {
 
     /**
      * The prefix id
+     *
+     * @var string
      */
-    public string $prefixId = 'Tx_Formhandler';
+    public $prefixId = 'Tx_Formhandler';
 
   /**
    * The Formhandler component manager.
