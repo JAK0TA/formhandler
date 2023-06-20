@@ -136,9 +136,15 @@ class Mail extends AbstractFinisher {
     $templateService = GeneralUtility::makeInstance(MarkerBasedTemplateService::class);
 
     foreach ($settings as &$value) {
-      if (isset($value) && is_array($value)) {
+      if (empty($value)) {
+        continue;
+      }
+      if (is_array($value)) {
         $this->fillLangMarkersInSettings($value);
-      } else {
+
+        continue;
+      }
+      if (is_string($value)) {
         $langMarkers = $this->utilityFuncs->getFilledLangMarkers($value, $this->globals->getLangFiles());
         if (!empty($langMarkers)) {
           $value = $templateService->substituteMarkerArray($value, $langMarkers);
