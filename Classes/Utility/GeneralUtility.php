@@ -1036,7 +1036,7 @@ class GeneralUtility implements SingletonInterface {
    * Returns part of $sheetArray pointed to by the keys in $fieldNameArray.
    *
    * @param array<string, mixed> $sheetArray   Multidimensiona array, typically FlexForm contents
-   * @param array<string, mixed> $fieldNameArr Array where each value points to a key in the FlexForms content - the input array will have the value returned pointed to by these keys. All integer keys will not take their integer counterparts, but rather traverse the current position in the array an return element number X (whether this is right behavior is not settled yet...)
+   * @param array<string|int, mixed> $fieldNameArr Array where each value points to a key in the FlexForms content - the input array will have the value returned pointed to by these keys. All integer keys will not take their integer counterparts, but rather traverse the current position in the array an return element number X (whether this is right behavior is not settled yet...)
    * @param string               $value        Value for outermost key, typ. "vDEF" depending on language.
    *
    * @return string The value, typ. string.

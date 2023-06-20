@@ -296,7 +296,7 @@ class Form extends AbstractController {
   protected function findCurrentStep(): void {
     $action = '';
     $step = 0;
-    if (isset($this->gp) && is_array($this->gp)) {
+    if (isset($this->gp)) {
       $action = 'reload';
       $keys = array_keys($this->gp);
       foreach ($keys as $idx => $pname) {
