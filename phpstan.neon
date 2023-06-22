@@ -17,7 +17,6 @@ parameters:
   paths:
     - %currentWorkingDirectory%/Classes/
     - %currentWorkingDirectory%/Configuration/
-    - %currentWorkingDirectory%/pi1/
     - %currentWorkingDirectory%/ext_emconf.php
     - %currentWorkingDirectory%/ext_localconf.php
     - %currentWorkingDirectory%/ext_tables.php
