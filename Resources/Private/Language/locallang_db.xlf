@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:formhandler/Resources/Private/Language/locallang_db.xlf" date="2023-06-22T11:48:40Z" product-name="formhandler">
+    <header />
+    <body>
+      <trans-unit id="tx_formhandler_domain_model_log" resname="tx_formhandler_domain_model_log">
+        <source>Formhandler Log</source>
+      </trans-unit>
+      <trans-unit id="form_page_id" resname="form_page_id">
+        <source>Form page id</source>
+      </trans-unit>
+      <trans-unit id="ip" resname="ip">
+        <source>IP address</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
