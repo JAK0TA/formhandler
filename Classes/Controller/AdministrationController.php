@@ -9,12 +9,14 @@ use TYPO3\CMS\Backend\Attribute\Controller;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use Typoheads\Formhandler\Domain\Repository\LogRepository;
 
 #[Controller]
 final class AdministrationController extends ActionController {
   public function __construct(
     protected readonly ModuleTemplateFactory $moduleTemplateFactory,
     protected readonly IconFactory $iconFactory,
+    protected readonly LogRepository $logRepository,
   ) {
   }
 
