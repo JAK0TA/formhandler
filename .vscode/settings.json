@@ -83,7 +83,7 @@
       "priority": -4
     },
     {
-      "text": "$(beaker) PHP",
+      "text": "$(beaker) PHPStan",
       "tooltip": "Analyse code with PHPStan",
       "id": "pHPStan",
       "name": "pHPStan",
@@ -92,13 +92,22 @@
       "priority": -5
     },
     {
+      "text": "$(beaker) PHP CS Fixer",
+      "tooltip": "Analyse code with PHP CS Fixer",
+      "id": "pHPCsFixer",
+      "name": "pHPCsFixer",
+      "command": "workbench.action.terminal.sendSequence",
+      "arguments": [{ "text": "./vendor/bin/php-cs-fixer fix $(pwd) --dry-run --diff --config=\"./.vscode/.php-cs-fixer.php\" --using-cache no\u000D" }],
+      "priority": -6
+    },
+    {
       "text": "$(git-branch) $(trash)",
       "tooltip": "Git: Clean up local branches",
       "id": "gitCleanUp",
       "name": "gitCleanUp",
       "command": "workbench.action.terminal.sendSequence",
       "arguments": [{ "text": "git for-each-ref --format '%(refname:short)' refs/heads | grep -v \"master\\|main\\|develop\\|stage\" | grep -v $(git branch --show-current) | xargs git branch -D\u000D" }],
-      "priority": -6
+      "priority": -7
     }
   ]
 }
