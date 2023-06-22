@@ -22,14 +22,4 @@ parameters:
     - %currentWorkingDirectory%/ext_tables.php
 
   scanFiles:
-    - public/typo3conf/ext/formhandler/vendor/parsecsv/php-parsecsv/parsecsv.lib.php
-
-  excludePaths:
-    - rector.php
-
-  ignoreErrors:
-    - '/^Parameter #1 \$value of function floatval expects array\|bool\|float\|int\|resource\|string\|null, mixed given.$/'
-    - '/^Parameter #1 \$value of function intval expects array\|bool\|float\|int\|resource\|string\|null, mixed given.$/'
-    - '/^Parameter #1 \$value of function strval expects bool\|float\|int\|resource\|string\|null, array<string, mixed>\|string given.$/'
-    - '/^Parameter #1 \$value of function strval expects bool\|float\|int\|resource\|string\|null, mixed given.$/'
-    - '/^Parameter #2 \$values of function vsprintf expects array<bool\|float\|int\|string\|null>, array<int, mixed> given.$/'
+    - vendor/parsecsv/php-parsecsv/parsecsv.lib.php
