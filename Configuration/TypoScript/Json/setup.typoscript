@@ -1,5 +1,0 @@
-[traverse(request.getQueryParams(), 'json') == 1 && applicationContext == "Development"]
-plugin.tx_formhandler_pi1 {
-  controller = \Typoheads\Formhandler\Controller\FormInfo
-}
-[END]
