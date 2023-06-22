@@ -13,10 +13,6 @@ namespace PHPSTORM_META;
 // valid for all TYPO3 versions
 override(\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(0, 1), map(['' => '@']));
 
-// valid for all TYPO3 versions
-override(\TYPO3\CMS\Extbase\Object\ObjectManager::get(0, 1), map(['' => '@']));
-override(\TYPO3\CMS\Extbase\Object\ObjectManagerInterface::get(0, 1), map(['' => '@']));
-
 // Contexts
 // @see https://docs.typo3.org/c/typo3/cms-core/main/en-us/Changelog/9.4/Feature-85389-ContextAPIForConsistentDataHandling.html
 expectedArguments(
@@ -112,7 +108,7 @@ override(\Psr\Http\Message\ServerRequestInterface::getAttribute(), map([
   'backend.user' => \TYPO3\CMS\Backend\FrontendBackendUserAuthentication::class,
   'frontend.user' => \TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication::class,
   'normalizedParams' => \TYPO3\CMS\Core\Http\NormalizedParams::class,
-  'site' => \TYPO3\CMS\Core\Site\Entity\SiteInterface::class,
+  'site' => \TYPO3\CMS\Core\Site\Entity\Site::class,
   'language' => \TYPO3\CMS\Core\Site\Entity\SiteLanguage::class,
   'routing' => '\TYPO3\CMS\Core\Routing\SiteRouteResult|\TYPO3\CMS\Core\Routing\PageArguments',
   'module' => \TYPO3\CMS\Backend\Module\ModuleInterface::class,
