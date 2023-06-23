@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2"
+  xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf" date="2023-06-22T11:48:40Z" product-name="formhandler">
+    <header />
+    <body>
+      <trans-unit id="sheet_general" resname="sheet_general">
+        <source>General Settings</source>
+      </trans-unit>
+      <trans-unit id="sheet_emailAdminSettings" resname="sheet_emailAdminSettings">
+        <source>Admin E-Mail Settings</source>
+      </trans-unit>
+      <trans-unit id="sheet_emailUserSettings" resname="sheet_emailUserSettings">
+        <source>User E-Mail Settings</source>
+      </trans-unit>
+      <trans-unit id="sheet_miscSettings" resname="sheet_miscSettings">
+        <source>Other Settings</source>
+      </trans-unit>
+      <trans-unit id="template_file" resname="template_file">
+        <source>Template File</source>
+      </trans-unit>
+      <trans-unit id="emailRecipient" resname="emailRecipient">
+        <source>Recipient</source>
+      </trans-unit>
+      <trans-unit id="emailSubject" resname="emailSubject">
+        <source>Subject</source>
+      </trans-unit>
+      <trans-unit id="emailFrom" resname="emailFrom">
+        <source>Mail From E-mail</source>
+      </trans-unit>
+      <trans-unit id="emailFromName" resname="emailFromName">
+        <source>Mail From Name</source>
+      </trans-unit>
+      <trans-unit id="redirectPage" resname="redirectPage">
+        <source>Redirect Page</source>
+      </trans-unit>
+      <trans-unit id="store_gp" resname="store_gp">
+        <source>Store data in session when submitting the form</source>
+      </trans-unit>
+      <trans-unit id="mandatoryFields" resname="mandatoryFields">
+        <source>Mandatory fields (enter names of formular fields seperated by &quot;,&quot;)</source>
+      </trans-unit>
+      <trans-unit id="replyTo" resname="replyTo">
+        <source>Reply-To E-mail (optional, name of input field)</source>
+      </trans-unit>
+      <trans-unit id="replyToName" resname="replyToName">
+        <source>Reply-To Name (optional, name of input field)</source>
+      </trans-unit>
+      <trans-unit id="cc" resname="cc">
+        <source>Send CC E-mail to (optional, name of input field)</source>
+      </trans-unit>
+      <trans-unit id="ccName" resname="ccName">
+        <source>CC Name</source>
+      </trans-unit>
+      <trans-unit id="bcc" resname="bcc">
+        <source>Send BCC E-mail to (optional, name of input field)</source>
+      </trans-unit>
+      <trans-unit id="bccName" resname="bccName">
+        <source>BCC Name</source>
+      </trans-unit>
+      <trans-unit id="emailConfirm" resname="emailConfirm">
+        <source>Send E-mail to address entered in form (enter name of form field here)</source>
+      </trans-unit>
+      <trans-unit id="emailConfirmSubject" resname="emailConfirmSubject">
+        <source>Subject of the mail to the user:</source>
+      </trans-unit>
+      <trans-unit id="template_predefined" resname="template_predefined">
+        <source>Predefined forms:</source>
+      </trans-unit>
+      <trans-unit id="template_predefined_missing_config" resname="template_predefined_missing_config">
+        <source>No forms predefined</source>
+      </trans-unit>
+      <trans-unit id="template_predefined_please_select" resname="template_predefined_please_select">
+        <source>Choose a predefined form</source>
+      </trans-unit>
+      <trans-unit id="template_controller" resname="template_controller">
+        <source>Controller:</source>
+      </trans-unit>
+      <trans-unit id="lang_file" resname="lang_file">
+        <source>Translation File</source>
+      </trans-unit>
+
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,7 @@
+plugin.tx_formhandler_form {
+  view {
+    templateRootPaths.10 = {$plugin.tx_formhandler_form.view.templateRootPath}
+    partialRootPaths.10 = {$plugin.tx_formhandler_form.view.partialRootPath}
+    layoutRootPaths.10 = {$plugin.tx_formhandler_form.view.layoutRootPath}
+  }
+}

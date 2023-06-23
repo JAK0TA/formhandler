@@ -1,0 +1,12 @@
+plugin {
+  tx_formhandler_form {
+    view {
+      # cat=Formhandler Form/02_Template/102; type=string; label= Path to template root (FE)
+      templateRootPath = EXT:formhandler/Resources/Private/Templates/Form
+      # cat=Formhandler Form/02_Template/103; type=string; label= Path to template partials (FE)
+      partialRootPath = EXT:formhandler/Resources/Private/Partials
+      # cat=Formhandler Form/02_Template/104; type=string; label= Path to template layouts (FE)
+      layoutRootPath = EXT:formhandler/Resources/Private/Layouts
+    }
+  }
+}

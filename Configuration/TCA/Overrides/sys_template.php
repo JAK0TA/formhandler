@@ -7,8 +7,10 @@ use Typoheads\Formhandler\Definitions\FormhandlerExtensionConfig;
 
 defined('TYPO3') or exit;
 
-ExtensionManagementUtility::addStaticFile(
-  FormhandlerExtensionConfig::EXTENSION_KEY,
-  'Configuration/TypoScript',
-  FormhandlerExtensionConfig::EXTENSION_TITLE
-);
+call_user_func(static function (): void {
+  ExtensionManagementUtility::addStaticFile(
+    FormhandlerExtensionConfig::EXTENSION_KEY,
+    'Configuration/TypoScript',
+    FormhandlerExtensionConfig::EXTENSION_TITLE
+  );
+});
