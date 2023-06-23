@@ -18,6 +18,15 @@ class FormController extends ActionController {
    * Show form.
    */
   public function formAction(): ResponseInterface {
+    /** @var string $responseType */
+    $responseType = $this->settings['responseType'] ?? 'html';
+
+    if ('json' == $responseType) {
+      $jsonOutput = json_encode([]) ?: null;
+
+      return $this->jsonResponse($jsonOutput);
+    }
+
     $this->view->assignMultiple(
       [
       ]

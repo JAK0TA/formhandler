@@ -8,3 +8,26 @@ plugin.tx_formhandler_form {
     responseType = {$plugin.tx_formhandler_form.settings.responseType}
   }
 }
+
+["json" == "{$plugin.tx_formhandler_form.settings.responseType}"]
+tt_content.formhandler_form =< lib.contentElementWithHeader
+tt_content.formhandler_form {
+  fields {
+    content {
+      fields {
+        data = USER
+        data {
+          userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+          vendorName = Typoheads
+          extensionName = Formhandler
+          pluginName = Form
+          controller = Form
+          persistence < plugin.tx_formhandler_form.persistence
+          settings < plugin.tx_formhandler_form.settings
+          stdWrap.trim = 1
+        }
+      }
+    }
+  }
+}
+[end]
