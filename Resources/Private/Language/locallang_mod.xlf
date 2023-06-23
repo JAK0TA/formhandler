@@ -24,6 +24,15 @@
       <trans-unit id="configuration.turnstile.privkey" resname="configuration.turnstile.privkey">
         <source>Cloudflare Turnstile privatekey</source>
       </trans-unit>
+      <trans-unit id="configuration.responsetype" resname="responsetype">
+        <source>Response type (FE)</source>
+      </trans-unit>
+      <trans-unit id="configuration.responsetype.html" resname="responsetype.html">
+        <source>HTML</source>
+      </trans-unit>
+      <trans-unit id="configuration.responsetype.json" resname="responsetype.json">
+        <source>JSON</source>
+      </trans-unit>
     </body>
   </file>
 </xliff>

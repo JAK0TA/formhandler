@@ -4,4 +4,7 @@ plugin.tx_formhandler_form {
     partialRootPaths.10 = {$plugin.tx_formhandler_form.view.partialRootPath}
     layoutRootPaths.10 = {$plugin.tx_formhandler_form.view.layoutRootPath}
   }
+  settings {
+    responseType = = {$plugin.tx_formhandler_form.settings.responseType}
+  }
 }

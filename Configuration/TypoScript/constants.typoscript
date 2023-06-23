@@ -1,3 +1,6 @@
+# customsubcategory=01_Features=Features
+# customsubcategory=02_Template=Template
+
 plugin {
   tx_formhandler_form {
     view {
@@ -7,6 +10,10 @@ plugin {
       partialRootPath = EXT:formhandler/Resources/Private/Partials
       # cat=Formhandler Form/02_Template/104; type=string; label= Path to template layouts (FE)
       layoutRootPath = EXT:formhandler/Resources/Private/Layouts
+    }
+    settings {
+      # cat=Formhandler Form/01_Features/100; type=options[LLL:EXT:formhandler/Resources/Private/Language/locallang_mod.xlf:configuration.responsetype.html=html,LLL:EXT:formhandler/Resources/Private/Language/locallang_mod.xlf:configuration.responsetype.json=json]; label=LLL:EXT:formhandler/Resources/Private/Language/locallang_mod.xlf:configuration.responsetype
+      responseType = html
     }
   }
 }
