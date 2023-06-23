@@ -1,18 +1,15 @@
-# cat=settings/settings; type=string; label=Label
-#fieldname =
 
 recaptcha {
-  # cat=basic/recaptcha; type=string; label=LLL:EXT:formhandler/Resources/Private/Language/locallang_db.xlf:configuration.recaptcha.sitekey
+  # cat=basic/recaptcha; type=string; label=LLL:EXT:formhandler/Resources/Private/Language/locallang_mod.xlf:configuration.recaptcha.sitekey
   sitekey = 
 
-  # cat=basic/recaptcha; type=string; label=LLL:EXT:formhandler/Resources/Private/Language/locallang_db.xlf:configuration.recaptcha.privkey
+  # cat=basic/recaptcha; type=string; label=LLL:EXT:formhandler/Resources/Private/Language/locallang_mod.xlf:configuration.recaptcha.privkey
   privatekey = 
 }
 turnstile {
-  # cat=basic/turnstile; type=string; label=LLL:EXT:formhandler/Resources/Private/Language/locallang_db.xlf:configuration.turnstile.sitekey
+  # cat=basic/turnstile; type=string; label=LLL:EXT:formhandler/Resources/Private/Language/locallang_mod.xlf:configuration.turnstile.sitekey
   sitekey = 
 
-  # cat=basic/turnstile; type=string; label=LLL:EXT:formhandler/Resources/Private/Language/locallang_db.xlf:configuration.turnstile.privkey
+  # cat=basic/turnstile; type=string; label=LLL:EXT:formhandler/Resources/Private/Language/locallang_mod.xlf:configuration.turnstile.privkey
   privatekey = 
 }
-

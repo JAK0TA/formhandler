@@ -79,7 +79,6 @@
       <trans-unit id="lang_file" resname="lang_file">
         <source>Translation File</source>
       </trans-unit>
-
     </body>
   </file>
 </xliff>
