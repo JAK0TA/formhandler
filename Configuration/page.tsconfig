@@ -2,7 +2,7 @@ mod.wizards.newContentElement.wizardItems.forms {
   show :=addToList(formhandler)
   elements {
     formhandler {
-      iconIdentifier = content-formhandler
+      iconIdentifier = formhandler
       title = LLL:EXT:formhandler/Resources/Private/Language/locallang_mod.xlf:mlang_labels_tablabel
       description = LLL:EXT:formhandler/Resources/Private/Language/locallang_mod.xlf:mlang_labels_tabdescr
       tt_content_defValues {

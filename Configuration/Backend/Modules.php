@@ -9,7 +9,7 @@ return [
   'web_formhandler' => [
     'parent' => 'web',
     'access' => 'user',
-    'iconIdentifier' => 'module-formhandler',
+    'iconIdentifier' => 'formhandler',
     'labels' => 'LLL:EXT:formhandler/Resources/Private/Language/locallang_mod.xlf',
     'extensionName' => FormhandlerExtensionConfig::EXTENSION_TITLE,
     'controllerActions' => [

@@ -9,7 +9,7 @@ call_user_func(static function (): void {
     FormhandlerExtensionConfig::EXTENSION_KEY,
     FormhandlerExtensionConfig::EXTENSION_PLUGIN_NAME,
     'LLL:EXT:'.FormhandlerExtensionConfig::EXTENSION_KEY.'/Resources/Private/Language/locallang_mod.xlf:mlang_labels_tablabel',
-    'content-formhandler',
+    'formhandler',
     'forms'
   );
 
