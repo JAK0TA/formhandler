@@ -5,42 +5,7 @@
         <sheetTitle>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:sheet_general</sheetTitle>
         <type>array</type>
         <el>
-          <template_file>
-            <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:template_file</label>
-            <config>
-              <type>group</type>
-              <internal_type>db</internal_type>
-              <allowed>sys_file</allowed>
-              <max_size>500</max_size>
-              <minitems>0</minitems>
-              <maxitems>1</maxitems>
-              <size>1</size>
-              <selectedListStyle>Width:180px</selectedListStyle>
-              <appearance>
-                <elementBrowserType>file</elementBrowserType>
-                <elementBrowserAllowed>tmpl,html,htm</elementBrowserAllowed>
-              </appearance>
-              <eval>trim</eval>
-            </config>
-          </template_file>
-          <lang_file>
-            <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:lang_file</label>
-            <config>
-              <type>group</type>
-              <internal_type>db</internal_type>
-              <allowed>sys_file</allowed>
-              <max_size>500</max_size>
-              <minitems>0</minitems>
-              <maxitems>1</maxitems>
-              <size>1</size>
-              <appearance>
-                <elementBrowserType>file</elementBrowserType>
-                <elementBrowserAllowed>xlf</elementBrowserAllowed>
-              </appearance>
-              <eval>trim</eval>
-            </config>
-          </lang_file>
-          <predefined>
+          <settings.predefinedForm>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:template_predefined</label>
             <config>
               <type>select</type>
@@ -50,7 +15,7 @@
               <size>1</size>
               <multiple>0</multiple>
             </config>
-          </predefined>
+          </settings.predefinedForm>
         </el>
       </ROOT>
     </sDEF>
@@ -59,94 +24,86 @@
         <sheetTitle>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:sheet_emailAdminSettings</sheetTitle>
         <type>array</type>
         <el>
-          <to_email>
+          <settings.admin.toEmail>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:emailRecipient</label>
             <config>
               <type>input</type>
               <eval>text</eval>
               <size>50</size>
             </config>
-          </to_email>
-          <subject>
+          </settings.admin.toEmail>
+          <settings.admin.subject>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:emailSubject</label>
             <config>
               <type>input</type>
               <eval>text</eval>
               <size>50</size>
             </config>
-          </subject>
-
-          <sender_email>
+          </settings.admin.subject>
+          <settings.admin.senderEmail>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:emailFrom</label>
             <config>
               <type>input</type>
               <eval>text</eval>
               <size>50</size>
             </config>
-          </sender_email>
-
-          <sender_name>
+          </settings.admin.senderEmail>
+          <settings.admin.senderName>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:emailFromName</label>
             <config>
               <type>input</type>
               <eval>text</eval>
               <size>50</size>
             </config>
-          </sender_name>
-
-          <replyto_email>
+          </settings.admin.senderName>
+          <settings.admin.replyToEmail>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:replyTo</label>
             <config>
               <type>input</type>
               <eval>text</eval>
               <size>50</size>
             </config>
-          </replyto_email>
-
-          <replyto_name>
+          </settings.admin.replyToEmail>
+          <settings.admin.replyToName>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:replyToName</label>
             <config>
               <type>input</type>
               <eval>text</eval>
               <size>50</size>
             </config>
-          </replyto_name>
-
-          <cc_email>
+          </settings.admin.replyToName>
+          <settings.admin.ccEmail>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:cc</label>
             <config>
               <type>input</type>
               <eval>text</eval>
               <size>50</size>
             </config>
-          </cc_email>
-
-          <cc_name>
+          </settings.admin.ccEmail>
+          <settings.admin.ccName>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:ccName</label>
             <config>
               <type>input</type>
               <eval>text</eval>
               <size>50</size>
             </config>
-          </cc_name>
-
-          <bcc_email>
+          </settings.admin.ccName>
+          <settings.admin.bccEmail>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:bcc</label>
             <config>
               <type>input</type>
               <eval>text</eval>
               <size>50</size>
             </config>
-          </bcc_email>
-
-          <bcc_name>
+          </settings.admin.bccEmail>
+          <settings.admin.bccName>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:bccName</label>
             <config>
               <type>input</type>
               <eval>text</eval>
               <size>50</size>
             </config>
-          </bcc_name>
+          </settings.admin.bccName>
         </el>
       </ROOT>
     </sEMAILADMIN>
@@ -155,92 +112,86 @@
         <sheetTitle>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:sheet_emailUserSettings</sheetTitle>
         <type>array</type>
         <el>
-          <to_email>
+          <settings.user.toEmail>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:emailConfirm</label>
             <config>
               <type>input</type>
               <eval>text</eval>
               <size>50</size>
             </config>
-          </to_email>
-          <subject>
+          </settings.user.toEmail>
+          <settings.user.subject>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:emailConfirmSubject</label>
             <config>
               <type>input</type>
               <eval>text</eval>
               <size>50</size>
             </config>
-          </subject>
-          <sender_email>
+          </settings.user.subject>
+          <settings.user.senderEmail>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:emailFrom</label>
             <config>
               <type>input</type>
               <eval>text</eval>
               <size>50</size>
             </config>
-          </sender_email>
-          <sender_name>
+          </settings.user.senderEmail>
+          <settings.user.senderName>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:emailFromName</label>
             <config>
               <type>input</type>
               <eval>text</eval>
               <size>50</size>
             </config>
-          </sender_name>
-
-          <replyto_email>
+          </settings.user.senderName>
+          <settings.user.replyToEmail>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:replyTo</label>
             <config>
               <type>input</type>
               <eval>text</eval>
               <size>50</size>
             </config>
-          </replyto_email>
-
-          <replyto_name>
+          </settings.user.replyToEmail>
+          <settings.user.replyToName>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:replyToName</label>
             <config>
               <type>input</type>
               <eval>text</eval>
               <size>50</size>
             </config>
-          </replyto_name>
-
-          <cc_email>
+          </settings.user.replyToName>
+          <settings.user.ccEmail>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:cc</label>
             <config>
               <type>input</type>
               <eval>text</eval>
               <size>50</size>
             </config>
-          </cc_email>
-
-          <cc_name>
+          </settings.user.ccEmail>
+          <settings.user.ccName>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:ccName</label>
             <config>
               <type>input</type>
               <eval>text</eval>
               <size>50</size>
             </config>
-          </cc_name>
-
-          <bcc_email>
+          </settings.user.ccName>
+          <settings.user.bccEmail>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:bcc</label>
             <config>
               <type>input</type>
               <eval>text</eval>
               <size>50</size>
             </config>
-          </bcc_email>
-
-          <bcc_name>
+          </settings.user.bccEmail>
+          <settings.user.bccName>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:bccName</label>
             <config>
               <type>input</type>
               <eval>text</eval>
               <size>50</size>
             </config>
-          </bcc_name>
+          </settings.user.bccName>
         </el>
       </ROOT>
     </sEMAILUSER>
@@ -249,7 +200,7 @@
         <sheetTitle>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:sheet_miscSettings</sheetTitle>
         <type>array</type>
         <el>
-          <redirect_page>
+          <settings.redirectPage>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:redirectPage</label>
             <config>
               <type>group</type>
@@ -265,9 +216,9 @@
                 </suggest>
               </wizards>
             </config>
-          </redirect_page>
+          </settings.redirectPage>
 
-          <required_fields>
+          <settings.requiredFields>
             <label>LLL:EXT:formhandler/Resources/Private/Language/locallang_flexform.xlf:mandatoryFields</label>
             <config>
               <type>input</type>
@@ -275,7 +226,7 @@
               <size>500</size>
               <placeholder>firstname, lastname, email</placeholder>
             </config>
-          </required_fields>
+          </settings.requiredFields>
         </el>
       </ROOT>
     </sMISC>

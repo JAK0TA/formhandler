@@ -41,8 +41,8 @@ class PredefinedForm implements SingletonInterface {
       !isset($ts['plugin.']) || !is_array($ts['plugin.'])
       || !isset($ts['plugin.'][FormhandlerExtensionConfig::EXTENSION_PLUGIN_SIGNATURE.'.']) || !is_array($ts['plugin.'][FormhandlerExtensionConfig::EXTENSION_PLUGIN_SIGNATURE.'.'])
       || !isset($ts['plugin.'][FormhandlerExtensionConfig::EXTENSION_PLUGIN_SIGNATURE.'.']['settings.']) || !is_array($ts['plugin.'][FormhandlerExtensionConfig::EXTENSION_PLUGIN_SIGNATURE.'.']['settings.'])
-      || !isset($ts['plugin.'][FormhandlerExtensionConfig::EXTENSION_PLUGIN_SIGNATURE.'.']['settings.']['predef.']) || !is_array($ts['plugin.'][FormhandlerExtensionConfig::EXTENSION_PLUGIN_SIGNATURE.'.']['settings.']['predef.'])
-      || 0 === count($ts['plugin.'][FormhandlerExtensionConfig::EXTENSION_PLUGIN_SIGNATURE.'.']['settings.']['predef.'])
+      || !isset($ts['plugin.'][FormhandlerExtensionConfig::EXTENSION_PLUGIN_SIGNATURE.'.']['settings.']['predefinedForms.']) || !is_array($ts['plugin.'][FormhandlerExtensionConfig::EXTENSION_PLUGIN_SIGNATURE.'.']['settings.']['predefinedForms.'])
+      || 0 === count($ts['plugin.'][FormhandlerExtensionConfig::EXTENSION_PLUGIN_SIGNATURE.'.']['settings.']['predefinedForms.'])
     ) {
       $params['items'][] = [
         0 => LocalizationUtility::translate('LLL:EXT:'.FormhandlerExtensionConfig::EXTENSION_KEY.'/Resources/Private/Language/locallang_flexform.xlf:template_predefined_missing_config'),
@@ -55,12 +55,13 @@ class PredefinedForm implements SingletonInterface {
     $predef = [];
 
     // Parse all forms
-    foreach ($ts['plugin.'][FormhandlerExtensionConfig::EXTENSION_PLUGIN_SIGNATURE.'.']['settings.']['predef.'] as $key => $form) {
+    foreach ($ts['plugin.'][FormhandlerExtensionConfig::EXTENSION_PLUGIN_SIGNATURE.'.']['settings.']['predefinedForms.'] as $key => $form) {
       // Check if form has a name
       if (!is_array($form) || !isset($form['name']) || !is_string($form['name'])) {
         continue;
       }
 
+      $key = rtrim($key, '.');
       $formName = $form['name'];
 
       // Check if form name can be translated

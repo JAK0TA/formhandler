@@ -16,9 +16,6 @@
       <trans-unit id="sheet_miscSettings" resname="sheet_miscSettings">
         <source>Other Settings</source>
       </trans-unit>
-      <trans-unit id="template_file" resname="template_file">
-        <source>Template File</source>
-      </trans-unit>
       <trans-unit id="emailRecipient" resname="emailRecipient">
         <source>Recipient</source>
       </trans-unit>
@@ -75,9 +72,6 @@
       </trans-unit>
       <trans-unit id="template_controller" resname="template_controller">
         <source>Controller:</source>
-      </trans-unit>
-      <trans-unit id="lang_file" resname="lang_file">
-        <source>Translation File</source>
       </trans-unit>
     </body>
   </file>
