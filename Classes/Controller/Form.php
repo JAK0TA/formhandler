@@ -451,6 +451,7 @@ class Form extends AbstractController {
     $this->formValuesPrefix = $this->utilityFuncs->getSingle($this->settings, 'formValuesPrefix');
     $this->globals->setFormID($this->utilityFuncs->getSingle($this->settings, 'formID'));
     $this->globals->setFormValuesPrefix($this->formValuesPrefix);
+    $this->globals->setPrefixId($this->utilityFuncs->getSingle($this->settings, 'prefixId'));
 
     $isDebugMode = $this->utilityFuncs->getSingle($this->settings, 'debug');
     $this->debugMode = (1 === (int) $isDebugMode);

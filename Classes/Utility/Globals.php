@@ -40,7 +40,9 @@ class Globals implements SingletonInterface {
 
   protected static string $formValuesPrefix = '';
 
-  /** @var array<string, mixed> */
+  protected static string $prefixId = '';
+
+    /** @var array<string, mixed> */
   protected static array $gp = [];
 
   /** @var string[] */
@@ -75,6 +77,7 @@ class Globals implements SingletonInterface {
     self::$debuggers = [];
     self::$formID = '';
     self::$formValuesPrefix = '';
+    self::$prefixId = '';
     self::$gp = [];
     self::$langFiles = [];
     self::$overrideSettings = [];
@@ -109,6 +112,10 @@ class Globals implements SingletonInterface {
   public static function getFormValuesPrefix(): string {
     return self::$formValuesPrefix;
   }
+
+    public static function getPrefixId(): string {
+        return self::$prefixId;
+    }
 
   /**
    * @return array<string, mixed>
@@ -192,6 +199,10 @@ class Globals implements SingletonInterface {
   public static function setFormValuesPrefix(string $formValuesPrefix): void {
     self::$formValuesPrefix = $formValuesPrefix;
   }
+
+    public static function setPrefixId(string $prefixId): void {
+        self::$prefixId = $prefixId;
+    }
 
   /**
    * @param array<string, mixed> $gp

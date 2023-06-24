@@ -41,7 +41,6 @@ class tx_formhandler_pi1 extends AbstractPlugin {
    * @return string The content that is displayed on the website
    */
   public function main(string $content, array $conf): string {
-    $this->prefixId = 'tx_formhandler_pi1';
     $this->scriptRelPath = 'pi1/class.tx_formhandler_pi1.php';
     $this->extKey = 'formhandler';
 
