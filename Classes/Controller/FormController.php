@@ -6,9 +6,13 @@ namespace Typoheads\Formhandler\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use Typoheads\Formhandler\Domain\Model\Config\Form;
 
 class FormController extends ActionController {
+  protected Form $formConfig;
+
   public function __construct(
     protected readonly PageRepository $pageRepository
   ) {
@@ -18,11 +22,10 @@ class FormController extends ActionController {
    * Show form.
    */
   public function formAction(): ResponseInterface {
-    /** @var string $responseType */
-    $responseType = $this->settings['responseType'] ?? 'html';
+    $this->formConfig = GeneralUtility::makeInstance(Form::class, $this->settings);
 
-    if ('json' == $responseType) {
-      $jsonOutput = json_encode([]) ?: null;
+    if ('json' == $this->formConfig->responseType) {
+      $jsonOutput = json_encode($this->formConfig) ?: null;
 
       return $this->jsonResponse($jsonOutput);
     }
@@ -33,11 +36,5 @@ class FormController extends ActionController {
     );
 
     return $this->htmlResponse();
-  }
-
-  /**
-   * Initialize redirects.
-   */
-  public function initializeAction(): void {
   }
 }
