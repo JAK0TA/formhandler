@@ -10,7 +10,7 @@ abstract class AbstractValidator {
   /** @var array<string, string[]> */
   public array $disableErrorCheckFields = [];
 
-  /** @var array<string, AbstractErrorCheck[]> */
+  /** @var Field[] */
   public array $fields = [];
 
   public int $messageLimit = 0;
