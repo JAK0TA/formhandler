@@ -12,5 +12,6 @@ class Email extends AbstractErrorCheck {
     protected readonly array $settings = []
   ) {
     $this->class = '\\Typoheads\\Formhandler\\Validator\\ErrorCheck\\Email';
+    $this->name = 'Email';
   }
 }

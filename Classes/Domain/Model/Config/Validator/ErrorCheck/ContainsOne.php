@@ -14,6 +14,7 @@ class ContainsOne extends AbstractErrorCheck {
     protected readonly array $settings = []
   ) {
     $this->class = '\\Typoheads\\Formhandler\\Validator\\ErrorCheck\\ContainsOne';
+    $this->name = 'ContainsOne';
     $this->words = strval($this->settings['words'] ?? '');
   }
 }

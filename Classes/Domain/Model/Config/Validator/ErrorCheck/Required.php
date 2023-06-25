@@ -12,5 +12,6 @@ class Required extends AbstractErrorCheck {
     protected readonly array $settings = []
   ) {
     $this->class = '\\Typoheads\\Formhandler\\Validator\\ErrorCheck\\Required';
+    $this->name = 'Required';
   }
 }

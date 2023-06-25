@@ -14,6 +14,7 @@ class MaxLength extends AbstractErrorCheck {
     protected readonly array $settings = []
   ) {
     $this->class = '\\Typoheads\\Formhandler\\Validator\\ErrorCheck\\MaxLength';
+    $this->name = 'MaxLength';
     $this->maxLength = intval($this->settings['maxLength'] ?? 0);
   }
 }

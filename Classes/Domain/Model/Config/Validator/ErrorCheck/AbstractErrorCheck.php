@@ -7,6 +7,8 @@ namespace Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck;
 abstract class AbstractErrorCheck {
   public string $class = '';
 
+  public string $name = '';
+
   /**
    * @param array<string, mixed> $settings
    */
