@@ -7,7 +7,6 @@ namespace Typoheads\Formhandler\Domain\Model\Config;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Typoheads\Formhandler\Domain\Model\Config\Finisher\AbstractFinisher;
 use Typoheads\Formhandler\Domain\Model\Config\Logger\AbstractLogger;
-use Typoheads\Formhandler\Domain\Model\Config\Validator\AbstractValidator;
 use Typoheads\Formhandler\Utility\Utility;
 
 class Form {
@@ -33,7 +32,10 @@ class Form {
 
   public string $responseType = 'html';
 
-  public string $templateForm = '';
+  public int $step = 1;
+
+  /** @var Step[] */
+  public array $steps = [];
 
   public string $templateMailHtml = '';
 
@@ -41,15 +43,11 @@ class Form {
 
   public Mail $user;
 
-  /** @var AbstractValidator[] */
-  public array $validators = [];
-
   /**
    * @param array<string, mixed> $settings
    */
   public function __construct(array $settings = []) {
-    $utility = GeneralUtility::makeInstance(Utility::class);
-
+    // Get flexform settings
     $this->admin = GeneralUtility::makeInstance(Mail::class, $settings['admin'] ?? []);
     $this->predefinedForm = strval($settings['predefinedForm'] ?? '');
     $this->redirectPage = intval($settings['redirectPage'] ?? 0);
@@ -63,25 +61,38 @@ class Form {
       && isset($settings['predefinedForms'][$this->predefinedForm])
       && is_array($settings['predefinedForms'][$this->predefinedForm])
     ) {
+      // Get form settings
       $this->formId = strval($settings['predefinedForms'][$this->predefinedForm]['formId'] ?? '');
       $this->formName = strval($settings['predefinedForms'][$this->predefinedForm]['formName'] ?? '');
       $this->formValuesPrefix = strval($settings['predefinedForms'][$this->predefinedForm]['formValuesPrefix'] ?? '');
-      $this->templateForm = strval($settings['predefinedForms'][$this->predefinedForm]['templateForm'] ?? '');
       $this->templateMailHtml = strval($settings['predefinedForms'][$this->predefinedForm]['templateMailHtml'] ?? '');
       $this->templateMailText = strval($settings['predefinedForms'][$this->predefinedForm]['templateMailText'] ?? '');
 
+      // Get default form template if no step template is set
+      $templateForm = strval($settings['predefinedForms'][$this->predefinedForm]['templateForm'] ?? '');
+
+      $utility = GeneralUtility::makeInstance(Utility::class);
+
+      // Get form logger
       foreach ($settings['predefinedForms'][$this->predefinedForm]['loggers'] ?? [] as $logger) {
         /** @var AbstractLogger $loggerModel */
         $loggerModel = GeneralUtility::makeInstance($utility::classString(strval($logger['model'] ?? 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Logger\\Database'), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Logger\\'), $settings['user'] ?? []);
 
         $this->loggers[] = $loggerModel;
       }
-      foreach ($settings['predefinedForms'][$this->predefinedForm]['validators'] ?? [] as $validator) {
-        /** @var AbstractValidator $validatorModel */
-        $validatorModel = GeneralUtility::makeInstance($utility::classString(strval($validator['model'] ?? 'Typoheads\\Formhandler\\Domain\Model\\Config\\Validator\\DefaultValidator'), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Validator\\'), $validator['config'] ?? []);
 
-        $this->validators[] = $validatorModel;
+      // Get form steps
+      foreach ($settings['predefinedForms'][$this->predefinedForm]['steps'] ?? [] as $stepKey => $step) {
+        if (empty($step) || !is_array($step)) {
+          continue;
+        }
+
+        $this->steps[intval($stepKey)] = GeneralUtility::makeInstance(Step::class, $step, $templateForm);
       }
+      if (0 == count($this->steps)) {
+        $this->steps[1] = GeneralUtility::makeInstance(Step::class, [], $templateForm);
+      }
+
       foreach ($settings['predefinedForms'][$this->predefinedForm]['finishers'] ?? [] as $finisher) {
         if (empty($finisher['model'])) {
           continue;
