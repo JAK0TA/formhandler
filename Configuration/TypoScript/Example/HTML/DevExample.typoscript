@@ -2,7 +2,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
   formId = DevExampleForm
   formName = Dev Example Form
   formValuesPrefix = DevExampleForm
-  templateForm = Form/DevExampleHTML
+  templateForm = DevExampleForm/DevExampleHTML
   templateMailHtml = DevExample/MailHtml
   templateMailText = DevExample/MailText
 
@@ -14,7 +14,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
 
   steps {
     1 {
-      templateForm = Form/DevExampleHTML
+      templateForm = DevExampleForm/DevExampleHTML
       validators {
         DefaultValidator {
           model = DefaultValidator
@@ -72,7 +72,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
       }
     }
     2 {
-      templateForm = Form/DevExampleHTML
+      templateForm = DevExampleForm/DevExampleHTML
       validators {
         DefaultValidator {
           model = DefaultValidator
@@ -127,7 +127,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
       }
     }
     3 {
-      templateForm = Form/DevExampleHTML
+      templateForm = DevExampleForm/DevExampleHTML
       validators {
         DefaultValidator {
           model = DefaultValidator
@@ -186,7 +186,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
       }
     }
     4 {
-      templateForm = Form/DevExampleHTML
+      templateForm = DevExampleForm/DevExampleHTML
       validators {
         DefaultValidator {
           model = DefaultValidator

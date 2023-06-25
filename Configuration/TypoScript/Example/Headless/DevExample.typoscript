@@ -2,7 +2,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
   formId = DevExampleFormHeadless
   formName = Dev Example Form Headless
   formValuesPrefix = DevExampleFormHeadless
-  templateForm = Form/DevExampleHeadless
+  templateForm = DevExampleForm/DevExampleHeadless
   templateMailHtml = DevExample/MailHtml
   templateMailText = DevExample/MailText
 
@@ -14,7 +14,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
 
   steps {
     1 {
-      templateForm = Form/DevExampleHeadless
+      templateForm = DevExampleForm/DevExampleHeadless
       validators {
         DefaultValidator {
           model = DefaultValidator
@@ -72,7 +72,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
       }
     }
     2 {
-      templateForm = Form/DevExampleHeadless
+      templateForm = DevExampleForm/DevExampleHeadless
       validators {
         DefaultValidator {
           model = DefaultValidator
@@ -127,7 +127,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
       }
     }
     3 {
-      templateForm = Form/DevExampleHeadless
+      templateForm = DevExampleForm/DevExampleHeadless
       validators {
         DefaultValidator {
           model = DefaultValidator
@@ -186,7 +186,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
       }
     }
     4 {
-      templateForm = Form/DevExampleHeadless
+      templateForm = DevExampleForm/DevExampleHeadless
       validators {
         DefaultValidator {
           model = DefaultValidator
