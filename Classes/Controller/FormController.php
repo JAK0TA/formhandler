@@ -38,7 +38,7 @@ class FormController extends ActionController {
     if ($this->formSubmitted()) {
       // TODO: Execute Validator
 
-      if ($this->formStepValid() && $this->formNextStep()) {
+      if ($this->formStepValid() && !$this->formNextStep()) {
         // TODO: Execute saveInterceptors
         // TODO: Execute Logger
         // TODO: Execute Finisher
@@ -90,8 +90,7 @@ class FormController extends ActionController {
   }
 
   private function formNextStep(): bool {
-    // TODO: Check for more steps
-    return false;
+    return count($this->formConfig->steps) > $this->formConfig->step;
   }
 
   private function formSession(): bool {
