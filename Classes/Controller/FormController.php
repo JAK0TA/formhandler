@@ -23,7 +23,31 @@ class FormController extends ActionController {
    * Show form.
    */
   public function formAction(): ResponseInterface {
+    // Load form settings
     $this->formConfig = GeneralUtility::makeInstance(Form::class, $this->settings);
+
+    if (!$this->formConfigValid()) {
+      // TODO: Return with error
+    }
+
+    // Check if form session exists or start new if first form access
+    if (!$this->formSession()) {
+      // TODO: Form session is invalid reset form and return with error
+    }
+
+    if ($this->formSubmitted()) {
+      // TODO: Execute Validator
+
+      if ($this->formStepValid() && $this->formNextStep()) {
+        // TODO: Execute saveInterceptors
+        // TODO: Execute Logger
+        // TODO: Execute Finisher
+
+        // TODO: Return Success and exit
+      }
+    }
+
+    // TODO: Execute initInterceptors
 
     // Prepare output
     $this->view->assignMultiple(
@@ -57,5 +81,33 @@ class FormController extends ActionController {
     }
 
     return $this->htmlResponse();
+  }
+
+  private function formConfigValid(): bool {
+    // TODO: Check for valid form config
+    // check if template is set
+    return true;
+  }
+
+  private function formNextStep(): bool {
+    // TODO: Check for more steps
+    return false;
+  }
+
+  private function formSession(): bool {
+    // TODO: Check if form session exists or start new if first form access
+    // TODO: Execute preprocessor if first form access
+
+    return true;
+  }
+
+  private function formStepValid(): bool {
+    // TODO: Check if form step is valid
+    return false;
+  }
+
+  private function formSubmitted(): bool {
+    // TODO: Check if form Submitted
+    return false;
   }
 }
