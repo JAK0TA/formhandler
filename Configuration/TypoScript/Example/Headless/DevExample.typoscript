@@ -1,0 +1,228 @@
+plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
+  formId = DevExampleFormHeadless
+  formName = Dev Example Form Headless
+  formValuesPrefix = DevExampleFormHeadless
+  templateForm = Form/DevExampleHeadless
+  templateMailHtml = DevExample/MailHtml
+  templateMailText = DevExample/MailText
+
+  loggers {
+    Database {
+      model = Database
+    }
+  }
+
+  steps {
+    1 {
+      templateForm = Form/DevExampleHeadless
+      validators {
+        DefaultValidator {
+          model = DefaultValidator
+          config {
+            fields {
+              customer.fields {
+                salutation.errorChecks {
+                  required {
+                    model = Required
+                  }
+                }
+                firstname.errorChecks {
+                  required {
+                    model = Required
+                  }
+                  maxLength {
+                    model = MaxLength
+                    maxLength = 20
+                  }
+                }
+                lastname.errorChecks {
+                  required {
+                    model = Required
+                  }
+                  maxLength {
+                    model = MaxLength
+                    maxLength = 20
+                  }
+                }
+                telephone.errorChecks {
+                  required {
+                    model = Required
+                  }
+                  maxLength {
+                    model = MaxLength
+                    maxLength = 20
+                  }
+                }
+                email.errorChecks {
+                  required {
+                    model = Required
+                  }
+                  maxLength {
+                    model = MaxLength
+                    maxLength = 50
+                  }
+                  email {
+                    model = Email
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    2 {
+      templateForm = Form/DevExampleHeadless
+      validators {
+        DefaultValidator {
+          model = DefaultValidator
+          config {
+            fields {
+
+              booking.fields {
+                cabins {
+                  fieldArray = true
+                  fields {
+                    persons {
+                      fieldArray = true
+                      fields {
+                        salutation.errorCheck {
+                          required {
+                            model = Required
+                          }
+                        }
+
+                        firstname.errorCheck {
+                          required {
+                            model = Required
+                          }
+                          maxLength {
+                            model = MaxLength
+                            maxLength = 255
+                          }
+                        }
+
+                        lastname.errorCheck {
+                          required {
+                            model = Required
+                          }
+                          maxLength {
+                            model = MaxLength
+                            maxLength = 255
+                          }
+                        }
+                      }
+                    }
+                  }
+                  errorCheck {
+                    required {
+                      model = Required
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    3 {
+      templateForm = Form/DevExampleHeadless
+      validators {
+        DefaultValidator {
+          model = DefaultValidator
+          config {
+            fields {
+              payment.fields.direct.fields {
+                salutation.errorCheck {
+                  required {
+                    model = Required
+                  }
+                }
+
+                firstname.errorCheck {
+                  required {
+                    model = Required
+                  }
+                  maxLength {
+                    model = MaxLength
+                    maxLength = 255
+                  }
+                }
+
+                lastname.errorCheck {
+                  required {
+                    model = Required
+                  }
+                  maxLength {
+                    model = MaxLength
+                    maxLength = 255
+                  }
+                }
+
+                country.errorCheck {
+                  required {
+                    model = Required
+                  }
+                  maxLength {
+                    model = MaxLength
+                    maxLength = 255
+                  }
+                }
+
+                email.errorCheck {
+                  maxLength {
+                    model = MaxLength
+                    maxLength = 255
+                  }
+                  email {
+                    model = Email
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    4 {
+      templateForm = Form/DevExampleHeadless
+      validators {
+        DefaultValidator {
+          model = DefaultValidator
+          config {
+            fields {
+              message.errorChecks {
+                required {
+                  model = Required
+                }
+              }
+
+              privacy_policy.errorChecks {
+                required {
+                  model = Required
+                }
+                containsOne {
+                  model = ContainsOne
+                  words = Yes,Ja
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  finishers {
+    Mail {
+      model = Mail
+    }    
+    Redirect {
+      model = Redirect
+      config {
+        returns = true
+      }
+    }
+  }
+}
