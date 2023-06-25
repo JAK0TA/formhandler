@@ -9,20 +9,6 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractError
 use Typoheads\Formhandler\Utility\Utility;
 
 class DefaultValidator extends AbstractValidator {
-  /** @var array<string, string[]> */
-  public array $disableErrorCheckFields = [];
-
-  /** @var array<string, AbstractErrorCheck[]> */
-  public array $fields = [];
-
-  public int $messageLimit = 0;
-
-  /** @var array<string, int> */
-  public array $messageLimits = [];
-
-  /** @var string[] */
-  public array $restrictErrorChecks = [];
-
   /**
    * @param array<string, mixed> $settings
    */
