@@ -57,12 +57,12 @@ class PredefinedForm implements SingletonInterface {
     // Parse all forms
     foreach ($ts['plugin.'][FormhandlerExtensionConfig::EXTENSION_PLUGIN_SIGNATURE.'.']['settings.']['predefinedForms.'] as $key => $form) {
       // Check if form has a name
-      if (!is_array($form) || !isset($form['name']) || !is_string($form['name'])) {
+      if (!is_array($form) || !isset($form['formName']) || !is_string($form['formName'])) {
         continue;
       }
 
       $key = rtrim($key, '.');
-      $formName = $form['name'];
+      $formName = $form['formName'];
 
       // Check if form name can be translated
       $data = explode(':', $formName);
