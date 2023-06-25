@@ -2,7 +2,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
   formId = DevExampleFormHeadless
   formName = Dev Example Form Headless
   formValuesPrefix = DevExampleFormHeadless
-  templateForm = DevExample/Form.html
+  templateForm = Form/DevExampleHeasless
   templateMailHtml = DevExample/MailHtml
   templateMailText = DevExample/MailText
 
