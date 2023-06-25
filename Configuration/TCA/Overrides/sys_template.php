@@ -13,4 +13,10 @@ call_user_func(static function (): void {
     'Configuration/TypoScript',
     FormhandlerExtensionConfig::EXTENSION_TITLE
   );
+
+  ExtensionManagementUtility::addStaticFile(
+    FormhandlerExtensionConfig::EXTENSION_KEY,
+    'Configuration/TypoScript/Example',
+    FormhandlerExtensionConfig::EXTENSION_TITLE.' Example Form (for dev only)'
+  );
 });
