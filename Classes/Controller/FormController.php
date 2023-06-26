@@ -85,27 +85,15 @@ class FormController extends ActionController {
       return $this->jsonResponse();
     }
 
-    $this->formSets();
+    $this->prepareFormSets();
 
     foreach ($this->formConfig->steps[$this->formConfig->step]->validators as $validator) {
       foreach ($validator->fields as $field) {
-        $this->fieldRequired('', $field);
+        $this->prepareFieldRequired('', $field);
       }
     }
 
     return $this->htmlResponse();
-  }
-
-  private function fieldRequired(string $fieldNamePath, Field $field): void {
-    $fieldNamePath .= '['.$field->name.']';
-    foreach ($field->errorChecks as $errorCheck) {
-      if ('Required' == $errorCheck->name) {
-        $this->fieldsRequired[$fieldNamePath] = true;
-      }
-    }
-    foreach ($field->fields as $field) {
-      $this->fieldRequired($fieldNamePath, $field);
-    }
   }
 
   private function formConfigValid(): bool {
@@ -125,12 +113,6 @@ class FormController extends ActionController {
     return true;
   }
 
-  private function formSets(): void {
-    $this->formConfig->fieldSets[] = new FieldSet('submitted', 'true');
-    $this->formConfig->fieldSets[] = new FieldSet('randomId', $this->formConfig->randomId);
-    $this->formConfig->fieldSets[] = new FieldSet('step', (string) $this->formConfig->step);
-  }
-
   private function formStepValid(): bool {
     // TODO: Check if form step is valid
     return false;
@@ -139,5 +121,23 @@ class FormController extends ActionController {
   private function formSubmitted(): bool {
     // TODO: Check if form Submitted
     return false;
+  }
+
+  private function prepareFieldRequired(string $fieldNamePath, Field $field): void {
+    $fieldNamePath .= '['.$field->name.']';
+    foreach ($field->errorChecks as $errorCheck) {
+      if ('Required' == $errorCheck->name) {
+        $this->fieldsRequired[$fieldNamePath] = true;
+      }
+    }
+    foreach ($field->fields as $field) {
+      $this->prepareFieldRequired($fieldNamePath, $field);
+    }
+  }
+
+  private function prepareFormSets(): void {
+    $this->formConfig->fieldSets[] = new FieldSet('submitted', 'true');
+    $this->formConfig->fieldSets[] = new FieldSet('randomId', $this->formConfig->randomId);
+    $this->formConfig->fieldSets[] = new FieldSet('step', (string) $this->formConfig->step);
   }
 }
