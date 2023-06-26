@@ -10,9 +10,13 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Typoheads\Formhandler\Domain\Model\Config\FieldSet;
 use Typoheads\Formhandler\Domain\Model\Config\Form;
+use Typoheads\Formhandler\Domain\Model\Config\Validator\Field;
 use Typoheads\Formhandler\Utility\Utility;
 
 class FormController extends ActionController {
+  /** @var array<string, bool> */
+  protected $fieldsRequired = [];
+
   protected Form $formConfig;
 
   public function __construct(
@@ -83,7 +87,25 @@ class FormController extends ActionController {
 
     $this->formSets();
 
+    foreach ($this->formConfig->steps[$this->formConfig->step]->validators as $validator) {
+      foreach ($validator->fields as $field) {
+        $this->fieldRequired('', $field);
+      }
+    }
+
     return $this->htmlResponse();
+  }
+
+  private function fieldRequired(string $fieldNamePath, Field $field): void {
+    $fieldNamePath .= '['.$field->name.']';
+    foreach ($field->errorChecks as $errorCheck) {
+      if ('Required' == $errorCheck->name) {
+        $this->fieldsRequired[$fieldNamePath] = true;
+      }
+    }
+    foreach ($field->fields as $field) {
+      $this->fieldRequired($fieldNamePath, $field);
+    }
   }
 
   private function formConfigValid(): bool {
