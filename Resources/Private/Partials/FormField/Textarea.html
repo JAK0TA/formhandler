@@ -1,0 +1,10 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+  <div class="type-textarea form-group">
+    <textarea rows="10" name="{formValuesPrefix}{fieldName}" class="form-input" id="{formValuesPrefix}_{fieldName}" title="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/locallang_example_form.xlf:{fieldName}_title')}">{fieldsValue.{fieldName}}</textarea>
+    <label for="{formValuesPrefix}_{fieldName}" class="form-label"
+      ><span class="form-label-content"
+        ><f:translate key="LLL:EXT:formhandler/Resources/Private/Language/locallang_example_form.xlf:{fieldName}" /> <f:if condition="{fieldsRequired.{fieldName}} == true"> <f:render partial="Required" /> </f:if></span
+    ></label>
+    <div class="error">{fieldsError.{fieldName}}</div>
+  </div>
+</html>
