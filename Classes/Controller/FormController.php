@@ -110,7 +110,8 @@ class FormController extends ActionController {
     // TODO: Delete me, once done
     exit;
 
-    return $this->htmlResponse();
+    // TODO: Activate me, once done
+    // return $this->htmlResponse();
   }
 
   private function formConfigValid(): bool {
