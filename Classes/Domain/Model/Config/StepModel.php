@@ -22,7 +22,11 @@ class StepModel {
 
     $this->templateForm = strval($settings['templateForm'] ?? $templateForm);
 
-    foreach ($settings['validators'] ?? [] as $validator) {
+    if (!is_array($settings['validators'] ?? false)) {
+      return;
+    }
+
+    foreach ($settings['validators'] as $validator) {
       /** @var AbstractValidatorModel $validatorModel */
       $validatorModel = GeneralUtility::makeInstance($utility::classString(strval($validator['model'] ?? 'Typoheads\\Formhandler\\Domain\Model\\Config\\Validator\\DefaultValidator'), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Validator\\'), $validator['config'] ?? []);
 
