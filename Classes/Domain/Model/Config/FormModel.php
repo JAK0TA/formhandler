@@ -31,6 +31,8 @@ class FormModel {
   /** @var AbstractInterceptorModel[] */
   public array $initInterceptors = [];
 
+  public string $langFileDefault = '';
+
   /** @var AbstractLoggerModel[] */
   public array $loggers = [];
 
@@ -83,6 +85,7 @@ class FormModel {
       $this->formId = strval($settings['predefinedForms'][$this->predefinedForm]['formId'] ?? '');
       $this->formName = strval($settings['predefinedForms'][$this->predefinedForm]['formName'] ?? '');
       $this->formValuesPrefix = strval($settings['predefinedForms'][$this->predefinedForm]['formValuesPrefix'] ?? '');
+      $this->langFileDefault = strval($settings['predefinedForms'][$this->predefinedForm]['langFileDefault'] ?? '');
       $this->templateMailHtml = strval($settings['predefinedForms'][$this->predefinedForm]['templateMailHtml'] ?? '');
       $this->templateMailText = strval($settings['predefinedForms'][$this->predefinedForm]['templateMailText'] ?? '');
 

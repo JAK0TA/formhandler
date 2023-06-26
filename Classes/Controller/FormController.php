@@ -98,6 +98,7 @@ class FormController extends ActionController {
       [
         'fieldsRequired' => $this->fieldsRequired,
         'fieldSets' => $this->formConfig->fieldSets,
+        'langFileDefault' => $this->formConfig->langFileDefault,
         'steps' => $this->formConfig->steps,
       ]
     );
