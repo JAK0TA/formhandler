@@ -27,9 +27,9 @@ class FieldModel {
     array $settings,
   ) {
     if (isset($settings['fields']) && is_array($settings['fields'])) {
-      foreach ($settings['fields'] as $fieldName => $fieldSettings) {
+      foreach ($settings['fields'] as $subFieldName => $subFieldSettings) {
         /** @var FieldModel $fieldModel */
-        $fieldModel = GeneralUtility::makeInstance(FieldModel::class, $fieldName, $validator, $fieldSettings);
+        $fieldModel = GeneralUtility::makeInstance(FieldModel::class, $subFieldName, $validator, $subFieldSettings);
 
         $this->fields[] = $fieldModel;
       }
