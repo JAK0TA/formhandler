@@ -12,7 +12,7 @@ class DefaultValidatorModel extends AbstractValidatorModel {
   /**
    * @param array<string, mixed> $settings
    */
-  public function __construct(array $settings = []) {
+  public function __construct(array $settings) {
     $utility = GeneralUtility::makeInstance(Utility::class);
     $this->class = '\\Typoheads\\Formhandler\\Validator\\DefaultValidator';
 

@@ -11,7 +11,7 @@ class MailFinisherModel extends AbstractFinisherModel {
    * @param array<string, mixed> $settings
    */
   public function __construct(
-    protected readonly array $settings = []
+    protected readonly array $settings
   ) {
     parent::__construct($settings);
 

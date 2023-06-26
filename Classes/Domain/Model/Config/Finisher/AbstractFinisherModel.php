@@ -12,7 +12,7 @@ abstract class AbstractFinisherModel {
   /**
    * @param array<string, mixed> $settings
    */
-  public function __construct(array $settings = []) {
+  public function __construct(array $settings) {
     $this->returns = boolval($settings['returns'] ?? false);
   }
 }

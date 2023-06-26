@@ -69,7 +69,7 @@ class FormModel {
   /**
    * @param array<string, mixed> $settings
    */
-  public function __construct(array $settings = []) {
+  public function __construct(array $settings) {
     // Get flexform settings
     $this->admin = GeneralUtility::makeInstance(MailModel::class, $settings['admin'] ?? []);
     $this->predefinedForm = strval($settings['predefinedForm'] ?? '');

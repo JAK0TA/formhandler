@@ -26,5 +26,5 @@ abstract class AbstractValidatorModel {
   /**
    * @param array<string, mixed> $settings
    */
-  abstract public function __construct(array $settings = []);
+  abstract public function __construct(array $settings);
 }

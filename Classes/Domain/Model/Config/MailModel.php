@@ -28,7 +28,7 @@ class MailModel {
   /**
    * @param array<string, mixed> $settings
    */
-  public function __construct(array $settings = []) {
+  public function __construct(array $settings) {
     $this->bccEmail = strval($settings['bccEmail'] ?? '');
     $this->bccName = strval($settings['bccName'] ?? '');
     $this->ccEmail = strval($settings['ccEmail'] ?? '');

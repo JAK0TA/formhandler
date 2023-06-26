@@ -10,5 +10,5 @@ abstract class AbstractLoggerModel {
   /**
    * @param array<string, mixed> $settings
    */
-  abstract public function __construct(array $settings = []);
+  abstract public function __construct(array $settings);
 }

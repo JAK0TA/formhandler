@@ -9,7 +9,7 @@ class RequiredModel extends AbstractErrorCheckModel {
    * @param array<string, mixed> $settings
    */
   public function __construct(
-    protected readonly array $settings = []
+    protected readonly array $settings
   ) {
     $this->class = '\\Typoheads\\Formhandler\\Validator\\ErrorCheck\\Required';
     $this->name = 'Required';

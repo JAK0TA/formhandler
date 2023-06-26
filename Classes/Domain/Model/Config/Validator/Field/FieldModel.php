@@ -24,7 +24,7 @@ class FieldModel {
   public function __construct(
     public string $name,
     private readonly AbstractValidatorModel $validator,
-    array $settings = [],
+    array $settings,
   ) {
     if (isset($settings['fields']) && is_array($settings['fields'])) {
       foreach ($settings['fields'] as $fieldName => $fieldSettings) {
