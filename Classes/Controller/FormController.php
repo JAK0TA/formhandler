@@ -44,7 +44,7 @@ class FormController extends ActionController {
       // TODO: Execute Validator
 
       if ($this->formStepValid() && !$this->formNextStep()) {
-        // TODO: Execute saveInterceptors
+        $this->saveInterceptors();
         // TODO: Execute Logger
         // TODO: Execute Finisher
 
@@ -52,7 +52,7 @@ class FormController extends ActionController {
       }
     }
 
-    // TODO: Execute initInterceptors
+    $this->initInterceptors();
 
     // Prepare output
     $this->view->assignMultiple(
@@ -123,7 +123,9 @@ class FormController extends ActionController {
 
   private function formSession(): bool {
     // TODO: Check if form session exists or start new if first form access
-    // TODO: Execute preprocessor if first form access
+    foreach ($this->formConfig->preProcessors as $preProcessor) {
+      GeneralUtility::makeInstance($preProcessor->class)->process($this->formConfig, $preProcessor);
+    }
 
     return true;
   }
@@ -136,6 +138,12 @@ class FormController extends ActionController {
   private function formSubmitted(): bool {
     // TODO: Check if form Submitted
     return false;
+  }
+
+  private function initInterceptors(): void {
+    foreach ($this->formConfig->initInterceptors as $initInterceptor) {
+      GeneralUtility::makeInstance($initInterceptor->class)->process($this->formConfig, $initInterceptor);
+    }
   }
 
   private function prepareFieldRequired(string $fieldNamePath, FieldModel $field): void {
@@ -154,5 +162,11 @@ class FormController extends ActionController {
     $this->formConfig->fieldSets[] = new FieldSetModel('submitted', 'true');
     $this->formConfig->fieldSets[] = new FieldSetModel('randomId', $this->formConfig->randomId);
     $this->formConfig->fieldSets[] = new FieldSetModel('step', (string) $this->formConfig->step);
+  }
+
+  private function saveInterceptors(): void {
+    foreach ($this->formConfig->saveInterceptors as $saveInterceptor) {
+      GeneralUtility::makeInstance($saveInterceptor->class)->process($this->formConfig, $saveInterceptor);
+    }
   }
 }

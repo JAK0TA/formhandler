@@ -6,7 +6,9 @@ namespace Typoheads\Formhandler\Domain\Model\Config;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Typoheads\Formhandler\Domain\Model\Config\Finisher\AbstractFinisherModel;
+use Typoheads\Formhandler\Domain\Model\Config\Interceptor\AbstractInterceptorModel;
 use Typoheads\Formhandler\Domain\Model\Config\Logger\AbstractLoggerModel;
+use Typoheads\Formhandler\Domain\Model\Config\PreProcessor\AbstractPreProcessorModel;
 use Typoheads\Formhandler\Utility\Utility;
 
 class FormModel {
@@ -26,10 +28,16 @@ class FormModel {
 
   public string $formValuesPrefix = '';
 
+  /** @var AbstractInterceptorModel[] */
+  public array $initInterceptors = [];
+
   /** @var AbstractLoggerModel[] */
   public array $loggers = [];
 
   public string $predefinedForm = '';
+
+  /** @var AbstractPreProcessorModel[] */
+  public array $preProcessors = [];
 
   public string $randomId = '';
 
@@ -38,6 +46,9 @@ class FormModel {
   public string $requiredFields = '';
 
   public string $responseType = 'html';
+
+  /** @var AbstractInterceptorModel[] */
+  public array $saveInterceptors = [];
 
   public int $step = 1;
 
@@ -86,6 +97,42 @@ class FormModel {
         $loggerModel = GeneralUtility::makeInstance($utility::classString(strval($logger['model'] ?? 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Logger\\Database'), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Logger\\'), $settings['user'] ?? []);
 
         $this->loggers[] = $loggerModel;
+      }
+
+      // Get form PreProcessor
+      foreach ($settings['predefinedForms'][$this->predefinedForm]['preProcessors'] ?? [] as $preProcessor) {
+        if (empty($preProcessor['model'])) {
+          continue;
+        }
+
+        /** @var AbstractPreProcessorModel $preProcessorModel */
+        $preProcessorModel = GeneralUtility::makeInstance($utility::classString(strval($preProcessor['model']), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\PreProcessor\\'), $preProcessor['config'] ?? []);
+
+        $this->preProcessors[] = $preProcessorModel;
+      }
+
+      // Get form Init Interceptor
+      foreach ($settings['predefinedForms'][$this->predefinedForm]['initInterceptors'] ?? [] as $initInterceptor) {
+        if (empty($initInterceptor['model'])) {
+          continue;
+        }
+
+        /** @var AbstractInterceptorModel $initInterceptorModel */
+        $initInterceptorModel = GeneralUtility::makeInstance($utility::classString(strval($initInterceptor['model']), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Interceptor\\'), $initInterceptor['config'] ?? []);
+
+        $this->initInterceptors[] = $initInterceptorModel;
+      }
+
+      // Get form Save Interceptor
+      foreach ($settings['predefinedForms'][$this->predefinedForm]['saveInterceptors'] ?? [] as $saveInterceptor) {
+        if (empty($saveInterceptor['model'])) {
+          continue;
+        }
+
+        /** @var AbstractInterceptorModel $saveInterceptorModel */
+        $saveInterceptorModel = GeneralUtility::makeInstance($utility::classString(strval($saveInterceptor['model']), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Interceptor\\'), $saveInterceptor['config'] ?? []);
+
+        $this->saveInterceptors[] = $saveInterceptorModel;
       }
 
       // Get form steps
