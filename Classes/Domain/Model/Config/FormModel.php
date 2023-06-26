@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace Typoheads\Formhandler\Domain\Model\Config;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use Typoheads\Formhandler\Domain\Model\Config\Finisher\AbstractFinisher;
-use Typoheads\Formhandler\Domain\Model\Config\Logger\AbstractLogger;
+use Typoheads\Formhandler\Domain\Model\Config\Finisher\AbstractFinisherModel;
+use Typoheads\Formhandler\Domain\Model\Config\Logger\AbstractLoggerModel;
 use Typoheads\Formhandler\Utility\Utility;
 
-class Form {
-  public Mail $admin;
+class FormModel {
+  public MailModel $admin;
 
-  /** @var FieldSet[] */
+  /** @var FieldSetModel[] */
   public array $fieldSets = [];
 
-  /** @var AbstractFinisher[] */
+  /** @var AbstractFinisherModel[] */
   public array $finishers = [];
 
   public string $formId = '';
@@ -26,7 +26,7 @@ class Form {
 
   public string $formValuesPrefix = '';
 
-  /** @var AbstractLogger[] */
+  /** @var AbstractLoggerModel[] */
   public array $loggers = [];
 
   public string $predefinedForm = '';
@@ -41,26 +41,26 @@ class Form {
 
   public int $step = 1;
 
-  /** @var Step[] */
+  /** @var StepModel[] */
   public array $steps = [];
 
   public string $templateMailHtml = '';
 
   public string $templateMailText = '';
 
-  public Mail $user;
+  public MailModel $user;
 
   /**
    * @param array<string, mixed> $settings
    */
   public function __construct(array $settings = []) {
     // Get flexform settings
-    $this->admin = GeneralUtility::makeInstance(Mail::class, $settings['admin'] ?? []);
+    $this->admin = GeneralUtility::makeInstance(MailModel::class, $settings['admin'] ?? []);
     $this->predefinedForm = strval($settings['predefinedForm'] ?? '');
     $this->redirectPage = intval($settings['redirectPage'] ?? 0);
     $this->requiredFields = strval($settings['requiredFields'] ?? '');
     $this->responseType = strval($settings['responseType'] ?? 'html');
-    $this->user = GeneralUtility::makeInstance(Mail::class, $settings['user'] ?? []);
+    $this->user = GeneralUtility::makeInstance(MailModel::class, $settings['user'] ?? []);
 
     if (!empty($this->predefinedForm)
       && isset($settings['predefinedForms'])
@@ -82,7 +82,7 @@ class Form {
 
       // Get form logger
       foreach ($settings['predefinedForms'][$this->predefinedForm]['loggers'] ?? [] as $logger) {
-        /** @var AbstractLogger $loggerModel */
+        /** @var AbstractLoggerModel $loggerModel */
         $loggerModel = GeneralUtility::makeInstance($utility::classString(strval($logger['model'] ?? 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Logger\\Database'), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Logger\\'), $settings['user'] ?? []);
 
         $this->loggers[] = $loggerModel;
@@ -94,10 +94,10 @@ class Form {
           continue;
         }
 
-        $this->steps[intval($stepKey)] = GeneralUtility::makeInstance(Step::class, $step, $templateForm);
+        $this->steps[intval($stepKey)] = GeneralUtility::makeInstance(StepModel::class, $step, $templateForm);
       }
       if (0 == count($this->steps)) {
-        $this->steps[1] = GeneralUtility::makeInstance(Step::class, [], $templateForm);
+        $this->steps[1] = GeneralUtility::makeInstance(StepModel::class, [], $templateForm);
       }
 
       foreach ($settings['predefinedForms'][$this->predefinedForm]['finishers'] ?? [] as $finisher) {
@@ -105,7 +105,7 @@ class Form {
           continue;
         }
 
-        /** @var AbstractFinisher $finisherModel */
+        /** @var AbstractFinisherModel $finisherModel */
         $finisherModel = GeneralUtility::makeInstance($utility::classString(strval($finisher['model']), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Finisher\\'), $finisher['config'] ?? []);
 
         $this->finishers[] = $finisherModel;

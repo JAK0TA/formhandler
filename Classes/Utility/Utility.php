@@ -5,16 +5,26 @@ declare(strict_types=1);
 namespace Typoheads\Formhandler\Utility;
 
 class Utility {
-  public static function classString(string $class, string $prefix): string {
+  /**
+   * @return class-string
+   */
+  public static function classString(string $class, string $prefix) {
+    /** @var class-string $classString */
+    $classString = '';
+
     if (empty($class)) {
-      return '';
+      return $classString;
     }
 
     if ('\\' == $class[0]) {
-      return substr($class, 1);
+      /** @var class-string $classString */
+      $classString = substr($class, 1);
+    } else {
+      /** @var class-string $classString */
+      $classString = $prefix.$class;
     }
 
-    return $prefix.$class;
+    return $classString;
   }
 
   /**

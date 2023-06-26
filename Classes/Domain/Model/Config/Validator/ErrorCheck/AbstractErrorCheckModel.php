@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck;
 
-abstract class AbstractErrorCheck {
+abstract class AbstractErrorCheckModel {
   public string $class = '';
 
   public string $name = '';

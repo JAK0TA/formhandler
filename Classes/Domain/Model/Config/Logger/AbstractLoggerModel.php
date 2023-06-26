@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Domain\Model\Config\Logger;
 
-abstract class AbstractLogger {
+abstract class AbstractLoggerModel {
   public string $class = '';
 
   /**

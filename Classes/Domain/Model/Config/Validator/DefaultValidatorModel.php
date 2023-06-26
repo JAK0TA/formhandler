@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace Typoheads\Formhandler\Domain\Model\Config\Validator;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Typoheads\Formhandler\Domain\Model\Config\Validator\Field\FieldModel;
 use Typoheads\Formhandler\Utility\Utility;
 
-class DefaultValidator extends AbstractValidator {
+class DefaultValidatorModel extends AbstractValidatorModel {
   /**
    * @param array<string, mixed> $settings
    */
@@ -50,8 +51,8 @@ class DefaultValidator extends AbstractValidator {
 
     if (isset($settings['fields']) && is_array($settings['fields'])) {
       foreach ($settings['fields'] as $fieldName => $fieldSettings) {
-        /** @var Field $fieldModel */
-        $fieldModel = GeneralUtility::makeInstance(Field::class, $fieldName, $this, $fieldSettings);
+        /** @var FieldModel $fieldModel */
+        $fieldModel = GeneralUtility::makeInstance(FieldModel::class, $fieldName, $this, $fieldSettings);
 
         $this->fields[] = $fieldModel;
       }

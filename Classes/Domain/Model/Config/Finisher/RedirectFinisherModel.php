@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Domain\Model\Config\Finisher;
 
-class Mail extends AbstractFinisher {
-  protected int $limitMailsToUser = 2;
-
+class RedirectFinisherModel extends AbstractFinisherModel {
   /**
    * @param array<string, mixed> $settings
    */
@@ -15,6 +13,6 @@ class Mail extends AbstractFinisher {
   ) {
     parent::__construct($settings);
 
-    $this->class = '\\Typoheads\\Formhandler\\Finisher\\Mail';
+    $this->class = '\\Typoheads\\Formhandler\\Finisher\\RedirectFinisher';
   }
 }

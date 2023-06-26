@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Domain\Model\Config;
 
-class Mail {
+class MailModel {
   public string $bccEmail = '';
 
   public string $bccName = '';

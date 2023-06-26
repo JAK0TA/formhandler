@@ -2,19 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Typoheads\Formhandler\Domain\Model\Config\Validator;
+namespace Typoheads\Formhandler\Domain\Model\Config\Validator\Field;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractErrorCheck;
+use Typoheads\Formhandler\Domain\Model\Config\Validator\AbstractValidatorModel;
+use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractErrorCheckModel;
 use Typoheads\Formhandler\Utility\Utility;
 
-class Field {
-  /** @var AbstractErrorCheck[] */
+class FieldModel {
+  /** @var AbstractErrorCheckModel[] */
   public array $errorChecks = [];
 
   public bool $fieldArray = false;
 
-  /** @var Field[] */
+  /** @var FieldModel[] */
   public array $fields = [];
 
   /**
@@ -22,13 +23,13 @@ class Field {
    */
   public function __construct(
     public string $name,
-    private readonly AbstractValidator $validator,
+    private readonly AbstractValidatorModel $validator,
     array $settings = [],
   ) {
     if (isset($settings['fields']) && is_array($settings['fields'])) {
       foreach ($settings['fields'] as $fieldName => $fieldSettings) {
-        /** @var Field $fieldModel */
-        $fieldModel = GeneralUtility::makeInstance(Field::class, $fieldName, $validator, $fieldSettings);
+        /** @var FieldModel $fieldModel */
+        $fieldModel = GeneralUtility::makeInstance(FieldModel::class, $fieldName, $validator, $fieldSettings);
 
         $this->fields[] = $fieldModel;
       }
@@ -50,7 +51,7 @@ class Field {
         continue;
       }
 
-      /** @var AbstractErrorCheck $errorCheckModel */
+      /** @var AbstractErrorCheckModel $errorCheckModel */
       $errorCheckModel = GeneralUtility::makeInstance($utility->classString(strval($errorCheck['model']), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Validator\\ErrorCheck\\'), (array) $errorCheck);
       if (isset($this->validator->disableErrorCheckFields[$fieldName]) && in_array($errorCheckModel->class, $this->validator->disableErrorCheckFields[$fieldName])) {
         continue;

@@ -8,16 +8,16 @@ use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use Typoheads\Formhandler\Domain\Model\Config\FieldSet;
-use Typoheads\Formhandler\Domain\Model\Config\Form;
-use Typoheads\Formhandler\Domain\Model\Config\Validator\Field;
+use Typoheads\Formhandler\Domain\Model\Config\FieldSetModel;
+use Typoheads\Formhandler\Domain\Model\Config\FormModel;
+use Typoheads\Formhandler\Domain\Model\Config\Validator\Field\FieldModel;
 use Typoheads\Formhandler\Utility\Utility;
 
 class FormController extends ActionController {
   /** @var array<string, bool> */
   protected $fieldsRequired = [];
 
-  protected Form $formConfig;
+  protected FormModel $formConfig;
 
   public function __construct(
     protected readonly PageRepository $pageRepository
@@ -29,7 +29,7 @@ class FormController extends ActionController {
    */
   public function formAction(): ResponseInterface {
     // Load form settings
-    $this->formConfig = GeneralUtility::makeInstance(Form::class, $this->settings);
+    $this->formConfig = GeneralUtility::makeInstance(FormModel::class, $this->settings);
 
     if (!$this->formConfigValid()) {
       // TODO: Return with error
@@ -138,7 +138,7 @@ class FormController extends ActionController {
     return false;
   }
 
-  private function prepareFieldRequired(string $fieldNamePath, Field $field): void {
+  private function prepareFieldRequired(string $fieldNamePath, FieldModel $field): void {
     $fieldNamePath .= '['.$field->name.']';
     foreach ($field->errorChecks as $errorCheck) {
       if ('Required' == $errorCheck->name) {
@@ -151,8 +151,8 @@ class FormController extends ActionController {
   }
 
   private function prepareFormSets(): void {
-    $this->formConfig->fieldSets[] = new FieldSet('submitted', 'true');
-    $this->formConfig->fieldSets[] = new FieldSet('randomId', $this->formConfig->randomId);
-    $this->formConfig->fieldSets[] = new FieldSet('step', (string) $this->formConfig->step);
+    $this->formConfig->fieldSets[] = new FieldSetModel('submitted', 'true');
+    $this->formConfig->fieldSets[] = new FieldSetModel('randomId', $this->formConfig->randomId);
+    $this->formConfig->fieldSets[] = new FieldSetModel('step', (string) $this->formConfig->step);
   }
 }

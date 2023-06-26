@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck;
 
-class ContainsOne extends AbstractErrorCheck {
+class ContainsOneModel extends AbstractErrorCheckModel {
   public string $words = '';
 
   /**

@@ -8,7 +8,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
 
   loggers {
     Database {
-      model = Database
+      model = DatabaseLoggerModel
     }
   }
 
@@ -17,52 +17,52 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
       templateForm = DevExampleForm/DevExampleHTML
       validators {
         DefaultValidator {
-          model = DefaultValidator
+          model = DefaultValidatorModel
           config {
             fields {
               customer.fields {
                 salutation.errorChecks {
                   required {
-                    model = Required
+                    model = RequiredModel
                   }
                 }
                 firstname.errorChecks {
                   required {
-                    model = Required
+                    model = RequiredModel
                   }
                   maxLength {
-                    model = MaxLength
+                    model = MaxLengthModel
                     maxLength = 20
                   }
                 }
                 lastname.errorChecks {
                   required {
-                    model = Required
+                    model = RequiredModel
                   }
                   maxLength {
-                    model = MaxLength
+                    model = MaxLengthModel
                     maxLength = 20
                   }
                 }
                 telephone.errorChecks {
                   required {
-                    model = Required
+                    model = RequiredModel
                   }
                   maxLength {
-                    model = MaxLength
+                    model = MaxLengthModel
                     maxLength = 20
                   }
                 }
                 email.errorChecks {
                   required {
-                    model = Required
+                    model = RequiredModel
                   }
                   maxLength {
-                    model = MaxLength
+                    model = MaxLengthModel
                     maxLength = 50
                   }
                   email {
-                    model = Email
+                    model = EmailModel
                   }
                 }
               }
@@ -75,7 +75,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
       templateForm = DevExampleForm/DevExampleHTML
       validators {
         DefaultValidator {
-          model = DefaultValidator
+          model = DefaultValidatorModel
           config {
             fields {
 
@@ -88,26 +88,26 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
                       fields {
                         salutation.errorCheck {
                           required {
-                            model = Required
+                            model = RequiredModel
                           }
                         }
 
                         firstname.errorCheck {
                           required {
-                            model = Required
+                            model = RequiredModel
                           }
                           maxLength {
-                            model = MaxLength
+                            model = MaxLengthModel
                             maxLength = 255
                           }
                         }
 
                         lastname.errorCheck {
                           required {
-                            model = Required
+                            model = RequiredModel
                           }
                           maxLength {
-                            model = MaxLength
+                            model = MaxLengthModel
                             maxLength = 255
                           }
                         }
@@ -116,7 +116,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
                   }
                   errorCheck {
                     required {
-                      model = Required
+                      model = RequiredModel
                     }
                   }
                 }
@@ -130,53 +130,53 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
       templateForm = DevExampleForm/DevExampleHTML
       validators {
         DefaultValidator {
-          model = DefaultValidator
+          model = DefaultValidatorModel
           config {
             fields {
               payment.fields.direct.fields {
                 salutation.errorCheck {
                   required {
-                    model = Required
+                    model = RequiredModel
                   }
                 }
 
                 firstname.errorCheck {
                   required {
-                    model = Required
+                    model = RequiredModel
                   }
                   maxLength {
-                    model = MaxLength
+                    model = MaxLengthModel
                     maxLength = 255
                   }
                 }
 
                 lastname.errorCheck {
                   required {
-                    model = Required
+                    model = RequiredModel
                   }
                   maxLength {
-                    model = MaxLength
+                    model = MaxLengthModel
                     maxLength = 255
                   }
                 }
 
                 country.errorCheck {
                   required {
-                    model = Required
+                    model = RequiredModel
                   }
                   maxLength {
-                    model = MaxLength
+                    model = MaxLengthModel
                     maxLength = 255
                   }
                 }
 
                 email.errorCheck {
                   maxLength {
-                    model = MaxLength
+                    model = MaxLengthModel
                     maxLength = 255
                   }
                   email {
-                    model = Email
+                    model = EmailModel
                   }
                 }
               }
@@ -189,21 +189,21 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
       templateForm = DevExampleForm/DevExampleHTML
       validators {
         DefaultValidator {
-          model = DefaultValidator
+          model = DefaultValidatorModel
           config {
             fields {
               message.errorChecks {
                 required {
-                  model = Required
+                  model = RequiredModel
                 }
               }
 
               privacy_policy.errorChecks {
                 required {
-                  model = Required
+                  model = RequiredModel
                 }
                 containsOne {
-                  model = ContainsOne
+                  model = ContainsOneModel
                   words = Yes,Ja
                 }
               }
@@ -216,10 +216,10 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
 
   finishers {
     Mail {
-      model = Mail
+      model = MailFinisherModel
     }    
     Redirect {
-      model = Redirect
+      model = RedirectFinisherModel
       config {
         returns = true
       }
