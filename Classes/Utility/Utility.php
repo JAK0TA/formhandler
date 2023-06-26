@@ -40,6 +40,7 @@ class Utility {
         foreach ($removeKeys as $removeKey) {
           unset($value->{$removeKey});
         }
+        // @phpstan-ignore-next-line
         foreach ($value as &$property) {
           if (is_array($property)) {
             self::removeKeys($property, $removeKeys);
