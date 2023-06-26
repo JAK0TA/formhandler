@@ -8,6 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use Typoheads\Formhandler\Domain\Model\Config\FieldSet;
 use Typoheads\Formhandler\Domain\Model\Config\Form;
 use Typoheads\Formhandler\Utility\Utility;
 
@@ -80,6 +81,8 @@ class FormController extends ActionController {
       return $this->jsonResponse();
     }
 
+    $this->formSets();
+
     return $this->htmlResponse();
   }
 
@@ -98,6 +101,12 @@ class FormController extends ActionController {
     // TODO: Execute preprocessor if first form access
 
     return true;
+  }
+
+  private function formSets(): void {
+    $this->formConfig->fieldSets[] = new FieldSet('submitted', 'true');
+    $this->formConfig->fieldSets[] = new FieldSet('randomId', $this->formConfig->randomId);
+    $this->formConfig->fieldSets[] = new FieldSet('step', (string) $this->formConfig->step);
   }
 
   private function formStepValid(): bool {
