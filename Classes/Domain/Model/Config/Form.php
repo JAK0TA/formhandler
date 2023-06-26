@@ -22,12 +22,16 @@ class Form {
 
   public string $formName = '';
 
+  public string $formUrl = '';
+
   public string $formValuesPrefix = '';
 
   /** @var AbstractLogger[] */
   public array $loggers = [];
 
   public string $predefinedForm = '';
+
+  public string $randomId = '';
 
   public int $redirectPage = 0;
 
