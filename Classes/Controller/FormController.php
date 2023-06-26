@@ -94,6 +94,14 @@ class FormController extends ActionController {
       }
     }
 
+    $this->view->assignMultiple(
+      [
+        'fieldsRequired' => $this->fieldsRequired,
+        'fieldSets' => $this->formConfig->fieldSets,
+        'steps' => $this->formConfig->steps,
+      ]
+    );
+
     return $this->htmlResponse();
   }
 
