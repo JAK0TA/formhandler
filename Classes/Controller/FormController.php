@@ -102,6 +102,12 @@ class FormController extends ActionController {
       ]
     );
 
+    // TODO: Delete me, once done
+    echo $this->view->render();
+
+    // TODO: Delete me, once done
+    exit;
+
     return $this->htmlResponse();
   }
 
