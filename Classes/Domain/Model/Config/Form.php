@@ -12,6 +12,9 @@ use Typoheads\Formhandler\Utility\Utility;
 class Form {
   public Mail $admin;
 
+  /** @var FieldSet[] */
+  public array $fieldSets = [];
+
   /** @var AbstractFinisher[] */
   public array $finishers = [];
 
