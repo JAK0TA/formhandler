@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2"
+  xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="EXT:formhandler/Resources/Private/Language/locallang_example_form.xlf" date="2023-06-22T11:48:40Z" product-name="formhandler">
+    <header />
+    <body>
+      <trans-unit id="submit" resname="submit">
+        <source>Send</source>
+      </trans-unit>
+      <trans-unit id="submit_title" resname="submit_title">
+        <source>Click this button to send your message</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

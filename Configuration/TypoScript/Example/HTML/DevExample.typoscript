@@ -2,10 +2,45 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
   formId = DevExampleForm
   formName = Dev Example Form
   formValuesPrefix = DevExampleForm
-  templateForm = DevExampleForm/DevExampleHTML
+  langFileDefault = locallang_example_form.xlf
+  templateForm = 
   templateMailHtml = DevExample/MailHtml
   templateMailText = DevExample/MailText
 
+  preProcessors {
+    setSalutations {
+      model = SetSelectOptionsPreProcessorModel
+      config {
+        field = [customer][salutation]
+        options {
+          mr {
+            value = mr
+            title = Mr.
+          }
+          mrs {
+            value = mrs
+            title = Mrs.
+          }
+        }
+      }
+    }
+    setCountry {
+      model = SetSelectOptionsPreProcessorModel
+      config {
+        field = [customer][country]
+        options {
+          DE {
+            value = DE
+            title = Germany
+          }
+          USA {
+            value = USA
+            title = United States of America
+          }
+        }
+      }
+    }
+  }
   loggers {
     Database {
       model = DatabaseLoggerModel
@@ -14,7 +49,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
 
   steps {
     1 {
-      templateForm = DevExampleForm/DevExampleHTML
+      templateForm = DevExampleForm/DevExampleHTMLStep1
       validators {
         DefaultValidator {
           model = DefaultValidatorModel
@@ -42,6 +77,30 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
                   maxLength {
                     model = MaxLengthModel
                     maxLength = 20
+                  }
+                }
+                streetAddress.errorChecks {
+                  required {
+                    model = RequiredModel
+                  }
+                }
+                postalCode.errorChecks {
+                  required {
+                    model = RequiredModel
+                  }
+                }
+                city.errorChecks {
+                  required {
+                    model = RequiredModel
+                  }
+                  maxLength {
+                    model = MaxLengthModel
+                    maxLength = 70
+                  }
+                }
+                country.errorChecks {
+                  required {
+                    model = RequiredModel
                   }
                 }
                 telephone.errorChecks {
@@ -72,7 +131,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
       }
     }
     2 {
-      templateForm = DevExampleForm/DevExampleHTML
+      templateForm = DevExampleForm/DevExampleHTMLStep2
       validators {
         DefaultValidator {
           model = DefaultValidatorModel
@@ -127,7 +186,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
       }
     }
     3 {
-      templateForm = DevExampleForm/DevExampleHTML
+      templateForm = DevExampleForm/DevExampleHTMLStep3
       validators {
         DefaultValidator {
           model = DefaultValidatorModel
@@ -186,7 +245,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
       }
     }
     4 {
-      templateForm = DevExampleForm/DevExampleHTML
+      templateForm = DevExampleForm/DevExampleHTMLStep4
       validators {
         DefaultValidator {
           model = DefaultValidatorModel
