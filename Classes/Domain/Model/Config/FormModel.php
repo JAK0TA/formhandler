@@ -17,6 +17,9 @@ class FormModel {
   /** @var FieldSetModel[] */
   public array $fieldSets = [];
 
+  /** @var array<string, SelectOptionModel[]> */
+  public array $fieldsSelectOptions = [];
+
   /** @var AbstractFinisherModel[] */
   public array $finishers = [];
 
