@@ -1,0 +1,24 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+  <f:if condition="{langFile} == ''">
+    <f:variable name="langFile" value="{formConfig.langFileDefault}" />
+  </f:if>
+  <f:if condition="{submit} == ''">
+    <f:then>
+      <f:variable name="submit" value="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:submit')}" />
+    </f:then>
+    <f:else>
+      <f:variable name="submit" value="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{submit}')}" />
+    </f:else>
+  </f:if>
+  <f:if condition="{submitTitle} == ''">
+    <f:then>
+      <f:variable name="submitTitle" value="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:submit_title')}" />
+    </f:then>
+    <f:else>
+      <f:variable name="submitTitle" value="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{submitTitle}')}" />
+    </f:else>
+  </f:if>
+  <div class="type-submit submit">
+    <input class="btn" title="{submitTitle}" type="submit" value="{submit}" name="{formConfig.formValuesPrefix}[step-{step}-next]" />
+  </div>
+</html>
