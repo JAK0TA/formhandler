@@ -59,6 +59,7 @@ class FormController extends ActionController {
       [
         'formId' => $this->formConfig->formId,
         'formName' => $this->formConfig->formName,
+        'formUrl' => $this->formConfig->formUrl,
         'formValuesPrefix' => $this->formConfig->formValuesPrefix,
         'templateForm' => $this->formConfig->steps[$this->formConfig->step]->templateForm,
         'requiredFields' => $this->formConfig->requiredFields,
