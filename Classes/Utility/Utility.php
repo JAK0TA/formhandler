@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Utility;
 
-class Utility {
+use TYPO3\CMS\Core\SingletonInterface;
+
+class Utility implements SingletonInterface {
   /**
    * @return class-string
    */
