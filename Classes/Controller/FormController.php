@@ -42,6 +42,8 @@ class FormController extends ActionController {
       // TODO: Form session is invalid reset form and return with error
     }
 
+    $this->initInterceptors();
+
     if ($this->formSubmitted()) {
       $this->validators();
 
@@ -53,8 +55,6 @@ class FormController extends ActionController {
         // TODO: Return Success and exit
       }
     }
-
-    $this->initInterceptors();
 
     // Prepare output
     $this->view->assignMultiple(
