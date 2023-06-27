@@ -42,7 +42,6 @@
     }
   },
   "replace": {
-    "jakota/formhandler": "self.version",
     "typo3-ter/formhandler": "self.version"
   },
   "extra": {
