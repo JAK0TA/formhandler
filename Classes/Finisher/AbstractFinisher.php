@@ -9,5 +9,5 @@ use Typoheads\Formhandler\Domain\Model\Config\Finisher\AbstractFinisherModel;
 use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 
 abstract class AbstractFinisher implements SingletonInterface {
-  abstract public function process(FormModel &$formConfig, AbstractFinisherModel $finisherConfig): void;
+  abstract public function process(FormModel &$formConfig, AbstractFinisherModel &$finisherConfig): void;
 }

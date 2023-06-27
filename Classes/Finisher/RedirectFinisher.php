@@ -9,7 +9,7 @@ use Typoheads\Formhandler\Domain\Model\Config\Finisher\RedirectFinisherModel;
 use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 
 class RedirectFinisher extends AbstractFinisher {
-  public function process(FormModel &$formConfig, AbstractFinisherModel $finisherConfig): void {
+  public function process(FormModel &$formConfig, AbstractFinisherModel &$finisherConfig): void {
     if (!$finisherConfig instanceof RedirectFinisherModel) {
       return;
     }

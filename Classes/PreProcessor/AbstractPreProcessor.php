@@ -9,5 +9,5 @@ use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 use Typoheads\Formhandler\Domain\Model\Config\PreProcessor\AbstractPreProcessorModel;
 
 abstract class AbstractPreProcessor implements SingletonInterface {
-  abstract public function process(FormModel &$formConfig, AbstractPreProcessorModel $preProcessorConfig): void;
+  abstract public function process(FormModel &$formConfig, AbstractPreProcessorModel &$preProcessorConfig): void;
 }

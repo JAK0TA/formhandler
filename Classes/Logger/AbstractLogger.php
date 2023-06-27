@@ -9,5 +9,5 @@ use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 use Typoheads\Formhandler\Domain\Model\Config\Logger\AbstractLoggerModel;
 
 abstract class AbstractLogger implements SingletonInterface {
-  abstract public function process(FormModel &$formConfig, AbstractLoggerModel $loggerConfig): void;
+  abstract public function process(FormModel &$formConfig, AbstractLoggerModel &$loggerConfig): void;
 }

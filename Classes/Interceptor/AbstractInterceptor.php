@@ -9,5 +9,5 @@ use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 use Typoheads\Formhandler\Domain\Model\Config\Interceptor\AbstractInterceptorModel;
 
 abstract class AbstractInterceptor implements SingletonInterface {
-  abstract public function process(FormModel &$formConfig, AbstractInterceptorModel $interceptorConfig): void;
+  abstract public function process(FormModel &$formConfig, AbstractInterceptorModel &$interceptorConfig): void;
 }

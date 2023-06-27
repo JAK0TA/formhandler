@@ -9,7 +9,7 @@ use Typoheads\Formhandler\Domain\Model\Config\Logger\AbstractLoggerModel;
 use Typoheads\Formhandler\Domain\Model\Config\Logger\DatabaseLoggerModel;
 
 class DatabaseLogger extends AbstractLogger {
-  public function process(FormModel &$formConfig, AbstractLoggerModel $finisherConfig): void {
+  public function process(FormModel &$formConfig, AbstractLoggerModel &$finisherConfig): void {
     if (!$finisherConfig instanceof DatabaseLoggerModel) {
       return;
     }

@@ -10,7 +10,7 @@ use Typoheads\Formhandler\Domain\Model\Config\PreProcessor\SetSelectOptionsPrePr
 use Typoheads\Formhandler\Domain\Model\Config\SelectOptionModel;
 
 class SetSelectOptionsPreProcessor extends AbstractPreProcessor {
-  public function process(FormModel &$formConfig, AbstractPreProcessorModel $preProcessorConfig): void {
+  public function process(FormModel &$formConfig, AbstractPreProcessorModel &$preProcessorConfig): void {
     if (!$preProcessorConfig instanceof SetSelectOptionsPreProcessorModel) {
       return;
     }
