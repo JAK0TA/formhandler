@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Utility;
 
+use TYPO3\CMS\Core\Crypto\Random;
 use TYPO3\CMS\Core\SingletonInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 
 class Utility implements SingletonInterface {
   /**
@@ -27,6 +30,13 @@ class Utility implements SingletonInterface {
     }
 
     return $classString;
+  }
+
+  public static function generateRandomId(FormModel $formConfig): string {
+    return md5(
+      $formConfig->formValuesPrefix.
+      GeneralUtility::makeInstance(Random::class)->generateRandomBytes(10)
+    );
   }
 
   /**
