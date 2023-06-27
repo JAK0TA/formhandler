@@ -43,7 +43,7 @@ class FormController extends ActionController {
     }
 
     if ($this->formSubmitted()) {
-      // TODO: Execute Validator
+      $this->validators();
 
       if ($this->formStepValid() && !$this->formNextStep()) {
         $this->saveInterceptors();
@@ -183,6 +183,12 @@ class FormController extends ActionController {
   private function saveInterceptors(): void {
     foreach ($this->formConfig->saveInterceptors as $saveInterceptor) {
       GeneralUtility::makeInstance($saveInterceptor->class)->process($this->formConfig, $saveInterceptor);
+    }
+  }
+
+  private function validators(): void {
+    foreach ($this->formConfig->steps[$this->formConfig->step]->validators as $validator) {
+      GeneralUtility::makeInstance($validator->class)->process($this->formConfig, $validator);
     }
   }
 }

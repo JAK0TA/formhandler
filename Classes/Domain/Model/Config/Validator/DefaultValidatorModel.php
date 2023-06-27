@@ -7,6 +7,7 @@ namespace Typoheads\Formhandler\Domain\Model\Config\Validator;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Typoheads\Formhandler\Domain\Model\Config\Validator\Field\FieldModel;
 use Typoheads\Formhandler\Utility\Utility;
+use Typoheads\Formhandler\Validator\DefaultValidator;
 
 class DefaultValidatorModel extends AbstractValidatorModel {
   /**
@@ -14,7 +15,7 @@ class DefaultValidatorModel extends AbstractValidatorModel {
    */
   public function __construct(array $settings) {
     $utility = GeneralUtility::makeInstance(Utility::class);
-    $this->class = '\\Typoheads\\Formhandler\\Validator\\DefaultValidator';
+    $this->class = DefaultValidator::class;
 
     foreach (GeneralUtility::trimExplode(',', strval($settings['restrictErrorChecks'] ?? ''), true) as $restrictErrorCheck) {
       $this->restrictErrorChecks[] = $utility->classString($restrictErrorCheck, '\\Typoheads\\Formhandler\\Validator\\ErrorCheck\\');
