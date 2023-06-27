@@ -10,6 +10,8 @@ abstract class AbstractFinisherModel {
   /** @var class-string<AbstractFinisher> */
   public string $class;
 
+  public bool $returns = false;
+
   /**
    * @param array<string, mixed> $settings
    */

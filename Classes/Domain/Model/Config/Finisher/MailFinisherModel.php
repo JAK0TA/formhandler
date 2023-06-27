@@ -12,7 +12,6 @@ class MailFinisherModel extends AbstractFinisherModel {
    */
   public function __construct(array $settings) {
     $this->class = MailFinisher::class;
-    if (isset($settings['FIXME'])) {
-    }
+    $this->returns = boolval($settings['returns'] ?? false);
   }
 }

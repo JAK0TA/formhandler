@@ -12,7 +12,6 @@ class RedirectFinisherModel extends AbstractFinisherModel {
    */
   public function __construct(array $settings) {
     $this->class = RedirectFinisher::class;
-    if (isset($settings['FIXME'])) {
-    }
+    $this->returns = boolval($settings['returns'] ?? false);
   }
 }
