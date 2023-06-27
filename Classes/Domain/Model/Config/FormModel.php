@@ -9,6 +9,7 @@ use Typoheads\Formhandler\Domain\Model\Config\Finisher\AbstractFinisherModel;
 use Typoheads\Formhandler\Domain\Model\Config\Interceptor\AbstractInterceptorModel;
 use Typoheads\Formhandler\Domain\Model\Config\Logger\AbstractLoggerModel;
 use Typoheads\Formhandler\Domain\Model\Config\PreProcessor\AbstractPreProcessorModel;
+use Typoheads\Formhandler\Session\AbstractSession;
 use Typoheads\Formhandler\Utility\Utility;
 
 class FormModel {
@@ -54,6 +55,8 @@ class FormModel {
 
   /** @var AbstractInterceptorModel[] */
   public array $saveInterceptors = [];
+
+  public AbstractSession $session;
 
   public int $step = 1;
 

@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use TYPO3\CMS\Core\Cache\Backend\SimpleFileBackend;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 use Typoheads\Formhandler\Controller\FormController;
 use Typoheads\Formhandler\Definitions\FormhandlerExtensionConfig;
@@ -20,4 +21,8 @@ call_user_func(static function (): void {
     ],
     ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
   );
+
+  // Cache registration
+  $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['formhandler_cache'] ??= [];
+  $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['formhandler_cache']['backend'] ??= SimpleFileBackend::class;
 });
