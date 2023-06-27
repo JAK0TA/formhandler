@@ -989,7 +989,7 @@ class GeneralUtility implements SingletonInterface {
     $resourceFiles = [];
     if (!self::isValidCObject($resourceFile) && isset($settings[$key.'.']) && is_array($settings[$key.'.'])) {
       foreach ($settings[$key.'.'] as $idx => $file) {
-        if (false === strpos($idx, '.')) {
+        if (false === strpos(strval($idx), '.')) {
           $file = self::getSingle($settings[$key.'.'], $idx);
           $fileOptions = $settings[$key.'.'][$idx.'.'];
           $fileOptions['file'] = $file;
