@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Typoheads\Formhandler\Domain\Model\Config;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Typoheads\Formhandler\Definitions\FormhandlerExtensionConfig;
 use Typoheads\Formhandler\Domain\Model\Config\Finisher\AbstractFinisherModel;
 use Typoheads\Formhandler\Domain\Model\Config\Interceptor\AbstractInterceptorModel;
 use Typoheads\Formhandler\Domain\Model\Config\Logger\AbstractLoggerModel;
@@ -93,7 +94,7 @@ class FormModel {
       // Get form settings
       $this->formId = strval($settings['predefinedForms'][$this->predefinedForm]['formId'] ?? '');
       $this->formName = strval($settings['predefinedForms'][$this->predefinedForm]['formName'] ?? '');
-      $this->formValuesPrefix = strval($settings['predefinedForms'][$this->predefinedForm]['formValuesPrefix'] ?? '');
+      $this->formValuesPrefix = strval($settings['predefinedForms'][$this->predefinedForm]['formValuesPrefix'] ?? FormhandlerExtensionConfig::EXTENSION_PLUGIN_SIGNATURE);
       $this->langFileDefault = strval($settings['predefinedForms'][$this->predefinedForm]['langFileDefault'] ?? '');
       $this->templateMailHtml = strval($settings['predefinedForms'][$this->predefinedForm]['templateMailHtml'] ?? '');
       $this->templateMailText = strval($settings['predefinedForms'][$this->predefinedForm]['templateMailText'] ?? '');
