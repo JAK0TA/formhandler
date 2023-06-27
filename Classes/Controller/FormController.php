@@ -109,19 +109,6 @@ class FormController extends ActionController {
       return $this->jsonResponse(json_encode($this->jsonResponse) ?: '{}');
     }
 
-    // Prepare output
-    $this->view->assignMultiple(
-      [
-        'formId' => $this->formConfig->formId,
-        'formName' => $this->formConfig->formName,
-        'formUrl' => $this->formConfig->formUrl,
-        'formValuesPrefix' => $this->formConfig->formValuesPrefix,
-        'templateForm' => $this->formConfig->steps[$this->formConfig->step]->templateForm,
-        'requiredFields' => $this->formConfig->requiredFields,
-        'step' => $this->formConfig->step,
-      ]
-    );
-
     $this->prepareFormSets();
 
     foreach ($this->formConfig->steps[$this->formConfig->step]->validators as $validator) {
@@ -130,13 +117,21 @@ class FormController extends ActionController {
       }
     }
 
+    // Prepare output
     $this->view->assignMultiple(
       [
         'fieldsRequired' => $this->fieldsRequired,
-        'fieldSets' => $this->formConfig->fieldSets,
-        'langFileDefault' => $this->formConfig->langFileDefault,
         'fieldsSelectOptions' => $this->formConfig->fieldsSelectOptions,
+        'fieldSets' => $this->formConfig->fieldSets,
+        'formId' => $this->formConfig->formId,
+        'formName' => $this->formConfig->formName,
+        'formUrl' => $this->formConfig->formUrl,
+        'formValuesPrefix' => $this->formConfig->formValuesPrefix,
+        'requiredFields' => $this->formConfig->requiredFields,
+        'langFileDefault' => $this->formConfig->langFileDefault,
+        'step' => $this->formConfig->step,
         'steps' => $this->formConfig->steps,
+        'templateForm' => $this->formConfig->steps[$this->formConfig->step]->templateForm,
       ]
     );
 
