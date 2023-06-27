@@ -35,6 +35,8 @@ class FormController extends ActionController {
       // TODO: Return with error
     }
 
+    $this->formConfig->parsedBody = (array) $this->request->getParsedBody();
+
     // Check if form session exists or start new if first form access
     if (!$this->formSession()) {
       // TODO: Form session is invalid reset form and return with error

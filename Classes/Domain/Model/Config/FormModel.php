@@ -40,6 +40,9 @@ class FormModel {
   /** @var AbstractLoggerModel[] */
   public array $loggers = [];
 
+  /** @var array<string, mixed> */
+  public array $parsedBody;
+
   public string $predefinedForm = '';
 
   /** @var AbstractPreProcessorModel[] */
