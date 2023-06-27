@@ -6,6 +6,7 @@ namespace Typoheads\Formhandler\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
+use TYPO3\CMS\Core\Http\RedirectResponse;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Typoheads\Formhandler\Domain\Model\Config\FieldSetModel;
@@ -63,9 +64,22 @@ class FormController extends ActionController {
       if ($this->formStepValid() && !$this->formNextStep()) {
         $this->saveInterceptors();
         $this->loggers();
-        $this->finishers();
+        if (($redirectResponse = $this->finishers()) !== null) {
+          if ('json' == $this->formConfig->responseType) {
+            $jsonResponse->success = true;
+            $jsonResponse->redirectPage = $redirectResponse->getHeaderLine('location');
+            $jsonResponse->redirectCode = $redirectResponse->getStatusCode();
 
-        // TODO: Return Success and exit
+            return $this->jsonResponse(json_encode($jsonResponse) ?: '{}');
+          }
+
+          return $redirectResponse;
+        }
+        if ('json' == $this->formConfig->responseType) {
+          $jsonResponse->success = true;
+
+          return $this->jsonResponse(json_encode($jsonResponse) ?: '{}');
+        }
       }
     }
 
@@ -125,10 +139,15 @@ class FormController extends ActionController {
     // return $this->htmlResponse();
   }
 
-  private function finishers(): void {
+  private function finishers(): ?RedirectResponse {
     foreach ($this->formConfig->finishers as $finisher) {
       GeneralUtility::makeInstance($finisher->class)->process($this->formConfig, $finisher);
+      if ($finisher->returns) {
+        return $finisher->redirectResponse;
+      }
     }
+
+    return null;
   }
 
   private function formConfigValid(): bool {
