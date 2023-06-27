@@ -30,6 +30,12 @@
       <f:render partial="FormField/InputEmail" arguments="{fieldName: '[customer][email]', maxlength: 50, langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
     </div>
     <div class="">
+      <f:render partial="FormField/Submit" arguments="{stepType: 'prev', formConfig: _all}" />
+    </div>
+    <div class="">
+      <f:render partial="FormField/Submit" arguments="{stepType: 'next', formConfig: _all}" />
+    </div>
+    <div class="">
       <f:render partial="FormField/Submit" arguments="{submit: 'step1Submit', submitTitle: 'step1SubmitTitle', langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
     </div>
   </form>

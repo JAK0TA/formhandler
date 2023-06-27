@@ -7,8 +7,20 @@
       <trans-unit id="submit" resname="submit">
         <source>Send</source>
       </trans-unit>
-      <trans-unit id="submit_title" resname="submit_title">
+      <trans-unit id="submitPrev" resname="submitPrev">
+        <source>Prev step</source>
+      </trans-unit>
+      <trans-unit id="submitNext" resname="submitNext">
+        <source>Next step</source>
+      </trans-unit>
+      <trans-unit id="submitTitle" resname="submitTitle">
         <source>Click this button to send your message</source>
+      </trans-unit>
+      <trans-unit id="submitTitlePrev" resname="submitTitlePrev">
+        <source>Click this button to go to prev step.</source>
+      </trans-unit>
+      <trans-unit id="submitTitleNext" resname="submitTitleNext">
+        <source>Click this button to go to next step.</source>
       </trans-unit>
     </body>
   </file>

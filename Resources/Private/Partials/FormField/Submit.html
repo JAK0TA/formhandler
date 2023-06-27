@@ -2,23 +2,64 @@
   <f:if condition="{langFile} == ''">
     <f:variable name="langFile" value="{formConfig.langFileDefault}" />
   </f:if>
-  <f:if condition="{submit} == ''">
+  <f:if condition="{stepType} == 'prev'">
     <f:then>
-      <f:variable name="submit" value="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:submit')}" />
+      <f:if condition="{submit} == ''">
+        <f:then>
+          <f:variable name="submit" value="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:submitPrev')}" />
+        </f:then>
+        <f:else>
+          <f:variable name="submit" value="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{submit}')}" />
+        </f:else>
+      </f:if>
+      <f:if condition="{submitTitle} == ''">
+        <f:then>
+          <f:variable name="submitTitle" value="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:submitTitlePrev')}" />
+        </f:then>
+        <f:else>
+          <f:variable name="submitTitle" value="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{submitTitle}')}" />
+        </f:else>
+      </f:if>
     </f:then>
-    <f:else>
-      <f:variable name="submit" value="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{submit}')}" />
+    <f:else if="{stepType} == 'next'">
+      <f:if condition="{submit} == ''">
+        <f:then>
+          <f:variable name="submit" value="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:submitNext')}" />
+        </f:then>
+        <f:else>
+          <f:variable name="submit" value="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{submit}')}" />
+        </f:else>
+      </f:if>
+      <f:if condition="{submitTitle} == ''">
+        <f:then>
+          <f:variable name="submitTitle" value="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:submitTitleNext')}" />
+        </f:then>
+        <f:else>
+          <f:variable name="submitTitle" value="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{submitTitle}')}" />
+        </f:else>
+      </f:if>
     </f:else>
-  </f:if>
-  <f:if condition="{submitTitle} == ''">
-    <f:then>
-      <f:variable name="submitTitle" value="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:submit_title')}" />
-    </f:then>
     <f:else>
-      <f:variable name="submitTitle" value="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{submitTitle}')}" />
+      <f:variable name="stepType" value="next" />
+      <f:if condition="{submit} == ''">
+        <f:then>
+          <f:variable name="submit" value="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:submit')}" />
+        </f:then>
+        <f:else>
+          <f:variable name="submit" value="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{submit}')}" />
+        </f:else>
+      </f:if>
+      <f:if condition="{submitTitle} == ''">
+        <f:then>
+          <f:variable name="submitTitle" value="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:submitTitle')}" />
+        </f:then>
+        <f:else>
+          <f:variable name="submitTitle" value="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{submitTitle}')}" />
+        </f:else>
+      </f:if>
     </f:else>
   </f:if>
   <div class="type-submit submit">
-    <input class="btn" title="{submitTitle}" type="submit" value="{submit}" name="{formConfig.formValuesPrefix}[step-{formConfig.step}-next]" />
+    <input class="btn" title="{submitTitle}" type="submit" value="{submit}" name="{formConfig.formValuesPrefix}[step][{stepType}]" />
   </div>
 </html>
