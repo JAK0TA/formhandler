@@ -7,6 +7,9 @@ namespace Typoheads\Formhandler\Domain\Model\Config\Finisher;
 use Typoheads\Formhandler\Finisher\RedirectFinisher;
 
 class RedirectFinisherModel extends AbstractFinisherModel {
+  /** @var array<string, string> */
+  public array $additionalParams = [];
+
   public int $headerStatusCode = 303;
 
   /**
@@ -15,6 +18,11 @@ class RedirectFinisherModel extends AbstractFinisherModel {
   public function __construct(array $settings) {
     $this->class = RedirectFinisher::class;
     $this->returns = boolval($settings['returns'] ?? false);
+    if (is_array($settings['additionalParams'] ?? false)) {
+      foreach ($settings['additionalParams'] as $queryParam => $valueOrFieldName) {
+        $this->additionalParams[strval($queryParam)] = strval($valueOrFieldName);
+      }
+    }
     $this->headerStatusCode = intval($settings['headerStatusCode'] ?? 303);
   }
 }

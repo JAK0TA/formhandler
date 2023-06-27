@@ -16,8 +16,15 @@ class RedirectFinisher extends AbstractFinisher {
       return;
     }
 
+    if (!empty($finisherConfig->additionalParams)) {
+      foreach ($finisherConfig->additionalParams as &$valueOrFieldName) {
+        // TODO: Lookup valueOrFieldName in field names (and markers???) and replace it with value if found.
+      }
+    }
+
     $uri = $formConfig->site->getRouter()->generateUri(
-      $formConfig->redirectPage
+      $formConfig->redirectPage,
+      $finisherConfig->additionalParams,
     )->withFragment('c0')->__toString();
 
     $finisherConfig->redirectResponse = new RedirectResponse(
