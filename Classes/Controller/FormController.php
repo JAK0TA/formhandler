@@ -48,7 +48,7 @@ class FormController extends ActionController {
       if ($this->formStepValid() && !$this->formNextStep()) {
         $this->saveInterceptors();
         // TODO: Execute Logger
-        // TODO: Execute Finisher
+        $this->finishers();
 
         // TODO: Return Success and exit
       }
@@ -114,6 +114,12 @@ class FormController extends ActionController {
 
     // TODO: Activate me, once done
     // return $this->htmlResponse();
+  }
+
+  private function finishers(): void {
+    foreach ($this->formConfig->finishers as $finisher) {
+      GeneralUtility::makeInstance($finisher->class)->process($this->formConfig, $finisher);
+    }
   }
 
   private function formConfigValid(): bool {

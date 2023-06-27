@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Domain\Model\Config\Finisher;
 
-abstract class AbstractFinisherModel {
-  public string $class = '';
+use Typoheads\Formhandler\Finisher\AbstractFinisher;
 
-  public bool $returns = false;
+abstract class AbstractFinisherModel {
+  /** @var class-string<AbstractFinisher> */
+  public string $class;
 
   /**
    * @param array<string, mixed> $settings
    */
-  public function __construct(array $settings) {
-    $this->returns = boolval($settings['returns'] ?? false);
-  }
+  abstract public function __construct(array $settings);
 }

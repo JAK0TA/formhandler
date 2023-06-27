@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Domain\Model\Config\Finisher;
 
+use Typoheads\Formhandler\Finisher\RedirectFinisher;
+
 class RedirectFinisherModel extends AbstractFinisherModel {
   /**
    * @param array<string, mixed> $settings
    */
-  public function __construct(
-    protected readonly array $settings
-  ) {
-    parent::__construct($settings);
-
-    $this->class = '\\Typoheads\\Formhandler\\Finisher\\RedirectFinisher';
+  public function __construct(array $settings) {
+    $this->class = RedirectFinisher::class;
+    if (isset($settings['FIXME'])) {
+    }
   }
 }
