@@ -9,6 +9,7 @@ use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Http\RedirectResponse;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use Typoheads\Formhandler\Definitions\FormhandlerExtensionConfig;
 use Typoheads\Formhandler\Domain\Model\Config\FieldSetModel;
 use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 use Typoheads\Formhandler\Domain\Model\Config\Validator\Field\FieldModel;
@@ -41,6 +42,23 @@ class FormController extends ActionController {
 
     $this->formConfig->site = $this->request->getAttribute('site');
     $this->formConfig->parsedBody = (array) $this->request->getParsedBody();
+    $queryParams = (array) $this->request->getQueryParams();
+
+    if (is_array($queryParams[FormhandlerExtensionConfig::EXTENSION_KEY] ?? false)) {
+      if (isset($queryParams[FormhandlerExtensionConfig::EXTENSION_KEY]['randomId'])) {
+        $this->formConfig->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['randomId'] = strval($queryParams[FormhandlerExtensionConfig::EXTENSION_KEY]['randomId']);
+      }
+      if (isset($queryParams[FormhandlerExtensionConfig::EXTENSION_KEY]['step'])) {
+        $this->formConfig->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['step'] = intval($queryParams[FormhandlerExtensionConfig::EXTENSION_KEY]['step']);
+      }
+    }
+
+    if (is_array($this->formConfig->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY] ?? false)) {
+      $this->formConfig->randomId = strval($this->formConfig->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['randomId'] ?? '');
+      if (empty($this->formConfig->randomId)) {
+        $this->formConfig->randomId = GeneralUtility::makeInstance(Utility::class)::generateRandomId($this->formConfig);
+      }
+    }
 
     // Check if form session exists or start new if first form access
     if (!$this->formSession()) {
