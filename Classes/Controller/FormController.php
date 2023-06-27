@@ -38,6 +38,7 @@ class FormController extends ActionController {
 
     $jsonResponse = new JsonResponseModel();
 
+    $this->formConfig->site = $this->request->getAttribute('site');
     $this->formConfig->parsedBody = (array) $this->request->getParsedBody();
 
     // Check if form session exists or start new if first form access

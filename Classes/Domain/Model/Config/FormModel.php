@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Domain\Model\Config;
 
+use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Typoheads\Formhandler\Definitions\FormhandlerExtensionConfig;
 use Typoheads\Formhandler\Domain\Model\Config\Finisher\AbstractFinisherModel;
@@ -61,6 +62,8 @@ class FormModel {
   public array $saveInterceptors = [];
 
   public AbstractSession $session;
+
+  public ?Site $site;
 
   public int $step = 1;
 
