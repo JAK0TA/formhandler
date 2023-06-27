@@ -281,6 +281,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
       model = RedirectFinisherModel
       config {
         returns = true
+        correctRedirectUrl = false
         additionalParams {
           postal_code = [1][customer][postalCode]
           queryParam2 = valueIfNotFoundAsFieldName

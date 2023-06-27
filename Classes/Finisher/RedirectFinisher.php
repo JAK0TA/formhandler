@@ -27,6 +27,11 @@ class RedirectFinisher extends AbstractFinisher {
       $finisherConfig->additionalParams,
     )->withFragment('c0')->__toString();
 
+    if (!empty($finisherConfig->correctRedirectUrl)) {
+      // TODO: Check if still needed
+      $uri = str_replace('&amp;', '&', $uri);
+    }
+
     $finisherConfig->redirectResponse = new RedirectResponse(
       (string) GeneralUtility::locationHeaderUrl($uri),
       $finisherConfig->headerStatusCode

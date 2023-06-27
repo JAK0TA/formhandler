@@ -10,6 +10,8 @@ class RedirectFinisherModel extends AbstractFinisherModel {
   /** @var array<string, string> */
   public array $additionalParams = [];
 
+  public bool $correctRedirectUrl = false;
+
   public int $headerStatusCode = 303;
 
   /**
@@ -23,6 +25,7 @@ class RedirectFinisherModel extends AbstractFinisherModel {
         $this->additionalParams[strval($queryParam)] = strval($valueOrFieldName);
       }
     }
+    $this->correctRedirectUrl = boolval($settings['correctRedirectUrl'] ?? false);
     $this->headerStatusCode = intval($settings['headerStatusCode'] ?? 303);
   }
 }
