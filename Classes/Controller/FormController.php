@@ -47,7 +47,7 @@ class FormController extends ActionController {
 
       if ($this->formStepValid() && !$this->formNextStep()) {
         $this->saveInterceptors();
-        // TODO: Execute Logger
+        $this->loggers();
         $this->finishers();
 
         // TODO: Return Success and exit
@@ -153,6 +153,12 @@ class FormController extends ActionController {
   private function initInterceptors(): void {
     foreach ($this->formConfig->initInterceptors as $initInterceptor) {
       GeneralUtility::makeInstance($initInterceptor->class)->process($this->formConfig, $initInterceptor);
+    }
+  }
+
+  private function loggers(): void {
+    foreach ($this->formConfig->loggers as $logger) {
+      GeneralUtility::makeInstance($logger->class)->process($this->formConfig, $logger);
     }
   }
 
