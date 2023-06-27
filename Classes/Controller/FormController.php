@@ -11,6 +11,7 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Typoheads\Formhandler\Domain\Model\Config\FieldSetModel;
 use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 use Typoheads\Formhandler\Domain\Model\Config\Validator\Field\FieldModel;
+use Typoheads\Formhandler\Domain\Model\Json\JsonResponseModel;
 use Typoheads\Formhandler\Utility\Utility;
 
 class FormController extends ActionController {
@@ -35,6 +36,8 @@ class FormController extends ActionController {
       // TODO: Return with error
     }
 
+    $jsonResponse = new JsonResponseModel();
+
     $this->formConfig->parsedBody = (array) $this->request->getParsedBody();
 
     // Check if form session exists or start new if first form access
@@ -43,6 +46,15 @@ class FormController extends ActionController {
     }
 
     $this->initInterceptors();
+
+    if ('json' == $this->formConfig->responseType) {
+      $jsonResponse->formId = $this->formConfig->formId;
+      $jsonResponse->formName = $this->formConfig->formName;
+      $jsonResponse->formUrl = $this->formConfig->formUrl;
+      $jsonResponse->formValuesPrefix = $this->formConfig->formValuesPrefix;
+      $jsonResponse->requiredFields = $this->formConfig->requiredFields;
+      $jsonResponse->step = $this->formConfig->step;
+    }
 
     if ($this->formSubmitted()) {
       $this->validators();
@@ -54,6 +66,21 @@ class FormController extends ActionController {
 
         // TODO: Return Success and exit
       }
+    }
+
+    if ('json' == $this->formConfig->responseType) {
+      $steps = $this->formConfig->steps;
+      GeneralUtility::makeInstance(Utility::class)::removeKeys(
+        $steps,
+        [
+          'class',
+          'restrictErrorChecks',
+          'templateForm',
+        ]
+      );
+      $jsonResponse->steps = $steps;
+
+      return $this->jsonResponse(json_encode($jsonResponse) ?: '{}');
     }
 
     // Prepare output
@@ -68,25 +95,6 @@ class FormController extends ActionController {
         'step' => $this->formConfig->step,
       ]
     );
-
-    if ('json' == $this->formConfig->responseType) {
-      $steps = $this->formConfig->steps;
-      GeneralUtility::makeInstance(Utility::class)::removeKeys(
-        $steps,
-        [
-          'class',
-          'restrictErrorChecks',
-          'templateForm',
-        ]
-      );
-
-      $this->view->assign(
-        'steps',
-        $steps,
-      );
-
-      return $this->jsonResponse();
-    }
 
     $this->prepareFormSets();
 
