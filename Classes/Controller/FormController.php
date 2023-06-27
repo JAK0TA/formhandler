@@ -22,6 +22,8 @@ class FormController extends ActionController {
 
   protected FormModel $formConfig;
 
+  protected JsonResponseModel $jsonResponse;
+
   public function __construct(
     protected readonly PageRepository $pageRepository
   ) {
@@ -37,8 +39,6 @@ class FormController extends ActionController {
     if (!$this->formConfigValid()) {
       // TODO: Return with error
     }
-
-    $jsonResponse = new JsonResponseModel();
 
     $this->formConfig->site = $this->request->getAttribute('site');
     $this->formConfig->parsedBody = (array) $this->request->getParsedBody();
@@ -67,14 +67,7 @@ class FormController extends ActionController {
 
     $this->initInterceptors();
 
-    if ('json' == $this->formConfig->responseType) {
-      $jsonResponse->formId = $this->formConfig->formId;
-      $jsonResponse->formName = $this->formConfig->formName;
-      $jsonResponse->formUrl = $this->formConfig->formUrl;
-      $jsonResponse->formValuesPrefix = $this->formConfig->formValuesPrefix;
-      $jsonResponse->requiredFields = $this->formConfig->requiredFields;
-      $jsonResponse->step = $this->formConfig->step;
-    }
+    $this->initJsonResponse();
 
     if ($this->formSubmitted()) {
       $this->validators();
@@ -84,19 +77,19 @@ class FormController extends ActionController {
         $this->loggers();
         if (($redirectResponse = $this->finishers()) !== null) {
           if ('json' == $this->formConfig->responseType) {
-            $jsonResponse->success = true;
-            $jsonResponse->redirectPage = $redirectResponse->getHeaderLine('location');
-            $jsonResponse->redirectCode = $redirectResponse->getStatusCode();
+            $this->jsonResponse->success = true;
+            $this->jsonResponse->redirectPage = $redirectResponse->getHeaderLine('location');
+            $this->jsonResponse->redirectCode = $redirectResponse->getStatusCode();
 
-            return $this->jsonResponse(json_encode($jsonResponse) ?: '{}');
+            return $this->jsonResponse(json_encode($this->jsonResponse) ?: '{}');
           }
 
           return $redirectResponse;
         }
         if ('json' == $this->formConfig->responseType) {
-          $jsonResponse->success = true;
+          $this->jsonResponse->success = true;
 
-          return $this->jsonResponse(json_encode($jsonResponse) ?: '{}');
+          return $this->jsonResponse(json_encode($this->jsonResponse) ?: '{}');
         }
       }
     }
@@ -111,9 +104,9 @@ class FormController extends ActionController {
           'templateForm',
         ]
       );
-      $jsonResponse->steps = $steps;
+      $this->jsonResponse->steps = $steps;
 
-      return $this->jsonResponse(json_encode($jsonResponse) ?: '{}');
+      return $this->jsonResponse(json_encode($this->jsonResponse) ?: '{}');
     }
 
     // Prepare output
@@ -199,6 +192,18 @@ class FormController extends ActionController {
   private function initInterceptors(): void {
     foreach ($this->formConfig->initInterceptors as $initInterceptor) {
       GeneralUtility::makeInstance($initInterceptor->class)->process($this->formConfig, $initInterceptor);
+    }
+  }
+
+  private function initJsonResponse(): void {
+    if ('json' == $this->formConfig->responseType) {
+      $this->jsonResponse = new JsonResponseModel();
+      $this->jsonResponse->formId = $this->formConfig->formId;
+      $this->jsonResponse->formName = $this->formConfig->formName;
+      $this->jsonResponse->formUrl = $this->formConfig->formUrl;
+      $this->jsonResponse->formValuesPrefix = $this->formConfig->formValuesPrefix;
+      $this->jsonResponse->requiredFields = $this->formConfig->requiredFields;
+      $this->jsonResponse->step = $this->formConfig->step;
     }
   }
 
