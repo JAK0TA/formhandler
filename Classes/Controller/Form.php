@@ -185,13 +185,13 @@ class Form extends AbstractController {
 
           GeneralUtility::makeInstance(PageRenderer::class)->addCssFile(
             $file,
-            $fileOptions['alternate'] ? 'alternate stylesheet' : 'stylesheet',
-            $fileOptions['media'] ? $fileOptions['media'] : 'all',
-            $fileOptions['title'] ? $fileOptions['title'] : '',
+            boolval($fileOptions['alternate'] ?? false) ? 'alternate stylesheet' : 'stylesheet',
+            $fileOptions['media'] ?? 'all',
+            $fileOptions['title'] ?? '',
             empty($fileOptions['disableCompression']),
-            $fileOptions['forceOnTop'] ? true : false,
-            $fileOptions['allWrap'],
-            $fileOptions['excludeFromConcatenation'] ? true : false
+            boolval($fileOptions['forceOnTop'] ?? false),
+            $fileOptions['allWrap'] ?? '',
+            boolval($fileOptions['excludeFromConcatenation'] ?? false)
           );
         }
       }
@@ -254,11 +254,11 @@ class Form extends AbstractController {
 
           GeneralUtility::makeInstance(PageRenderer::class)->addJsFile(
             $file,
-            $fileOptions['type'] ? $fileOptions['type'] : 'text/javascript',
+            $fileOptions['type'] ?? 'text/javascript',
             empty($fileOptions['disableCompression']),
-            $fileOptions['forceOnTop'] ? true : false,
-            $fileOptions['allWrap'],
-            $fileOptions['excludeFromConcatenation'] ? true : false
+            boolval($fileOptions['forceOnTop'] ?? false),
+            $fileOptions['allWrap'] ?? '',
+            boolval($fileOptions['excludeFromConcatenation'] ?? false)
           );
         }
       }
@@ -279,11 +279,11 @@ class Form extends AbstractController {
 
           GeneralUtility::makeInstance(PageRenderer::class)->addJsFooterFile(
             $file,
-            $fileOptions['type'] ? $fileOptions['type'] : 'text/javascript',
+            $fileOptions['type'] ?? 'text/javascript',
             empty($fileOptions['disableCompression']),
-            $fileOptions['forceOnTop'] ? true : false,
-            $fileOptions['allWrap'],
-            $fileOptions['excludeFromConcatenation'] ? true : false
+            boolval($fileOptions['forceOnTop'] ?? false),
+            $fileOptions['allWrap'] ?? '',
+            boolval($fileOptions['excludeFromConcatenation'] ?? false)
           );
         }
       }
