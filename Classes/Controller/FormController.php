@@ -141,8 +141,7 @@ class FormController extends ActionController {
   }
 
   private function formSubmitted(): bool {
-    // TODO: Check if form Submitted
-    return false;
+    return boolval($this->formConfig->parsedBody['submitted'] ?? false);
   }
 
   private function initInterceptors(): void {
