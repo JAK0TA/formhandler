@@ -77,18 +77,21 @@ class Typo3Session extends AbstractSession {
       // TODO: Report Error
       return $this;
     }
-    $this->formConfig->debugMessage('Session started: %s', [$randomId]);
+    $this->formConfig->debugMessage(
+      key: 'Session started: %s',
+      printfArgs: [$randomId]
+    );
 
     $this->cacheIdentifier = 'formhandler_'.$randomId;
     $data = $this->cache->get($this->cacheIdentifier);
-    $this->formConfig->debugMessage(
-      key: 'Session data for: %s',
-      printfArgs: [$randomId],
-      data: $data,
-    );
 
     if (is_array($data)) {
       $this->data = $data;
+      $this->formConfig->debugMessage(
+        key: 'Session data for: %s',
+        printfArgs: [$randomId],
+        data: $data,
+      );
     }
     $this->started = true;
 
