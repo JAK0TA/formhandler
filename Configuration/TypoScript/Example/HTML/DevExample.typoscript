@@ -41,6 +41,16 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
       }
     }
   }
+
+  debuggers {
+    VarDumpDebugger {
+      model = VarDumpDebuggerModel
+      config {
+        active = true
+      }
+    }
+  }
+
   loggers {
     Database {
       model = DatabaseLoggerModel
