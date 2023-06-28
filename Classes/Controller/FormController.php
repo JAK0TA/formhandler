@@ -101,6 +101,8 @@ class FormController extends ActionController {
       }
     }
 
+    $this->prepareFormSets();
+
     if ('json' == $this->formConfig->responseType) {
       $steps = $this->formConfig->steps;
       GeneralUtility::makeInstance(Utility::class)::removeKeys(
@@ -112,13 +114,13 @@ class FormController extends ActionController {
         ]
       );
       $this->jsonResponse->steps = $steps;
+      $this->jsonResponse->fieldSets = $this->formConfig->fieldSets;
+      $this->jsonResponse->formValues = $this->formConfig->formValues;
 
       $this->formConfig->processDebugLog();
 
       return $this->jsonResponse(json_encode($this->jsonResponse) ?: '{}');
     }
-
-    $this->prepareFormSets();
 
     foreach ($this->formConfig->steps[$this->formConfig->step]->validators as $validator) {
       foreach ($validator->fields as $field) {
@@ -138,7 +140,6 @@ class FormController extends ActionController {
         'formName' => $this->formConfig->formName,
         'formUrl' => $this->formConfig->formUrl,
         'formValuesPrefix' => $this->formConfig->formValuesPrefix,
-        'requiredFields' => $this->formConfig->requiredFields,
         'langFileDefault' => $this->formConfig->langFileDefault,
         'step' => $this->formConfig->step,
         'steps' => $this->formConfig->steps,
@@ -268,6 +269,7 @@ class FormController extends ActionController {
   private function initJsonResponse(): void {
     if ('json' == $this->formConfig->responseType) {
       $this->jsonResponse = new JsonResponseModel();
+      $this->jsonResponse->fieldsSelectOptions = $this->formConfig->fieldsSelectOptions;
       $this->jsonResponse->formId = $this->formConfig->formId;
       $this->jsonResponse->formName = $this->formConfig->formName;
       $this->jsonResponse->formUrl = $this->formConfig->formUrl;

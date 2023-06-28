@@ -5,11 +5,20 @@ declare(strict_types=1);
 namespace Typoheads\Formhandler\Domain\Model\Json;
 
 class JsonResponseModel {
+  /** @var FieldSetModel[] */
+  public array $fieldSets = [];
+
+  /** @var array<string, SelectOptionModel[]> */
+  public array $fieldsSelectOptions = [];
+
   public string $formId = '';
 
   public string $formName = '';
 
   public string $formUrl = '';
+
+  /** @var array<string, mixed> */
+  public array $formValues;
 
   public string $formValuesPrefix = '';
 
