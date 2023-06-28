@@ -8,22 +8,25 @@ use Typoheads\Formhandler\Finisher\RedirectFinisher;
 
 class RedirectFinisherModel extends AbstractFinisherModel {
   /** @var array<string, string> */
-  public array $additionalParams = [];
+  public readonly array $additionalParams;
 
-  public bool $correctRedirectUrl = false;
+  public readonly bool $correctRedirectUrl;
 
-  public int $headerStatusCode = 303;
+  public readonly int $headerStatusCode;
 
   /**
    * @param array<string, mixed> $settings
    */
   public function __construct(array $settings) {
     $this->returns = boolval($settings['returns'] ?? false);
+    $additionalParams = [];
     if (is_array($settings['additionalParams'] ?? false)) {
       foreach ($settings['additionalParams'] as $queryParam => $valueOrFieldName) {
-        $this->additionalParams[strval($queryParam)] = strval($valueOrFieldName);
+        $additionalParams[strval($queryParam)] = strval($valueOrFieldName);
       }
     }
+    $this->additionalParams = $additionalParams;
+
     $this->correctRedirectUrl = boolval($settings['correctRedirectUrl'] ?? false);
     $this->headerStatusCode = intval($settings['headerStatusCode'] ?? 303);
   }

@@ -9,10 +9,10 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\AbstractValidatorModel;
 use Typoheads\Formhandler\Utility\Utility;
 
 class StepModel {
-  public string $templateForm = '';
+  public readonly string $templateForm;
 
   /** @var AbstractValidatorModel[] */
-  public array $validators = [];
+  public readonly array $validators;
 
   /**
    * @param array<string, mixed> $settings
@@ -23,14 +23,21 @@ class StepModel {
     $this->templateForm = strval($settings['templateForm'] ?? $templateForm);
 
     if (!is_array($settings['validators'] ?? false)) {
+      $this->validators = [];
+
       return;
     }
 
+    $validators = [];
     foreach ($settings['validators'] as $validator) {
       /** @var AbstractValidatorModel $validatorModel */
       $validatorModel = GeneralUtility::makeInstance($utility::classString(strval($validator['model'] ?? 'Typoheads\\Formhandler\\Domain\Model\\Config\\Validator\\DefaultValidator'), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Validator\\'), $validator['config'] ?? []);
 
-      $this->validators[] = $validatorModel;
+      $validators[] = $validatorModel;
     }
+
+    // TODO: remove ignore once fixed: https://github.com/phpstan/phpstan/issues/6402
+    // @phpstan-ignore-next-line
+    $this->validators = $validators;
   }
 }

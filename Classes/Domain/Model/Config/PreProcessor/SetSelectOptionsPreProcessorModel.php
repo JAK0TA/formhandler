@@ -7,10 +7,10 @@ namespace Typoheads\Formhandler\Domain\Model\Config\PreProcessor;
 use Typoheads\Formhandler\PreProcessor\SetSelectOptionsPreProcessor;
 
 class SetSelectOptionsPreProcessorModel extends AbstractPreProcessorModel {
-  public string $field = '';
+  public readonly string $field;
 
   /** @var array<string, string> */
-  public array $options = [];
+  public readonly array $options;
 
   /**
    * @param array<string, mixed> $settings
@@ -19,16 +19,22 @@ class SetSelectOptionsPreProcessorModel extends AbstractPreProcessorModel {
     $this->field = strval($settings['field'] ?? '');
 
     if (!is_array($settings['options'] ?? false)) {
+      $this->options = [];
+
       return;
     }
 
-    // Get form logger
+    $options = [];
     foreach ($settings['options'] as $option) {
       if (!isset($option['title'],$option['value'])) {
         continue;
       }
-      $this->options[strval($option['value'])] = strval($option['title']);
+      $options[strval($option['value'])] = strval($option['title']);
     }
+
+    // TODO: remove ignore once fixed: https://github.com/phpstan/phpstan/issues/6402
+    // @phpstan-ignore-next-line
+    $this->options = $options;
   }
 
   public function class(): string {
