@@ -40,6 +40,31 @@ class Utility implements SingletonInterface {
   }
 
   /**
+   * @param array<int|string, mixed>|string $values
+   *
+   * @return array<int|string, mixed>|string
+   */
+  public static function recursiveHtmlSpecialChars(array|string $values): array|string {
+    if (is_array($values)) {
+      if (empty($values)) {
+        $values = '';
+      } else {
+        foreach ($values as &$value) {
+          if (is_array($value)) {
+            $value = self::recursiveHtmlSpecialChars($value);
+          } else {
+            $value = htmlspecialchars(serialize($value));
+          }
+        }
+      }
+    } else {
+      $values = htmlspecialchars($values);
+    }
+
+    return $values;
+  }
+
+  /**
    * @param array<int|string, mixed> $array
    * @param array<int, int|string>   $removeKeys
    */
