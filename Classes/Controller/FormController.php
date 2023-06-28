@@ -64,6 +64,9 @@ class FormController extends ActionController {
     // Check if form session exists or start new if first form access
     $this->formSession();
 
+    // TODO: initializeDebuggers
+    // $this->initializeDebuggers();
+
     $this->mergeParsedBodyWithSession();
 
     $this->initInterceptors();
