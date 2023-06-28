@@ -136,7 +136,7 @@ class FormModel {
         }
 
         /** @var AbstractLoggerModel $loggerModel */
-        $loggerModel = GeneralUtility::makeInstance($utility::classString(strval($logger['model']), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Logger\\'), $settings['user'] ?? []);
+        $loggerModel = GeneralUtility::makeInstance($utility::classString(strval($logger['model']), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Logger\\'), $logger['config'] ?? []);
 
         $this->loggers[] = $loggerModel;
       }
