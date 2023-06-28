@@ -38,6 +38,7 @@ class Typo3Session extends AbstractSession {
   public function reset(): Typo3Session {
     $this->data = [];
     $this->cache->remove($this->cacheIdentifier);
+    $this->started = false;
 
     return $this;
   }
@@ -71,18 +72,13 @@ class Typo3Session extends AbstractSession {
     return $this;
   }
 
-  public function start(): Typo3Session {
-    if (!isset($this->formConfig)) {
-      // TODO: Report Error
-      return $this;
-    }
-
+  public function start(string $randomId): Typo3Session {
     if ($this->started) {
       // TODO: Report Error
       return $this;
     }
 
-    $this->cacheIdentifier = 'formhandler_'.$this->formConfig->randomId;
+    $this->cacheIdentifier = 'formhandler_'.$randomId;
     $data = $this->cache->get($this->cacheIdentifier);
     if (is_array($data)) {
       $this->data = $data;

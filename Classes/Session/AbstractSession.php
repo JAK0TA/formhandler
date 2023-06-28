@@ -31,7 +31,7 @@ abstract class AbstractSession implements SingletonInterface {
    */
   abstract public function setMultiple(array $values): AbstractSession;
 
-  abstract public function start(): AbstractSession;
+  abstract public function start(string $randomId): AbstractSession;
 
   abstract protected function getLifetime(): int;
 }
