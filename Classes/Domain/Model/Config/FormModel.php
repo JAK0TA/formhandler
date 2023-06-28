@@ -6,7 +6,10 @@ namespace Typoheads\Formhandler\Domain\Model\Config;
 
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use Typoheads\Formhandler\Debugger\AbstractDebugger;
 use Typoheads\Formhandler\Definitions\FormhandlerExtensionConfig;
+use Typoheads\Formhandler\Definitions\Severity;
 use Typoheads\Formhandler\Domain\Model\Config\Debugger\AbstractDebuggerModel;
 use Typoheads\Formhandler\Domain\Model\Config\Finisher\AbstractFinisherModel;
 use Typoheads\Formhandler\Domain\Model\Config\Interceptor\AbstractInterceptorModel;
@@ -17,9 +20,6 @@ use Typoheads\Formhandler\Utility\Utility;
 
 class FormModel {
   public MailModel $admin;
-
-  /** @var AbstractDebuggerModel[] */
-  public array $debuggers = [];
 
   /** @var FieldSetModel[] */
   public array $fieldSets = [];
@@ -80,6 +80,12 @@ class FormModel {
 
   public MailModel $user;
 
+  /** @var AbstractDebugger[] */
+  private array $debuggers = [];
+
+  /** @var array<string, array<int, array{message: string, severity: Severity, data: array<int|string, mixed>|string}>> */
+  private array $debugLog = [];
+
   /**
    * @param array<string, mixed> $settings
    */
@@ -118,9 +124,9 @@ class FormModel {
         }
 
         /** @var AbstractDebuggerModel $debuggerModel */
-        $debuggerModel = GeneralUtility::makeInstance($utility::classString(strval($debugger['model']), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Debugger\\'), $settings['user'] ?? []);
+        $debuggerModel = GeneralUtility::makeInstance($utility::classString(strval($debugger['model']), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Debugger\\'), $debugger['config'] ?? []);
 
-        $this->debuggers[] = $debuggerModel;
+        $this->debuggers[] = GeneralUtility::makeInstance($debuggerModel->class(), $this, $debuggerModel);
       }
 
       // Get form logger
@@ -193,6 +199,50 @@ class FormModel {
 
         $this->finishers[] = $finisherModel;
       }
+    }
+  }
+
+  /**
+   * Method to log a debug message.
+   * The message will be handled by one or more configured "Debuggers".
+   *
+   * @param string                                 $key        The message or key in language file (locallang_debug.xlf)
+   * @param array<int, null|bool|float|int|string> $printfArgs if the message contains placeholders for usage with printf, pass the replacement values in this array
+   * @param Severity                               $severity   The severity of the message. Valid values are Severity::Info, Severity::Warning and Severity::Error
+   * @param array<int|string, mixed>|string        $data       Additional debug data (e.g. the array of GET/POST values)
+   */
+  public function debugMessage(string $key, array $printfArgs = [], Severity $severity = Severity::Info, array|string $data = []): void {
+    if (empty($this->debuggers)) {
+      return;
+    }
+
+    $message = trim(LocalizationUtility::translate('LLL:EXT:formhandler/Resources/Private/Language/locallang_debug.xlf:'.$key) ?? $key);
+    if (count($printfArgs) > 0) {
+      $message = vsprintf($message, $printfArgs);
+    }
+
+    $data = Utility::recursiveHtmlSpecialChars($data);
+
+    $trace = debug_backtrace();
+    $section = '';
+    if (isset($trace[1])) {
+      $section = strval($trace[1]['class'] ?? '');
+    }
+
+    if (empty($section)) {
+      return;
+    }
+
+    if (!isset($this->debugLog[$section])) {
+      $this->debugLog[$section] = [];
+    }
+
+    $this->debugLog[$section][] = ['message' => $message, 'severity' => $severity, 'data' => $data];
+  }
+
+  public function processDebugLog(): void {
+    foreach ($this->debuggers as $debugger) {
+      $debugger->processDebugLog($this->debugLog);
     }
   }
 }

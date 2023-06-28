@@ -64,8 +64,6 @@ class FormController extends ActionController {
     // Check if form session exists or start new if first form access
     $this->formSession();
 
-    $this->initializeDebuggers();
-
     $this->mergeParsedBodyWithSession();
 
     $this->initInterceptors();
@@ -115,6 +113,8 @@ class FormController extends ActionController {
       );
       $this->jsonResponse->steps = $steps;
 
+      $this->formConfig->processDebugLog();
+
       return $this->jsonResponse(json_encode($this->jsonResponse) ?: '{}');
     }
 
@@ -125,6 +125,8 @@ class FormController extends ActionController {
         $this->prepareFieldRequired('', $field);
       }
     }
+
+    $this->formConfig->processDebugLog();
 
     // Prepare output
     $this->view->assignMultiple(
@@ -246,12 +248,6 @@ class FormController extends ActionController {
     }
 
     return false;
-  }
-
-  private function initializeDebuggers(): void {
-    foreach ($this->formConfig->initInterceptors as $initInterceptor) {
-      GeneralUtility::makeInstance($initInterceptor->class)->process($this->formConfig, $initInterceptor);
-    }
   }
 
   private function initInterceptors(): void {
