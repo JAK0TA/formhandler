@@ -73,7 +73,7 @@ class FormController extends ActionController {
     if ($this->formSubmitted()) {
       $this->validators();
 
-      if ($this->formStepValid() && $this->formStepIsLast()) {
+      if ($this->formStepIsValid() && $this->formStepIsLast()) {
         $this->saveInterceptors();
         $this->loggers();
         if (($redirectResponse = $this->finishers()) !== null) {
@@ -219,7 +219,7 @@ class FormController extends ActionController {
     return count($this->formConfig->steps) == $this->formConfig->step;
   }
 
-  private function formStepValid(): bool {
+  private function formStepIsValid(): bool {
     // TODO: Check if form step is valid
     return false;
   }
