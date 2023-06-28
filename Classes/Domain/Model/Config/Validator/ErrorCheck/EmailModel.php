@@ -11,7 +11,15 @@ class EmailModel extends AbstractErrorCheckModel {
   public function __construct(
     protected readonly array $settings
   ) {
-    $this->class = '\\Typoheads\\Formhandler\\Validator\\ErrorCheck\\Email';
-    $this->name = 'Email';
+  }
+
+  public function class(): string {
+    // TODO: FIX ME
+    // @phpstan-ignore-next-line
+    return '\\Typoheads\\Formhandler\\Validator\\ErrorCheck\\Email';
+  }
+
+  public function name(): string {
+    return 'Email';
   }
 }

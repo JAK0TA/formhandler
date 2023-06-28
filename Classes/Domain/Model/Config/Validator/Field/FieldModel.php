@@ -53,11 +53,11 @@ class FieldModel {
 
       /** @var AbstractErrorCheckModel $errorCheckModel */
       $errorCheckModel = GeneralUtility::makeInstance($utility->classString(strval($errorCheck['model']), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Validator\\ErrorCheck\\'), (array) $errorCheck);
-      if (isset($this->validator->disableErrorCheckFields[$this->name]) && in_array($errorCheckModel->class, $this->validator->disableErrorCheckFields[$this->name])) {
+      if (isset($this->validator->disableErrorCheckFields[$this->name]) && in_array($errorCheckModel->class(), $this->validator->disableErrorCheckFields[$this->name])) {
         continue;
       }
 
-      if (!empty($this->validator->restrictErrorChecks) && !in_array($errorCheckModel->class, $this->validator->restrictErrorChecks)) {
+      if (!empty($this->validator->restrictErrorChecks) && !in_array($errorCheckModel->class(), $this->validator->restrictErrorChecks)) {
         continue;
       }
       $this->errorChecks[] = $errorCheckModel;

@@ -159,7 +159,7 @@ class FormController extends ActionController {
 
   private function finishers(): ?RedirectResponse {
     foreach ($this->formConfig->finishers as $finisher) {
-      GeneralUtility::makeInstance($finisher->class)->process($this->formConfig, $finisher);
+      GeneralUtility::makeInstance($finisher->class())->process($this->formConfig, $finisher);
       if ($finisher->returns) {
         return $finisher->redirectResponse;
       }
@@ -217,7 +217,7 @@ class FormController extends ActionController {
 
       // Execute PreProcessor
       foreach ($this->formConfig->preProcessors as $preProcessor) {
-        GeneralUtility::makeInstance($preProcessor->class)->process($this->formConfig, $preProcessor);
+        GeneralUtility::makeInstance($preProcessor->class())->process($this->formConfig, $preProcessor);
       }
 
       $this->formConfig->session->setMultiple(
@@ -257,7 +257,7 @@ class FormController extends ActionController {
 
   private function initInterceptors(): void {
     foreach ($this->formConfig->initInterceptors as $initInterceptor) {
-      GeneralUtility::makeInstance($initInterceptor->class)->process($this->formConfig, $initInterceptor);
+      GeneralUtility::makeInstance($initInterceptor->class())->process($this->formConfig, $initInterceptor);
     }
   }
 
@@ -275,7 +275,7 @@ class FormController extends ActionController {
 
   private function loggers(): void {
     foreach ($this->formConfig->loggers as $logger) {
-      GeneralUtility::makeInstance($logger->class)->process($this->formConfig, $logger);
+      GeneralUtility::makeInstance($logger->class())->process($this->formConfig, $logger);
     }
   }
 
@@ -316,7 +316,8 @@ class FormController extends ActionController {
   private function prepareFieldRequired(string $fieldNamePath, FieldModel $field): void {
     $fieldNamePath .= '['.$field->name.']';
     foreach ($field->errorChecks as $errorCheck) {
-      if ('Required' == $errorCheck->name) {
+      // TODO: Maybe add $errorCheck->isRequired()?
+      if ('Required' == $errorCheck->name()) {
         $this->fieldsRequired[$fieldNamePath] = true;
       }
     }
@@ -333,13 +334,13 @@ class FormController extends ActionController {
 
   private function saveInterceptors(): void {
     foreach ($this->formConfig->saveInterceptors as $saveInterceptor) {
-      GeneralUtility::makeInstance($saveInterceptor->class)->process($this->formConfig, $saveInterceptor);
+      GeneralUtility::makeInstance($saveInterceptor->class())->process($this->formConfig, $saveInterceptor);
     }
   }
 
   private function validators(): void {
     foreach ($this->formConfig->steps[$this->formConfig->step]->validators as $validator) {
-      GeneralUtility::makeInstance($validator->class)->process($this->formConfig, $validator);
+      GeneralUtility::makeInstance($validator->class())->process($this->formConfig, $validator);
     }
   }
 }

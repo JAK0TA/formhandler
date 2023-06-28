@@ -11,7 +11,10 @@ class MailFinisherModel extends AbstractFinisherModel {
    * @param array<string, mixed> $settings
    */
   public function __construct(array $settings) {
-    $this->class = MailFinisher::class;
     $this->returns = boolval($settings['returns'] ?? false);
+  }
+
+  public function class(): string {
+    return MailFinisher::class;
   }
 }

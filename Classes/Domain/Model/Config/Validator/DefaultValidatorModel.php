@@ -15,7 +15,6 @@ class DefaultValidatorModel extends AbstractValidatorModel {
    */
   public function __construct(array $settings) {
     $utility = GeneralUtility::makeInstance(Utility::class);
-    $this->class = DefaultValidator::class;
 
     foreach (GeneralUtility::trimExplode(',', strval($settings['restrictErrorChecks'] ?? ''), true) as $restrictErrorCheck) {
       $this->restrictErrorChecks[] = $utility->classString($restrictErrorCheck, '\\Typoheads\\Formhandler\\Validator\\ErrorCheck\\');
@@ -58,5 +57,9 @@ class DefaultValidatorModel extends AbstractValidatorModel {
         $this->fields[] = $fieldModel;
       }
     }
+  }
+
+  public function class(): string {
+    return DefaultValidator::class;
   }
 }

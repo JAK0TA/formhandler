@@ -8,9 +8,6 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\Field\FieldModel;
 use Typoheads\Formhandler\Validator\AbstractValidator;
 
 abstract class AbstractValidatorModel {
-  /** @var class-string<AbstractValidator> */
-  public string $class;
-
   /** @var array<string, string[]> */
   public array $disableErrorCheckFields = [];
 
@@ -29,4 +26,9 @@ abstract class AbstractValidatorModel {
    * @param array<string, mixed> $settings
    */
   abstract public function __construct(array $settings);
+
+  /**
+   * @return class-string<AbstractValidator>
+   */
+  abstract public function class(): string;
 }

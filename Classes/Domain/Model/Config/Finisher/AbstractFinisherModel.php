@@ -8,9 +8,6 @@ use TYPO3\CMS\Core\Http\RedirectResponse;
 use Typoheads\Formhandler\Finisher\AbstractFinisher;
 
 abstract class AbstractFinisherModel {
-  /** @var class-string<AbstractFinisher> */
-  public string $class;
-
   public ?RedirectResponse $redirectResponse = null;
 
   public bool $returns = false;
@@ -19,4 +16,9 @@ abstract class AbstractFinisherModel {
    * @param array<string, mixed> $settings
    */
   abstract public function __construct(array $settings);
+
+  /**
+   * @return class-string<AbstractFinisher>
+   */
+  abstract public function class(): string;
 }

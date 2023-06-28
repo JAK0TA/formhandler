@@ -18,7 +18,6 @@ class RedirectFinisherModel extends AbstractFinisherModel {
    * @param array<string, mixed> $settings
    */
   public function __construct(array $settings) {
-    $this->class = RedirectFinisher::class;
     $this->returns = boolval($settings['returns'] ?? false);
     if (is_array($settings['additionalParams'] ?? false)) {
       foreach ($settings['additionalParams'] as $queryParam => $valueOrFieldName) {
@@ -27,5 +26,9 @@ class RedirectFinisherModel extends AbstractFinisherModel {
     }
     $this->correctRedirectUrl = boolval($settings['correctRedirectUrl'] ?? false);
     $this->headerStatusCode = intval($settings['headerStatusCode'] ?? 303);
+  }
+
+  public function class(): string {
+    return RedirectFinisher::class;
   }
 }

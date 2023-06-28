@@ -11,8 +11,11 @@ class DatabaseLoggerModel extends AbstractLoggerModel {
    * @param array<string, mixed> $settings
    */
   public function __construct(array $settings) {
-    $this->class = DatabaseLogger::class;
     if (isset($settings['FIXME'])) {
     }
+  }
+
+  public function class(): string {
+    return DatabaseLogger::class;
   }
 }

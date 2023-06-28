@@ -7,11 +7,13 @@ namespace Typoheads\Formhandler\Domain\Model\Config\Logger;
 use Typoheads\Formhandler\Logger\AbstractLogger;
 
 abstract class AbstractLoggerModel {
-  /** @var class-string<AbstractLogger> */
-  public string $class;
-
   /**
    * @param array<string, mixed> $settings
    */
   abstract public function __construct(array $settings);
+
+  /**
+   * @return class-string<AbstractLogger>
+   */
+  abstract public function class(): string;
 }

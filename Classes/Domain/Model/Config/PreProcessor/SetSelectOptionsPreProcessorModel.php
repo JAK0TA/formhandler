@@ -16,8 +16,6 @@ class SetSelectOptionsPreProcessorModel extends AbstractPreProcessorModel {
    * @param array<string, mixed> $settings
    */
   public function __construct(array $settings) {
-    $this->class = SetSelectOptionsPreProcessor::class;
-
     $this->field = strval($settings['field'] ?? '');
 
     if (!is_array($settings['options'] ?? false)) {
@@ -31,5 +29,9 @@ class SetSelectOptionsPreProcessorModel extends AbstractPreProcessorModel {
       }
       $this->options[strval($option['value'])] = strval($option['title']);
     }
+  }
+
+  public function class(): string {
+    return SetSelectOptionsPreProcessor::class;
   }
 }
