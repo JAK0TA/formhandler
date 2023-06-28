@@ -64,8 +64,7 @@ class FormController extends ActionController {
     // Check if form session exists or start new if first form access
     $this->formSession();
 
-    // TODO: initializeDebuggers
-    // $this->initializeDebuggers();
+    $this->initializeDebuggers();
 
     $this->mergeParsedBodyWithSession();
 
@@ -247,6 +246,12 @@ class FormController extends ActionController {
     }
 
     return false;
+  }
+
+  private function initializeDebuggers(): void {
+    foreach ($this->formConfig->initInterceptors as $initInterceptor) {
+      GeneralUtility::makeInstance($initInterceptor->class)->process($this->formConfig, $initInterceptor);
+    }
   }
 
   private function initInterceptors(): void {

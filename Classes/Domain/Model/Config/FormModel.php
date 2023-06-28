@@ -7,6 +7,7 @@ namespace Typoheads\Formhandler\Domain\Model\Config;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Typoheads\Formhandler\Definitions\FormhandlerExtensionConfig;
+use Typoheads\Formhandler\Domain\Model\Config\Debugger\AbstractDebuggerModel;
 use Typoheads\Formhandler\Domain\Model\Config\Finisher\AbstractFinisherModel;
 use Typoheads\Formhandler\Domain\Model\Config\Interceptor\AbstractInterceptorModel;
 use Typoheads\Formhandler\Domain\Model\Config\Logger\AbstractLoggerModel;
@@ -16,6 +17,9 @@ use Typoheads\Formhandler\Utility\Utility;
 
 class FormModel {
   public MailModel $admin;
+
+  /** @var AbstractDebuggerModel[] */
+  public array $debuggers = [];
 
   /** @var FieldSetModel[] */
   public array $fieldSets = [];
@@ -106,6 +110,18 @@ class FormModel {
       $templateForm = strval($settings['predefinedForms'][$this->predefinedForm]['templateForm'] ?? '');
 
       $utility = GeneralUtility::makeInstance(Utility::class);
+
+      // Get form debugger
+      foreach ($settings['predefinedForms'][$this->predefinedForm]['debuggers'] ?? [] as $debugger) {
+        if (empty($debugger['model'])) {
+          continue;
+        }
+
+        /** @var AbstractDebuggerModel $debuggerModel */
+        $debuggerModel = GeneralUtility::makeInstance($utility::classString(strval($debugger['model']), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Debugger\\'), $settings['user'] ?? []);
+
+        $this->debuggers[] = $debuggerModel;
+      }
 
       // Get form logger
       foreach ($settings['predefinedForms'][$this->predefinedForm]['loggers'] ?? [] as $logger) {
