@@ -64,6 +64,8 @@ class FormController extends ActionController {
     // Check if form session exists or start new if first form access
     $this->formSession();
 
+    $this->mergeParsedBodyWithSession();
+
     $this->initInterceptors();
 
     $this->initJsonResponse();
@@ -252,6 +254,26 @@ class FormController extends ActionController {
     foreach ($this->formConfig->loggers as $logger) {
       GeneralUtility::makeInstance($logger->class)->process($this->formConfig, $logger);
     }
+  }
+
+  private function mergeParsedBodyWithSession(): void {
+    if (!is_array($this->parsedBody[$this->formConfig->formValuesPrefix] ?? false)) {
+      return;
+    }
+
+    $reference_function = function ($fieldName, &$fields) use (&$reference_function) {
+      foreach ($fields as $field => $value) {
+        if (is_array($value)) {
+          $fieldName .= '['.$field.']';
+          $reference_function($fieldName, $value);
+        } else {
+          $this->formConfig->formValues[$fieldName.'['.$field.']'] = $value;
+        }
+      }
+    };
+
+    $reference_function('['.$this->formConfig->step.']', $this->parsedBody[$this->formConfig->formValuesPrefix][$this->formConfig->step]);
+    $this->formConfig->session->set('formValues', $this->formConfig->formValues);
   }
 
   private function prepareFieldRequired(string $fieldNamePath, FieldModel $field): void {
