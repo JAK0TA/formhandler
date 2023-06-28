@@ -180,6 +180,11 @@ class FormController extends ActionController {
       $firstStart = true;
       $this->formConfig->randomId = GeneralUtility::makeInstance(Utility::class)::generateRandomId($this->formConfig);
     }
+    $this->formConfig->debugMessage(
+      key: 'Session first start',
+      data: $firstStart,
+    );
+
     $this->formConfig->session = GeneralUtility::makeInstance(Typo3Session::class)
       ->init($this->formConfig)
       ->start($this->formConfig->randomId)
@@ -293,9 +298,19 @@ class FormController extends ActionController {
     $reference_function('['.$this->formConfig->step.']', $this->parsedBody[$this->formConfig->formValuesPrefix][$this->formConfig->step]);
     $this->formConfig->session->set('formValues', $this->formConfig->formValues);
 
+    $this->formConfig->debugMessage(
+      key: 'Merge parsedBody with Session',
+      data: $this->formConfig->formValues,
+    );
+
     // TODO: Add check if step number is valid
     $this->formConfig->step = intval($this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['step'] ?? 1);
     $this->formConfig->session->set('step', $this->formConfig->step);
+
+    $this->formConfig->debugMessage(
+      key: 'Step number in Session',
+      data: $this->formConfig->step,
+    );
   }
 
   private function prepareFieldRequired(string $fieldNamePath, FieldModel $field): void {
