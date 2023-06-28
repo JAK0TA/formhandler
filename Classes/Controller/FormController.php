@@ -292,6 +292,7 @@ class FormController extends ActionController {
     $reference_function('['.$this->formConfig->step.']', $this->parsedBody[$this->formConfig->formValuesPrefix][$this->formConfig->step]);
     $this->formConfig->session->set('formValues', $this->formConfig->formValues);
 
+    // TODO: Add check if step number is valid
     $this->formConfig->step = intval($this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['step'] ?? 1);
     $this->formConfig->session->set('step', $this->formConfig->step);
   }
