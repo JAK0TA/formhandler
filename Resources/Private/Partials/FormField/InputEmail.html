@@ -3,7 +3,7 @@
     <f:variable name="langFile" value="{formConfig.langFileDefault}" />
   </f:if>
   <div class="type-email form-group">
-    <input class="form-input" title="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldName}_title')}" type="email" value="{formConfig.fieldsValue.{fieldName}}" id="{formConfig.formValuesPrefix}_{fieldName}" name="{formConfig.formValuesPrefix}{fieldName}" maxlength="{maxlength}" />
+    <input class="form-input" title="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldName}_title')}" type="email" value="{formConfig.formValues.{fieldName}}" id="{formConfig.formValuesPrefix}_{fieldName}" name="{formConfig.formValuesPrefix}{fieldName}" maxlength="{maxlength}" />
     <label for="{formConfig.formValuesPrefix}_{fieldName}"
       ><f:translate key="LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldName}" />
       <f:if condition="{formConfig.fieldsRequired.{fieldName}} == true">

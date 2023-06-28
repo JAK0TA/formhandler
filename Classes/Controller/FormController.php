@@ -24,6 +24,9 @@ class FormController extends ActionController {
 
   protected JsonResponseModel $jsonResponse;
 
+  /** @var array<string, mixed> */
+  protected array $parsedBody;
+
   public function __construct(
     protected readonly PageRepository $pageRepository
   ) {
@@ -41,20 +44,20 @@ class FormController extends ActionController {
     }
 
     $this->formConfig->site = $this->request->getAttribute('site');
-    $this->formConfig->parsedBody = (array) $this->request->getParsedBody();
+    $this->parsedBody = (array) $this->request->getParsedBody();
     $queryParams = (array) $this->request->getQueryParams();
 
     if (is_array($queryParams[FormhandlerExtensionConfig::EXTENSION_KEY] ?? false)) {
       if (isset($queryParams[FormhandlerExtensionConfig::EXTENSION_KEY]['randomId'])) {
-        $this->formConfig->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['randomId'] = strval($queryParams[FormhandlerExtensionConfig::EXTENSION_KEY]['randomId']);
+        $this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['randomId'] = strval($queryParams[FormhandlerExtensionConfig::EXTENSION_KEY]['randomId']);
       }
       if (isset($queryParams[FormhandlerExtensionConfig::EXTENSION_KEY]['step'])) {
-        $this->formConfig->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['step'] = intval($queryParams[FormhandlerExtensionConfig::EXTENSION_KEY]['step']);
+        $this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['step'] = intval($queryParams[FormhandlerExtensionConfig::EXTENSION_KEY]['step']);
       }
     }
 
-    if (is_array($this->formConfig->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY] ?? false)) {
-      $this->formConfig->randomId = strval($this->formConfig->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['randomId'] ?? '');
+    if (is_array($this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY] ?? false)) {
+      $this->formConfig->randomId = strval($this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['randomId'] ?? '');
       if (empty($this->formConfig->randomId)) {
         $this->formConfig->randomId = GeneralUtility::makeInstance(Utility::class)::generateRandomId($this->formConfig);
       }
@@ -132,6 +135,7 @@ class FormController extends ActionController {
         'step' => $this->formConfig->step,
         'steps' => $this->formConfig->steps,
         'templateForm' => $this->formConfig->steps[$this->formConfig->step]->templateForm,
+        'formValues' => $this->formConfig->formValues ?? [],
       ]
     );
 
@@ -181,7 +185,7 @@ class FormController extends ActionController {
   }
 
   private function formSubmitted(): bool {
-    return boolval($this->formConfig->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['submitted'] ?? false);
+    return boolval($this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['submitted'] ?? false);
   }
 
   private function initInterceptors(): void {

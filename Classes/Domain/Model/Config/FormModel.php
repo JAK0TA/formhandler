@@ -32,6 +32,9 @@ class FormModel {
 
   public string $formUrl = '';
 
+  /** @var array<string, mixed> */
+  public array $formValues;
+
   public string $formValuesPrefix = '';
 
   /** @var AbstractInterceptorModel[] */
@@ -41,9 +44,6 @@ class FormModel {
 
   /** @var AbstractLoggerModel[] */
   public array $loggers = [];
-
-  /** @var array<string, mixed> */
-  public array $parsedBody;
 
   public string $predefinedForm = '';
 

@@ -3,12 +3,11 @@
     <f:variable name="langFile" value="{formConfig.langFileDefault}" />
   </f:if>
   <f:variable name="selectedValue" value="{formConfig.fieldsValue.{fieldName}}" />
-
   <div class="type-select form-group">
     <select class="" title="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldName}_title')}" id="{formConfig.formValuesPrefix}_{fieldName}" name="{formConfig.formValuesPrefix}{fieldName}" >
       <option value=""><f:translate key="LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldName}_choose" /></option>
       <f:for each="{formConfig.fieldsSelectOptions.{fieldName}}" as="option">
-        <option value="{option.value}" {f:if(condition: '{selectedValue} == {option.value}', then: 'selected', else: '')}>{option.title}</option>
+        <option value="{option.value}" {f:if(condition: '{formConfig.formValues.{fieldName}} == {option.value}', then: 'selected', else: '')}>{option.title}</option>
       </f:for>
     </select>
     <label for="{formConfig.formValuesPrefix}_{fieldName}"
