@@ -206,12 +206,12 @@ class FormModel {
    * Method to log a debug message.
    * The message will be handled by one or more configured "Debuggers".
    *
-   * @param string                                         $key        The message or key in language file (locallang_debug.xlf)
-   * @param array<int, null|bool|float|int|string>         $printfArgs if the message contains placeholders for usage with printf, pass the replacement values in this array
-   * @param Severity                                       $severity   The severity of the message. Valid values are Severity::Info, Severity::Warning and Severity::Error
-   * @param array<int|string, mixed>|bool|float|int|string $data       Additional debug data (e.g. the array of GET/POST values)
+   * @param string                                                $key        The message or key in language file (locallang_debug.xlf)
+   * @param array<int, null|bool|float|int|string>                $printfArgs if the message contains placeholders for usage with printf, pass the replacement values in this array
+   * @param Severity                                              $severity   The severity of the message. Valid values are Severity::Info, Severity::Warning and Severity::Error
+   * @param array<int|string, mixed>|bool|float|int|object|string $data       Additional debug data (e.g. the array of GET/POST values)
    */
-  public function debugMessage(string $key, array $printfArgs = [], Severity $severity = Severity::Info, array|bool|float|int|string $data = []): void {
+  public function debugMessage(string $key, array $printfArgs = [], Severity $severity = Severity::Info, array|bool|float|int|object|string $data = []): void {
     if (empty($this->debuggers)) {
       return;
     }

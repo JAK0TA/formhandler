@@ -40,11 +40,11 @@ class Utility implements SingletonInterface {
   }
 
   /**
-   * @param array<int|string, mixed>|bool|float|int|string $values
+   * @param array<int|string, mixed>|bool|float|int|object|string $values
    *
    * @return array<int|string, mixed>|string
    */
-  public static function recursiveHtmlSpecialChars(array|bool|float|int|string $values): array|string {
+  public static function recursiveHtmlSpecialChars(array|bool|float|int|object|string $values): array|string {
     if (is_array($values)) {
       if (empty($values)) {
         $values = '';
