@@ -185,7 +185,11 @@ class FormController extends ActionController {
   }
 
   private function formSubmitted(): bool {
-    return boolval($this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['submitted'] ?? false);
+    if (is_array($this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY] ?? false)) {
+      return boolval($this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['submitted'] ?? false);
+    }
+
+    return false;
   }
 
   private function initInterceptors(): void {
