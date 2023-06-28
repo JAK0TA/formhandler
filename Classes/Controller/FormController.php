@@ -76,7 +76,13 @@ class FormController extends ActionController {
     if ($this->formSubmitted()) {
       $this->validators();
 
-      if ($this->formStepIsValid() && $this->formStepIsLast()) {
+      if (!$this->formStepIsValid()) {
+        // TODO: Prepare error output
+      }
+
+      $this->formStepChange();
+
+      if ($this->formStepIsLast()) {
         $this->saveInterceptors();
         $this->loggers();
         if (($redirectResponse = $this->finishers()) !== null) {
@@ -95,8 +101,6 @@ class FormController extends ActionController {
 
           return $this->jsonResponse(json_encode($this->jsonResponse) ?: '{}');
         }
-      } else {
-        $this->formStepChange();
       }
     }
 
@@ -221,7 +225,11 @@ class FormController extends ActionController {
   }
 
   private function formStepChange(): void {
-    // TODO: Check if next or prev step
+    if (isset($this->parsedBody[$this->formConfig->formValuesPrefix]['step']['prev'])) {
+      $this->formConfig->step = $this->formConfig->step > 1 ? $this->formConfig->step - 1 : 1;
+    } else {
+      $this->formConfig->step = !$this->formStepIsLast() ? $this->formConfig->step + 1 : $this->formConfig->step;
+    }
   }
 
   private function formStepIsLast(): bool {
