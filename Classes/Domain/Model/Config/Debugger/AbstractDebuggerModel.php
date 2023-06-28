@@ -14,6 +14,6 @@ abstract class AbstractDebuggerModel {
 
   /**
    * @return class-string<AbstractDebugger>
-   * */
+   */
   abstract public function class(): string;
 }
