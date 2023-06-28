@@ -40,11 +40,11 @@ class Utility implements SingletonInterface {
   }
 
   /**
-   * @param array<int|string, mixed>|string $values
+   * @param array<int|string, mixed>|bool|float|int|string $values
    *
    * @return array<int|string, mixed>|string
    */
-  public static function recursiveHtmlSpecialChars(array|string $values): array|string {
+  public static function recursiveHtmlSpecialChars(array|bool|float|int|string $values): array|string {
     if (is_array($values)) {
       if (empty($values)) {
         $values = '';
@@ -52,13 +52,21 @@ class Utility implements SingletonInterface {
         foreach ($values as &$value) {
           if (is_array($value)) {
             $value = self::recursiveHtmlSpecialChars($value);
+          } elseif (is_bool($value)) {
+            $value = $value ? 'true' : 'false';
+          } elseif (is_numeric($value) || is_string($value)) {
+            $value = htmlspecialchars(strval($value));
           } else {
-            $value = htmlspecialchars(serialize($value));
+            $value = htmlspecialchars(var_export($value, true));
           }
         }
       }
+    } elseif (is_bool($values)) {
+      $values = $values ? 'true' : 'false';
+    } elseif (is_numeric($values) || is_string($values)) {
+      $values = htmlspecialchars(strval($values));
     } else {
-      $values = htmlspecialchars($values);
+      $values = htmlspecialchars(var_export($values, true));
     }
 
     return $values;
