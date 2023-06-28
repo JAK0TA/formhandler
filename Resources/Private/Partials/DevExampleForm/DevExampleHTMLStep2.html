@@ -1,7 +1,14 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
   <form action="{formUrl}#{formId}" id="{formId}" method="post" class="formhandler">
     <f:render partial="FieldSet" arguments="{fieldSets: fieldSets}" />
+    <h1>Step 2</h1>
 
+    <div class="">
+      <f:render partial="FormField/Submit" arguments="{stepType: 'prev', formConfig: _all}" />
+    </div>
+    <div class="">
+      <f:render partial="FormField/Submit" arguments="{stepType: 'next', formConfig: _all}" />
+    </div>
     <div class="">
       <f:render partial="FormField/Submit" arguments="{submit: '', submitTitle: '', langFile: '', formConfig: _all}" />
     </div>
