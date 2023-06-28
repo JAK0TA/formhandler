@@ -14,6 +14,7 @@ use Typoheads\Formhandler\Domain\Model\Config\FieldSetModel;
 use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 use Typoheads\Formhandler\Domain\Model\Config\Validator\Field\FieldModel;
 use Typoheads\Formhandler\Domain\Model\Json\JsonResponseModel;
+use Typoheads\Formhandler\Session\Typo3Session;
 use Typoheads\Formhandler\Utility\Utility;
 
 class FormController extends ActionController {
@@ -58,15 +59,10 @@ class FormController extends ActionController {
 
     if (is_array($this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY] ?? false)) {
       $this->formConfig->randomId = strval($this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['randomId'] ?? '');
-      if (empty($this->formConfig->randomId)) {
-        $this->formConfig->randomId = GeneralUtility::makeInstance(Utility::class)::generateRandomId($this->formConfig);
-      }
     }
 
     // Check if form session exists or start new if first form access
-    if (!$this->formSession()) {
-      // TODO: Form session is invalid reset form and return with error
-    }
+    $this->formSession();
 
     $this->initInterceptors();
 
@@ -170,13 +166,55 @@ class FormController extends ActionController {
     return count($this->formConfig->steps) > $this->formConfig->step;
   }
 
-  private function formSession(): bool {
-    // TODO: Check if form session exists or start new if first form access
-    foreach ($this->formConfig->preProcessors as $preProcessor) {
-      GeneralUtility::makeInstance($preProcessor->class)->process($this->formConfig, $preProcessor);
+  private function formSession(): void {
+    $firstStart = false;
+    if (empty($this->formConfig->randomId)) {
+      $firstStart = true;
+      $this->formConfig->randomId = GeneralUtility::makeInstance(Utility::class)::generateRandomId($this->formConfig);
     }
+    $this->formConfig->session = GeneralUtility::makeInstance(Typo3Session::class)
+      ->init($this->formConfig)
+      ->start($this->formConfig->randomId)
+    ;
 
-    return true;
+    if ($this->formConfig->session->exists()) {
+      $fieldsSelectOptions = $this->formConfig->session->get('fieldsSelectOptions');
+      if (is_array($fieldsSelectOptions)) {
+        $this->formConfig->fieldsSelectOptions = $fieldsSelectOptions;
+      }
+      $this->formConfig->step = intval($this->formConfig->session->get('step') ?: 1);
+      $this->formConfig->formValues = (array) ($this->formConfig->session->get('formValues') ?: []);
+    } else {
+      // Form session is invalid or first form access reset form
+      if (!$firstStart) {
+        // Form session is invalid create new one
+        $randomId = GeneralUtility::makeInstance(Utility::class)::generateRandomId($this->formConfig);
+        $this->formConfig->session->reset()->start($randomId);
+        $this->formConfig->randomId = $randomId;
+      }
+
+      $this->formConfig->step = 1;
+      $this->formConfig->formValues = [];
+
+      $this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY] = [];
+      $this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['submitted'] = false;
+      $this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['randomId'] = $this->formConfig->randomId;
+      $this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['step'] = $this->formConfig->step;
+      $this->parsedBody[$this->formConfig->formValuesPrefix] = $this->formConfig->formValues;
+
+      // Execute PreProcessor
+      foreach ($this->formConfig->preProcessors as $preProcessor) {
+        GeneralUtility::makeInstance($preProcessor->class)->process($this->formConfig, $preProcessor);
+      }
+
+      $this->formConfig->session->setMultiple(
+        [
+          'fieldsSelectOptions' => $this->formConfig->fieldsSelectOptions,
+          'formValues' => $this->formConfig->formValues,
+          'step' => $this->formConfig->step,
+        ]
+      );
+    }
   }
 
   private function formStepValid(): bool {
