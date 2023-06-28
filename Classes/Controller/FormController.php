@@ -92,6 +92,8 @@ class FormController extends ActionController {
 
           return $this->jsonResponse(json_encode($this->jsonResponse) ?: '{}');
         }
+      } else {
+        $this->formStepChange();
       }
     }
 
@@ -213,6 +215,10 @@ class FormController extends ActionController {
         ]
       );
     }
+  }
+
+  private function formStepChange(): void {
+    // TODO: Check if next or prev step
   }
 
   private function formStepIsLast(): bool {
