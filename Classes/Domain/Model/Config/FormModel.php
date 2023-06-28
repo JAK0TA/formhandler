@@ -109,8 +109,12 @@ class FormModel {
 
       // Get form logger
       foreach ($settings['predefinedForms'][$this->predefinedForm]['loggers'] ?? [] as $logger) {
+        if (empty($logger['model'])) {
+          continue;
+        }
+
         /** @var AbstractLoggerModel $loggerModel */
-        $loggerModel = GeneralUtility::makeInstance($utility::classString(strval($logger['model'] ?? 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Logger\\Database'), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Logger\\'), $settings['user'] ?? []);
+        $loggerModel = GeneralUtility::makeInstance($utility::classString(strval($logger['model']), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Logger\\'), $settings['user'] ?? []);
 
         $this->loggers[] = $loggerModel;
       }
