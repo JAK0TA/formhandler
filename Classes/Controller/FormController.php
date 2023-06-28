@@ -231,7 +231,11 @@ class FormController extends ActionController {
   }
 
   private function formStepChange(): void {
-    if (isset($this->parsedBody[$this->formConfig->formValuesPrefix]['step']['prev'])) {
+    if (
+      is_array($this->parsedBody[$this->formConfig->formValuesPrefix] ?? false)
+      && is_array($this->parsedBody[$this->formConfig->formValuesPrefix]['step'] ?? false)
+      && isset($this->parsedBody[$this->formConfig->formValuesPrefix]['step']['prev'])
+    ) {
       $this->formConfig->step = $this->formConfig->step > 1 ? $this->formConfig->step - 1 : 1;
     } else {
       $this->formConfig->step = !$this->formStepIsLast() ? $this->formConfig->step + 1 : $this->formConfig->step;
@@ -304,7 +308,9 @@ class FormController extends ActionController {
     );
 
     // TODO: Add check if step number is valid
-    $this->formConfig->step = intval($this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['step'] ?? 1);
+    if (is_array($this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY])) {
+      $this->formConfig->step = intval($this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['step'] ?? 1);
+    }
     $this->formConfig->session->set('step', $this->formConfig->step);
 
     $this->formConfig->debugMessage(
