@@ -73,7 +73,7 @@ class FormController extends ActionController {
     if ($this->formSubmitted()) {
       $this->validators();
 
-      if ($this->formStepValid() && !$this->formNextStep()) {
+      if ($this->formStepValid() && $this->formStepIsLast()) {
         $this->saveInterceptors();
         $this->loggers();
         if (($redirectResponse = $this->finishers()) !== null) {
@@ -164,10 +164,6 @@ class FormController extends ActionController {
     return true;
   }
 
-  private function formNextStep(): bool {
-    return count($this->formConfig->steps) > $this->formConfig->step;
-  }
-
   private function formSession(): void {
     $firstStart = false;
     if (empty($this->formConfig->randomId)) {
@@ -217,6 +213,10 @@ class FormController extends ActionController {
         ]
       );
     }
+  }
+
+  private function formStepIsLast(): bool {
+    return count($this->formConfig->steps) == $this->formConfig->step;
   }
 
   private function formStepValid(): bool {
