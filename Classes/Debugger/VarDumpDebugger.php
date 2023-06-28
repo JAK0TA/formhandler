@@ -12,7 +12,7 @@ class VarDumpDebugger extends AbstractDebugger {
     if (!$this->debuggerConfig instanceof VarDumpDebuggerModel) {
       return;
     }
-    if (!$this->debuggerConfig->active) {
+    if (!$this->debuggerConfig->active || 'html' != $this->formConfig->responseType) {
       return;
     }
 
