@@ -116,7 +116,7 @@ class FormController extends ActionController {
 
     foreach ($this->formConfig->steps[$this->formConfig->step]->validators as $validator) {
       foreach ($validator->fields as $field) {
-        $this->prepareFieldsRequired('', $field);
+        $this->prepareFieldsRequired('['.$this->formConfig->step.']', $field);
       }
     }
 
