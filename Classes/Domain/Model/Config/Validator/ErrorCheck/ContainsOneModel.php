@@ -13,6 +13,7 @@ class ContainsOneModel extends AbstractErrorCheckModel {
   public function __construct(
     protected readonly array $settings
   ) {
+    $this->name = 'ContainsOne';
     $this->words = strval($this->settings['words'] ?? '');
   }
 
@@ -20,9 +21,5 @@ class ContainsOneModel extends AbstractErrorCheckModel {
     // TODO: FIX ME
     // @phpstan-ignore-next-line
     return '\\Typoheads\\Formhandler\\Validator\\ErrorCheck\\ContainsOne';
-  }
-
-  public function name(): string {
-    return 'ContainsOne';
   }
 }

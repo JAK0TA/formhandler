@@ -325,7 +325,7 @@ class FormController extends ActionController {
     $fieldNamePath .= '['.$field->name.']';
     foreach ($field->errorChecks as $errorCheck) {
       // TODO: Maybe add $errorCheck->isRequired()?
-      if ('Required' == $errorCheck->name()) {
+      if ('Required' == $errorCheck->name) {
         $this->fieldsRequired[$fieldNamePath] = true;
       }
     }

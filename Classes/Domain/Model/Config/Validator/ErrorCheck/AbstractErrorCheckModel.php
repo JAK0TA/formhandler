@@ -7,6 +7,8 @@ namespace Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck;
 use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
 
 abstract class AbstractErrorCheckModel {
+  public string $name;
+
   /**
    * @param array<string, mixed> $settings
    */
@@ -16,6 +18,4 @@ abstract class AbstractErrorCheckModel {
    * @return class-string<AbstractErrorCheck>
    */
   abstract public function class(): string;
-
-  abstract public function name(): string;
 }

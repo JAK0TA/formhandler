@@ -10,19 +10,14 @@ class MaxLengthModel extends AbstractErrorCheckModel {
   /**
    * @param array<string, mixed> $settings
    */
-  public function __construct(
-    protected readonly array $settings
-  ) {
-    $this->maxLength = intval($this->settings['maxLength'] ?? 0);
+  public function __construct(array $settings) {
+    $this->name = 'MaxLength';
+    $this->maxLength = intval($settings['maxLength'] ?? 0);
   }
 
   public function class(): string {
     // TODO: FIX ME
     // @phpstan-ignore-next-line
     return '\\Typoheads\\Formhandler\\Validator\\ErrorCheck\\MaxLength';
-  }
-
-  public function name(): string {
-    return 'MaxLength';
   }
 }
