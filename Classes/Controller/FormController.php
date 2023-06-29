@@ -195,7 +195,12 @@ class FormController extends ActionController {
       if (is_array($fieldsSelectOptions)) {
         $this->formConfig->fieldsSelectOptions = $fieldsSelectOptions;
       }
-      $this->formConfig->step = intval($this->formConfig->session->get('step') ?: 1);
+      $this->formConfig->step = intval(
+        (
+          (array) ($this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY] ?? [])
+        )['step'] ??
+        $this->formConfig->session->get('step') ?: 1
+      );
       $this->formConfig->formValues = (array) ($this->formConfig->session->get('formValues') ?: []);
     } else {
       // Form session is invalid or first form access reset form
