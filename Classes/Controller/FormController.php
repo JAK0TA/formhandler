@@ -104,8 +104,6 @@ class FormController extends ActionController {
     $this->prepareFormSets();
 
     if ('json' == $this->formConfig->responseType) {
-      // TODO: make 'restrictErrorChecks' private,
-
       $this->jsonResponse->steps = $this->formConfig->steps;
       $this->jsonResponse->fieldSets = $this->formConfig->fieldSets;
       $this->jsonResponse->formValues = $this->formConfig->formValues;

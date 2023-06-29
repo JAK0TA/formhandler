@@ -57,7 +57,7 @@ class FieldModel {
         continue;
       }
 
-      if (!empty($this->validator->restrictErrorChecks) && !in_array($errorCheckModel->class(), $this->validator->restrictErrorChecks)) {
+      if (!empty($this->validator->restrictErrorChecks()) && !in_array($errorCheckModel->class(), $this->validator->restrictErrorChecks())) {
         continue;
       }
       $this->errorChecks[] = $errorCheckModel;

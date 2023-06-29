@@ -20,7 +20,7 @@ abstract class AbstractValidatorModel {
   public array $messageLimits = [];
 
   /** @var string[] */
-  public array $restrictErrorChecks = [];
+  protected array $restrictErrorChecks = [];
 
   /**
    * @param array<string, mixed> $settings
@@ -31,4 +31,11 @@ abstract class AbstractValidatorModel {
    * @return class-string<AbstractValidator>
    */
   abstract public function class(): string;
+
+  /**
+   * @return string[]
+   */
+  public function restrictErrorChecks(): array {
+    return $this->restrictErrorChecks;
+  }
 }
