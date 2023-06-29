@@ -16,28 +16,41 @@ class DefaultValidator extends AbstractValidator {
       return false;
     }
 
-    return $this->checkFields($formConfig, $formConfig->formValues[$formConfig->step] ?? [], $validatorConfig->fields);
+    return $this->checkFields($formConfig, $formConfig->formValues[$formConfig->step] ?? [], $validatorConfig->fields, (string) $formConfig->step);
   }
 
   /**
    * @param FieldModel[] $fields
    */
-  private function checkFields(FormModel $formConfig, mixed $formValues, array $fields): bool {
+  private function checkFields(FormModel &$formConfig, mixed $formValues, array $fields, string $fieldName): bool {
     $isValid = true;
 
     foreach ($fields as $field) {
+      $fieldNamePath = $fieldName.'.'.$field->name;
       $formValue = null;
       if (is_array($formValues)) {
         $formValue = $formValues[$field->name] ?? null;
       }
+
+      if (
+        isset($formConfig->disableErrorCheckFields[$fieldNamePath])
+        && empty($formConfig->disableErrorCheckFields[$fieldNamePath])
+      ) {
+        continue;
+      }
+
       foreach ($field->errorChecks as $errorCheck) {
-        if (!GeneralUtility::makeInstance($errorCheck->class())->isValid($formConfig, $errorCheck, $formValue ?? '')) {
+        if (
+          isset($formConfig->disableErrorCheckFields[$fieldNamePath])
+          && !in_array($errorCheck->class(), $formConfig->disableErrorCheckFields[$fieldNamePath] ?? [])
+          && !GeneralUtility::makeInstance($errorCheck->class())->isValid($formConfig, $errorCheck, $formValue ?? '')
+        ) {
           $isValid = false;
           // TODO: Prepare error message
         }
       }
       if (!empty($field->fields)) {
-        $isValid = $this->checkFields($formConfig, $formValue ?? [], $field->fields);
+        $isValid = $this->checkFields($formConfig, $formValue ?? [], $field->fields, $fieldNamePath);
       }
     }
 
