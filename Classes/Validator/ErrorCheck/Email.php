@@ -7,6 +7,8 @@ namespace Typoheads\Formhandler\Validator\ErrorCheck;
 use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractErrorCheckModel;
 
-abstract class AbstractErrorCheck {
-  abstract public function process(FormModel &$formConfig, AbstractErrorCheckModel &$errorCheckConfig, mixed $value): bool;
+class Email extends AbstractErrorCheck {
+  public function process(FormModel &$formConfig, AbstractErrorCheckModel &$emailErrorCheckConfig, mixed $value): bool {
+    return true;
+  }
 }

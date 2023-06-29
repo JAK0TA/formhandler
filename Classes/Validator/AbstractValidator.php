@@ -9,5 +9,5 @@ use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 use Typoheads\Formhandler\Domain\Model\Config\Validator\AbstractValidatorModel;
 
 abstract class AbstractValidator implements SingletonInterface {
-  abstract public function process(FormModel &$formConfig, AbstractValidatorModel &$validatorConfig): void;
+  abstract public function process(FormModel &$formConfig, AbstractValidatorModel &$validatorConfig): bool;
 }

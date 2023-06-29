@@ -9,9 +9,11 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\AbstractValidatorModel;
 use Typoheads\Formhandler\Domain\Model\Config\Validator\DefaultValidatorModel;
 
 class DefaultValidator extends AbstractValidator {
-  public function process(FormModel &$formConfig, AbstractValidatorModel &$validatorConfig): void {
+  public function process(FormModel &$formConfig, AbstractValidatorModel &$validatorConfig): bool {
     if (!$validatorConfig instanceof DefaultValidatorModel) {
-      return;
+      return false;
     }
+
+    return true;
   }
 }
