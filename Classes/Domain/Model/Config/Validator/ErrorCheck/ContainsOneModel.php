@@ -5,16 +5,14 @@ declare(strict_types=1);
 namespace Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck;
 
 class ContainsOneModel extends AbstractErrorCheckModel {
-  public string $words = '';
+  public readonly string $words;
 
   /**
    * @param array<string, mixed> $settings
    */
-  public function __construct(
-    protected readonly array $settings
-  ) {
+  public function __construct(array $settings) {
     $this->name = 'ContainsOne';
-    $this->words = strval($this->settings['words'] ?? '');
+    $this->words = strval($settings['words'] ?? '');
   }
 
   public function class(): string {
