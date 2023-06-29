@@ -7,7 +7,7 @@
     <select class="" title="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldName}_title')}" id="{formConfig.formValuesPrefix}_{fieldName}" name="{formConfig.formValuesPrefix}{fieldName}" >
       <option value=""><f:translate key="LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldName}_choose" /></option>
       <f:for each="{formConfig.fieldsSelectOptions.{fieldSelectOptions}}" as="option">
-        <option value="{option.value}" {f:if(condition: '{formConfig.formValues.{fieldName}} == {option.value}', then: 'selected', else: '')}>{option.title}</option>
+        <option value="{option.value}" {f:if(condition: '{formConfig.formValues.{formConfig.fieldsNameMap.{fieldName}}} == {option.value}', then: 'selected', else: '')}>{option.title}</option>
       </f:for>
     </select>
     <label for="{formConfig.formValuesPrefix}_{fieldName}"

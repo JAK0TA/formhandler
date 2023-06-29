@@ -24,6 +24,9 @@ class FormModel {
   /** @var FieldSetModel[] */
   public array $fieldSets = [];
 
+  /** @var array<string, string> */
+  public array $fieldsNameMap = [];
+
   /** @var array<string, SelectOptionModel[]> */
   public array $fieldsSelectOptions = [];
 
@@ -36,7 +39,7 @@ class FormModel {
 
   public string $formUrl = '';
 
-  /** @var array<string, mixed> */
+  /** @var mixed[] */
   public array $formValues;
 
   public string $formValuesPrefix = '';

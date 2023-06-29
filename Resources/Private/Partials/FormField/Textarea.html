@@ -6,7 +6,7 @@
     <f:variable name="rows" value="10" />
   </f:if>
   <div class="type-textarea form-group">
-    <textarea class="form-input" title="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldName}_title')}" id="{formConfig.formValuesPrefix}_{fieldName}" name="{formConfig.formValuesPrefix}{fieldName}" rows="{rows}">{formConfig.formValues.{fieldName}}</textarea>
+    <textarea class="form-input" title="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldName}_title')}" id="{formConfig.formValuesPrefix}_{fieldName}" name="{formConfig.formValuesPrefix}{fieldName}" rows="{rows}">{formConfig.formValues.{formConfig.fieldsNameMap.{fieldName}}}</textarea>
     <label for="{formConfig.formValuesPrefix}_{fieldName}" class="form-label"
       ><span class="form-label-content"
         ><f:translate key="LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldName}" /> <f:if condition="{formConfig.fieldsRequired.{fieldName}} == true"> <f:render partial="Required" /> </f:if></span

@@ -107,6 +107,12 @@ class FormController extends ActionController {
 
     $this->prepareFormSets();
 
+    $this->prepareFieldsNameMap(
+      (string) $this->formConfig->step,
+      '['.$this->formConfig->step.']',
+      $this->formConfig->formValues[(string) $this->formConfig->step]
+    );
+
     if ('json' == $this->formConfig->responseType) {
       $this->jsonResponse->steps = $this->formConfig->steps;
       $this->jsonResponse->fieldSets = $this->formConfig->fieldSets;
@@ -128,6 +134,7 @@ class FormController extends ActionController {
     // Prepare output
     $this->view->assignMultiple(
       [
+        'fieldsNameMap' => $this->formConfig->fieldsNameMap ?? [],
         'fieldsRequired' => $this->fieldsRequired,
         'fieldsSelectOptions' => $this->formConfig->fieldsSelectOptions,
         'fieldSets' => $this->formConfig->fieldSets,
@@ -285,18 +292,7 @@ class FormController extends ActionController {
       return;
     }
 
-    $reference_function = function ($fieldName, &$fields) use (&$reference_function) {
-      foreach ($fields as $field => $value) {
-        if (is_array($value)) {
-          $fieldName .= '['.$field.']';
-          $reference_function($fieldName, $value);
-        } else {
-          $this->formConfig->formValues[$fieldName.'['.$field.']'] = $value;
-        }
-      }
-    };
-
-    $reference_function('['.$this->formConfig->step.']', $this->parsedBody[$this->formConfig->formValuesPrefix][$this->formConfig->step]);
+    $this->formConfig->formValues[strval($this->formConfig->step)] = $this->parsedBody[$this->formConfig->formValuesPrefix][$this->formConfig->step];
     $this->formConfig->session->set('formValues', $this->formConfig->formValues);
 
     $this->formConfig->debugMessage(
@@ -326,6 +322,21 @@ class FormController extends ActionController {
     }
     foreach ($field->fields as $field) {
       $this->prepareFieldRequired($fieldNamePath, $field);
+    }
+  }
+
+  private function prepareFieldsNameMap(string $fieldPath, string $fieldName, mixed $fields): void {
+    if (is_array($fields)) {
+      foreach ($fields as $field => $value) {
+        if (is_array($value)) {
+          $fieldPath .= '.'.$field;
+          $fieldName .= '['.$field.']';
+          $this->prepareFieldsNameMap($fieldPath, $fieldName, $value);
+        } else {
+          $this->formConfig->fieldsNameMap[$fieldName.'['.$field.']'] = $fieldPath.'.'.$field;
+        }
+      }
+      $this->formConfig->fieldsNameMap[$fieldName] = $fieldPath;
     }
   }
 
