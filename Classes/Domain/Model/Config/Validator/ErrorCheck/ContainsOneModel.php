@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck;
 
+use Typoheads\Formhandler\Validator\ErrorCheck\ContainsOne;
+
 class ContainsOneModel extends AbstractErrorCheckModel {
   public readonly string $words;
 
@@ -16,8 +18,6 @@ class ContainsOneModel extends AbstractErrorCheckModel {
   }
 
   public function class(): string {
-    // TODO: FIX ME
-    // @phpstan-ignore-next-line
-    return '\\Typoheads\\Formhandler\\Validator\\ErrorCheck\\ContainsOne';
+    return ContainsOne::class;
   }
 }
