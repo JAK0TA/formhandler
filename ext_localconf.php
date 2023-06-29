@@ -28,4 +28,7 @@ call_user_func(static function (): void {
 
   $GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'][] = FormhandlerExtensionConfig::EXTENSION_KEY.'[randomId]';
   $GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'][] = FormhandlerExtensionConfig::EXTENSION_KEY.'[step]';
+
+  // Register "formhandler:" namespace
+  $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['formhandler'][] = 'Typoheads\\Formhandler\\ViewHelpers';
 });
