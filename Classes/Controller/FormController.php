@@ -143,7 +143,7 @@ class FormController extends ActionController {
         'langFileDefault' => $this->formConfig->langFileDefault,
         'step' => $this->formConfig->step,
         'steps' => $this->formConfig->steps,
-        'templateForm' => $this->formConfig->steps[$this->formConfig->step]->templateForm,
+        'templateForm' => $this->formConfig->steps[$this->formConfig->step]->templateForm(),
         'formValues' => $this->formConfig->formValues ?? [],
       ]
     );

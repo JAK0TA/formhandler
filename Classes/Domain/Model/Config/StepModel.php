@@ -9,10 +9,10 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\AbstractValidatorModel;
 use Typoheads\Formhandler\Utility\Utility;
 
 class StepModel {
-  public readonly string $templateForm;
-
   /** @var AbstractValidatorModel[] */
   public readonly array $validators;
+
+  private readonly string $templateForm;
 
   /**
    * @param array<string, mixed> $settings
@@ -39,5 +39,9 @@ class StepModel {
     // TODO: remove ignore once fixed: https://github.com/phpstan/phpstan/issues/6402
     // @phpstan-ignore-next-line
     $this->validators = $validators;
+  }
+
+  public function templateForm(): string {
+    return $this->templateForm;
   }
 }
