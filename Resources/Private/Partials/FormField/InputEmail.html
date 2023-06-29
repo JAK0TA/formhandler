@@ -1,12 +1,13 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+  <f:variable name="fieldName" value="{fieldNameFromPath -> formhandler:fieldNameFromPath()}" />
   <f:if condition="{langFile} == ''">
     <f:variable name="langFile" value="{formConfig.langFileDefault}" />
   </f:if>
   <div class="type-email form-group">
-    <input class="form-input" title="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldNameFromPath}_title')}" type="email" value="{formConfig.formValues.{fieldNameFromPath}}" id="{formConfig.formValuesPrefix}_{fieldNameFromPath}" name="{formConfig.formValuesPrefix}{fieldNameFromPath -> formhandler:fieldNameFromPath()}" maxlength="{maxlength}" />
+    <input class="form-input" title="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldNameFromPath}_title')}" type="email" value="{formConfig.formValues.{fieldNameFromPath}}" id="{formConfig.formValuesPrefix}_{fieldNameFromPath}" name="{formConfig.formValuesPrefix}{fieldName}" maxlength="{maxlength}" />
     <label for="{formConfig.formValuesPrefix}_{fieldNameFromPath}"
       ><f:translate key="LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldNameFromPath}" />
-      <f:if condition="{formConfig.fieldsRequired.{fieldNameFromPath}} == true">
+      <f:if condition="{formConfig.fieldsRequired.{fieldName}} == true">
         <f:render partial="Required" />
       </f:if>
     </label>
