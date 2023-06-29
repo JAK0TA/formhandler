@@ -125,7 +125,7 @@ class FormController extends ActionController {
 
     foreach ($this->formConfig->steps[$this->formConfig->step]->validators as $validator) {
       foreach ($validator->fields as $field) {
-        $this->prepareFieldRequired('', $field);
+        $this->prepareFieldsRequired('', $field);
       }
     }
 
@@ -312,19 +312,6 @@ class FormController extends ActionController {
     );
   }
 
-  private function prepareFieldRequired(string $fieldNamePath, FieldModel $field): void {
-    $fieldNamePath .= '['.$field->name.']';
-    foreach ($field->errorChecks as $errorCheck) {
-      // TODO: Maybe add $errorCheck->isRequired()?
-      if ('Required' == $errorCheck->name) {
-        $this->fieldsRequired[$fieldNamePath] = true;
-      }
-    }
-    foreach ($field->fields as $field) {
-      $this->prepareFieldRequired($fieldNamePath, $field);
-    }
-  }
-
   private function prepareFieldsNameMap(string $fieldPath, string $fieldName, mixed $fields): void {
     if (is_array($fields)) {
       foreach ($fields as $field => $value) {
@@ -337,6 +324,19 @@ class FormController extends ActionController {
         }
       }
       $this->formConfig->fieldsNameMap[$fieldName] = $fieldPath;
+    }
+  }
+
+  private function prepareFieldsRequired(string $fieldNamePath, FieldModel $field): void {
+    $fieldNamePath .= '['.$field->name.']';
+    foreach ($field->errorChecks as $errorCheck) {
+      // TODO: Maybe add $errorCheck->isRequired()?
+      if ('Required' == $errorCheck->name) {
+        $this->fieldsRequired[$fieldNamePath] = true;
+      }
+    }
+    foreach ($field->fields as $field) {
+      $this->prepareFieldsRequired($fieldNamePath, $field);
     }
   }
 
