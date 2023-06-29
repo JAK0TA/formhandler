@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Domain\Model\Config\Validator;
 
+use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 use Typoheads\Formhandler\Domain\Model\Config\Validator\Field\FieldModel;
 use Typoheads\Formhandler\Validator\AbstractValidator;
 
 abstract class AbstractValidatorModel {
-  /** @var array<string, string[]> */
-  public array $disableErrorCheckFields = [];
-
   /** @var FieldModel[] */
   public array $fields = [];
 
@@ -20,7 +18,7 @@ abstract class AbstractValidatorModel {
   /**
    * @param array<string, mixed> $settings
    */
-  abstract public function __construct(array $settings);
+  abstract public function __construct(FormModel &$formConfig, array $settings);
 
   /**
    * @return class-string<AbstractValidator>

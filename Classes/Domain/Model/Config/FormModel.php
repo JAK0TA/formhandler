@@ -21,6 +21,9 @@ use Typoheads\Formhandler\Utility\Utility;
 class FormModel {
   public MailModel $admin;
 
+  /** @var array<string, string[]> */
+  public array $disableErrorCheckFields = [];
+
   /** @var FieldSetModel[] */
   public array $fieldSets = [];
 
@@ -183,7 +186,7 @@ class FormModel {
           continue;
         }
 
-        $this->steps[intval($stepKey)] = GeneralUtility::makeInstance(StepModel::class, $step, $templateForm);
+        $this->steps[intval($stepKey)] = GeneralUtility::makeInstance(StepModel::class, $this, $step, $templateForm);
       }
       if (0 == count($this->steps)) {
         $this->steps[1] = GeneralUtility::makeInstance(StepModel::class, [], $templateForm);

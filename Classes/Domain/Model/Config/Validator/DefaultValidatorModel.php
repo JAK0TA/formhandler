@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Typoheads\Formhandler\Domain\Model\Config\Validator;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 use Typoheads\Formhandler\Domain\Model\Config\Validator\Field\FieldModel;
 use Typoheads\Formhandler\Utility\Utility;
 use Typoheads\Formhandler\Validator\DefaultValidator;
@@ -18,7 +19,7 @@ class DefaultValidatorModel extends AbstractValidatorModel {
   /**
    * @param array<string, mixed> $settings
    */
-  public function __construct(array $settings) {
+  public function __construct(FormModel &$formConfig, array $settings) {
     $utility = GeneralUtility::makeInstance(Utility::class);
 
     foreach (GeneralUtility::trimExplode(',', strval($settings['restrictErrorChecks'] ?? ''), true) as $restrictErrorCheck) {
@@ -28,17 +29,17 @@ class DefaultValidatorModel extends AbstractValidatorModel {
     if (isset($settings['disableErrorCheckFields'])) {
       if (is_string($settings['disableErrorCheckFields'])) {
         foreach (GeneralUtility::trimExplode(',', $settings['disableErrorCheckFields'], true) as $field) {
-          $this->disableErrorCheckFields[strval($field)] = [];
+          $formConfig->disableErrorCheckFields[strval($field)] = [];
         }
       } elseif (is_array($settings['disableErrorCheckFields'])) {
         foreach ($settings['disableErrorCheckFields'] as $field => $errorChecks) {
           if (empty($errorChecks)) {
-            $this->disableErrorCheckFields[strval($field)] = [];
+            $formConfig->disableErrorCheckFields[strval($field)] = [];
 
             continue;
           }
           foreach (GeneralUtility::trimExplode(',', $errorChecks, true) as $errorCheck) {
-            $this->disableErrorCheckFields[strval($field)][] = $utility->classString($errorCheck, '\\Typoheads\\Formhandler\\Validator\\ErrorCheck\\');
+            $formConfig->disableErrorCheckFields[strval($field)][] = $utility->classString($errorCheck, '\\Typoheads\\Formhandler\\Validator\\ErrorCheck\\');
           }
         }
       }
