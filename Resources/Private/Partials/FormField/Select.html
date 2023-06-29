@@ -2,17 +2,17 @@
   <f:if condition="{langFile} == ''">
     <f:variable name="langFile" value="{formConfig.langFileDefault}" />
   </f:if>
-  <f:variable name="selectedValue" value="{formConfig.fieldsValue.{fieldName}}" />
+  <f:variable name="selectedValue" value="{formConfig.fieldsValue.{fieldNameFromPath}}" />
   <div class="type-select form-group">
-    <select class="" title="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldName}_title')}" id="{formConfig.formValuesPrefix}_{fieldName}" name="{formConfig.formValuesPrefix}{fieldName}" >
-      <option value=""><f:translate key="LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldName}_choose" /></option>
+    <select class="" title="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldNameFromPath}_title')}" id="{formConfig.formValuesPrefix}_{fieldNameFromPath}" name="{formConfig.formValuesPrefix}{fieldNameFromPath -> formhandler:fieldNameFromPath()}" >
+      <option value=""><f:translate key="LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldNameFromPath}_choose" /></option>
       <f:for each="{formConfig.fieldsSelectOptions.{fieldSelectOptions}}" as="option">
-        <option value="{option.value}" {f:if(condition: '{formConfig.formValues.{formConfig.fieldsNameMap.{fieldName}}} == {option.value}', then: 'selected', else: '')}>{option.title}</option>
+        <option value="{option.value}" {f:if(condition: '{formConfig.formValues.{fieldNameFromPath}} == {option.value}', then: 'selected', else: '')}>{option.title}</option>
       </f:for>
     </select>
-    <label for="{formConfig.formValuesPrefix}_{fieldName}"
-      ><f:translate key="LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldName}" /> <f:if condition="{formConfig.fieldsRequired.{fieldName}} == true"> <f:render partial="Required" /> </f:if
+    <label for="{formConfig.formValuesPrefix}_{fieldNameFromPath}"
+      ><f:translate key="LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldNameFromPath}" /> <f:if condition="{formConfig.fieldsRequired.{fieldNameFromPath}} == true"> <f:render partial="Required" /> </f:if
     ></label>
-    <div class="error">{formConfig.fieldsError.{fieldName}}</div>
+    <div class="error">{formConfig.fieldsError.{fieldNameFromPath}}</div>
   </div>
 </html>

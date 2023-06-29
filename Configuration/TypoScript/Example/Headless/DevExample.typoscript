@@ -283,7 +283,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
         returns = true
         correctRedirectUrl = false
         additionalParams {
-          postal_code = [1][customer][postalCode]
+          postal_code = 1.customer.postalCode
           queryParam2 = valueIfNotFoundAsFieldName
         }
       }

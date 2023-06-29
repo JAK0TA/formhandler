@@ -3,13 +3,13 @@
     <f:variable name="langFile" value="{formConfig.langFileDefault}" />
   </f:if>
   <div class="type-email form-group">
-    <input class="form-input" title="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldName}_title')}" type="email" value="{formConfig.formValues.{formConfig.fieldsNameMap.{fieldName}}}" id="{formConfig.formValuesPrefix}_{fieldName}" name="{formConfig.formValuesPrefix}{fieldName}" maxlength="{maxlength}" />
-    <label for="{formConfig.formValuesPrefix}_{fieldName}"
-      ><f:translate key="LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldName}" />
-      <f:if condition="{formConfig.fieldsRequired.{fieldName}} == true">
+    <input class="form-input" title="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldNameFromPath}_title')}" type="email" value="{formConfig.formValues.{fieldNameFromPath}}" id="{formConfig.formValuesPrefix}_{fieldNameFromPath}" name="{formConfig.formValuesPrefix}{fieldNameFromPath -> formhandler:fieldNameFromPath()}" maxlength="{maxlength}" />
+    <label for="{formConfig.formValuesPrefix}_{fieldNameFromPath}"
+      ><f:translate key="LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldNameFromPath}" />
+      <f:if condition="{formConfig.fieldsRequired.{fieldNameFromPath}} == true">
         <f:render partial="Required" />
       </f:if>
     </label>
-    <div class="error">{fieldsError.{fieldName}}</div>
+    <div class="error">{fieldsError.{fieldNameFromPath}}</div>
   </div>
 </html>
