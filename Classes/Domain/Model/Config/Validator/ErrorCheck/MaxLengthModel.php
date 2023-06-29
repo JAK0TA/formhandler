@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck;
 
 class MaxLengthModel extends AbstractErrorCheckModel {
-  public int $maxLength = 0;
+  public readonly int $maxLength;
 
   /**
    * @param array<string, mixed> $settings
