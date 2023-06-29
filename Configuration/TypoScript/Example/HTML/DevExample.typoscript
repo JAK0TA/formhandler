@@ -47,6 +47,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
       model = VarDumpDebuggerModel
       config {
         active = true
+        maxDepth = 20
       }
     }
   }

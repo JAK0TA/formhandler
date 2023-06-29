@@ -43,6 +43,10 @@ class FormController extends ActionController {
     if (!$this->formConfigValid()) {
       // TODO: Return with error
     }
+    $this->formConfig->debugMessage(
+      key: 'Form config',
+      data: $this->formConfig,
+    );
 
     $this->formConfig->site = $this->request->getAttribute('site');
     $this->parsedBody = (array) $this->request->getParsedBody();

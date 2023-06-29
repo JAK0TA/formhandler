@@ -83,7 +83,7 @@ class FormModel {
   /** @var AbstractDebugger[] */
   private array $debuggers = [];
 
-  /** @var array<string, array<int, array{message: string, severity: Severity, data: array<int|string, mixed>|string}>> */
+  /** @var array<string, array<int, array{message: string, severity: Severity, data: array<int|string, mixed>|object|string}>> */
   private array $debugLog = [];
 
   /**

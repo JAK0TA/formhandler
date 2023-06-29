@@ -17,7 +17,7 @@ abstract class AbstractDebugger implements SingletonInterface {
   }
 
   /**
-   * @param array<string, array<int, array{message: string, severity: Severity, data: array<int|string, mixed>|string}>> $debugLog
+   * @param array<string, array<int, array{message: string, severity: Severity, data: array<int|string, mixed>|object|string}>> $debugLog
    */
   abstract public function processDebugLog(array $debugLog): void;
 }
