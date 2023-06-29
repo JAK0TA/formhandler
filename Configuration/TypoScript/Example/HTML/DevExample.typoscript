@@ -64,6 +64,10 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
       validators {
         DefaultValidator {
           model = DefaultValidatorModel
+          messageLimit = 2
+          messageLimits {
+            
+          }
           config {
             fields {
               customer.fields {
