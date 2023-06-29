@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Utility;
 
+use Egulias\EmailValidator\EmailValidator;
+use Egulias\EmailValidator\Validation\DNSCheckValidation;
+use Egulias\EmailValidator\Validation\MultipleValidationWithAnd;
+use Egulias\EmailValidator\Validation\RFCValidation;
 use TYPO3\CMS\Core\Crypto\Random;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -91,5 +95,34 @@ class Utility implements SingletonInterface {
         self::removeKeys($value, $removeKeys);
       }
     }
+  }
+
+  /**
+   * Checking syntax of input email address.
+   */
+  public static function validEmail(string $email): bool {
+    // Early return in case input is not a string
+    if (!is_string($email)) {
+      return false;
+    }
+    if (trim($email) !== $email) {
+      return false;
+    }
+    if (!str_contains($email, '@')) {
+      return false;
+    }
+
+    $validator = new EmailValidator();
+    $multipleValidations = new MultipleValidationWithAnd(
+      [
+        new RFCValidation(),
+        new DNSCheckValidation(),
+      ],
+      MultipleValidationWithAnd::STOP_ON_ERROR
+    );
+
+    $validator->isValid($email, $multipleValidations);
+
+    return $validator->isValid($email, $multipleValidations);
   }
 }
