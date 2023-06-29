@@ -74,16 +74,13 @@ class FormController extends ActionController {
 
     $this->initJsonResponse();
 
-    if ($this->formSubmitted()) {
-      $this->validators();
-
-      if (!$this->formStepIsValid()) {
-        // TODO: Prepare error output
-      }
+    if ($this->formSubmitted() && $this->validators()) {
+      // Check for last step before changing step count
+      $isLast = $this->formStepIsLast();
 
       $this->formStepChange();
 
-      if ($this->formStepIsLast()) {
+      if ($isLast) {
         $this->saveInterceptors();
         $this->loggers();
         if (($redirectResponse = $this->finishers()) !== null) {
@@ -249,11 +246,6 @@ class FormController extends ActionController {
     return count($this->formConfig->steps) == $this->formConfig->step;
   }
 
-  private function formStepIsValid(): bool {
-    // TODO: Check if form step is valid
-    return false;
-  }
-
   private function formSubmitted(): bool {
     if (is_array($this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY] ?? false)) {
       return boolval($this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['submitted'] ?? false);
@@ -352,9 +344,14 @@ class FormController extends ActionController {
     }
   }
 
-  private function validators(): void {
+  private function validators(): bool {
+    $isValid = true;
     foreach ($this->formConfig->steps[$this->formConfig->step]->validators as $validator) {
-      GeneralUtility::makeInstance($validator->class())->process($this->formConfig, $validator);
+      if (!GeneralUtility::makeInstance($validator->class())->process($this->formConfig, $validator)) {
+        $isValid = false;
+      }
     }
+
+    return $isValid;
   }
 }
