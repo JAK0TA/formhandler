@@ -9,6 +9,6 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractError
 
 class Required extends AbstractErrorCheck {
   public function process(FormModel &$formConfig, AbstractErrorCheckModel &$requiredErrorCheckConfig, mixed $value): bool {
-    return true;
+    return !empty($value);
   }
 }
