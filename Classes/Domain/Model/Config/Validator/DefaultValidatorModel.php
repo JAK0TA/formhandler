@@ -10,6 +10,11 @@ use Typoheads\Formhandler\Utility\Utility;
 use Typoheads\Formhandler\Validator\DefaultValidator;
 
 class DefaultValidatorModel extends AbstractValidatorModel {
+  public readonly int $messageLimit;
+
+  /** @var array<string, int> */
+  public readonly array $messageLimits;
+
   /**
    * @param array<string, mixed> $settings
    */
@@ -39,14 +44,18 @@ class DefaultValidatorModel extends AbstractValidatorModel {
       }
     }
 
-    if (isset($settings['messageLimit'])) {
-      if (is_int($settings['messageLimit'])) {
-        $this->messageLimit = $settings['messageLimit'];
-      } elseif (is_array($settings['messageLimit'])) {
-        foreach ($settings['messageLimit'] as $field => $messageLimit) {
-          $this->messageLimits[strval($field)] = intval($messageLimit);
-        }
+    $this->messageLimit = intval($settings['messageLimit'] ?? 1);
+
+    if (isset($settings['messageLimits']) && is_array($settings['messageLimits'])) {
+      $messageLimits = [];
+      foreach ($settings['messageLimits'] as $field => $messageLimit) {
+        $messageLimits[strval($field)] = intval($messageLimit ?? 1);
       }
+      $this->messageLimits = $messageLimits;
+    } else {
+      // TODO: remove ignore once fixed: https://github.com/phpstan/phpstan/issues/6402
+      // @phpstan-ignore-next-line
+      $this->messageLimits = [];
     }
 
     if (isset($settings['fields']) && is_array($settings['fields'])) {

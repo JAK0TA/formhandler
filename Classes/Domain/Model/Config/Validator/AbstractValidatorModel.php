@@ -14,11 +14,6 @@ abstract class AbstractValidatorModel {
   /** @var FieldModel[] */
   public array $fields = [];
 
-  public int $messageLimit = 0;
-
-  /** @var array<string, int> */
-  public array $messageLimits = [];
-
   /** @var string[] */
   protected array $restrictErrorChecks = [];
 
