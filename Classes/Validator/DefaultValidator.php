@@ -31,7 +31,7 @@ class DefaultValidator extends AbstractValidator {
         $formValue = $formValues[$field->name] ?? null;
       }
       foreach ($field->errorChecks as $errorCheck) {
-        if (GeneralUtility::makeInstance($errorCheck->class())->hasError($formConfig, $errorCheck, $formValue ?? '')) {
+        if (!GeneralUtility::makeInstance($errorCheck->class())->isValid($formConfig, $errorCheck, $formValue ?? '')) {
           $isValid = false;
           // TODO: Prepare error message
         }

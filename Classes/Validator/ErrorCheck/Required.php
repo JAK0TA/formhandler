@@ -8,7 +8,7 @@ use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractErrorCheckModel;
 
 class Required extends AbstractErrorCheck {
-  public function hasError(FormModel &$formConfig, AbstractErrorCheckModel &$requiredErrorCheckConfig, mixed $value): bool {
-    return empty($value);
+  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$requiredErrorCheckConfig, mixed $value): bool {
+    return !empty($value);
   }
 }

@@ -8,7 +8,7 @@ use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractErrorCheckModel;
 
 class ContainsOne extends AbstractErrorCheck {
-  public function hasError(FormModel &$formConfig, AbstractErrorCheckModel &$containsOneErrorCheckConfig, mixed $value): bool {
-    return false;
+  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$containsOneErrorCheckConfig, mixed $value): bool {
+    return true;
   }
 }
