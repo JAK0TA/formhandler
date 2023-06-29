@@ -104,12 +104,6 @@ class FormController extends ActionController {
 
     $this->prepareFormSets();
 
-    $this->prepareFieldsNameMap(
-      (string) $this->formConfig->step,
-      '['.$this->formConfig->step.']',
-      $this->formConfig->formValues[(string) $this->formConfig->step]
-    );
-
     if ('json' == $this->formConfig->responseType) {
       $this->jsonResponse->steps = $this->formConfig->steps;
       $this->jsonResponse->fieldSets = $this->formConfig->fieldSets;
@@ -131,7 +125,6 @@ class FormController extends ActionController {
     // Prepare output
     $this->view->assignMultiple(
       [
-        'fieldsNameMap' => $this->formConfig->fieldsNameMap ?? [],
         'fieldsRequired' => $this->fieldsRequired,
         'fieldsSelectOptions' => $this->formConfig->fieldsSelectOptions,
         'fieldSets' => $this->formConfig->fieldSets,
@@ -307,21 +300,6 @@ class FormController extends ActionController {
       key: 'Step number in Session',
       data: $this->formConfig->step,
     );
-  }
-
-  private function prepareFieldsNameMap(string $fieldPath, string $fieldName, mixed $fields): void {
-    if (is_array($fields)) {
-      foreach ($fields as $field => $value) {
-        if (is_array($value)) {
-          $fieldPath .= '.'.$field;
-          $fieldName .= '['.$field.']';
-          $this->prepareFieldsNameMap($fieldPath, $fieldName, $value);
-        } else {
-          $this->formConfig->fieldsNameMap[$fieldName.'['.$field.']'] = $fieldPath.'.'.$field;
-        }
-      }
-      $this->formConfig->fieldsNameMap[$fieldName] = $fieldPath;
-    }
   }
 
   private function prepareFieldsRequired(string $fieldNamePath, FieldModel $field): void {

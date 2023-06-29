@@ -24,9 +24,6 @@ class FormModel {
   /** @var FieldSetModel[] */
   public array $fieldSets = [];
 
-  /** @var array<string, string> */
-  public array $fieldsNameMap = [];
-
   /** @var array<string, SelectOptionModel[]> */
   public array $fieldsSelectOptions = [];
 
