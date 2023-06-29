@@ -104,16 +104,9 @@ class FormController extends ActionController {
     $this->prepareFormSets();
 
     if ('json' == $this->formConfig->responseType) {
-      $steps = $this->formConfig->steps;
-      GeneralUtility::makeInstance(Utility::class)::removeKeys(
-        $steps,
-        [
-          'class',
-          'restrictErrorChecks',
-          'templateForm',
-        ]
-      );
-      $this->jsonResponse->steps = $steps;
+      // TODO: make 'restrictErrorChecks' private,
+
+      $this->jsonResponse->steps = $this->formConfig->steps;
       $this->jsonResponse->fieldSets = $this->formConfig->fieldSets;
       $this->jsonResponse->formValues = $this->formConfig->formValues;
 
