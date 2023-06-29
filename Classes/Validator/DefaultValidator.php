@@ -37,7 +37,7 @@ class DefaultValidator extends AbstractValidator {
         }
       }
       if (!empty($field->fields)) {
-        $this->checkFields($formConfig, $formValue ?? [], $field->fields);
+        $isValid = $this->checkFields($formConfig, $formValue ?? [], $field->fields);
       }
     }
 
