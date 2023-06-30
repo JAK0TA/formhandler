@@ -45,7 +45,8 @@ class DefaultValidator extends AbstractValidator {
           && !GeneralUtility::makeInstance($errorCheck->class())->isValid($formConfig, $errorCheck, $formValue ?? '')
         ) {
           $isValid = false;
-          // TODO: Prepare error message
+
+          $formConfig->fieldsErrors[$fieldNamePath][] = $errorCheck->name;
         }
       }
       if (!empty($field->fields)) {

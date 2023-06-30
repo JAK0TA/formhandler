@@ -24,6 +24,9 @@ class FormModel {
   /** @var array<string, string[]> */
   public array $disableErrorCheckFields = [];
 
+  /** @var array<string, string[]> */
+  public array $fieldsErrors = [];
+
   /** @var FieldSetModel[] */
   public array $fieldSets = [];
 
