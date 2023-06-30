@@ -16,41 +16,42 @@ class DefaultValidator extends AbstractValidator {
       return false;
     }
 
-    return $this->checkFields($formConfig, $formConfig->formValues[$formConfig->step] ?? [], $validatorConfig->fields, (string) $formConfig->step);
+    return $this->checkFields($formConfig, $formConfig->formValues[$formConfig->step] ?? [], $validatorConfig->fields, (string) $formConfig->step, '['.$formConfig->step.']');
   }
 
   /**
    * @param FieldModel[] $fields
    */
-  private function checkFields(FormModel &$formConfig, mixed $formValues, array $fields, string $fieldName): bool {
+  private function checkFields(FormModel &$formConfig, mixed $formValues, array $fields, string $fieldNameDots, string $fieldNameBrackets): bool {
     $isValid = true;
 
     foreach ($fields as $field) {
-      $fieldNamePath = $fieldName.'.'.$field->name;
+      $fieldNamePathDots = $fieldNameDots.'.'.$field->name;
+      $fieldNamePathBrackets = $fieldNameBrackets.'['.$field->name.']';
       $formValue = null;
       if (is_array($formValues)) {
         $formValue = $formValues[$field->name] ?? null;
       }
 
       if (
-        isset($formConfig->disableErrorCheckFields[$fieldNamePath])
-        && empty($formConfig->disableErrorCheckFields[$fieldNamePath])
+        isset($formConfig->disableErrorCheckFields[$fieldNamePathDots])
+        && empty($formConfig->disableErrorCheckFields[$fieldNamePathDots])
       ) {
         continue;
       }
 
       foreach ($field->errorChecks as $errorCheck) {
         if (
-          !in_array($errorCheck->class(), $formConfig->disableErrorCheckFields[$fieldNamePath] ?? [])
+          !in_array($errorCheck->class(), $formConfig->disableErrorCheckFields[$fieldNamePathDots] ?? [])
           && !GeneralUtility::makeInstance($errorCheck->class())->isValid($formConfig, $errorCheck, $formValue ?? '')
         ) {
           $isValid = false;
 
-          $formConfig->fieldsErrors[$fieldNamePath][] = $errorCheck->name;
+          $formConfig->fieldsErrors[$fieldNamePathBrackets][] = $errorCheck->name;
         }
       }
       if (!empty($field->fields)) {
-        $isValid = $this->checkFields($formConfig, $formValue ?? [], $field->fields, $fieldNamePath);
+        $isValid = $this->checkFields($formConfig, $formValue ?? [], $field->fields, $fieldNamePathDots, $fieldNamePathBrackets);
       }
     }
 
