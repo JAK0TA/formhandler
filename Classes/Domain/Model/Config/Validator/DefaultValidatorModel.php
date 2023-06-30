@@ -48,11 +48,7 @@ class DefaultValidatorModel extends AbstractValidatorModel {
     $this->messageLimit = intval($settings['messageLimit'] ?? 1);
 
     if (isset($settings['messageLimits']) && is_array($settings['messageLimits'])) {
-      $messageLimits = [];
-      foreach ($settings['messageLimits'] as $field => $messageLimit) {
-        $messageLimits[strval($field)] = intval($messageLimit ?? 1);
-      }
-      $this->messageLimits = $messageLimits;
+      $this->messageLimits = $this->messageLimits($settings['messageLimits']);
     } else {
       // TODO: remove ignore once fixed: https://github.com/phpstan/phpstan/issues/6402
       // @phpstan-ignore-next-line
@@ -71,5 +67,24 @@ class DefaultValidatorModel extends AbstractValidatorModel {
 
   public function class(): string {
     return DefaultValidator::class;
+  }
+
+  /**
+   * @param array<string, mixed> $messageLimits
+   *
+   * @return array<string, int>
+   */
+  private function messageLimits(array $messageLimits, string $fieldNamePath = ''): array {
+    $fieldNamePath = empty($fieldNamePath) ? $fieldNamePath : $fieldNamePath.'.';
+    $messageLimitFields = [];
+    foreach ($messageLimits as $field => $messageLimit) {
+      if (is_array($messageLimit)) {
+        $messageLimitFields = $this->messageLimits($messageLimit, $fieldNamePath.$field);
+      } else {
+        $messageLimitFields[$fieldNamePath.$field] = intval($messageLimit ?? 1);
+      }
+    }
+
+    return $messageLimitFields;
   }
 }

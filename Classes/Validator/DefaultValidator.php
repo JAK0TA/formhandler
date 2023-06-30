@@ -11,10 +11,13 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\DefaultValidatorModel;
 use Typoheads\Formhandler\Domain\Model\Config\Validator\Field\FieldModel;
 
 class DefaultValidator extends AbstractValidator {
+  private DefaultValidatorModel $validatorConfig;
+
   public function process(FormModel &$formConfig, AbstractValidatorModel &$validatorConfig): bool {
     if (!$validatorConfig instanceof DefaultValidatorModel) {
       return false;
     }
+    $this->validatorConfig = $validatorConfig;
 
     return $this->checkFields($formConfig, $formConfig->formValues[$formConfig->step] ?? [], $validatorConfig->fields, (string) $formConfig->step, '['.$formConfig->step.']');
   }
@@ -46,6 +49,18 @@ class DefaultValidator extends AbstractValidator {
           && !GeneralUtility::makeInstance($errorCheck->class())->isValid($formConfig, $errorCheck, $formValue ?? '')
         ) {
           $isValid = false;
+          if (
+            (
+              intval($this->validatorConfig->messageLimits[$fieldNamePathDots] ?? 0) > 0
+              && count($formConfig->fieldsErrors[$fieldNamePathBrackets] ?? []) >= intval($this->validatorConfig->messageLimits[$fieldNamePathDots])
+            )
+            || (
+              0 == intval($this->validatorConfig->messageLimits[$fieldNamePathDots] ?? 0)
+              && count($formConfig->fieldsErrors[$fieldNamePathBrackets] ?? []) >= $this->validatorConfig->messageLimit
+            )
+          ) {
+            continue;
+          }
 
           $formConfig->fieldsErrors[$fieldNamePathBrackets][] = $errorCheck->name;
         }
