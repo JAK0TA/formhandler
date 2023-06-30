@@ -41,8 +41,7 @@ class DefaultValidator extends AbstractValidator {
 
       foreach ($field->errorChecks as $errorCheck) {
         if (
-          isset($formConfig->disableErrorCheckFields[$fieldNamePath])
-          && !in_array($errorCheck->class(), $formConfig->disableErrorCheckFields[$fieldNamePath] ?? [])
+          !in_array($errorCheck->class(), $formConfig->disableErrorCheckFields[$fieldNamePath] ?? [])
           && !GeneralUtility::makeInstance($errorCheck->class())->isValid($formConfig, $errorCheck, $formValue ?? '')
         ) {
           $isValid = false;
