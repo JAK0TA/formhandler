@@ -106,6 +106,7 @@ class FormController extends ActionController {
 
     if ('json' == $this->formConfig->responseType) {
       $this->jsonResponse->steps = $this->formConfig->steps;
+      $this->jsonResponse->fieldsErrors = $this->formConfig->fieldsErrors;
       $this->jsonResponse->fieldSets = $this->formConfig->fieldSets;
       $this->jsonResponse->formValues = $this->formConfig->formValues;
 
@@ -126,8 +127,9 @@ class FormController extends ActionController {
     $this->view->assignMultiple(
       [
         'fieldsRequired' => $this->fieldsRequired,
-        'fieldsSelectOptions' => $this->formConfig->fieldsSelectOptions,
+        'fieldsErrors' => $this->formConfig->fieldsErrors,
         'fieldSets' => $this->formConfig->fieldSets,
+        'fieldsSelectOptions' => $this->formConfig->fieldsSelectOptions,
         'formId' => $this->formConfig->formId,
         'formName' => $this->formConfig->formName,
         'formUrl' => $this->formConfig->formUrl,

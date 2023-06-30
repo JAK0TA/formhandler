@@ -8,6 +8,9 @@ use Typoheads\Formhandler\Domain\Model\Config\FieldSetModel;
 use Typoheads\Formhandler\Domain\Model\Config\SelectOptionModel;
 
 class JsonResponseModel {
+  /** @var array<string, string[]> */
+  public array $fieldsErrors = [];
+
   /** @var FieldSetModel[] */
   public array $fieldSets = [];
 
