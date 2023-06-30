@@ -8,7 +8,9 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use Typoheads\Formhandler\Domain\Model\Config\Debugger\VarDumpDebuggerModel;
 
 class VarDumpDebugger extends AbstractDebugger {
-  public function processDebugLog(array $debugLog): void {
+  public function processDebugLog(
+    array $debugLog,
+  ): void {
     if (!$this->debuggerConfig instanceof VarDumpDebuggerModel) {
       return;
     }

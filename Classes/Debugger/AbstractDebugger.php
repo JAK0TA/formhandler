@@ -10,14 +10,24 @@ use Typoheads\Formhandler\Domain\Model\Config\Debugger\AbstractDebuggerModel;
 use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 
 abstract class AbstractDebugger implements SingletonInterface {
-  public function __construct(
-    protected FormModel &$formConfig,
-    protected AbstractDebuggerModel &$debuggerConfig
-  ) {
+  protected AbstractDebuggerModel $debuggerConfig;
+
+  protected FormModel $formConfig;
+
+  public function init(
+    FormModel &$formConfig,
+    AbstractDebuggerModel &$debuggerConfig,
+  ): AbstractDebugger {
+    $this->formConfig = $formConfig;
+    $this->debuggerConfig = $debuggerConfig;
+
+    return $this;
   }
 
   /**
    * @param array<string, array<int, array{message: string, severity: Severity, data: array<int|string, mixed>|object|string}>> $debugLog
    */
-  abstract public function processDebugLog(array $debugLog): void;
+  abstract public function processDebugLog(
+    array $debugLog,
+  ): void;
 }

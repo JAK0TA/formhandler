@@ -129,7 +129,7 @@ class FormModel {
         /** @var AbstractDebuggerModel $debuggerModel */
         $debuggerModel = GeneralUtility::makeInstance($utility::classString(strval($debugger['model']), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Debugger\\'), $debugger['config'] ?? []);
 
-        $this->debuggers[] = GeneralUtility::makeInstance($debuggerModel->class(), $this, $debuggerModel);
+        $this->debuggers[] = GeneralUtility::makeInstance($debuggerModel->class())->init($this, $debuggerModel);
       }
 
       // Get form logger
