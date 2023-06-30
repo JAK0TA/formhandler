@@ -14,6 +14,10 @@
     <label for="{formConfig.formValuesPrefix}_{fieldNameFromPath}"
       ><f:translate key="LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldNameFromPath}" /> <f:if condition="{formConfig.fieldsRequired.{fieldName}} == true"> <f:render partial="Required" /> </f:if
     ></label>
-    <div class="error">{formConfig.fieldsError.{fieldNameFromPath}}</div>
+    <div class="error">
+      <f:for each="{formConfig.fieldsErrors.{fieldName}}" as="fieldError">
+        <f:translate key="LLL:EXT:formhandler/Resources/Private/Language/{langFile}:error_{fieldNameFromPath}_{fieldError}" />
+      </f:for>
+    </div>
   </div>
 </html>

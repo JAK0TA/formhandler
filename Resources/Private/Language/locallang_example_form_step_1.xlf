@@ -16,7 +16,7 @@
       <trans-unit id="1.customer.salutation_choose" resname="1.customer.salutation_choose">
         <source>Please choose</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.salutation_required" resname="error_1.customer.salutation_required">
+      <trans-unit id="error_1.customer.salutation_Required" resname="error_1.customer.salutation_Required">
         <source>You forgot to choose a salutation.</source>
       </trans-unit>
 
@@ -29,10 +29,10 @@
       <trans-unit id="1.customer.firstname_placeholder" resname="1.customer.firstname_placeholder">
         <source>First Name</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.firstname_required" resname="error_1.customer.firstname_required">
+      <trans-unit id="error_1.customer.firstname_Required" resname="error_1.customer.firstname_Required">
         <source>Please enter your first name.</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.firstname_maxLength" resname="error_1.customer.firstname_maxLength">
+      <trans-unit id="error_1.customer.firstname_MaxLength" resname="error_1.customer.firstname_MaxLength">
         <source>First name is to long. Max. 255 Chars please.</source>
       </trans-unit>
 
@@ -45,10 +45,10 @@
       <trans-unit id="1.customer.lastname_placeholder" resname="1.customer.lastname_placeholder">
         <source>Last Name</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.lastname_required" resname="error_1.customer.lastname_required">
+      <trans-unit id="error_1.customer.lastname_Required" resname="error_1.customer.lastname_Required">
         <source>Please enter your last name.</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.lastname_maxLength" resname="error_1.customer.lastname_maxLength">
+      <trans-unit id="error_1.customer.lastname_MaxLength" resname="error_1.customer.lastname_MaxLength">
         <source>Last name is to long. Max. 255 Chars please.</source>
       </trans-unit>
 
@@ -61,7 +61,7 @@
       <trans-unit id="1.customer.streetAddress_placeholder" resname="1.customer.streetAddress_placeholder">
         <source>Street Address</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.streetAddress_required" resname="error_1.customer.streetAddress_required">
+      <trans-unit id="error_1.customer.streetAddress_Required" resname="error_1.customer.streetAddress_Required">
         <source>You forgot to type in your street adress.</source>
       </trans-unit>
 
@@ -74,7 +74,7 @@
       <trans-unit id="1.customer.postalCode_placeholder" resname="1.customer.postalCode_placeholder">
         <source>Postal Code</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.postalCode_required" resname="error_1.customer.postalCode_required">
+      <trans-unit id="error_1.customer.postalCode_Required" resname="error_1.customer.postalCode_Required">
         <source>You forgot to type in a postal code.</source>
       </trans-unit>
 
@@ -87,10 +87,10 @@
       <trans-unit id="1.customer.city_placeholder" resname="1.customer.city_placeholder">
         <source>City</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.city_required" resname="error_1.customer.city_required">
+      <trans-unit id="error_1.customer.city_Required" resname="error_1.customer.city_Required">
         <source>You forgot to type in a city.</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.city_maxLength" resname="error_1.customer.city_maxLength">
+      <trans-unit id="error_1.customer.city_MaxLength" resname="error_1.customer.city_MaxLength">
         <source>City is to long. Max. 70 Chars please.</source>
       </trans-unit>
 
@@ -106,7 +106,7 @@
       <trans-unit id="1.customer.country_choose" resname="1.customer.country_choose">
         <source>Please choose</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.country_required" resname="error_1.customer.country_required">
+      <trans-unit id="error_1.customer.country_Required" resname="error_1.customer.country_Required">
         <source>You forgot to type in the country in that you are living/working.</source>
       </trans-unit>
       <trans-unit id="1.customer.country_search_placeholder" resname="1.customer.country_search_placeholder">
@@ -122,10 +122,10 @@
       <trans-unit id="1.customer.telephone_placeholder" resname="1.customer.telephone_placeholder">
         <source>Phone number</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.telephone_required" resname="error_1.customer.telephone_required">
+      <trans-unit id="error_1.customer.telephone_Required" resname="error_1.customer.telephone_Required">
         <source>You forgot to type in a telephone-number.</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.telephone_maxLength" resname="error_1.customer.telephone_maxLength">
+      <trans-unit id="error_1.customer.telephone_MaxLength" resname="error_1.customer.telephone_MaxLength">
         <source>Telephone-Nmber is to long. Max. 20 Chars please.</source>
       </trans-unit>
 
@@ -138,13 +138,13 @@
       <trans-unit id="1.customer.email_placeholder" resname="1.customer.email_placeholder">
         <source>Email</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.email_required" resname="error_1.customer.email_required">
+      <trans-unit id="error_1.customer.email_Required" resname="error_1.customer.email_Required">
         <source>You forgot to type in an email-address.</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.email_maxLength" resname="error_1.customer.email_maxLength">
+      <trans-unit id="error_1.customer.email_MaxLength" resname="error_1.customer.email_MaxLength">
         <source>Your email-address is to long. Max. 50 Chars please.</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.email_email" resname="error_1.customer.email_email">
+      <trans-unit id="error_1.customer.email_Email" resname="error_1.customer.email_Email">
         <source>Please type in a valid email-address.</source>
       </trans-unit>
 
