@@ -13,3 +13,6 @@ composer.lock
 Thumbs.db
 .cache
 *.secret
+
+#Excluded for now, remove once done
+/Documentation

@@ -108,6 +108,15 @@
       "command": "workbench.action.terminal.sendSequence",
       "arguments": [{ "text": "git for-each-ref --format '%(refname:short)' refs/heads | grep -v \"master\\|main\\|develop\\|stage\" | grep -v $(git branch --show-current) | xargs git branch -D\u000D" }],
       "priority": -7
+    },
+    {
+      "text": "$(book) Build Documentation",
+      "tooltip": "Git: Clean up local branches",
+      "id": "gitCleanUp",
+      "name": "gitCleanUp",
+      "command": "workbench.action.terminal.sendSequence",
+      "arguments": [{ "text": "./vendor/bin/documentation-builder Classes Documentation\u000D" }],
+      "priority": -8
     }
   ]
 }
