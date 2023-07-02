@@ -9,6 +9,21 @@ use Typoheads\Formhandler\Definitions\Severity;
 use Typoheads\Formhandler\Domain\Model\Config\Debugger\AbstractDebuggerModel;
 use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 
+/** Documentation:Start:TocTree:Debuggers/Index.rst.
+ *
+ *.. _debuggers:
+ *
+ *Debuggers
+ *==========
+ *
+ *.. toctree::
+ *   :maxdepth: 2
+ *   :hidden:
+ *
+ *   VarDumpDebugger
+ *
+ *Documentation:End
+ */
 abstract class AbstractDebugger implements SingletonInterface {
   protected AbstractDebuggerModel $debuggerConfig;
 

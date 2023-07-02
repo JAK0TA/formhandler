@@ -8,6 +8,21 @@ use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 use Typoheads\Formhandler\Domain\Model\Config\Validator\Field\FieldModel;
 use Typoheads\Formhandler\Validator\AbstractValidator;
 
+/** Documentation:Start:TocTree:Validators/Index.rst.
+ *
+ *.. _validators:
+ *
+ *Validators
+ *==========
+ *
+ *.. toctree::
+ *   :maxdepth: 2
+ *   :hidden:
+ *
+ *   DefaultValidator
+ *
+ *Documentation:End
+ */
 abstract class AbstractValidatorModel {
   /** @var FieldModel[] */
   public array $fields = [];

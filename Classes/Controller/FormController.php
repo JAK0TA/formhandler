@@ -17,6 +17,535 @@ use Typoheads\Formhandler\Domain\Model\Json\JsonResponseModel;
 use Typoheads\Formhandler\Session\Typo3Session;
 use Typoheads\Formhandler\Utility\Utility;
 
+/** Documentation:Start:Index.rst.
+ *
+ *===============================
+ *Getting Started with Formhander
+ *===============================
+ *
+ *:Package name:
+ *    jakota/formhandler
+ *
+ *:Version:
+ *    |release|
+ *
+ *:Language:
+ *    en
+ *
+ *:Author:
+ *    `www.typoheads.at <https://www.typoheads.at>`__, `www.jakota.de <https://www.jakota.de>`__ & Formhander
+ *    contributors see fork history on `github <https://github.com/jAK0TA/formhandler/>`__
+ *
+ *:Rendered:
+ *    |today|
+ *
+ *----
+ *
+ *IS FORMHANDLER RIGHT FOR ME? – AN INTRODUCTION
+ *
+ *The extension Formhandler was developed with the requirements of programmers and administrators in mind. The focus was on flexibility, so Formhandler can be used to build any kind of form in a TYPO3 project.
+ *
+ *However, Formhandler is currently not being delivered with a wizard that enables the building of forms via a fancy GUI in the TYPO3 backend. Keep on reading if you are not deterred by the lack of GUI and find out if Formhandler is right for you:
+ *
+ *
+ *.. toctree::
+ *   :maxdepth: 2
+ *   :hidden:
+ *
+ *   Installation/Index
+ *   Migration/Index
+ *   GeneralOptions/Index
+ *TocTreeInsert
+ *
+ *.. Meta Menu
+ *
+ *.. toctree::
+ *   :hidden:
+ *
+ *Documentation:End
+ */
+/** Documentation:Start:Installation/Index.rst.
+ *
+ *.. _installation:
+ *
+ *============
+ *Installation
+ *============
+ *
+ *1.  Include as composer dependency using
+ *
+ *    .. code-block:: bash
+ *
+ *        composer require jakota/formhandler
+ *
+ *2.  Run
+ *
+ *    .. code-block:: bash
+ *
+ *        composer install
+ *
+ *    to generate the vendor class autoloader.
+ *
+ *3.  The classes from `JAKOTA.Formhandler` can now be used in your composer project.
+ *
+ *4.  Include the Formhander TypoScript to your Main TypoScript template.
+ *
+ *Documentation:End
+ */
+/** Documentation:Start:Migration/Index.rst.
+ *
+ *.. _migration:
+ *
+ *=========
+ *Migration
+ *=========
+ *
+ *
+ *Documentation:End
+ */
+/** Documentation:Start:GeneralOptions/Index.rst.
+ *
+ *.. include:: /Includes.rst.txt
+ *
+ *.. _general-options:
+ *
+ *===============
+ *General Options
+ *===============
+ *
+ *All forms are build via TypoScript as predefined forms.
+ *
+ *Settings
+ *========
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **TypoScript Path**
+ *     - plugin.tx_formhandler_form.settings
+ *
+ *..  code-block:: typoscript
+ *
+ *    Example Code:
+ *
+ *    plugin.tx_formhandler_form.settings {
+ *      admin {
+ *        bccEmail =
+ *        bccName =
+ *        ccEmail =
+ *        ccName =
+ *        replyToEmail =
+ *        replyToName =
+ *        senderEmail =
+ *        senderName =
+ *        subject =
+ *        toEmail =
+ *      }
+ *      predefinedForm {
+ *        formId1 {
+ *        }
+ *        formId2 {
+ *        }
+ *        formId3 {
+ *        }
+ *      }
+ *      redirectPage = 12
+ *      requiredFields = 1.customer.firstname, 1.customer.lastname
+ *      responseType = html
+ *      user {
+ *        bccEmail =
+ *        bccName =
+ *        ccEmail =
+ *        ccName =
+ *        replyToEmail =
+ *        replyToName =
+ *        senderEmail =
+ *        senderName =
+ *        subject =
+ *        toEmail =
+ *      }
+ *    }
+ *
+ *Properties
+ *----------
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **admin**
+ *     - See :ref:`MailFinisher`
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - False
+ *   * - *Data Type*
+ *     - MailModel
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **predefinedForm**
+ *     - See :ref:`predefined-forms-label`
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - True
+ *   * - *Data Type*
+ *     - Array<String, FormModel>
+ *   * - *Note*
+ *     - The key String of Array<String, FormModel> must be unique.
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **redirectPage**
+ *     - Page UID to redirect to after successful form submission.
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - True (only if :ref:`RedirectFinisher` is set)
+ *   * - *Data Type*
+ *     - Integer
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **requiredFields**
+ *     - Mandatory fields (enter names of form fields separated by ",")
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - False
+ *   * - *Data Type*
+ *     - String
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **responseType**
+ *     - Determents the form rendering either as HTML or JSON for headless response.
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - True
+ *   * - *Data Type*
+ *     - String
+ *   * - *Supported values*
+ *     - html, json
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **user**
+ *     - See :ref:`MailFinisher`
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - False
+ *   * - *Data Type*
+ *     - MailModel
+ *
+ *.. _predefined-forms-label:
+ *
+ *Predefined Forms
+ *================
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **TypoScript Path**
+ *     - plugin.tx_formhandler_form.settings.predefinedForms.FormName
+ *
+ *..  code-block:: typoscript
+ *
+ *    Example Code:
+ *
+ *    plugin.tx_formhandler_form.settings.predefinedForms.devExample {
+ *      formId = DevExampleForm
+ *      formName = Dev Example Form
+ *      formValuesPrefix = DevExampleForm
+ *      langFileDefault = locallang_example_form.xlf
+ *      templateForm = DevExample/Default
+ *      templateMailHtml = DevExample/MailHtml
+ *      templateMailText = DevExample/MailText
+ *
+ *      steps {
+ *        1 {
+ *          templateForm = DevExampleForm/DevExampleHTMLStep1
+ *          validators {
+ *            DefaultValidator {
+ *              model = DefaultValidatorModel
+ *              config {
+ *                messageLimit = 1
+ *                messageLimits {
+ *                  1.customer.email = 2
+ *                }
+ *                fields {
+ *                  customer.fields {
+ *                    firstname.errorChecks {
+ *                      required {
+ *                        model = RequiredModel
+ *                      }
+ *                      maxLength {
+ *                        model = MaxLengthModel
+ *                        maxLength = 20
+ *                      }
+ *                    }
+ *                    lastname.errorChecks {
+ *                      required {
+ *                        model = RequiredModel
+ *                      }
+ *                      maxLength {
+ *                        model = MaxLengthModel
+ *                        maxLength = 20
+ *                      }
+ *                    }
+ *                    streetAddress.errorChecks {
+ *                      required {
+ *                        model = RequiredModel
+ *                      }
+ *                    }
+ *                    postalCode.errorChecks {
+ *                      required {
+ *                        model = RequiredModel
+ *                      }
+ *                    }
+ *                    city.errorChecks {
+ *                      required {
+ *                        model = RequiredModel
+ *                      }
+ *                      maxLength {
+ *                        model = MaxLengthModel
+ *                        maxLength = 70
+ *                      }
+ *                    }
+ *                    country.errorChecks {
+ *                      required {
+ *                        model = RequiredModel
+ *                      }
+ *                    }
+ *                    telephone.errorChecks {
+ *                      required {
+ *                        model = RequiredModel
+ *                      }
+ *                      maxLength {
+ *                        model = MaxLengthModel
+ *                        maxLength = 20
+ *                      }
+ *                    }
+ *                    email.errorChecks {
+ *                      required {
+ *                        model = RequiredModel
+ *                      }
+ *                      maxLength {
+ *                        model = MaxLengthModel
+ *                        maxLength = 50
+ *                      }
+ *                      email {
+ *                        model = EmailModel
+ *                      }
+ *                    }
+ *                  }
+ *                }
+ *              }
+ *            }
+ *          }
+ *        }
+ *      }
+ *
+ *      finishers {
+ *        Mail {
+ *          model = MailFinisherModel
+ *        }
+ *        Redirect {
+ *          model = RedirectFinisherModel
+ *          config {
+ *            returns = true
+ *            correctRedirectUrl = false
+ *            additionalParams {
+ *              postal_code = 1.customer.postalCode
+ *              queryParam2 = valueIfNotFoundAsFieldName
+ *            }
+ *          }
+ *        }
+ *      }
+ *    }
+ *
+ *Properties
+ *----------
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **formId**
+ *     - Value of the id attribute of the form tag.
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - True
+ *   * - *Data Type*
+ *     - String
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **formName**
+ *     - Value of the name shown in the dropdown list.
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - True
+ *   * - *Data Type*
+ *     - String
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **formValuesPrefix**
+ *     - Prefix of form fields. Use this if you use a prefix for your forms to avoid conflicts with other plugins. Settings this option you will be able to use only the fieldname in all markers and do not need to add prefix.
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - False
+ *   * - *Data Type*
+ *     - String
+ *   * - *Default*
+ *     - tx_formhandler_form
+ *   * - *Note*
+ *     - It is highly recommended to use this setting!
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **langFileDefault**
+ *     - Path to default language file, can be altered as parameter by the form fields.
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - False
+ *   * - *Data Type*
+ *     - String
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **steps**
+ *     - You can split a form into as many steps as you like and add as many :ref:`Validators` as you like to each step, but even if the form has just one step it must be defined to add :ref:`Validators`.
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - True (Only if a form has needs :ref:`Validators`, otherwise not.)
+ *   * - *Data Type*
+ *     - Array<Integer, `Step <step-label_>`__>
+ *   * - *Note*
+ *     - The key Integer in Array<Integer, `Step <step-label_>`__> starts at 1 for first step.
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **finishers**
+ *     - A list of :ref:`Finishers` for the predefined forms.
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - False
+ *   * - *Data Type*
+ *     - Array<String, :ref:`Finisher <Finishers>`>
+ *
+ ***Step**
+ *
+ *.. _step-label:
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **templateForm**
+ *     - The template for a given step.
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - False
+ *   * - *Data Type*
+ *     - String
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **validators**
+ *     - A list of :ref:`Validators` for a given step.
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - False
+ *   * - *Data Type*
+ *     - Array<String, :ref:`Validator <Validators>`>
+ *
+ *Documentation:End
+ */
 class FormController extends ActionController {
   /** @var array<string, bool> */
   protected $fieldsRequired = [];
