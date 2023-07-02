@@ -30,7 +30,7 @@
     "helmich/typo3-typoscript-lint": "^3.1",
     "friendsofphp/php-cs-fixer": "^3.18",
     "google/recaptcha": "^1.3",
-    "jakota/documentation-builder": "^1.0"
+    "jakota/documentation-builder": "dev-main"
   },
   "autoload": {
     "psr-4": {
