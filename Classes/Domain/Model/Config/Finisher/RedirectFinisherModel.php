@@ -6,6 +6,19 @@ namespace Typoheads\Formhandler\Domain\Model\Config\Finisher;
 
 use Typoheads\Formhandler\Finisher\RedirectFinisher;
 
+/** Documentation:Start:Finishers/RedirectFinisher.rst.
+ *
+ *.. _redirectfinisher:
+ *
+ *================
+ *RedirectFinisher
+ *================
+ *
+ *
+ *
+ *
+ *Documentation:End
+ */
 class RedirectFinisherModel extends AbstractFinisherModel {
   /** @var array<string, string> */
   public readonly array $additionalParams;

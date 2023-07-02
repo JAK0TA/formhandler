@@ -6,6 +6,19 @@ namespace Typoheads\Formhandler\Domain\Model\Config\Finisher;
 
 use Typoheads\Formhandler\Finisher\MailFinisher;
 
+/** Documentation:Start:Finishers/MailFinisher.rst.
+ *
+ *.. _mailfinisher:
+ *
+ *============
+ *MailFinisher
+ *============
+ *
+ *
+ *
+ *
+ *Documentation:End
+ */
 class MailFinisherModel extends AbstractFinisherModel {
   /**
    * @param array<string, mixed> $settings

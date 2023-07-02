@@ -7,19 +7,6 @@ namespace Typoheads\Formhandler\Debugger;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use Typoheads\Formhandler\Domain\Model\Config\Debugger\VarDumpDebuggerModel;
 
-/** Documentation:Start:Debuggers/VarDumpDebugger.rst.
- *
- *.. _vardumpdebugger:
- *
- *===============
- *VarDumpDebugger
- *===============
- *
- *
- *
- *
- *Documentation:End
- */
 class VarDumpDebugger extends AbstractDebugger {
   public function processDebugLog(
     array $debugLog,

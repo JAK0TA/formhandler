@@ -6,6 +6,19 @@ namespace Typoheads\Formhandler\Domain\Model\Config\Debugger;
 
 use Typoheads\Formhandler\Debugger\VarDumpDebugger;
 
+/** Documentation:Start:Debuggers/VarDumpDebugger.rst.
+ *
+ *.. _vardumpdebugger:
+ *
+ *===============
+ *VarDumpDebugger
+ *===============
+ *
+ *
+ *
+ *
+ *Documentation:End
+ */
 class VarDumpDebuggerModel extends AbstractDebuggerModel {
   public readonly bool $active;
 

@@ -10,19 +10,6 @@ use Typoheads\Formhandler\Domain\Model\Config\Finisher\AbstractFinisherModel;
 use Typoheads\Formhandler\Domain\Model\Config\Finisher\RedirectFinisherModel;
 use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 
-/** Documentation:Start:Finishers/RedirectFinisher.rst.
- *
- *.. _redirectfinisher:
- *
- *================
- *RedirectFinisher
- *================
- *
- *
- *
- *
- *Documentation:End
- */
 class RedirectFinisher extends AbstractFinisher {
   public function process(FormModel &$formConfig, AbstractFinisherModel &$finisherConfig): void {
     if (!$finisherConfig instanceof RedirectFinisherModel || null === $formConfig->site) {
