@@ -300,6 +300,9 @@ use Typoheads\Formhandler\Utility\Utility;
  *      templateMailHtml = DevExample/MailHtml
  *      templateMailText = DevExample/MailText
  *
+ *      debuggers {
+ *      }
+ *
  *      steps {
  *        1 {
  *          templateForm = DevExampleForm/DevExampleHTMLStep1
@@ -471,6 +474,22 @@ use Typoheads\Formhandler\Utility\Utility;
  *     - False
  *   * - *Data Type*
  *     - String
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **debuggers**
+ *     - A list of :ref:`Debuggers` for the predefined forms.
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - False
+ *   * - *Data Type*
+ *     - Array<String, :ref:`Debugger <Debuggers>`>
  *
  *.. list-table::
  *   :align: left
