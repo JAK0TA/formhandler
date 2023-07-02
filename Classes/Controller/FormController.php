@@ -170,8 +170,7 @@ use Typoheads\Formhandler\Utility\Utility;
  *      }
  *    }
  *
- *Properties
- *----------
+ ***Properties**
  *
  *.. list-table::
  *   :align: left
@@ -197,7 +196,7 @@ use Typoheads\Formhandler\Utility\Utility;
  *   :stub-columns: 0
  *
  *   * - **predefinedForm**
- *     - See :ref:`predefined-forms-label`
+ *     - See `Predefined Forms <predefined-forms-label_>`__
  *   * -
  *     -
  *   * - *Mandatory*
@@ -273,10 +272,10 @@ use Typoheads\Formhandler\Utility\Utility;
  *   * - *Data Type*
  *     - MailModel
  *
- *.. _predefined-forms-label:
- *
  *Predefined Forms
  *================
+ *
+ *.. _predefined-forms-label:
  *
  *.. list-table::
  *   :align: left
@@ -403,8 +402,7 @@ use Typoheads\Formhandler\Utility\Utility;
  *      }
  *    }
  *
- *Properties
- *----------
+ ***Properties**
  *
  *.. list-table::
  *   :align: left
@@ -508,7 +506,8 @@ use Typoheads\Formhandler\Utility\Utility;
  *   * - *Data Type*
  *     - Array<String, :ref:`Finisher <Finishers>`>
  *
- ***Step**
+ *Step
+ *====
  *
  *.. _step-label:
  *
