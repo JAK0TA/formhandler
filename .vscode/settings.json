@@ -115,7 +115,7 @@
       "id": "gitCleanUp",
       "name": "gitCleanUp",
       "command": "workbench.action.terminal.sendSequence",
-      "arguments": [{ "text": "./vendor/bin/documentation-builder Classes Documentation\u000D" }],
+      "arguments": [{ "text": "./vendor/bin/documentation-builder .documentation.json\u000D" }],
       "priority": -8
     }
   ]
