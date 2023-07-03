@@ -7,7 +7,7 @@
   <div class="type-select form-group">
     <select class="" title="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldNameFromPath}_title')}" id="{formConfig.formValuesPrefix}_{fieldNameFromPath}" name="{formConfig.formValuesPrefix}{fieldName}" >
       <option value=""><f:translate key="LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldNameFromPath}_choose" /></option>
-      <f:for each="{formConfig.fieldsSelectOptions.{fieldSelectOptions}}" as="option">
+      <f:for each="{formConfig.selectsOptions.{selectOptions}}" as="option">
         <option value="{option.value}" {f:if(condition: '{formConfig.formValues.{fieldNameFromPath}} == {option.value}', then: 'selected', else: '')}>{option.title}</option>
       </f:for>
     </select>

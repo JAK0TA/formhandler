@@ -680,12 +680,12 @@ class FormController extends ActionController {
         'fieldsRequired' => $this->fieldsRequired,
         'fieldsErrors' => $this->formConfig->fieldsErrors,
         'fieldSets' => $this->formConfig->fieldSets,
-        'fieldsSelectOptions' => $this->formConfig->fieldsSelectOptions,
         'formId' => $this->formConfig->formId,
         'formName' => $this->formConfig->formName,
         'formUrl' => $this->formConfig->formUrl,
         'formValuesPrefix' => $this->formConfig->formValuesPrefix,
         'langFileDefault' => $this->formConfig->langFileDefault,
+        'selectsOptions' => $this->formConfig->selectsOptions,
         'step' => $this->formConfig->step,
         'steps' => $this->formConfig->steps,
         'templateForm' => $this->formConfig->steps[$this->formConfig->step]->templateForm(),
@@ -738,9 +738,9 @@ class FormController extends ActionController {
     ;
 
     if ($this->formConfig->session->exists()) {
-      $fieldsSelectOptions = $this->formConfig->session->get('fieldsSelectOptions');
-      if (is_array($fieldsSelectOptions)) {
-        $this->formConfig->fieldsSelectOptions = $fieldsSelectOptions;
+      $selectsOptions = $this->formConfig->session->get('selectsOptions');
+      if (is_array($selectsOptions)) {
+        $this->formConfig->selectsOptions = $selectsOptions;
       }
       $this->formConfig->step = intval(
         (
@@ -774,7 +774,7 @@ class FormController extends ActionController {
 
       $this->formConfig->session->setMultiple(
         [
-          'fieldsSelectOptions' => $this->formConfig->fieldsSelectOptions,
+          'selectsOptions' => $this->formConfig->selectsOptions,
           'formValues' => $this->formConfig->formValues,
           'step' => $this->formConfig->step,
         ]
@@ -815,12 +815,12 @@ class FormController extends ActionController {
   private function initJsonResponse(): void {
     if ('json' == $this->formConfig->responseType) {
       $this->jsonResponse = new JsonResponseModel();
-      $this->jsonResponse->fieldsSelectOptions = $this->formConfig->fieldsSelectOptions;
       $this->jsonResponse->formId = $this->formConfig->formId;
       $this->jsonResponse->formName = $this->formConfig->formName;
       $this->jsonResponse->formUrl = $this->formConfig->formUrl;
       $this->jsonResponse->formValuesPrefix = $this->formConfig->formValuesPrefix;
       $this->jsonResponse->requiredFields = $this->formConfig->requiredFields;
+      $this->jsonResponse->selectsOptions = $this->formConfig->selectsOptions;
       $this->jsonResponse->step = $this->formConfig->step;
     }
   }

@@ -7,7 +7,7 @@ namespace Typoheads\Formhandler\Domain\Model\Config\PreProcessor;
 use Typoheads\Formhandler\PreProcessor\SetSelectOptionsPreProcessor;
 
 class SetSelectOptionsPreProcessorModel extends AbstractPreProcessorModel {
-  public readonly string $field;
+  public readonly string $name;
 
   /** @var array<string, string> */
   public readonly array $options;
@@ -16,7 +16,7 @@ class SetSelectOptionsPreProcessorModel extends AbstractPreProcessorModel {
    * @param array<string, mixed> $settings
    */
   public function __construct(array $settings) {
-    $this->field = strval($settings['field'] ?? '');
+    $this->name = strval($settings['name'] ?? '');
 
     if (!is_array($settings['options'] ?? false)) {
       $this->options = [];

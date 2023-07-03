@@ -16,7 +16,7 @@ class SetSelectOptionsPreProcessor extends AbstractPreProcessor {
     }
 
     foreach ($preProcessorConfig->options as $value => $title) {
-      $formConfig->fieldsSelectOptions[$preProcessorConfig->field][] = new SelectOptionModel($value, $title);
+      $formConfig->selectsOptions[$preProcessorConfig->name][] = new SelectOptionModel($value, $title);
     }
   }
 }

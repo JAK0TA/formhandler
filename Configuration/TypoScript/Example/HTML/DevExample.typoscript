@@ -11,7 +11,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
     setSalutations {
       model = SetSelectOptionsPreProcessorModel
       config {
-        field = salutation
+        name = salutation
         options {
           mr {
             value = mr
@@ -27,7 +27,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
     setCountry {
       model = SetSelectOptionsPreProcessorModel
       config {
-        field = country
+        name = country
         options {
           DE {
             value = DE

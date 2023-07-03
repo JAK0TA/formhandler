@@ -14,9 +14,6 @@ class JsonResponseModel {
   /** @var FieldSetModel[] */
   public array $fieldSets = [];
 
-  /** @var array<string, SelectOptionModel[]> */
-  public array $fieldsSelectOptions = [];
-
   public string $formId = '';
 
   public string $formName = '';
@@ -35,6 +32,9 @@ class JsonResponseModel {
   public string $requiredFields = '';
 
   public string $returnFinisher = '';
+
+  /** @var array<string, SelectOptionModel[]> */
+  public array $selectsOptions = [];
 
   public int $step = 1;
 
