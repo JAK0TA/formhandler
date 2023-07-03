@@ -14,7 +14,7 @@ use Typoheads\Formhandler\Debugger\AbstractDebugger;
  *Debuggers
  *=========
  *
- * You can enter as many debuggers as you like. Each entry requires a model name of the debugger. Optionally you can enter a specific configuration for the debugger in the config section.
+ *You can enter as many debuggers as you like. Each entry requires a model name of the debugger. Optionally you can enter a specific configuration for the debugger in the config section.
  *
  *.. list-table::
  *   :align: left
