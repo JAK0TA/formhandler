@@ -14,7 +14,111 @@ use Typoheads\Formhandler\Finisher\RedirectFinisher;
  *RedirectFinisher
  *================
  *
+ *Redirects to specified page after successful form submission.
  *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **TypoScript Path**
+ *     - plugin.tx_formhandler_form.settings.predefinedForms.[x].finishers
+ *
+ *..  code-block:: typoscript
+ *
+ *    Example Code:
+ *
+ *    finishers {
+ *      Redirect {
+ *        model = RedirectFinisherModel
+ *        config {
+ *          returns = true
+ *          correctRedirectUrl = false
+ *          additionalParams {
+ *            postal_code = 1.customer.postalCode
+ *            queryParam2 = valueIfNotFoundAsFieldName
+ *          }
+ *        }
+ *      }
+ *    }
+ *
+ ***Properties**
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **additionalParams**
+ *     - Add additional parameters to the redirect URL. Each parameter can be a string
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - False
+ *   * - *Data Type*
+ *     - Array<String, String|Field name path>
+ *   * - *Default*
+ *     - Empty
+ *   * - *Note*
+ *     - The key String of Array<String, String|Field name path> will also be used as the parameter name.
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **correctRedirectUrl**
+ *     - Replaces "&amp;" with "&" in URL
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - False
+ *   * - *Data Type*
+ *     - Boolean
+ *   * - *Default*
+ *     - False
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **headerStatusCode**
+ *     - Set a custom header code set when redirecting to another page.
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - False
+ *   * - *Data Type*
+ *     - Integer
+ *   * - *Default*
+ *     - 303
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **returns**
+ *     - Tells the controller that after this :ref:`Finishers`, no other :ref:`Finishers` can be called!
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - True
+ *   * - *Data Type*
+ *     - Boolean
+ *   * - *Note*
+ *     - **MUST be set** to True otherwise the redirect can't be send to the browser.
  *
  *
  *Documentation:End

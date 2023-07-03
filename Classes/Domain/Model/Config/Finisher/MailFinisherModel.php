@@ -14,7 +14,7 @@ use Typoheads\Formhandler\Finisher\MailFinisher;
  *MailFinisher
  *============
  *
- *
+ *Sends emails to specified addresses.
  *
  *
  *Documentation:End
