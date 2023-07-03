@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Domain\Model\Config\Finisher;
 
-use TYPO3\CMS\Core\Http\RedirectResponse;
+use TYPO3\CMS\Core\Http\Response;
 use Typoheads\Formhandler\Finisher\AbstractFinisher;
 
 /** Documentation:Start:TocTree:Finishers/Index.rst.
@@ -27,7 +27,7 @@ use Typoheads\Formhandler\Finisher\AbstractFinisher;
  *Documentation:End
  */
 abstract class AbstractFinisherModel {
-  public ?RedirectResponse $redirectResponse = null;
+  public ?Response $response = null;
 
   public bool $returns = false;
 

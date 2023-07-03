@@ -32,7 +32,7 @@ class RedirectFinisher extends AbstractFinisher {
       $uri = str_replace('&amp;', '&', $uri);
     }
 
-    $finisherConfig->redirectResponse = new RedirectResponse(
+    $finisherConfig->response = new RedirectResponse(
       (string) GeneralUtility::locationHeaderUrl($uri),
       $finisherConfig->headerStatusCode
     );

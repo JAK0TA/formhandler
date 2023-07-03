@@ -34,6 +34,8 @@ class JsonResponseModel {
 
   public string $requiredFields = '';
 
+  public string $returnFinisher = '';
+
   public int $step = 1;
 
   /** @var array<int, mixed> */

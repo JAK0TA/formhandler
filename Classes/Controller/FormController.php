@@ -7,6 +7,7 @@ namespace Typoheads\Formhandler\Controller;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Http\RedirectResponse;
+use TYPO3\CMS\Core\Http\Response;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Typoheads\Formhandler\Definitions\FormhandlerExtensionConfig;
@@ -630,16 +631,19 @@ class FormController extends ActionController {
       if ($isLast) {
         $this->saveInterceptors();
         $this->loggers();
-        if (($redirectResponse = $this->finishers()) !== null) {
+        if (($response = $this->finishers()) !== null) {
           if ('json' == $this->formConfig->responseType) {
             $this->jsonResponse->success = true;
-            $this->jsonResponse->redirectPage = $redirectResponse->getHeaderLine('location');
-            $this->jsonResponse->redirectCode = $redirectResponse->getStatusCode();
+            // TODO: Use new model to check for Response type and Finisher name so headless knows which Finisher returned
+            if ($response instanceof RedirectResponse) {
+              $this->jsonResponse->redirectPage = $response->getHeaderLine('location');
+              $this->jsonResponse->redirectCode = $response->getStatusCode();
+            }
 
             return $this->jsonResponse(json_encode($this->jsonResponse) ?: '{}');
           }
 
-          return $redirectResponse;
+          return $response;
         }
         if ('json' == $this->formConfig->responseType) {
           $this->jsonResponse->success = true;
@@ -699,11 +703,12 @@ class FormController extends ActionController {
     // return $this->htmlResponse();
   }
 
-  private function finishers(): ?RedirectResponse {
+  // TODO: Change return type to new model of Response and Finisher name so headless knows which Finisher returned
+  private function finishers(): ?Response {
     foreach ($this->formConfig->finishers as $finisher) {
       GeneralUtility::makeInstance($finisher->class())->process($this->formConfig, $finisher);
       if ($finisher->returns) {
-        return $finisher->redirectResponse;
+        return $finisher->response;
       }
     }
 
