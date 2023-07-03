@@ -6,6 +6,62 @@ namespace Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck;
 
 use Typoheads\Formhandler\Validator\ErrorCheck\ContainsOne;
 
+/** Documentation:Start:ErrorChecks/Strings/ContainsOne.rst.
+ *
+ *.. _containsone:
+ *
+ *===========
+ *ContainsOne
+ *===========
+ *
+ *Checks if a field contains at least one of the configured values
+ *
+ *..  code-block:: typoscript
+ *
+ *    Example Code:
+ *
+ *    validators {
+ *      DefaultValidator {
+ *        model = DefaultValidatorModel
+ *        config {
+ *          fields {
+ *            privacy_policy.errorChecks {
+ *              containsOne {
+ *                model = ContainsOneModel
+ *                words = Yes,Ja
+ *              }
+ *            }
+ *          }
+ *        }
+ *      }
+ *    }
+ *
+ ***Properties**
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **words**
+ *     - Comma separated list of words of which one must be in the value of a given field
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - False
+ *   * - *Data Type*
+ *     - String
+ *   * - *Default*
+ *     - Empty String
+ *
+ *.. toctree::
+ *   :maxdepth: 2
+ *   :hidden:
+ *
+ *Documentation:End
+ */
 class ContainsOneModel extends AbstractErrorCheckModel {
   public readonly string $words;
 
