@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SetSelectOptionsPreProcessor &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Validators" href="../Validators/Index.html" />
+    <link rel="prev" title="PreProcessors" href="Index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../Index.html" class="icon icon-home">
+            Formhandler
+          </a>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Installation/Index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Migration/Index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GeneralOptions/Index.html">General Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Debuggers/Index.html">Debuggers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ErrorChecks/Index.html">Error Checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Finishers/Index.html">Finishers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Index.html">PreProcessors</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SetSelectOptionsPreProcessor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#option">Option</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Validators/Index.html">Validators</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../Index.html">Formhandler</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../Index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="Index.html">PreProcessors</a></li>
+      <li class="breadcrumb-item active">SetSelectOptionsPreProcessor</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/PreProcessors/SetSelectOptionsPreProcessor.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="setselectoptionspreprocessor">
+<span id="id1"></span><h1>SetSelectOptionsPreProcessor<a class="headerlink" href="#setselectoptionspreprocessor" title="Permalink to this heading">¶</a></h1>
+<p>Sets a named Options array for select boxes.</p>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>TypoScript Path</strong></p></td>
+<td><p>plugin.tx_formhandler_form.settings.predefinedForms.[x].preProcessors</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-typoscript notranslate"><div class="highlight"><pre><span></span>Example Code<span class="o">:</span>
+
+preProcessors <span class="ss">{</span>
+  setSalutations <span class="ss">{</span>
+    model <span class="o">=</span> SetSelectOptionsPreProcessorModel
+    config <span class="ss">{</span>
+      name <span class="o">=</span> salutation
+      options <span class="ss">{</span>
+        mr <span class="ss">{</span>
+          value <span class="o">=</span> mr
+          title <span class="o">=</span> Mr<span class="p">.</span>
+        <span class="ss">}</span>
+        mrs <span class="ss">{</span>
+          value <span class="o">=</span> mrs
+          title <span class="o">=</span> Mrs<span class="p">.</span>
+        <span class="ss">}</span>
+      <span class="ss">}</span>
+    <span class="ss">}</span>
+  <span class="ss">}</span>
+  setCountry <span class="ss">{</span>
+    model <span class="o">=</span> SetSelectOptionsPreProcessorModel
+    config <span class="ss">{</span>
+      name <span class="o">=</span> country
+      options <span class="ss">{</span>
+        DE <span class="ss">{</span>
+          value <span class="o">=</span> DE
+          title <span class="o">=</span> Germany
+        <span class="ss">}</span>
+        USA <span class="ss">{</span>
+          value <span class="o">=</span> USA
+          title <span class="o">=</span> United States of America
+        <span class="ss">}</span>
+      <span class="ss">}</span>
+    <span class="ss">}</span>
+  <span class="ss">}</span>
+<span class="ss">}</span>
+</pre></div>
+</div>
+<p><strong>Properties</strong></p>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>name</strong></p></td>
+<td><p>Set a name for this key value array</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>String</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Note</em></p></td>
+<td><p>Must be unique</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>options</strong></p></td>
+<td><p>Option array for the select box options</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>Array&lt;String, <a class="reference internal" href="#option-label">Option</a>&gt;</p></td>
+</tr>
+</tbody>
+</table>
+<section id="option">
+<h2>Option<a class="headerlink" href="#option" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-left" id="option-label" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>value</strong></p></td>
+<td><p>The value for the select box option.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>String</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>title</strong></p></td>
+<td><p>The title for the select box option</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>String</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Index.html" class="btn btn-neutral float-left" title="PreProcessors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Validators/Index.html" class="btn btn-neutral float-right" title="Validators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, JAKOTA Design Group GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

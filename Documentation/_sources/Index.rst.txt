@@ -1,0 +1,48 @@
+
+===============================
+Getting Started with Formhander
+===============================
+
+:Package name:
+    jakota/formhandler
+
+:Version:
+    |release|
+
+:Language:
+    en
+
+:Author:
+    `www.typoheads.at <https://www.typoheads.at>`__, `www.jakota.de <https://www.jakota.de>`__ & Formhander
+    contributors see fork history on `github <https://github.com/jAK0TA/formhandler/>`__
+
+:Rendered:
+    |today|
+
+----
+
+IS FORMHANDLER RIGHT FOR ME? – AN INTRODUCTION
+
+The extension Formhandler was developed with the requirements of programmers and administrators in mind. The focus was on flexibility, so Formhandler can be used to build any kind of form in a TYPO3 project.
+
+However, Formhandler is currently not being delivered with a wizard that enables the building of forms via a fancy GUI in the TYPO3 backend. Keep on reading if you are not deterred by the lack of GUI and find out if Formhandler is right for you:
+
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   Installation/Index
+   Migration/Index
+   GeneralOptions/Index
+   Debuggers/Index
+   ErrorChecks/Index
+   Finishers/Index
+   PreProcessors/Index
+   Validators/Index
+
+
+.. Meta Menu
+
+.. toctree::
+   :hidden:

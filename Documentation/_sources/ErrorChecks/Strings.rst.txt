@@ -1,0 +1,45 @@
+
+.. _strings:
+
+=======
+Strings
+=======
+
+These error checks allow various checks suitable for strings, f.e. checking if a string is at least 10 characters long or if a string contains a specific word.
+
+..  code-block:: typoscript
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidatorModel
+        config {
+          fields {
+            firstname.errorChecks {
+              minLength {
+                model = MinLengthModel
+                minLength = 10
+              }
+              maxLength {
+                model = MaxLengthModel
+                maxLength = 20
+              }
+            }
+          }
+        }
+      }
+    }
+
+:ref:`ContainsOne`
+  Checks if a field contains at least one of the configured values
+
+:ref:`MaxLength`
+  Checks if the value of a field has less than the configured length
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   Strings/ContainsOne
+   Strings/MaxLength

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>General Options &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.svg"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Debuggers" href="../Debuggers/Index.html" />
+    <link rel="prev" title="Migration" href="../Migration/Index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../Index.html" class="icon icon-home">
+            Formhandler
+          </a>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Installation/Index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Migration/Index.html">Migration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">General Options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#settings">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#predefined-forms">Predefined Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step">Step</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Debuggers/Index.html">Debuggers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ErrorChecks/Index.html">Error Checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Finishers/Index.html">Finishers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PreProcessors/Index.html">PreProcessors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Validators/Index.html">Validators</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../Index.html">Formhandler</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../Index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">General Options</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/GeneralOptions/Index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="general-options">
+<span id="id1"></span><h1>General Options<a class="headerlink" href="#general-options" title="Permalink to this heading">¶</a></h1>
+<p>All forms are build via TypoScript as predefined forms.</p>
+<section id="settings">
+<h2>Settings<a class="headerlink" href="#settings" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>TypoScript Path</strong></p></td>
+<td><p>plugin.tx_formhandler_form.settings</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-typoscript notranslate"><div class="highlight"><pre><span></span>Example Code<span class="o">:</span>
+
+<span class="nb">plugin</span><span class="p">.</span>tx_formhandler_form<span class="p">.</span>settings <span class="ss">{</span>
+  admin <span class="ss">{</span>
+    bccEmail <span class="o">=</span>
+    bccName <span class="o">=</span>
+    ccEmail <span class="o">=</span>
+    ccName <span class="o">=</span>
+    replyToEmail <span class="o">=</span>
+    replyToName <span class="o">=</span>
+    senderEmail <span class="o">=</span>
+    senderName <span class="o">=</span>
+    subject <span class="o">=</span>
+    toEmail <span class="o">=</span>
+  <span class="ss">}</span>
+  predefinedForm <span class="ss">{</span>
+    formId1 <span class="ss">{</span>
+    <span class="ss">}</span>
+    formId2 <span class="ss">{</span>
+    <span class="ss">}</span>
+    formId3 <span class="ss">{</span>
+    <span class="ss">}</span>
+  <span class="ss">}</span>
+  redirectPage <span class="o">=</span> <span class="mi">12</span>
+  requiredFields <span class="o">=</span> <span class="mi">1</span><span class="p">.</span>customer<span class="p">.</span>firstname<span class="p">,</span> <span class="mi">1</span><span class="p">.</span>customer<span class="p">.</span>lastname
+  responseType <span class="o">=</span> html
+  user <span class="ss">{</span>
+    bccEmail <span class="o">=</span>
+    bccName <span class="o">=</span>
+    ccEmail <span class="o">=</span>
+    ccName <span class="o">=</span>
+    replyToEmail <span class="o">=</span>
+    replyToName <span class="o">=</span>
+    senderEmail <span class="o">=</span>
+    senderName <span class="o">=</span>
+    subject <span class="o">=</span>
+    toEmail <span class="o">=</span>
+  <span class="ss">}</span>
+<span class="ss">}</span>
+</pre></div>
+</div>
+<p><strong>Properties</strong></p>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>admin</strong></p></td>
+<td><p>See <a class="reference internal" href="../Finishers/MailFinisher.html#mailfinisher"><span class="std std-ref">MailFinisher</span></a></p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>MailModel</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>predefinedForm</strong></p></td>
+<td><p>See <a class="reference internal" href="#predefined-forms-label">Predefined Forms</a></p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>Array&lt;String, FormModel&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Note</em></p></td>
+<td><p>The key String of Array&lt;String, FormModel&gt; must be unique.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>redirectPage</strong></p></td>
+<td><p>Page UID to redirect to after successful form submission.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>True (only if <a class="reference internal" href="../Finishers/RedirectFinisher.html#redirectfinisher"><span class="std std-ref">RedirectFinisher</span></a> is set)</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>Integer</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>requiredFields</strong></p></td>
+<td><p>Mandatory fields (enter names of form fields separated by “,”)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>String</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>responseType</strong></p></td>
+<td><p>Determents the form rendering either as HTML or JSON for headless response.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>String</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Supported values</em></p></td>
+<td><p>html, json</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>user</strong></p></td>
+<td><p>See <a class="reference internal" href="../Finishers/MailFinisher.html#mailfinisher"><span class="std std-ref">MailFinisher</span></a></p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>MailModel</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="predefined-forms">
+<h2>Predefined Forms<a class="headerlink" href="#predefined-forms" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-left" id="predefined-forms-label" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>TypoScript Path</strong></p></td>
+<td><p>plugin.tx_formhandler_form.settings.predefinedForms.FormName</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-typoscript notranslate"><div class="highlight"><pre><span></span>Example Code<span class="o">:</span>
+
+<span class="nb">plugin</span><span class="p">.</span>tx_formhandler_form<span class="p">.</span>settings<span class="p">.</span>predefinedForms<span class="p">.</span>devExample <span class="ss">{</span>
+  formId <span class="o">=</span> DevExampleForm
+  formName <span class="o">=</span> Dev Example Form
+  formValuesPrefix <span class="o">=</span> DevExampleForm
+  langFileDefault <span class="o">=</span> locallang_example_form<span class="p">.</span>xlf
+  templateForm <span class="o">=</span> <span class="s">DevExample/Default</span>
+  templateMailHtml <span class="o">=</span> <span class="s">DevExample/MailHtml</span>
+  templateMailText <span class="o">=</span> <span class="s">DevExample/MailText</span>
+
+  debuggers <span class="ss">{</span>
+  <span class="ss">}</span>
+
+  steps <span class="ss">{</span>
+    <span class="mi">1</span> <span class="ss">{</span>
+      templateForm <span class="o">=</span> <span class="s">DevExampleForm/DevExampleHTMLStep1</span>
+      validators <span class="ss">{</span>
+        DefaultValidator <span class="ss">{</span>
+          model <span class="o">=</span> DefaultValidatorModel
+          config <span class="ss">{</span>
+            messageLimit <span class="o">=</span> <span class="mi">1</span>
+            messageLimits <span class="ss">{</span>
+              <span class="mi">1</span><span class="p">.</span>customer<span class="p">.</span>email <span class="o">=</span> <span class="mi">2</span>
+            <span class="ss">}</span>
+            fields <span class="ss">{</span>
+              customer<span class="p">.</span>fields <span class="ss">{</span>
+                firstname<span class="p">.</span>errorChecks <span class="ss">{</span>
+                  required <span class="ss">{</span>
+                    model <span class="o">=</span> RequiredModel
+                  <span class="ss">}</span>
+                  maxLength <span class="ss">{</span>
+                    model <span class="o">=</span> MaxLengthModel
+                    maxLength <span class="o">=</span> <span class="mi">20</span>
+                  <span class="ss">}</span>
+                <span class="ss">}</span>
+                lastname<span class="p">.</span>errorChecks <span class="ss">{</span>
+                  required <span class="ss">{</span>
+                    model <span class="o">=</span> RequiredModel
+                  <span class="ss">}</span>
+                  maxLength <span class="ss">{</span>
+                    model <span class="o">=</span> MaxLengthModel
+                    maxLength <span class="o">=</span> <span class="mi">20</span>
+                  <span class="ss">}</span>
+                <span class="ss">}</span>
+                streetAddress<span class="p">.</span>errorChecks <span class="ss">{</span>
+                  required <span class="ss">{</span>
+                    model <span class="o">=</span> RequiredModel
+                  <span class="ss">}</span>
+                <span class="ss">}</span>
+                postalCode<span class="p">.</span>errorChecks <span class="ss">{</span>
+                  required <span class="ss">{</span>
+                    model <span class="o">=</span> RequiredModel
+                  <span class="ss">}</span>
+                <span class="ss">}</span>
+                city<span class="p">.</span>errorChecks <span class="ss">{</span>
+                  required <span class="ss">{</span>
+                    model <span class="o">=</span> RequiredModel
+                  <span class="ss">}</span>
+                  maxLength <span class="ss">{</span>
+                    model <span class="o">=</span> MaxLengthModel
+                    maxLength <span class="o">=</span> <span class="mi">70</span>
+                  <span class="ss">}</span>
+                <span class="ss">}</span>
+                country<span class="p">.</span>errorChecks <span class="ss">{</span>
+                  required <span class="ss">{</span>
+                    model <span class="o">=</span> RequiredModel
+                  <span class="ss">}</span>
+                <span class="ss">}</span>
+                telephone<span class="p">.</span>errorChecks <span class="ss">{</span>
+                  required <span class="ss">{</span>
+                    model <span class="o">=</span> RequiredModel
+                  <span class="ss">}</span>
+                  maxLength <span class="ss">{</span>
+                    model <span class="o">=</span> MaxLengthModel
+                    maxLength <span class="o">=</span> <span class="mi">20</span>
+                  <span class="ss">}</span>
+                <span class="ss">}</span>
+                email<span class="p">.</span>errorChecks <span class="ss">{</span>
+                  required <span class="ss">{</span>
+                    model <span class="o">=</span> RequiredModel
+                  <span class="ss">}</span>
+                  maxLength <span class="ss">{</span>
+                    model <span class="o">=</span> MaxLengthModel
+                    maxLength <span class="o">=</span> <span class="mi">50</span>
+                  <span class="ss">}</span>
+                  email <span class="ss">{</span>
+                    model <span class="o">=</span> EmailModel
+                  <span class="ss">}</span>
+                <span class="ss">}</span>
+              <span class="ss">}</span>
+            <span class="ss">}</span>
+          <span class="ss">}</span>
+        <span class="ss">}</span>
+      <span class="ss">}</span>
+    <span class="ss">}</span>
+  <span class="ss">}</span>
+
+  finishers <span class="ss">{</span>
+    Mail <span class="ss">{</span>
+      model <span class="o">=</span> MailFinisherModel
+    <span class="ss">}</span>
+    Redirect <span class="ss">{</span>
+      model <span class="o">=</span> RedirectFinisherModel
+      config <span class="ss">{</span>
+        returns <span class="o">=</span> true
+        correctRedirectUrl <span class="o">=</span> false
+        additionalParams <span class="ss">{</span>
+          postal_code <span class="o">=</span> <span class="mi">1</span><span class="p">.</span>customer<span class="p">.</span>postalCode
+          queryParam2 <span class="o">=</span> valueIfNotFoundAsFieldName
+        <span class="ss">}</span>
+      <span class="ss">}</span>
+    <span class="ss">}</span>
+  <span class="ss">}</span>
+<span class="ss">}</span>
+</pre></div>
+</div>
+<p><strong>Properties</strong></p>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>formId</strong></p></td>
+<td><p>Value of the id attribute of the form tag.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>String</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>formName</strong></p></td>
+<td><p>Value of the name shown in the dropdown list.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>String</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>formValuesPrefix</strong></p></td>
+<td><p>Prefix of form fields. Use this if you use a prefix for your forms to avoid conflicts with other plugins. Settings this option you will be able to use only the fieldname in all markers and do not need to add prefix.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>String</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Default</em></p></td>
+<td><p>tx_formhandler_form</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Note</em></p></td>
+<td><p>It is highly recommended to use this setting!</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>langFileDefault</strong></p></td>
+<td><p>Path to default language file, can be altered as parameter by the form fields.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>String</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>debuggers</strong></p></td>
+<td><p>A list of <a class="reference internal" href="../Debuggers/Index.html#debuggers"><span class="std std-ref">Debuggers</span></a> for the predefined forms.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>Array&lt;String, <a class="reference internal" href="../Debuggers/Index.html#debuggers"><span class="std std-ref">Debugger</span></a>&gt;</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>steps</strong></p></td>
+<td><p>You can split a form into as many steps as you like and add as many <a class="reference internal" href="../Validators/Index.html#validators"><span class="std std-ref">Validators</span></a> as you like to each step, but even if the form has just one step it must be defined to add <a class="reference internal" href="../Validators/Index.html#validators"><span class="std std-ref">Validators</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>True (Only if a form has needs <a class="reference internal" href="../Validators/Index.html#validators"><span class="std std-ref">Validators</span></a>, otherwise not.)</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>Array&lt;Integer, <a class="reference internal" href="#step-label">Step</a>&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Note</em></p></td>
+<td><p>The key Integer in Array&lt;Integer, <a class="reference internal" href="#step-label">Step</a>&gt; starts at 1 for first step.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>finishers</strong></p></td>
+<td><p>A list of <a class="reference internal" href="../Finishers/Index.html#finishers"><span class="std std-ref">Finishers</span></a> for the predefined forms.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>Array&lt;String, <a class="reference internal" href="../Finishers/Index.html#finishers"><span class="std std-ref">Finisher</span></a>&gt;</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="step">
+<h2>Step<a class="headerlink" href="#step" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-left" id="step-label" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>templateForm</strong></p></td>
+<td><p>The template for a given step.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>String</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>validators</strong></p></td>
+<td><p>A list of <a class="reference internal" href="../Validators/Index.html#validators"><span class="std std-ref">Validators</span></a> for a given step.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>Array&lt;String, <a class="reference internal" href="../Validators/Index.html#validators"><span class="std std-ref">Validator</span></a>&gt;</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../Migration/Index.html" class="btn btn-neutral float-left" title="Migration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Debuggers/Index.html" class="btn btn-neutral float-right" title="Debuggers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, JAKOTA Design Group GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
