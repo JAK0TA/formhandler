@@ -203,16 +203,12 @@ class VarDumpDebuggerModel extends AbstractDebuggerModel {
     if (isset($config['blacklistedClassNames']) && is_array($config['blacklistedClassNames'])) {
       $this->blacklistedClassNames = $config['blacklistedClassNames'];
     } else {
-      // TODO: remove ignore once fixed: https://github.com/phpstan/phpstan/issues/6402
-      // @phpstan-ignore-next-line
       $this->blacklistedClassNames = null;
     }
 
     if (isset($config['blacklistedPropertyNames']) && is_array($config['blacklistedPropertyNames'])) {
       $this->blacklistedPropertyNames = $config['blacklistedPropertyNames'];
     } else {
-      // TODO: remove ignore once fixed: https://github.com/phpstan/phpstan/issues/6402
-      // @phpstan-ignore-next-line
       $this->blacklistedPropertyNames = null;
     }
 
@@ -223,8 +219,6 @@ class VarDumpDebuggerModel extends AbstractDebuggerModel {
     if (isset($config['title'])) {
       $this->title = strval($config['title']);
     } else {
-      // TODO: remove ignore once fixed: https://github.com/phpstan/phpstan/issues/6402
-      // @phpstan-ignore-next-line
       $this->title = null;
     }
   }

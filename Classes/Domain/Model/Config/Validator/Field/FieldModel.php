@@ -61,8 +61,6 @@ class FieldModel {
       $errorChecks[] = $errorCheckModel;
     }
 
-    // TODO: remove ignore once fixed: https://github.com/phpstan/phpstan/issues/6402
-    // @phpstan-ignore-next-line
     $this->errorChecks = $errorChecks;
   }
 }

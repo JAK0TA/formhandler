@@ -166,8 +166,6 @@ class SetSelectOptionsPreProcessorModel extends AbstractPreProcessorModel {
       $options[strval($option['value'])] = strval($option['title']);
     }
 
-    // TODO: remove ignore once fixed: https://github.com/phpstan/phpstan/issues/6402
-    // @phpstan-ignore-next-line
     $this->options = $options;
   }
 

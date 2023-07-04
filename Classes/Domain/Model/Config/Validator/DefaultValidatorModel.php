@@ -63,8 +63,6 @@ class DefaultValidatorModel extends AbstractValidatorModel {
     if (isset($settings['messageLimits']) && is_array($settings['messageLimits'])) {
       $this->messageLimits = $this->messageLimits($settings['messageLimits']);
     } else {
-      // TODO: remove ignore once fixed: https://github.com/phpstan/phpstan/issues/6402
-      // @phpstan-ignore-next-line
       $this->messageLimits = [];
     }
 
