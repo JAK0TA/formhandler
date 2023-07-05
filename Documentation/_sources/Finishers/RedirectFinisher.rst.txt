@@ -65,7 +65,7 @@ Redirects to specified page after successful form submission.
    :stub-columns: 0
 
    * - **correctRedirectUrl**
-     - Replaces "&amp;" with "&" in URL
+     - Replaces "&amp;" with "&" in URL
    * -
      -
    * - *Mandatory*

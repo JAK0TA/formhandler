@@ -93,7 +93,7 @@ Will print out the debug messages to screen.
    * - *Data Type*
      - String
    * - *Default*
-     - <div style="font-weight:bold;">|</div>
+     - <div style="font-weight:bold;">|</div>
 
 .. list-table::
    :align: left
@@ -111,7 +111,7 @@ Will print out the debug messages to screen.
    * - *Data Type*
      - String
    * - *Default*
-     - <h2 style="background:#333; color:#cdcdcd; height:23px; padding:10px 7px 7px 7px; margin:0;">|</h2>
+     - <h2 style="background:#333; color:#cdcdcd; height:23px; padding:10px 7px 7px 7px; margin:0;">|</h2>
 
 .. list-table::
    :align: left
@@ -129,7 +129,7 @@ Will print out the debug messages to screen.
    * - *Data Type*
      - String
    * - *Default*
-     - <div style="border:1px solid #ccc; padding:7px; background:#dedede;">|</div>
+     - <div style="border:1px solid #ccc; padding:7px; background:#dedede;">|</div>
 
 .. list-table::
    :align: left

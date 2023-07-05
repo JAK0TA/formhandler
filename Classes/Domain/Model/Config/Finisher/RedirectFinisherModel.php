@@ -82,7 +82,7 @@ use Typoheads\Formhandler\Finisher\RedirectFinisher;
  *   :stub-columns: 0
  *
  *   * - **correctRedirectUrl**
- *     - Replaces "&amp;" with "&" in URL
+ *     - Replaces "&amp;" with "&" in URL
  *   * -
  *     -
  *   * - *Mandatory*
