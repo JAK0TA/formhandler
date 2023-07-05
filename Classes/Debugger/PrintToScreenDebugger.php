@@ -2,23 +2,18 @@
 
 declare(strict_types=1);
 
+/*
+ * This file is part of TYPO3 CMS-based extension "Formhandler" by JAKOTA.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ */
+
 namespace Typoheads\Formhandler\Debugger;
 
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use Typoheads\Formhandler\Domain\Model\Config\Debugger\PrintToScreenDebuggerModel;
-
-/**
- * This script is part of the TYPO3 project - inspiring people to share!
- *
- * TYPO3 is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License version 2 as published by
- * the Free Software Foundation.
- *
- * This script is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
- * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
- * Public License for more details.
- */
 
 /**
  * A simple debugger printing the messages on the screen.

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Typoheads\Formhandler\Definitions\FormhandlerExtensionConfig;
 
 defined('TYPO3') or exit;
