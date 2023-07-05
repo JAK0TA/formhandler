@@ -133,8 +133,6 @@ use Typoheads\Formhandler\Utility\Utility;
  */
 /** Documentation:Start:GeneralOptions/Settings.rst.
  *
- *.. include:: /Includes.rst.txt
- *
  *.. _settings:
  *
  *========
