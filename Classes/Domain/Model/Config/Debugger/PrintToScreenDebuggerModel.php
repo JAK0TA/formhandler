@@ -37,6 +37,7 @@ use Typoheads\Formhandler\Definitions\Severity;
  *          model = PrintToScreenDebuggerModel
  *          config {
  *            active = true
+ *            maxDepth = 10
  *            severityWrap {
  *              1 = <span class="level-info">|</span>
  *              2 = <span class="level-warning">|</span>
