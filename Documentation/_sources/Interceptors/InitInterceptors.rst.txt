@@ -1,9 +1,9 @@
 
 .. _initinterceptors:
 
-================
-InitInterceptors
-================
+=================
+Init Interceptors
+=================
 
 The init interceptors are called before every time the form is displayed.
 

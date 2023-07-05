@@ -45,9 +45,9 @@ use Typoheads\Formhandler\Interceptor\AbstractInterceptor;
  *
  *.. _initinterceptors:
  *
- *================
- *InitInterceptors
- *================
+ *=================
+ *Init Interceptors
+ *=================
  *
  *The init interceptors are called before every time the form is displayed.
  *
@@ -71,9 +71,9 @@ use Typoheads\Formhandler\Interceptor\AbstractInterceptor;
  *
  *.. _saveinterceptors:
  *
- *================
- *SaveInterceptors
- *================
+ *=================
+ *Save Interceptors
+ *=================
  *
  *The save interceptors are called after all steps are validated and before the loggers and finishers are called.
  *
