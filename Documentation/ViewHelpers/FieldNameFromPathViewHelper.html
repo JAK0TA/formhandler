@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Finishers &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
+  <title>FieldNameFromPathViewHelper &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -21,8 +21,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="MailFinisher" href="MailFinisher.html" />
-    <link rel="prev" title="MaxLength" href="../ErrorChecks/Strings/MaxLength.html" /> 
+    <link rel="prev" title="View Helpers" href="Index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -50,16 +49,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../GeneralOptions/Index.html">General Options</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Debuggers/Index.html">Debuggers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ErrorChecks/Index.html">Error Checks</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Finishers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="MailFinisher.html">MailFinisher</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RedirectFinisher.html">RedirectFinisher</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../Finishers/Index.html">Finishers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Interceptors/Index.html">Interceptors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Loggers/Index.html">Loggers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../PreProcessors/Index.html">Pre Processors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Validators/Index.html">Validators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ViewHelpers/Index.html">View Helpers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Index.html">View Helpers</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">FieldNameFromPathViewHelper</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -76,9 +74,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../Index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Finishers</li>
+          <li class="breadcrumb-item"><a href="Index.html">View Helpers</a></li>
+      <li class="breadcrumb-item active">FieldNameFromPathViewHelper</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/Finishers/Index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/ViewHelpers/FieldNameFromPathViewHelper.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -86,27 +85,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="finishers">
-<span id="id1"></span><h1>Finishers<a class="headerlink" href="#finishers" title="Permalink to this heading">¶</a></h1>
-<p>You can enter as many Finisher as you like. Each entry requires a model name of the Finisher model. Optionally you can enter a specific configuration for the Finisher in the config section.</p>
-<table class="docutils align-left" style="width: 100%">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 80%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>TypoScript Path</strong></p></td>
-<td><p>plugin.tx_formhandler_form.settings.predefinedForms.[x].finishers</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt><a class="reference internal" href="MailFinisher.html#mailfinisher"><span class="std std-ref">MailFinisher</span></a></dt><dd><p>Sends emails to specified addresses.</p>
-</dd>
-<dt><a class="reference internal" href="RedirectFinisher.html#redirectfinisher"><span class="std std-ref">RedirectFinisher</span></a></dt><dd><p>Redirects to specified page after successful form submission.</p>
-</dd>
-</dl>
-<div class="toctree-wrapper compound">
+  <section id="fieldnamefrompathviewhelper">
+<span id="id1"></span><h1>FieldNameFromPathViewHelper<a class="headerlink" href="#fieldnamefrompathviewhelper" title="Permalink to this heading">¶</a></h1>
+<p>Converts the field name path 1.group.field to field name [1][group][field].</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nx">Example</span> <span class="nx">Code</span><span class="o">:</span>
+
+<span class="nv">$view</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s1">&#39;fieldNamePath&#39;</span><span class="p">,</span> <span class="s1">&#39;1.group.field&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>And in the template:</p>
+<div class="highlight-typoscript notranslate"><div class="highlight"><pre><span></span><span class="ss">{</span>fieldNamePath -<span class="o">&gt;</span> formhandler<span class="o">:</span>fieldNameFromPath<span class="ss">()}</span>
+</pre></div>
+</div>
+<p>Which returns:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[1][group][field]
+</pre></div>
 </div>
 </section>
 
@@ -114,8 +107,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../ErrorChecks/Strings/MaxLength.html" class="btn btn-neutral float-left" title="MaxLength" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="MailFinisher.html" class="btn btn-neutral float-right" title="MailFinisher" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Index.html" class="btn btn-neutral float-left" title="View Helpers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

@@ -14,20 +14,54 @@ use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithContentArgumentAndRenderStatic;
 
-/**
- * Field name from path ViewHelper.
+/** Documentation:Start:TocTree:ViewHelpers/Index.rst.
  *
- * Converts the field name path 1.group.field to field name [1][group][field].
+ *.. _viewhelpers:
  *
- *      $view->assign('fieldNamePath', '1.group.field');
+ *============
+ *View Helpers
+ *============
  *
- * And in the template::
+ *:ref:`FieldNameFromPathViewHelper`
+ *  Converts the field name path 1.group.field to field name [1][group][field].
  *
- *      {fieldNamePath -> formhandler:fieldNameFromPath()}
+ *.. toctree::
+ *   :maxdepth: 2
+ *   :hidden:
  *
- * Which outputs::
+ *   FieldNameFromPathViewHelper
  *
- *      [1][group][field]
+ *Documentation:End
+ */
+/** Documentation:Start:ViewHelpers/FieldNameFromPathViewHelper.rst.
+ *
+ *.. _fieldnamefrompathviewhelper:
+ *
+ *===========================
+ *FieldNameFromPathViewHelper
+ *===========================
+ *
+ *Converts the field name path 1.group.field to field name [1][group][field].
+ *
+ *..  code-block:: php
+ *
+ *    Example Code:
+ *
+ *    $view->assign('fieldNamePath', '1.group.field');
+ *
+ *And in the template:
+ *
+ *..  code-block:: typoscript
+ *
+ *    {fieldNamePath -> formhandler:fieldNameFromPath()}
+ *
+ *Which returns:
+ *
+ *..  code-block:: text
+ *
+ *    [1][group][field]
+ *
+ *Documentation:End
  */
 final class FieldNameFromPathViewHelper extends AbstractViewHelper {
   use CompileWithContentArgumentAndRenderStatic;

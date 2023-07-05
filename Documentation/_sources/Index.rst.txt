@@ -42,6 +42,7 @@ However, Formhandler is currently not being delivered with a wizard that enables
    Loggers/Index
    PreProcessors/Index
    Validators/Index
+   ViewHelpers/Index
 
 
 .. Meta Menu

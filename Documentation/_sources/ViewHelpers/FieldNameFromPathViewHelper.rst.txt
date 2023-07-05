@@ -1,0 +1,26 @@
+
+.. _fieldnamefrompathviewhelper:
+
+===========================
+FieldNameFromPathViewHelper
+===========================
+
+Converts the field name path 1.group.field to field name [1][group][field].
+
+..  code-block:: php
+
+    Example Code:
+
+    $view->assign('fieldNamePath', '1.group.field');
+
+And in the template:
+
+..  code-block:: typoscript
+
+    {fieldNamePath -> formhandler:fieldNameFromPath()}
+
+Which returns:
+
+..  code-block:: text
+
+    [1][group][field]
