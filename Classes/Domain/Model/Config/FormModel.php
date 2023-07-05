@@ -26,7 +26,7 @@ use Typoheads\Formhandler\Utility\Utility;
  *Predefined Form
  *===============
  *
- * Predefine form settings and make them selectable in plugin record.
+ *Predefine form settings and make them selectable in plugin record.
  *
  *.. list-table::
  *   :align: left

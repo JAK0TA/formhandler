@@ -112,9 +112,14 @@ use Typoheads\Formhandler\Utility\Utility;
  *General Options
  *===============
  *
+ *:ref:`Settings`
+ *  All forms are build via TypoScript as predefined forms.
  *
- *All forms are build via TypoScript as predefined forms.
+ *:ref:`Predefined-Form`
+ *  Predefine form settings and make them selectable in plugin record.
  *
+ *:ref:`Step`
+ *  Multistep forms settings
  *
  *.. toctree::
  *   :maxdepth: 2

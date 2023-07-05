@@ -16,6 +16,8 @@ use Typoheads\Formhandler\Utility\Utility;
  *Step
  *====
  *
+ *Multistep forms settings
+ *
  *.. list-table::
  *   :align: left
  *   :width: 100%

@@ -5,6 +5,8 @@
 Step
 ====
 
+Multistep forms settings
+
 .. list-table::
    :align: left
    :width: 100%
