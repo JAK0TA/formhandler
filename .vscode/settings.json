@@ -74,6 +74,19 @@
   "cSpell.words": ["Extbase", "Formhandler", "JAKOTA", "Typoheads"],
   "statusbar_command.commands": [
     {
+      "text": "$(discard) Reset to main",
+      "tooltip": "Reset and upstream from main",
+      "id": "resetMain",
+      "name": "resetMain",
+      "command": "workbench.action.terminal.sendSequence",
+      "arguments": [
+        {
+          "text": "git checkout main && git reset --hard origin/main && git pull && git remote add upstream git@github.com:JAK0TA/formhandler.git > /dev/null 2>&1 && git fetch upstream && git rebase upstream/main && git push -f origin\u000D"
+        }
+      ],
+      "priority": 1
+    },
+    {
       "text": "$(beaker) TS",
       "tooltip": "Lint: Typoscript",
       "id": "lintTyposcript",
