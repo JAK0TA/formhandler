@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PregMatch &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
+  <title>ContainsOnly &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -21,8 +21,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Finishers" href="../../Finishers/Index.html" />
-    <link rel="prev" title="LengthMin" href="LengthMin.html" /> 
+    <link rel="next" title="LengthBetween" href="LengthBetween.html" />
+    <link rel="prev" title="ContainsOne" href="ContainsOne.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -55,13 +55,13 @@
 <li class="toctree-l3"><a class="reference internal" href="ContainsAll.html">ContainsAll</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ContainsNone.html">ContainsNone</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ContainsOne.html">ContainsOne</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ContainsOnly.html">ContainsOnly</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ContainsOnly</a><ul class="simple">
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="LengthBetween.html">LengthBetween</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LengthMax.html">LengthMax</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LengthMin.html">LengthMin</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">PregMatch</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="PregMatch.html">PregMatch</a></li>
 </ul>
 </li>
 </ul>
@@ -90,9 +90,9 @@
       <li><a href="../../Index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../Index.html">Error Checks</a></li>
           <li class="breadcrumb-item"><a href="../Strings.html">Strings</a></li>
-      <li class="breadcrumb-item active">PregMatch</li>
+      <li class="breadcrumb-item active">ContainsOnly</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/ErrorChecks/Strings/PregMatch.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/ErrorChecks/Strings/ContainsOnly.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -100,27 +100,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pregmatch">
-<span id="id1"></span><h1>PregMatch<a class="headerlink" href="#pregmatch" title="Permalink to this heading">¶</a></h1>
-<p>Checks a field value using the configured perl regular expression.</p>
-<p>You can use this check to do existing check your own way or to make checks no built-in error check exists for.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Example Code:
+  <section id="containsonly">
+<span id="id1"></span><h1>ContainsOnly<a class="headerlink" href="#containsonly" title="Permalink to this heading">¶</a></h1>
+<p>Checks if a field contains only the configured characters.</p>
+<div class="highlight-typoscript notranslate"><div class="highlight"><pre><span></span>Example Code<span class="o">:</span>
 
-validators {
-  DefaultValidator {
-    model = DefaultValidatorModel
-    config {
-      fields {
-        post-code.errorChecks {
-          pregMatch {
-            model = PregMatchModel
-            pattern = /^DE-.*$/
-          }
-        }
-      }
-    }
-  }
-}
+validators <span class="ss">{</span>
+  DefaultValidator <span class="ss">{</span>
+    model <span class="o">=</span> DefaultValidatorModel
+    config <span class="ss">{</span>
+      fields <span class="ss">{</span>
+        password<span class="p">.</span>errorChecks <span class="ss">{</span>
+          containsOnly <span class="ss">{</span>
+            model <span class="o">=</span> ContainsOnlyModel
+            characters <span class="o">=</span> a<span class="p">,</span>b<span class="p">,</span>c<span class="p">,</span>d<span class="p">,</span>e<span class="p">,</span>f<span class="p">,</span>g<span class="p">,</span>h<span class="p">,</span>i<span class="p">,</span>j<span class="p">,</span>l<span class="p">,</span>m<span class="p">,</span>n<span class="p">,</span>o<span class="p">,</span>p<span class="p">,</span>q<span class="p">,</span>r<span class="p">,</span>s<span class="p">,</span>t<span class="p">,</span>u<span class="p">,</span>v<span class="p">,</span>w<span class="p">,</span>x<span class="p">,</span>y<span class="p">,</span>z<span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">0</span>
+          <span class="ss">}</span>
+        <span class="ss">}</span>
+      <span class="ss">}</span>
+    <span class="ss">}</span>
+  <span class="ss">}</span>
+<span class="ss">}</span>
 </pre></div>
 </div>
 <p><strong>Properties</strong></p>
@@ -130,8 +129,8 @@ validators {
 <col style="width: 80%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>pattern</strong></p></td>
-<td><p>The regex pattern to search for, as a string.</p></td>
+<tr class="row-odd"><td><p><strong>characters</strong></p></td>
+<td><p>Comma separated list of characters of which can be present the value of a given field</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td></td>
@@ -155,8 +154,8 @@ validators {
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="LengthMin.html" class="btn btn-neutral float-left" title="LengthMin" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../../Finishers/Index.html" class="btn btn-neutral float-right" title="Finishers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ContainsOne.html" class="btn btn-neutral float-left" title="ContainsOne" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="LengthBetween.html" class="btn btn-neutral float-right" title="LengthBetween" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
