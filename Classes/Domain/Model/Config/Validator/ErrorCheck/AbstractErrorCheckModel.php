@@ -127,13 +127,13 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *        config {
  *          fields {
  *            firstname.errorChecks {
- *              minLength {
- *                model = MinLengthModel
- *                minLength = 10
+ *              lengthMin {
+ *                model = LengthMinModel
+ *                length = 10
  *              }
- *              maxLength {
- *                model = MaxLengthModel
- *                maxLength = 20
+ *              lengthMax {
+ *                model = LengthMaxModel
+ *                length = 20
  *              }
  *            }
  *          }
@@ -144,10 +144,10 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *:ref:`ContainsOne`
  *  Checks if a field contains at least one of the configured values.
  *
- *:ref:`MaxLength`
+ *:ref:`LengthMax`
  *  Checks if the value of a field has less than the configured length.
  *
- *:ref:`MinLength`
+ *:ref:`LengthMin`
  *  Checks if the value of a field has at least the configured length.
  *
  *.. toctree::
@@ -155,8 +155,8 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *   :hidden:
  *
  *   Strings/ContainsOne
- *   Strings/MaxLength
- *   Strings/MinLength
+ *   Strings/LengthMax
+ *   Strings/LengthMin
  *
  *Documentation:End
  */

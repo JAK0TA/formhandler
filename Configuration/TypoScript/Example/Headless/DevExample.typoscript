@@ -68,18 +68,18 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
                   required {
                     model = RequiredModel
                   }
-                  maxLength {
-                    model = MaxLengthModel
-                    maxLength = 20
+                  lengthMax {
+                    model = LengthMaxModel
+                    length = 20
                   }
                 }
                 lastname.errorChecks {
                   required {
                     model = RequiredModel
                   }
-                  maxLength {
-                    model = MaxLengthModel
-                    maxLength = 20
+                  lengthMax {
+                    model = LengthMaxModel
+                    length = 20
                   }
                 }
                 streetAddress.errorChecks {
@@ -96,9 +96,9 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
                   required {
                     model = RequiredModel
                   }
-                  maxLength {
-                    model = MaxLengthModel
-                    maxLength = 70
+                  lengthMax {
+                    model = LengthMaxModel
+                    length = 70
                   }
                 }
                 country.errorChecks {
@@ -110,18 +110,18 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
                   required {
                     model = RequiredModel
                   }
-                  maxLength {
-                    model = MaxLengthModel
-                    maxLength = 20
+                  lengthMax {
+                    model = LengthMaxModel
+                    length = 20
                   }
                 }
                 email.errorChecks {
                   required {
                     model = RequiredModel
                   }
-                  maxLength {
-                    model = MaxLengthModel
-                    maxLength = 50
+                  lengthMax {
+                    model = LengthMaxModel
+                    length = 50
                   }
                   email {
                     model = EmailModel
@@ -157,9 +157,9 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
                           required {
                             model = RequiredModel
                           }
-                          maxLength {
-                            model = MaxLengthModel
-                            maxLength = 255
+                          lengthMax {
+                            model = LengthMaxModel
+                            length = 255
                           }
                         }
 
@@ -167,9 +167,9 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
                           required {
                             model = RequiredModel
                           }
-                          maxLength {
-                            model = MaxLengthModel
-                            maxLength = 255
+                          lengthMax {
+                            model = LengthMaxModel
+                            length = 255
                           }
                         }
                       }
@@ -204,9 +204,9 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
                   required {
                     model = RequiredModel
                   }
-                  maxLength {
-                    model = MaxLengthModel
-                    maxLength = 255
+                  lengthMax {
+                    model = LengthMaxModel
+                    length = 255
                   }
                 }
 
@@ -214,9 +214,9 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
                   required {
                     model = RequiredModel
                   }
-                  maxLength {
-                    model = MaxLengthModel
-                    maxLength = 255
+                  lengthMax {
+                    model = LengthMaxModel
+                    length = 255
                   }
                 }
 
@@ -224,16 +224,16 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
                   required {
                     model = RequiredModel
                   }
-                  maxLength {
-                    model = MaxLengthModel
-                    maxLength = 255
+                  lengthMax {
+                    model = LengthMaxModel
+                    length = 255
                   }
                 }
 
                 email.errorCheck {
-                  maxLength {
-                    model = MaxLengthModel
-                    maxLength = 255
+                  lengthMax {
+                    model = LengthMaxModel
+                    length = 255
                   }
                   email {
                     model = EmailModel

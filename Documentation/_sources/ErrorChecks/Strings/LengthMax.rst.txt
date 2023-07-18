@@ -1,8 +1,8 @@
 
-.. _maxlength:
+.. _lengthmax:
 
 =========
-MaxLength
+LengthMax
 =========
 
 Checks if the value of a field has less than the configured length
@@ -17,9 +17,9 @@ Checks if the value of a field has less than the configured length
         config {
           fields {
             post-code.errorChecks {
-              maxLength {
-                model = MaxLengthModel
-                maxLength = 7
+              lengthMax {
+                model = LengthMaxModel
+                length = 7
               }
             }
           }
@@ -36,7 +36,7 @@ Checks if the value of a field has less than the configured length
    :header-rows: 0
    :stub-columns: 0
 
-   * - **maxLength**
+   * - **length**
      - Sets the max string length a field value can be.
    * -
      -

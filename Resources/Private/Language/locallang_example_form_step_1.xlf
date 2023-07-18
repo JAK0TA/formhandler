@@ -32,7 +32,7 @@
       <trans-unit id="error_1.customer.firstname_Required" resname="error_1.customer.firstname_Required">
         <source>Please enter your first name.</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.firstname_MaxLength" resname="error_1.customer.firstname_MaxLength">
+      <trans-unit id="error_1.customer.firstname_LengthMax" resname="error_1.customer.firstname_LengthMax">
         <source>First name is to long. Max. 255 Chars please.</source>
       </trans-unit>
 
@@ -48,7 +48,7 @@
       <trans-unit id="error_1.customer.lastname_Required" resname="error_1.customer.lastname_Required">
         <source>Please enter your last name.</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.lastname_MaxLength" resname="error_1.customer.lastname_MaxLength">
+      <trans-unit id="error_1.customer.lastname_LengthMax" resname="error_1.customer.lastname_LengthMax">
         <source>Last name is to long. Max. 255 Chars please.</source>
       </trans-unit>
 
@@ -90,7 +90,7 @@
       <trans-unit id="error_1.customer.city_Required" resname="error_1.customer.city_Required">
         <source>You forgot to type in a city.</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.city_MaxLength" resname="error_1.customer.city_MaxLength">
+      <trans-unit id="error_1.customer.city_LengthMax" resname="error_1.customer.city_LengthMax">
         <source>City is to long. Max. 70 Chars please.</source>
       </trans-unit>
 
@@ -125,7 +125,7 @@
       <trans-unit id="error_1.customer.telephone_Required" resname="error_1.customer.telephone_Required">
         <source>You forgot to type in a telephone-number.</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.telephone_MaxLength" resname="error_1.customer.telephone_MaxLength">
+      <trans-unit id="error_1.customer.telephone_LengthMax" resname="error_1.customer.telephone_LengthMax">
         <source>Telephone-Nmber is to long. Max. 20 Chars please.</source>
       </trans-unit>
 
@@ -141,7 +141,7 @@
       <trans-unit id="error_1.customer.email_Required" resname="error_1.customer.email_Required">
         <source>You forgot to type in an email-address.</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.email_MaxLength" resname="error_1.customer.email_MaxLength">
+      <trans-unit id="error_1.customer.email_LengthMax" resname="error_1.customer.email_LengthMax">
         <source>Your email-address is to long. Max. 50 Chars please.</source>
       </trans-unit>
       <trans-unit id="error_1.customer.email_Email" resname="error_1.customer.email_Email">

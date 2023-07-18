@@ -79,18 +79,18 @@ use Typoheads\Formhandler\Utility\Utility;
  *                      required {
  *                        model = RequiredModel
  *                      }
- *                      maxLength {
- *                        model = MaxLengthModel
- *                        maxLength = 20
+ *                      lengthMax {
+ *                        model = LengthMaxModel
+ *                        length = 20
  *                      }
  *                    }
  *                    lastname.errorChecks {
  *                      required {
  *                        model = RequiredModel
  *                      }
- *                      maxLength {
- *                        model = MaxLengthModel
- *                        maxLength = 20
+ *                      lengthMax {
+ *                        model = LengthMaxModel
+ *                        length = 20
  *                      }
  *                    }
  *                    streetAddress.errorChecks {
@@ -107,9 +107,9 @@ use Typoheads\Formhandler\Utility\Utility;
  *                      required {
  *                        model = RequiredModel
  *                      }
- *                      maxLength {
- *                        model = MaxLengthModel
- *                        maxLength = 70
+ *                      lengthMax {
+ *                        model = LengthMaxModel
+ *                        length = 70
  *                      }
  *                    }
  *                    country.errorChecks {
@@ -121,18 +121,18 @@ use Typoheads\Formhandler\Utility\Utility;
  *                      required {
  *                        model = RequiredModel
  *                      }
- *                      maxLength {
- *                        model = MaxLengthModel
- *                        maxLength = 20
+ *                      lengthMax {
+ *                        model = LengthMaxModel
+ *                        length = 20
  *                      }
  *                    }
  *                    email.errorChecks {
  *                      required {
  *                        model = RequiredModel
  *                      }
- *                      maxLength {
- *                        model = MaxLengthModel
- *                        maxLength = 50
+ *                      lengthMax {
+ *                        model = LengthMaxModel
+ *                        length = 50
  *                      }
  *                      email {
  *                        model = EmailModel

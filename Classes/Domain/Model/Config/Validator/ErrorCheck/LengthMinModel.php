@@ -12,17 +12,17 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck;
 
-use Typoheads\Formhandler\Validator\ErrorCheck\MaxLength;
+use Typoheads\Formhandler\Validator\ErrorCheck\LengthMin;
 
-/** Documentation:Start:ErrorChecks/Strings/MaxLength.rst.
+/** Documentation:Start:ErrorChecks/Strings/LengthMin.rst.
  *
- *.. _maxlength:
+ *.. _lengthmin:
  *
  *=========
- *MaxLength
+ *LengthMin
  *=========
  *
- *Checks if the value of a field has less than the configured length
+ *Checks if the value of a field has at least the configured length.
  *
  *..  code-block:: typoscript
  *
@@ -34,9 +34,9 @@ use Typoheads\Formhandler\Validator\ErrorCheck\MaxLength;
  *        config {
  *          fields {
  *            post-code.errorChecks {
- *              maxLength {
- *                model = MaxLengthModel
- *                maxLength = 7
+ *              lengthMin {
+ *                model = LengthMinModel
+ *                length = 4
  *              }
  *            }
  *          }
@@ -53,8 +53,8 @@ use Typoheads\Formhandler\Validator\ErrorCheck\MaxLength;
  *   :header-rows: 0
  *   :stub-columns: 0
  *
- *   * - **maxLength**
- *     - Sets the max string length a field value can be.
+ *   * - **length**
+ *     - Sets the min string length a field value must be.
  *   * -
  *     -
  *   * - *Mandatory*
@@ -70,18 +70,18 @@ use Typoheads\Formhandler\Validator\ErrorCheck\MaxLength;
  *
  *Documentation:End
  */
-class MaxLengthModel extends AbstractErrorCheckModel {
-  public readonly int $maxLength;
+class LengthMinModel extends AbstractErrorCheckModel {
+  public readonly int $length;
 
   /**
    * @param array<string, mixed> $settings
    */
   public function __construct(array $settings) {
-    $this->name = 'MaxLength';
-    $this->maxLength = intval($settings['maxLength'] ?? 0);
+    $this->name = 'LengthMin';
+    $this->length = intval($settings['length'] ?? 0);
   }
 
   public function class(): string {
-    return MaxLength::class;
+    return LengthMin::class;
   }
 }

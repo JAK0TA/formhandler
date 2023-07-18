@@ -14,17 +14,17 @@ namespace Typoheads\Formhandler\Validator\ErrorCheck;
 
 use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractErrorCheckModel;
-use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\MinLengthModel;
+use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\LengthMinModel;
 
-class MinLength extends AbstractErrorCheck {
-  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$minLengthErrorCheckConfig, mixed $value): bool {
-    if (!$minLengthErrorCheckConfig instanceof MinLengthModel) {
+class LengthMin extends AbstractErrorCheck {
+  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$lengthMinErrorCheckConfig, mixed $value): bool {
+    if (!$lengthMinErrorCheckConfig instanceof LengthMinModel) {
       return false;
     }
 
     if (is_string($value)
-        && $minLengthErrorCheckConfig->minLength > 0
-        && mb_strlen(trim($value), 'utf-8') > $minLengthErrorCheckConfig->minLength
+        && $lengthMinErrorCheckConfig->length > 0
+        && mb_strlen(trim($value), 'utf-8') > $lengthMinErrorCheckConfig->length
     ) {
       return true;
     }
