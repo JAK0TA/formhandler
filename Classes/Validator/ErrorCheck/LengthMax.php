@@ -25,11 +25,11 @@ class LengthMax extends AbstractErrorCheck {
     if (is_string($value)
         && mb_strlen(trim($value), 'utf-8') > 0
         && $lengthMaxErrorCheckConfig->length > 0
-        && mb_strlen(trim($value), 'utf-8') > $lengthMaxErrorCheckConfig->length
+        && mb_strlen(trim($value), 'utf-8') <= $lengthMaxErrorCheckConfig->length
     ) {
-      return false;
+      return true;
     }
 
-    return true;
+    return false;
   }
 }
