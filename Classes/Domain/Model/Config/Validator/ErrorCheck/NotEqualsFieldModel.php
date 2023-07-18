@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck;
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Typoheads\Formhandler\Validator\ErrorCheck\NotEqualsField;
 
 /** Documentation:Start:ErrorChecks/General/NotEqualsField.rst.
@@ -79,7 +80,7 @@ class NotEqualsFieldModel extends AbstractErrorCheckModel {
    */
   public function __construct(array $settings) {
     $this->name = 'NotEqualsField';
-    $this->field = explode('.', trim(strval($settings['field'] ?? '')));
+    $this->field = GeneralUtility::trimExplode('.', strval($settings['field'] ?? ''));
   }
 
   public function class(): string {

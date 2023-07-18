@@ -141,6 +141,9 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *      }
  *    }
  *
+ *:ref:`ContainsAll`
+ *  Checks if a field contains all of the configured values.
+ *
  *:ref:`ContainsOne`
  *  Checks if a field contains at least one of the configured values.
  *
@@ -160,6 +163,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *   :maxdepth: 2
  *   :hidden:
  *
+ *   Strings/ContainsAll
  *   Strings/ContainsOne
  *   Strings/LengthBetween
  *   Strings/LengthMax
