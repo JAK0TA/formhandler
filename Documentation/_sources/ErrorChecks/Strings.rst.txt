@@ -19,11 +19,11 @@ These error checks allow various checks suitable for strings, f.e. checking if a
             firstname.errorChecks {
               lengthMin {
                 model = LengthMinModel
-                length = 10
+                lengthMin = 10
               }
               lengthMax {
                 model = LengthMaxModel
-                length = 20
+                lengthMax = 20
               }
             }
           }

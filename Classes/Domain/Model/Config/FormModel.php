@@ -81,7 +81,7 @@ use Typoheads\Formhandler\Utility\Utility;
  *                      }
  *                      lengthMax {
  *                        model = LengthMaxModel
- *                        length = 20
+ *                        lengthMax = 20
  *                      }
  *                    }
  *                    lastname.errorChecks {
@@ -90,7 +90,7 @@ use Typoheads\Formhandler\Utility\Utility;
  *                      }
  *                      lengthMax {
  *                        model = LengthMaxModel
- *                        length = 20
+ *                        lengthMax = 20
  *                      }
  *                    }
  *                    streetAddress.errorChecks {
@@ -109,7 +109,7 @@ use Typoheads\Formhandler\Utility\Utility;
  *                      }
  *                      lengthMax {
  *                        model = LengthMaxModel
- *                        length = 70
+ *                        lengthMax = 70
  *                      }
  *                    }
  *                    country.errorChecks {
@@ -123,7 +123,7 @@ use Typoheads\Formhandler\Utility\Utility;
  *                      }
  *                      lengthMax {
  *                        model = LengthMaxModel
- *                        length = 20
+ *                        lengthMax = 20
  *                      }
  *                    }
  *                    email.errorChecks {
@@ -132,7 +132,7 @@ use Typoheads\Formhandler\Utility\Utility;
  *                      }
  *                      lengthMax {
  *                        model = LengthMaxModel
- *                        length = 50
+ *                        lengthMax = 50
  *                      }
  *                      email {
  *                        model = EmailModel

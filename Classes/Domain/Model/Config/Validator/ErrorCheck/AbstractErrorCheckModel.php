@@ -129,11 +129,11 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *            firstname.errorChecks {
  *              lengthMin {
  *                model = LengthMinModel
- *                length = 10
+ *                lengthMin = 10
  *              }
  *              lengthMax {
  *                model = LengthMaxModel
- *                length = 20
+ *                lengthMax = 20
  *              }
  *            }
  *          }

@@ -36,8 +36,8 @@ use Typoheads\Formhandler\Validator\ErrorCheck\LengthBetween;
  *            post-code.errorChecks {
  *              lengthBetween {
  *                model = LengthBetweenModel
- *                max = 10
- *                min = 7
+ *                lengthMax = 10
+ *                lengthMin = 7
  *              }
  *            }
  *          }
@@ -54,7 +54,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\LengthBetween;
  *   :header-rows: 0
  *   :stub-columns: 0
  *
- *   * - **max**
+ *   * - **lengthMax**
  *     - Sets the max string length a field value can be.
  *   * -
  *     -
@@ -72,7 +72,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\LengthBetween;
  *   :header-rows: 0
  *   :stub-columns: 0
  *
- *   * - **min**
+ *   * - **lengthMin**
  *     - Sets the min string length a field value must be.
  *   * -
  *     -
@@ -90,17 +90,17 @@ use Typoheads\Formhandler\Validator\ErrorCheck\LengthBetween;
  *Documentation:End
  */
 class LengthBetweenModel extends AbstractErrorCheckModel {
-  public readonly int $max;
+  public readonly int $lengthMax;
 
-  public readonly int $min;
+  public readonly int $lengthMin;
 
   /**
    * @param array<string, mixed> $settings
    */
   public function __construct(array $settings) {
     $this->name = 'LengthBetween';
-    $this->max = intval($settings['max'] ?? 0);
-    $this->min = intval($settings['min'] ?? 0);
+    $this->lengthMax = intval($settings['lengthMax'] ?? 0);
+    $this->lengthMin = intval($settings['lengthMin'] ?? 0);
   }
 
   public function class(): string {

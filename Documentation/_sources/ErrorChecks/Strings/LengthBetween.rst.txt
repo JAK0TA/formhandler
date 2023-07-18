@@ -19,8 +19,8 @@ Checks if the length of the value of a field is between or equal the configured 
             post-code.errorChecks {
               lengthBetween {
                 model = LengthBetweenModel
-                max = 10
-                min = 7
+                lengthMax = 10
+                lengthMin = 7
               }
             }
           }
@@ -37,7 +37,7 @@ Checks if the length of the value of a field is between or equal the configured 
    :header-rows: 0
    :stub-columns: 0
 
-   * - **max**
+   * - **lengthMax**
      - Sets the max string length a field value can be.
    * -
      -
@@ -55,7 +55,7 @@ Checks if the length of the value of a field is between or equal the configured 
    :header-rows: 0
    :stub-columns: 0
 
-   * - **min**
+   * - **lengthMin**
      - Sets the min string length a field value must be.
    * -
      -

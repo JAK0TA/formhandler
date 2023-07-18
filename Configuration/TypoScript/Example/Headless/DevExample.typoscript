@@ -70,7 +70,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
                   }
                   lengthMax {
                     model = LengthMaxModel
-                    length = 20
+                    lengthMax = 20
                   }
                 }
                 lastname.errorChecks {
@@ -79,7 +79,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
                   }
                   lengthMax {
                     model = LengthMaxModel
-                    length = 20
+                    lengthMax = 20
                   }
                 }
                 streetAddress.errorChecks {
@@ -98,7 +98,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
                   }
                   lengthMax {
                     model = LengthMaxModel
-                    length = 70
+                    lengthMax = 70
                   }
                 }
                 country.errorChecks {
@@ -112,7 +112,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
                   }
                   lengthMax {
                     model = LengthMaxModel
-                    length = 20
+                    lengthMax = 20
                   }
                 }
                 email.errorChecks {
@@ -121,7 +121,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
                   }
                   lengthMax {
                     model = LengthMaxModel
-                    length = 50
+                    lengthMax = 50
                   }
                   email {
                     model = EmailModel
@@ -159,7 +159,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
                           }
                           lengthMax {
                             model = LengthMaxModel
-                            length = 255
+                            lengthMax = 255
                           }
                         }
 
@@ -169,7 +169,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
                           }
                           lengthMax {
                             model = LengthMaxModel
-                            length = 255
+                            lengthMax = 255
                           }
                         }
                       }
@@ -206,7 +206,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
                   }
                   lengthMax {
                     model = LengthMaxModel
-                    length = 255
+                    lengthMax = 255
                   }
                 }
 
@@ -216,7 +216,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
                   }
                   lengthMax {
                     model = LengthMaxModel
-                    length = 255
+                    lengthMax = 255
                   }
                 }
 
@@ -226,14 +226,14 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
                   }
                   lengthMax {
                     model = LengthMaxModel
-                    length = 255
+                    lengthMax = 255
                   }
                 }
 
                 email.errorCheck {
                   lengthMax {
                     model = LengthMaxModel
-                    length = 255
+                    lengthMax = 255
                   }
                   email {
                     model = EmailModel

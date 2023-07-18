@@ -24,10 +24,10 @@ class LengthBetween extends AbstractErrorCheck {
 
     if (is_string($value)
         && mb_strlen(trim($value), 'utf-8') > 0
-        && $lengthBetweenErrorCheckConfig->max > 0
-        && mb_strlen(trim($value), 'utf-8') <= $lengthBetweenErrorCheckConfig->max
-        && $lengthBetweenErrorCheckConfig->min > 0
-        && mb_strlen(trim($value), 'utf-8') >= $lengthBetweenErrorCheckConfig->min
+        && $lengthBetweenErrorCheckConfig->lengthMax > 0
+        && mb_strlen(trim($value), 'utf-8') <= $lengthBetweenErrorCheckConfig->lengthMax
+        && $lengthBetweenErrorCheckConfig->lengthMin > 0
+        && mb_strlen(trim($value), 'utf-8') >= $lengthBetweenErrorCheckConfig->lengthMin
     ) {
       return true;
     }

@@ -36,7 +36,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\LengthMin;
  *            post-code.errorChecks {
  *              lengthMin {
  *                model = LengthMinModel
- *                length = 4
+ *                lengthMin = 4
  *              }
  *            }
  *          }
@@ -53,7 +53,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\LengthMin;
  *   :header-rows: 0
  *   :stub-columns: 0
  *
- *   * - **length**
+ *   * - **lengthMin**
  *     - Sets the min string length a field value must be.
  *   * -
  *     -
@@ -71,14 +71,14 @@ use Typoheads\Formhandler\Validator\ErrorCheck\LengthMin;
  *Documentation:End
  */
 class LengthMinModel extends AbstractErrorCheckModel {
-  public readonly int $length;
+  public readonly int $lengthMin;
 
   /**
    * @param array<string, mixed> $settings
    */
   public function __construct(array $settings) {
     $this->name = 'LengthMin';
-    $this->length = intval($settings['length'] ?? 0);
+    $this->lengthMin = intval($settings['lengthMin'] ?? 0);
   }
 
   public function class(): string {

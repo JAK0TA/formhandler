@@ -19,7 +19,7 @@ Checks if the value of a field has at least the configured length.
             post-code.errorChecks {
               lengthMin {
                 model = LengthMinModel
-                length = 4
+                lengthMin = 4
               }
             }
           }
@@ -36,7 +36,7 @@ Checks if the value of a field has at least the configured length.
    :header-rows: 0
    :stub-columns: 0
 
-   * - **length**
+   * - **lengthMin**
      - Sets the min string length a field value must be.
    * -
      -

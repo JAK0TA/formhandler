@@ -36,7 +36,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\LengthMax;
  *            post-code.errorChecks {
  *              lengthMax {
  *                model = LengthMaxModel
- *                length = 7
+ *                lengthMax = 7
  *              }
  *            }
  *          }
@@ -53,7 +53,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\LengthMax;
  *   :header-rows: 0
  *   :stub-columns: 0
  *
- *   * - **length**
+ *   * - **lengthMax**
  *     - Sets the max string length a field value can be.
  *   * -
  *     -
@@ -71,14 +71,14 @@ use Typoheads\Formhandler\Validator\ErrorCheck\LengthMax;
  *Documentation:End
  */
 class LengthMaxModel extends AbstractErrorCheckModel {
-  public readonly int $length;
+  public readonly int $lengthMax;
 
   /**
    * @param array<string, mixed> $settings
    */
   public function __construct(array $settings) {
     $this->name = 'LengthMax';
-    $this->length = intval($settings['length'] ?? 0);
+    $this->lengthMax = intval($settings['lengthMax'] ?? 0);
   }
 
   public function class(): string {
