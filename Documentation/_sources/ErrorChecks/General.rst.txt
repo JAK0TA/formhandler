@@ -35,6 +35,9 @@ These checks perform basic validation routines like checking if a field is fille
 :ref:`EqualsField`
   Checks if a field value equals another field value.
 
+:ref:`NotEqualsField`
+  Checks if a field value does not equals another field value.
+
 :ref:`Required`
   Checks if a field is filled in
 
@@ -48,5 +51,6 @@ These checks perform basic validation routines like checking if a field is fille
    General/Email
    General/Equals
    General/EqualsField
+   General/NotEqualsField
    General/Required
    General/Url

@@ -12,17 +12,17 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck;
 
-use Typoheads\Formhandler\Validator\ErrorCheck\EqualsField;
+use Typoheads\Formhandler\Validator\ErrorCheck\NotEqualsField;
 
-/** Documentation:Start:ErrorChecks/General/EqualsField.rst.
+/** Documentation:Start:ErrorChecks/General/NotEqualsField.rst.
  *
- *.. _equalsfield:
+ *.. _notequalsfield:
  *
- *===========
- *EqualsField
- *===========
+ *==============
+ *NotEqualsField
+ *==============
  *
- *Checks if a field value equals another field value.
+ *Checks if a field value does not equals another field value.
  *
  *..  code-block:: typoscript
  *
@@ -33,10 +33,10 @@ use Typoheads\Formhandler\Validator\ErrorCheck\EqualsField;
  *        model = DefaultValidatorModel
  *        config {
  *          fields {
- *            password_repeat.errorChecks {
- *              equalsField {
- *                model = EqualsFieldModel
- *                field = 1.password
+ *            password.errorChecks {
+ *              notEqualsField {
+ *                model = NotEqualsFieldModel
+ *                field = 1.username
  *              }
  *            }
  *          }
@@ -54,7 +54,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\EqualsField;
  *   :stub-columns: 0
  *
  *   * - **field**
- *     - Path name of the field that must be equal to the value of a given field
+ *     - Path name of the field that must not be equal to the value of a given field
  *   * -
  *     -
  *   * - *Mandatory*
@@ -70,7 +70,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\EqualsField;
  *
  *Documentation:End
  */
-class EqualsFieldModel extends AbstractErrorCheckModel {
+class NotEqualsFieldModel extends AbstractErrorCheckModel {
   /** @var string[] */
   public readonly array $field;
 
@@ -78,11 +78,11 @@ class EqualsFieldModel extends AbstractErrorCheckModel {
    * @param array<string, mixed> $settings
    */
   public function __construct(array $settings) {
-    $this->name = 'EqualsField';
+    $this->name = 'NotEqualsField';
     $this->field = explode('.', trim(strval($settings['field'] ?? ''))) ?: [];
   }
 
   public function class(): string {
-    return EqualsField::class;
+    return NotEqualsField::class;
   }
 }

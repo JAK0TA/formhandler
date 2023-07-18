@@ -1,11 +1,11 @@
 
-.. _equalsfield:
+.. _notequalsfield:
 
-===========
-EqualsField
-===========
+==============
+NotEqualsField
+==============
 
-Checks if a field value equals another field value.
+Checks if a field value does not equals another field value.
 
 ..  code-block:: typoscript
 
@@ -16,10 +16,10 @@ Checks if a field value equals another field value.
         model = DefaultValidatorModel
         config {
           fields {
-            password_repeat.errorChecks {
-              equalsField {
-                model = EqualsFieldModel
-                field = 1.password
+            password.errorChecks {
+              notEqualsField {
+                model = NotEqualsFieldModel
+                field = 1.username
               }
             }
           }
@@ -37,7 +37,7 @@ Checks if a field value equals another field value.
    :stub-columns: 0
 
    * - **field**
-     - Path name of the field that must be equal to the value of a given field
+     - Path name of the field that must not be equal to the value of a given field
    * -
      -
    * - *Mandatory*

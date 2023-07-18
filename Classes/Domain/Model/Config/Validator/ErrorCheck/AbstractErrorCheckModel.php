@@ -85,6 +85,9 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *:ref:`EqualsField`
  *  Checks if a field value equals another field value.
  *
+ *:ref:`NotEqualsField`
+ *  Checks if a field value does not equals another field value.
+ *
  *:ref:`Required`
  *  Checks if a field is filled in
  *
@@ -98,6 +101,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *   General/Email
  *   General/Equals
  *   General/EqualsField
+ *   General/NotEqualsField
  *   General/Required
  *   General/Url
  *
