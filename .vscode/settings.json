@@ -81,7 +81,7 @@
       "command": "workbench.action.terminal.sendSequence",
       "arguments": [
         {
-          "text": "git checkout main && git reset --hard origin/main && git pull && git remote add upstream git@github.com:JAK0TA/formhandler.git > /dev/null 2>&1 && git fetch upstream && git rebase upstream/main && git push -f origin\u000D"
+          "text": "git checkout main && git reset --hard origin/main && git pull && git remote add upstream https://github.com/JAK0TA/formhandler.git > /dev/null 2>&1 || : && git fetch upstream && git rebase upstream/main && git push -f origin\u000D"
         }
       ],
       "priority": 1
