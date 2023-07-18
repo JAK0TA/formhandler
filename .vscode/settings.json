@@ -75,7 +75,7 @@
   "statusbar_command.commands": [
     {
       "text": "$(discard) Reset to main",
-      "tooltip": "Reset and upstream from main",
+      "tooltip": "Reset this fork and upstream from main",
       "id": "resetMain",
       "name": "resetMain",
       "command": "workbench.action.terminal.sendSequence",
