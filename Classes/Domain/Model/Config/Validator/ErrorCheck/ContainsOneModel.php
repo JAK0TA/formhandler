@@ -36,7 +36,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\ContainsOne;
  *            privacy_policy.errorChecks {
  *              containsOne {
  *                model = ContainsOneModel
- *                words = Yes,Ja
+ *                values = Yes,Ja
  *              }
  *            }
  *          }
@@ -53,8 +53,8 @@ use Typoheads\Formhandler\Validator\ErrorCheck\ContainsOne;
  *   :header-rows: 0
  *   :stub-columns: 0
  *
- *   * - **words**
- *     - Comma separated list of words of which one must be in the value of a given field
+ *   * - **values**
+ *     - Comma separated list of values of which one must be the value of a given field
  *   * -
  *     -
  *   * - *Mandatory*
@@ -71,14 +71,15 @@ use Typoheads\Formhandler\Validator\ErrorCheck\ContainsOne;
  *Documentation:End
  */
 class ContainsOneModel extends AbstractErrorCheckModel {
-  public readonly string $words;
+  /** @var string[] */
+  public readonly array $values;
 
   /**
    * @param array<string, mixed> $settings
    */
   public function __construct(array $settings) {
     $this->name = 'ContainsOne';
-    $this->words = strval($settings['words'] ?? '');
+    $this->values = explode(',', trim(strval($settings['values'] ?? ''))) ?: [];
   }
 
   public function class(): string {

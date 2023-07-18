@@ -19,7 +19,7 @@ Checks if a field contains at least one of the configured values
             privacy_policy.errorChecks {
               containsOne {
                 model = ContainsOneModel
-                words = Yes,Ja
+                values = Yes,Ja
               }
             }
           }
@@ -36,8 +36,8 @@ Checks if a field contains at least one of the configured values
    :header-rows: 0
    :stub-columns: 0
 
-   * - **words**
-     - Comma separated list of words of which one must be in the value of a given field
+   * - **values**
+     - Comma separated list of values of which one must be the value of a given field
    * -
      -
    * - *Mandatory*

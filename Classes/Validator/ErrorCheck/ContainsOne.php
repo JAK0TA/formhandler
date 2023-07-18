@@ -14,9 +14,18 @@ namespace Typoheads\Formhandler\Validator\ErrorCheck;
 
 use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractErrorCheckModel;
+use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\ContainsOneModel;
 
 class ContainsOne extends AbstractErrorCheck {
   public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$containsOneErrorCheckConfig, mixed $value): bool {
-    return true;
+    if (!$containsOneErrorCheckConfig instanceof ContainsOneModel) {
+      return false;
+    }
+
+    if (in_array($value, $containsOneErrorCheckConfig->values)) {
+      return true;
+    }
+
+    return false;
   }
 }
