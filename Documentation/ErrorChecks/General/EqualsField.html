@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Equals &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
+  <title>EqualsField &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -21,8 +21,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="EqualsField" href="EqualsField.html" />
-    <link rel="prev" title="Email" href="Email.html" /> 
+    <link rel="next" title="Required" href="Required.html" />
+    <link rel="prev" title="Equals" href="Equals.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -52,10 +52,10 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../Index.html">Error Checks</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../General.html">General</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="Email.html">Email</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Equals</a><ul class="simple">
+<li class="toctree-l3"><a class="reference internal" href="Equals.html">Equals</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">EqualsField</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="EqualsField.html">EqualsField</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Required.html">Required</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Url.html">Url</a></li>
 </ul>
@@ -87,9 +87,9 @@
       <li><a href="../../Index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../Index.html">Error Checks</a></li>
           <li class="breadcrumb-item"><a href="../General.html">General</a></li>
-      <li class="breadcrumb-item active">Equals</li>
+      <li class="breadcrumb-item active">EqualsField</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/ErrorChecks/General/Equals.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/ErrorChecks/General/EqualsField.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -97,9 +97,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="equals">
-<span id="id1"></span><h1>Equals<a class="headerlink" href="#equals" title="Permalink to this heading">¶</a></h1>
-<p>Checks if a field equals the configured value.</p>
+  <section id="equalsfield">
+<span id="id1"></span><h1>EqualsField<a class="headerlink" href="#equalsfield" title="Permalink to this heading">¶</a></h1>
+<p>Checks if a field value equals another field value.</p>
 <div class="highlight-typoscript notranslate"><div class="highlight"><pre><span></span>Example Code<span class="o">:</span>
 
 validators <span class="ss">{</span>
@@ -107,10 +107,10 @@ validators <span class="ss">{</span>
     model <span class="o">=</span> DefaultValidatorModel
     config <span class="ss">{</span>
       fields <span class="ss">{</span>
-        privacy_policy<span class="p">.</span>errorChecks <span class="ss">{</span>
+        password_repeat<span class="p">.</span>errorChecks <span class="ss">{</span>
           equals <span class="ss">{</span>
-            model <span class="o">=</span> EqualsModel
-            value <span class="o">=</span> Yes
+            model <span class="o">=</span> EqualsFieldModel
+            field <span class="o">=</span> <span class="mi">1</span><span class="p">.</span>password
           <span class="ss">}</span>
         <span class="ss">}</span>
       <span class="ss">}</span>
@@ -126,8 +126,8 @@ validators <span class="ss">{</span>
 <col style="width: 80%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>value</strong></p></td>
-<td><p>Value that must be equal to the value of a given field</p></td>
+<tr class="row-odd"><td><p><strong>field</strong></p></td>
+<td><p>Path name of the field that must be equal to the value of a given field</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td></td>
@@ -151,8 +151,8 @@ validators <span class="ss">{</span>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Email.html" class="btn btn-neutral float-left" title="Email" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="EqualsField.html" class="btn btn-neutral float-right" title="EqualsField" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Equals.html" class="btn btn-neutral float-left" title="Equals" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Required.html" class="btn btn-neutral float-right" title="Required" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

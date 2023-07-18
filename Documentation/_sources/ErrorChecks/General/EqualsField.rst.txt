@@ -1,0 +1,52 @@
+
+.. _equalsfield:
+
+===========
+EqualsField
+===========
+
+Checks if a field value equals another field value.
+
+..  code-block:: typoscript
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidatorModel
+        config {
+          fields {
+            password_repeat.errorChecks {
+              equals {
+                model = EqualsFieldModel
+                field = 1.password
+              }
+            }
+          }
+        }
+      }
+    }
+
+**Properties**
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **field**
+     - Path name of the field that must be equal to the value of a given field
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - String
+   * - *Default*
+     - Empty String
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
