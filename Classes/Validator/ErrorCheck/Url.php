@@ -19,9 +19,9 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractError
 class Url extends AbstractErrorCheck {
   public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$urlErrorCheckConfig, mixed $value): bool {
     if (is_string($value)) {
-      return !GeneralUtility::isValidUrl($value);
-    } else {
-      return false;
+      return GeneralUtility::isValidUrl($value);
     }
+
+    return false;
   }
 }
