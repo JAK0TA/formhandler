@@ -1,0 +1,52 @@
+
+.. _equals:
+
+======
+Equals
+======
+
+Checks if a field equals the configured value.
+
+..  code-block:: typoscript
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidatorModel
+        config {
+          fields {
+            privacy_policy.errorChecks {
+              equals {
+                model = EqualsModel
+                word = Yes
+              }
+            }
+          }
+        }
+      }
+    }
+
+**Properties**
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **word**
+     - Word that must be the value of a given field
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - String
+   * - *Default*
+     - Empty String
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:

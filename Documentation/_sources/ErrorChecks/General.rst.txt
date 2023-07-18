@@ -29,6 +29,9 @@ These checks perform basic validation routines like checking if a field is fille
 :ref:`Email`
   Checks if a field contains a valid email and if a MX record exists for the domain of an email address.
 
+:ref:`Equals`
+  Checks if a field equals the configured value.
+
 :ref:`Required`
   Checks if a field is filled in
 
@@ -40,5 +43,6 @@ These checks perform basic validation routines like checking if a field is fille
    :hidden:
 
    General/Email
+   General/Equals
    General/Required
    General/Url

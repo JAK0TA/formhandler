@@ -79,6 +79,9 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *:ref:`Email`
  *  Checks if a field contains a valid email and if a MX record exists for the domain of an email address.
  *
+ *:ref:`Equals`
+ *  Checks if a field equals the configured value.
+ *
  *:ref:`Required`
  *  Checks if a field is filled in
  *
@@ -90,6 +93,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *   :hidden:
  *
  *   General/Email
+ *   General/Equals
  *   General/Required
  *   General/Url
  *

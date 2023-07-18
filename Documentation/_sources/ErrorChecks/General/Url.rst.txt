@@ -16,7 +16,7 @@ Checks if a field contains a valid url.
         model = DefaultValidatorModel
         config {
           fields {
-            name.errorChecks {
+            homepage.errorChecks {
               url {
                 model = UrlModel
               }
