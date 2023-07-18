@@ -1,0 +1,52 @@
+
+.. _containsnone:
+
+============
+ContainsNone
+============
+
+Checks if a field contains none of the configured values.
+
+..  code-block:: typoscript
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidatorModel
+        config {
+          fields {
+            message.errorChecks {
+              containsNone {
+                model = ContainsNoneModel
+                values = motherforking,shirtballs,badword
+              }
+            }
+          }
+        }
+      }
+    }
+
+**Properties**
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **values**
+     - Comma separated list of values of which none must be present in the value of a given field
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - String
+   * - *Default*
+     - Empty String
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:

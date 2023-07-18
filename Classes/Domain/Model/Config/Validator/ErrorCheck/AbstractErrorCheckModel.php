@@ -144,6 +144,9 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *:ref:`ContainsAll`
  *  Checks if a field contains all of the configured values.
  *
+ *:ref:`ContainsNone`
+ *  Checks if a field contains none of the configured values.
+ *
  *:ref:`ContainsOne`
  *  Checks if a field contains at least one of the configured values.
  *
@@ -164,6 +167,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *   :hidden:
  *
  *   Strings/ContainsAll
+ *   Strings/ContainsNone
  *   Strings/ContainsOne
  *   Strings/LengthBetween
  *   Strings/LengthMax

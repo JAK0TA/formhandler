@@ -34,6 +34,9 @@ These error checks allow various checks suitable for strings, f.e. checking if a
 :ref:`ContainsAll`
   Checks if a field contains all of the configured values.
 
+:ref:`ContainsNone`
+  Checks if a field contains none of the configured values.
+
 :ref:`ContainsOne`
   Checks if a field contains at least one of the configured values.
 
@@ -54,6 +57,7 @@ These error checks allow various checks suitable for strings, f.e. checking if a
    :hidden:
 
    Strings/ContainsAll
+   Strings/ContainsNone
    Strings/ContainsOne
    Strings/LengthBetween
    Strings/LengthMax
