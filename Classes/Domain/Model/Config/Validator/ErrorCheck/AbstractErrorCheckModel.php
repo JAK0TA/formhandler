@@ -82,12 +82,16 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *:ref:`Required`
  *  Checks if a field is filled in
  *
+ *:ref:`Url`
+ *  Checks if a field contains a valid url.
+ *
  *.. toctree::
  *   :maxdepth: 2
  *   :hidden:
  *
  *   General/Email
  *   General/Required
+ *   General/Url
  *
  *Documentation:End
  */

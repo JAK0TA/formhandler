@@ -1,0 +1,31 @@
+
+.. _url:
+
+===
+Url
+===
+
+Checks if a field contains a valid url.
+
+..  code-block:: typoscript
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidatorModel
+        config {
+          fields {
+            name.errorChecks {
+              url {
+                model = UrlModel
+              }
+            }
+          }
+        }
+      }
+    }
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:

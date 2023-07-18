@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Email &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
+  <title>Url &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -21,8 +21,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Required" href="Required.html" />
-    <link rel="prev" title="General" href="../General.html" /> 
+    <link rel="next" title="Strings" href="../Strings.html" />
+    <link rel="prev" title="Required" href="Required.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -51,11 +51,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Debuggers/Index.html">Debuggers</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../Index.html">Error Checks</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../General.html">General</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Email</a><ul class="simple">
+<li class="toctree-l3"><a class="reference internal" href="Email.html">Email</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Required.html">Required</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Url</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Required.html">Required</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Url.html">Url</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Strings.html">Strings</a></li>
@@ -85,9 +85,9 @@
       <li><a href="../../Index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../Index.html">Error Checks</a></li>
           <li class="breadcrumb-item"><a href="../General.html">General</a></li>
-      <li class="breadcrumb-item active">Email</li>
+      <li class="breadcrumb-item active">Url</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/ErrorChecks/General/Email.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/ErrorChecks/General/Url.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -95,11 +95,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="email">
-<span id="id1"></span><h1>Email<a class="headerlink" href="#email" title="Permalink to this heading">¶</a></h1>
-<p>Checks if a field contains a valid email and if a MX record exists for the domain of an email address.</p>
-<p>If the user enters an email address like “<a class="reference external" href="mailto:user&#37;&#52;&#48;example&#46;tld">user<span>&#64;</span>example<span>&#46;</span>tld</a>”, Formhandler checks if a valid MX record exists for the domain “example.tld”.</p>
-<p>This doesn’t ensure that the mailbox “<a class="reference external" href="mailto:user&#37;&#52;&#48;example&#46;tld">user<span>&#64;</span>example<span>&#46;</span>tld</a>” exists or that the MX record points to a running server, but at least makes sure that there is a mail server setup for this domain.</p>
+  <section id="url">
+<span id="id1"></span><h1>Url<a class="headerlink" href="#url" title="Permalink to this heading">¶</a></h1>
+<p>Checks if a field contains a valid url.</p>
 <div class="highlight-typoscript notranslate"><div class="highlight"><pre><span></span>Example Code<span class="o">:</span>
 
 validators <span class="ss">{</span>
@@ -107,12 +105,9 @@ validators <span class="ss">{</span>
     model <span class="o">=</span> DefaultValidatorModel
     config <span class="ss">{</span>
       fields <span class="ss">{</span>
-        email<span class="p">.</span>errorChecks <span class="ss">{</span>
-          required <span class="ss">{</span>
-            model <span class="o">=</span> RequiredModel
-          <span class="ss">}</span>
-          email <span class="ss">{</span>
-            model <span class="o">=</span> EmailModel
+        name<span class="p">.</span>errorChecks <span class="ss">{</span>
+          url <span class="ss">{</span>
+            model <span class="o">=</span> UrlModel
           <span class="ss">}</span>
         <span class="ss">}</span>
       <span class="ss">}</span>
@@ -129,8 +124,8 @@ validators <span class="ss">{</span>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../General.html" class="btn btn-neutral float-left" title="General" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Required.html" class="btn btn-neutral float-right" title="Required" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Required.html" class="btn btn-neutral float-left" title="Required" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Strings.html" class="btn btn-neutral float-right" title="Strings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -32,9 +32,13 @@ These checks perform basic validation routines like checking if a field is fille
 :ref:`Required`
   Checks if a field is filled in
 
+:ref:`Url`
+  Checks if a field contains a valid url.
+
 .. toctree::
    :maxdepth: 2
    :hidden:
 
    General/Email
    General/Required
+   General/Url
