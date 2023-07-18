@@ -1,0 +1,54 @@
+
+.. _pregmatch:
+
+=========
+PregMatch
+=========
+
+Checks a field value using the configured perl regular expression.
+
+You can use this check to do existing check your own way or to make checks no built-in error check exists for.
+
+..  code-block::
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidatorModel
+        config {
+          fields {
+            post-code.errorChecks {
+              pregMatch {
+                model = PregMatchModel
+                pattern = /^DE-.*$/
+              }
+            }
+          }
+        }
+      }
+    }
+
+**Properties**
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **pattern**
+     - The regex pattern to search for, as a string.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - String
+   * - *Default*
+     - Empty String
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:

@@ -153,6 +153,9 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *:ref:`LengthMin`
  *  Checks if the value of a field has at least the configured length.
  *
+ *:ref:`PregMatch`
+ *  Checks a field value using the configured perl regular expression.
+ *
  *.. toctree::
  *   :maxdepth: 2
  *   :hidden:
@@ -161,6 +164,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *   Strings/LengthBetween
  *   Strings/LengthMax
  *   Strings/LengthMin
+ *   Strings/PregMatch
  *
  *Documentation:End
  */
