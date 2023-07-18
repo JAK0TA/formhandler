@@ -144,6 +144,9 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *:ref:`ContainsOne`
  *  Checks if a field contains at least one of the configured values.
  *
+ *:ref:`LengthBetween`
+ *  Checks if the length of the value of a field is between or equal the configured values.
+ *
  *:ref:`LengthMax`
  *  Checks if the value of a field has less than the configured length.
  *
@@ -155,6 +158,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *   :hidden:
  *
  *   Strings/ContainsOne
+ *   Strings/LengthBetween
  *   Strings/LengthMax
  *   Strings/LengthMin
  *
