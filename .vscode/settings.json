@@ -92,13 +92,22 @@
       "priority": -5
     },
     {
+      "text": "$(beaker) PHP 8.2",
+      "tooltip": "Unlink PHP and link to 8.2",
+      "id": "brewPhp",
+      "name": "brewPhp",
+      "command": "workbench.action.terminal.sendSequence",
+      "arguments": [{ "text": "brew unlink php && brew link php@8.2\u000D" }],
+      "priority": -6
+    },
+    {
       "text": "$(beaker) PHP CS Fixer",
       "tooltip": "Analyse code with PHP CS Fixer",
       "id": "pHPCsFixer",
       "name": "pHPCsFixer",
       "command": "workbench.action.terminal.sendSequence",
       "arguments": [{ "text": "./vendor/bin/php-cs-fixer fix $(pwd) --dry-run --diff --config=\"./.vscode/.php-cs-fixer.php\" --using-cache no\u000D" }],
-      "priority": -6
+      "priority": -7
     },
     {
       "text": "$(git-branch) $(trash)",
@@ -107,7 +116,7 @@
       "name": "gitCleanUp",
       "command": "workbench.action.terminal.sendSequence",
       "arguments": [{ "text": "git for-each-ref --format '%(refname:short)' refs/heads | grep -v \"master\\|main\\|develop\\|stage\" | grep -v $(git branch --show-current) | xargs git branch -D\u000D" }],
-      "priority": -7
+      "priority": -8
     },
     {
       "text": "$(book) Build Documentation",
@@ -116,7 +125,7 @@
       "name": "gitCleanUp",
       "command": "workbench.action.terminal.sendSequence",
       "arguments": [{ "text": "./vendor/bin/documentation-builder .documentation/documentation.json\u000D" }],
-      "priority": -8
+      "priority": -9
     }
   ]
 }
