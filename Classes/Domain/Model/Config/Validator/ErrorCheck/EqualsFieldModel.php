@@ -79,7 +79,7 @@ class EqualsFieldModel extends AbstractErrorCheckModel {
    */
   public function __construct(array $settings) {
     $this->name = 'EqualsField';
-    $this->field = explode('.', trim(strval($settings['field'] ?? ''))) ?: [];
+    $this->field = explode('.', trim(strval($settings['field'] ?? '')));
   }
 
   public function class(): string {

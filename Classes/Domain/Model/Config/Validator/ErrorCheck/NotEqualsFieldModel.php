@@ -79,7 +79,7 @@ class NotEqualsFieldModel extends AbstractErrorCheckModel {
    */
   public function __construct(array $settings) {
     $this->name = 'NotEqualsField';
-    $this->field = explode('.', trim(strval($settings['field'] ?? ''))) ?: [];
+    $this->field = explode('.', trim(strval($settings['field'] ?? '')));
   }
 
   public function class(): string {

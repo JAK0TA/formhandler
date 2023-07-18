@@ -79,7 +79,7 @@ class ContainsOneModel extends AbstractErrorCheckModel {
    */
   public function __construct(array $settings) {
     $this->name = 'ContainsOne';
-    $this->values = explode(',', trim(strval($settings['values'] ?? ''))) ?: [];
+    $this->values = explode(',', trim(strval($settings['values'] ?? '')));
   }
 
   public function class(): string {
