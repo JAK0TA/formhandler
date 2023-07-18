@@ -142,10 +142,13 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *    }
  *
  *:ref:`ContainsOne`
- *  Checks if a field contains at least one of the configured values
+ *  Checks if a field contains at least one of the configured values.
  *
  *:ref:`MaxLength`
- *  Checks if the value of a field has less than the configured length
+ *  Checks if the value of a field has less than the configured length.
+ *
+ *:ref:`MinLength`
+ *  Checks if the value of a field has at least the configured length.
  *
  *.. toctree::
  *   :maxdepth: 2
@@ -153,6 +156,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *
  *   Strings/ContainsOne
  *   Strings/MaxLength
+ *   Strings/MinLength
  *
  *Documentation:End
  */

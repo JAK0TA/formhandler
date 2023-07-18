@@ -1,0 +1,52 @@
+
+.. _minlength:
+
+=========
+MinLength
+=========
+
+Checks if the value of a field has at least the configured length.
+
+..  code-block:: typoscript
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidatorModel
+        config {
+          fields {
+            post-code.errorChecks {
+              minLength {
+                model = MinLengthModel
+                minLength = 4
+              }
+            }
+          }
+        }
+      }
+    }
+
+**Properties**
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **minLength**
+     - Sets the min string length a field value must be.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - Integer
+   * - *Default*
+     - 0
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
