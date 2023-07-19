@@ -224,12 +224,24 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *:ref:`Integer`
  *  Checks if a field contains a valid integer value.
  *
+ *:ref:`ValueBetween`
+ *  Checks if the value of a field is between or equal the configured values.
+ *
+ *:ref:`ValueMax`
+ *  Checks if the value of a field is less or equal than the configured value.
+ *
+ *:ref:`ValueMin`
+ *  Checks if the value of a field is at least the configured value.
+ *
  *.. toctree::
  *   :maxdepth: 2
  *   :hidden:
  *
  *   Numbers/Float
  *   Numbers/Integer
+ *   Numbers/ValueBetween
+ *   Numbers/ValueMax
+ *   Numbers/ValueMin
  *
  *Documentation:End
  */

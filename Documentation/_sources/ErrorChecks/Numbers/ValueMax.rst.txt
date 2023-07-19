@@ -1,0 +1,58 @@
+
+.. _valuemax:
+
+========
+ValueMax
+========
+
+Checks if the value of a field is less or equal than the configured value.
+
+..  code-block:: typoscript
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidatorModel
+        config {
+          fields {
+            age.errorChecks {
+              valueMax {
+                model = ValueMaxModel
+                valueMax = 100
+              }
+            }
+            mass.errorChecks {
+              valueMax {
+                model = ValueMaxModel
+                valueMax = 10.99
+              }
+            }
+          }
+        }
+      }
+    }
+
+**Properties**
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **lengthMax**
+     - Sets the max value a field value can be.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - Float|Integer
+   * - *Default*
+     - 0
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:

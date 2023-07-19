@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Float &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
+  <title>ValueMax &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -21,8 +21,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Integer" href="Integer.html" />
-    <link rel="prev" title="Numbers" href="../Numbers.html" /> 
+    <link rel="next" title="ValueMin" href="ValueMin.html" />
+    <link rel="prev" title="ValueBetween" href="ValueBetween.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -53,12 +53,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../General.html">General</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Strings.html">Strings</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../Numbers.html">Numbers</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Float</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="Float.html">Float</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Integer.html">Integer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ValueBetween.html">ValueBetween</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ValueMax.html">ValueMax</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ValueMax</a><ul class="simple">
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="ValueMin.html">ValueMin</a></li>
 </ul>
 </li>
@@ -88,9 +88,9 @@
       <li><a href="../../Index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../Index.html">Error Checks</a></li>
           <li class="breadcrumb-item"><a href="../Numbers.html">Numbers</a></li>
-      <li class="breadcrumb-item active">Float</li>
+      <li class="breadcrumb-item active">ValueMax</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/ErrorChecks/Numbers/Float.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/ErrorChecks/Numbers/ValueMax.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -98,9 +98,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="float">
-<span id="id1"></span><h1>Float<a class="headerlink" href="#float" title="Permalink to this heading">¶</a></h1>
-<p>Checks if a field contains a valid float value.</p>
+  <section id="valuemax">
+<span id="id1"></span><h1>ValueMax<a class="headerlink" href="#valuemax" title="Permalink to this heading">¶</a></h1>
+<p>Checks if the value of a field is less or equal than the configured value.</p>
 <div class="highlight-typoscript notranslate"><div class="highlight"><pre><span></span>Example Code<span class="o">:</span>
 
 validators <span class="ss">{</span>
@@ -108,9 +108,16 @@ validators <span class="ss">{</span>
     model <span class="o">=</span> DefaultValidatorModel
     config <span class="ss">{</span>
       fields <span class="ss">{</span>
+        age<span class="p">.</span>errorChecks <span class="ss">{</span>
+          valueMax <span class="ss">{</span>
+            model <span class="o">=</span> ValueMaxModel
+            valueMax <span class="o">=</span> <span class="mi">100</span>
+          <span class="ss">}</span>
+        <span class="ss">}</span>
         mass<span class="p">.</span>errorChecks <span class="ss">{</span>
-          float <span class="ss">{</span>
-            model <span class="o">=</span> FloatModel
+          valueMax <span class="ss">{</span>
+            model <span class="o">=</span> ValueMaxModel
+            valueMax <span class="o">=</span> <span class="mi">10</span><span class="p">.</span><span class="mi">99</span>
           <span class="ss">}</span>
         <span class="ss">}</span>
       <span class="ss">}</span>
@@ -119,6 +126,30 @@ validators <span class="ss">{</span>
 <span class="ss">}</span>
 </pre></div>
 </div>
+<p><strong>Properties</strong></p>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>lengthMax</strong></p></td>
+<td><p>Sets the max value a field value can be.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>Float|Integer</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Default</em></p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -127,8 +158,8 @@ validators <span class="ss">{</span>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../Numbers.html" class="btn btn-neutral float-left" title="Numbers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Integer.html" class="btn btn-neutral float-right" title="Integer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ValueBetween.html" class="btn btn-neutral float-left" title="ValueBetween" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ValueMin.html" class="btn btn-neutral float-right" title="ValueMin" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

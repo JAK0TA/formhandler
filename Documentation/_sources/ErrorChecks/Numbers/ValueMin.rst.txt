@@ -1,0 +1,58 @@
+
+.. _valuemin:
+
+=========
+ValueMin
+=========
+
+Checks if the value of a field is at least the configured value.
+
+..  code-block:: typoscript
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidatorModel
+        config {
+          fields {
+            age.errorChecks {
+              valueMin {
+                model = ValueMinModel
+                valueMin = 18
+              }
+            }
+            mass.errorChecks {
+              valueMin {
+                model = ValueMinModel
+                valueMin = 1.5
+              }
+            }
+          }
+        }
+      }
+    }
+
+**Properties**
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **valueMin**
+     - Sets the min value a field value must be.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - Float|Integer
+   * - *Default*
+     - 0
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
