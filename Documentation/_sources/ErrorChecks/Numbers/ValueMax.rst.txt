@@ -42,7 +42,7 @@ Checks if the value of a field is less or equal than the configured value.
    :header-rows: 0
    :stub-columns: 0
 
-   * - **lengthMax**
+   * - **valueMax**
      - Sets the max value a field value can be.
    * -
      -

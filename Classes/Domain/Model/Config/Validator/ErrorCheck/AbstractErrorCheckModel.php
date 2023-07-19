@@ -35,19 +35,19 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *:ref:`General`
  *  These checks perform basic validation routines like checking if a field is filled out or if a field value is a valid email address.
  *
- *:ref:`Strings`
- *  These error checks allow various checks suitable for strings, f.e. checking if a string is at least 10 characters long or if a string contains a specific word.
- *
  *:ref:`Numbers`
  *  If you want to perform error checks on numbers, e.g. if a field value is a valid integer, these checks are right for you.
+ *
+ *:ref:`Strings`
+ *  These error checks allow various checks suitable for strings, f.e. checking if a string is at least 10 characters long or if a string contains a specific word.
  *
  *.. toctree::
  *   :maxdepth: 2
  *   :hidden:
  *
  *   General
- *   Strings
  *   Numbers
+ *   Strings
  *
  *Documentation:End
  */
