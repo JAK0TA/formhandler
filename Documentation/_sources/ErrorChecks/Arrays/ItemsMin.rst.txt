@@ -1,0 +1,52 @@
+
+.. _itemsmin:
+
+========
+ItemsMin
+========
+
+Checks if a field contains at least the configured amount of items. (e.g. checkboxes)
+
+..  code-block:: typoscript
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidatorModel
+        config {
+          fields {
+            interests.errorChecks {
+              itemsMin {
+                model = ItemsMinModel
+                itemsMin = 1
+              }
+            }
+          }
+        }
+      }
+    }
+
+**Properties**
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **itemsMin**
+     - Sets the min amount of items a field value must contain.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - Integer
+   * - *Default*
+     - 0
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:

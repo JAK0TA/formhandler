@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LengthMin &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
+  <title>ItemsMax &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -21,8 +21,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="PregMatch" href="PregMatch.html" />
-    <link rel="prev" title="LengthMax" href="LengthMax.html" /> 
+    <link rel="next" title="ItemsMin" href="ItemsMin.html" />
+    <link rel="prev" title="ItemsBetween" href="ItemsBetween.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -51,21 +51,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Debuggers/Index.html">Debuggers</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../Index.html">Error Checks</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../General.html">General</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Arrays.html">Arrays</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Arrays.html">Arrays</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ItemsBetween.html">ItemsBetween</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ItemsMax</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ItemsMin.html">ItemsMin</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../Numbers.html">Numbers</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../Strings.html">Strings</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="ContainsAll.html">ContainsAll</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ContainsNone.html">ContainsNone</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ContainsOne.html">ContainsOne</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ContainsOnly.html">ContainsOnly</a></li>
-<li class="toctree-l3"><a class="reference internal" href="LengthBetween.html">LengthBetween</a></li>
-<li class="toctree-l3"><a class="reference internal" href="LengthMax.html">LengthMax</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">LengthMin</a><ul class="simple">
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="PregMatch.html">PregMatch</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../Strings.html">Strings</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../Finishers/Index.html">Finishers</a></li>
@@ -91,10 +86,10 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../Index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../Index.html">Error Checks</a></li>
-          <li class="breadcrumb-item"><a href="../Strings.html">Strings</a></li>
-      <li class="breadcrumb-item active">LengthMin</li>
+          <li class="breadcrumb-item"><a href="../Arrays.html">Arrays</a></li>
+      <li class="breadcrumb-item active">ItemsMax</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/ErrorChecks/Strings/LengthMin.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/ErrorChecks/Arrays/ItemsMax.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -102,9 +97,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="lengthmin">
-<span id="id1"></span><h1>LengthMin<a class="headerlink" href="#lengthmin" title="Permalink to this heading">¶</a></h1>
-<p>Checks if the value of a field has at least the configured length.</p>
+  <section id="itemsmax">
+<span id="id1"></span><h1>ItemsMax<a class="headerlink" href="#itemsmax" title="Permalink to this heading">¶</a></h1>
+<p>Checks if a field contains not more than the configured amount of items. (e.g. checkboxes)</p>
 <div class="highlight-typoscript notranslate"><div class="highlight"><pre><span></span>Example Code<span class="o">:</span>
 
 validators <span class="ss">{</span>
@@ -112,10 +107,10 @@ validators <span class="ss">{</span>
     model <span class="o">=</span> DefaultValidatorModel
     config <span class="ss">{</span>
       fields <span class="ss">{</span>
-        post-code<span class="p">.</span>errorChecks <span class="ss">{</span>
-          lengthMin <span class="ss">{</span>
-            model <span class="o">=</span> LengthMinModel
-            lengthMin <span class="o">=</span> <span class="mi">4</span>
+        interests<span class="p">.</span>errorChecks <span class="ss">{</span>
+          itemsMax <span class="ss">{</span>
+            model <span class="o">=</span> ItemsMaxModel
+            itemsMax <span class="o">=</span> <span class="mi">10</span>
           <span class="ss">}</span>
         <span class="ss">}</span>
       <span class="ss">}</span>
@@ -131,8 +126,8 @@ validators <span class="ss">{</span>
 <col style="width: 80%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>lengthMin</strong></p></td>
-<td><p>Sets the min string length a field value must be.</p></td>
+<tr class="row-odd"><td><p><strong>itemsMax</strong></p></td>
+<td><p>Sets the max amount of items a field value can contain.</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td></td>
@@ -156,8 +151,8 @@ validators <span class="ss">{</span>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="LengthMax.html" class="btn btn-neutral float-left" title="LengthMax" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="PregMatch.html" class="btn btn-neutral float-right" title="PregMatch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ItemsBetween.html" class="btn btn-neutral float-left" title="ItemsBetween" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ItemsMin.html" class="btn btn-neutral float-right" title="ItemsMin" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>General &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
+  <title>Arrays &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -21,8 +21,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Email" href="General/Email.html" />
-    <link rel="prev" title="Error Checks" href="Index.html" /> 
+    <link rel="next" title="ItemsBetween" href="Arrays/ItemsBetween.html" />
+    <link rel="prev" title="Url" href="General/Url.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -50,16 +50,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../GeneralOptions/Index.html">General Options</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Debuggers/Index.html">Debuggers</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="Index.html">Error Checks</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">General</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="General/Email.html">Email</a></li>
-<li class="toctree-l3"><a class="reference internal" href="General/Equals.html">Equals</a></li>
-<li class="toctree-l3"><a class="reference internal" href="General/EqualsField.html">EqualsField</a></li>
-<li class="toctree-l3"><a class="reference internal" href="General/NotEqualsField.html">NotEqualsField</a></li>
-<li class="toctree-l3"><a class="reference internal" href="General/Required.html">Required</a></li>
-<li class="toctree-l3"><a class="reference internal" href="General/Url.html">Url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="General.html">General</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Arrays</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Arrays/ItemsBetween.html">ItemsBetween</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Arrays/ItemsMax.html">ItemsMax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Arrays/ItemsMin.html">ItemsMin</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="Arrays.html">Arrays</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Numbers.html">Numbers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Strings.html">Strings</a></li>
 </ul>
@@ -87,9 +84,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../Index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="Index.html">Error Checks</a></li>
-      <li class="breadcrumb-item active">General</li>
+      <li class="breadcrumb-item active">Arrays</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/ErrorChecks/General.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/ErrorChecks/Arrays.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -97,9 +94,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="general">
-<span id="id1"></span><h1>General<a class="headerlink" href="#general" title="Permalink to this heading">¶</a></h1>
-<p>These checks perform basic validation routines like checking if a field is filled out or if a field value is a valid email address.</p>
+  <section id="arrays">
+<span id="id1"></span><h1>Arrays<a class="headerlink" href="#arrays" title="Permalink to this heading">¶</a></h1>
+<p>Array checks are useful when dealing with arrays of check boxes and similar cases.</p>
 <div class="highlight-typoscript notranslate"><div class="highlight"><pre><span></span>Example Code<span class="o">:</span>
 
 validators <span class="ss">{</span>
@@ -107,9 +104,14 @@ validators <span class="ss">{</span>
     model <span class="o">=</span> DefaultValidatorModel
     config <span class="ss">{</span>
       fields <span class="ss">{</span>
-        firstname<span class="p">.</span>errorChecks <span class="ss">{</span>
-          required <span class="ss">{</span>
-            model <span class="o">=</span> RequiredModel
+        interests<span class="p">.</span>errorChecks <span class="ss">{</span>
+          itemsMin <span class="ss">{</span>
+            model <span class="o">=</span> ItemsMinModel
+            itemsMin <span class="o">=</span> <span class="mi">1</span>
+          <span class="ss">}</span>
+          itemsMax <span class="ss">{</span>
+            model <span class="o">=</span> ItemsMaxModel
+            itemsMax <span class="o">=</span> <span class="mi">5</span>
           <span class="ss">}</span>
         <span class="ss">}</span>
       <span class="ss">}</span>
@@ -119,17 +121,11 @@ validators <span class="ss">{</span>
 </pre></div>
 </div>
 <dl class="simple">
-<dt><a class="reference internal" href="General/Email.html#email"><span class="std std-ref">Email</span></a></dt><dd><p>Checks if a field contains a valid email and if a MX record exists for the domain of an email address.</p>
+<dt><a class="reference internal" href="Arrays/ItemsBetween.html#itemsbetween"><span class="std std-ref">ItemsBetween</span></a></dt><dd><p>Checks if a field contains values between or equal the configured amount of items. (e.g. checkboxes)</p>
 </dd>
-<dt><a class="reference internal" href="General/Equals.html#equals"><span class="std std-ref">Equals</span></a></dt><dd><p>Checks if a field equals the configured value.</p>
+<dt><a class="reference internal" href="Arrays/ItemsMax.html#itemsmax"><span class="std std-ref">ItemsMax</span></a></dt><dd><p>Checks if a field contains not more than the configured amount of items. (e.g. checkboxes)</p>
 </dd>
-<dt><a class="reference internal" href="General/EqualsField.html#equalsfield"><span class="std std-ref">EqualsField</span></a></dt><dd><p>Checks if a field value equals another field value.</p>
-</dd>
-<dt><a class="reference internal" href="General/NotEqualsField.html#notequalsfield"><span class="std std-ref">NotEqualsField</span></a></dt><dd><p>Checks if a field value does not equals another field value.</p>
-</dd>
-<dt><a class="reference internal" href="General/Required.html#required"><span class="std std-ref">Required</span></a></dt><dd><p>Checks if a field is filled in</p>
-</dd>
-<dt><a class="reference internal" href="General/Url.html#url"><span class="std std-ref">Url</span></a></dt><dd><p>Checks if a field contains a valid url.</p>
+<dt><a class="reference internal" href="Arrays/ItemsMin.html#itemsmin"><span class="std std-ref">ItemsMin</span></a></dt><dd><p>Checks if a field contains at least the configured amount of items. (e.g. checkboxes)</p>
 </dd>
 </dl>
 <div class="toctree-wrapper compound">
@@ -140,8 +136,8 @@ validators <span class="ss">{</span>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Index.html" class="btn btn-neutral float-left" title="Error Checks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="General/Email.html" class="btn btn-neutral float-right" title="Email" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="General/Url.html" class="btn btn-neutral float-left" title="Url" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Arrays/ItemsBetween.html" class="btn btn-neutral float-right" title="ItemsBetween" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

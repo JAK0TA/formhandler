@@ -35,6 +35,9 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *:ref:`General`
  *  These checks perform basic validation routines like checking if a field is filled out or if a field value is a valid email address.
  *
+ *:ref:`Arrays`
+ *  Array checks are useful when dealing with arrays of check boxes and similar cases.
+ *
  *:ref:`Numbers`
  *  If you want to perform error checks on numbers, e.g. if a field value is a valid integer, these checks are right for you.
  *
@@ -46,6 +49,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *   :hidden:
  *
  *   General
+ *   Arrays
  *   Numbers
  *   Strings
  *
@@ -108,6 +112,59 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *   General/NotEqualsField
  *   General/Required
  *   General/Url
+ *
+ *Documentation:End
+ */
+/** Documentation:Start:ErrorChecks/Arrays.rst.
+ *
+ *.. _arrays:
+ *
+ *======
+ *Arrays
+ *======
+ *
+ *Array checks are useful when dealing with arrays of check boxes and similar cases.
+ *
+ *..  code-block:: typoscript
+ *
+ *    Example Code:
+ *
+ *    validators {
+ *      DefaultValidator {
+ *        model = DefaultValidatorModel
+ *        config {
+ *          fields {
+ *            interests.errorChecks {
+ *              itemsMin {
+ *                model = ItemsMinModel
+ *                itemsMin = 1
+ *              }
+ *              itemsMax {
+ *                model = ItemsMaxModel
+ *                itemsMax = 5
+ *              }
+ *            }
+ *          }
+ *        }
+ *      }
+ *    }
+ *
+ *:ref:`ItemsBetween`
+ *  Checks if a field contains values between or equal the configured amount of items. (e.g. checkboxes)
+ *
+ *:ref:`ItemsMax`
+ *  Checks if a field contains not more than the configured amount of items. (e.g. checkboxes)
+ *
+ *:ref:`ItemsMin`
+ *  Checks if a field contains at least the configured amount of items. (e.g. checkboxes)
+ *
+ *.. toctree::
+ *   :maxdepth: 2
+ *   :hidden:
+ *
+ *   Arrays/ItemsBetween
+ *   Arrays/ItemsMax
+ *   Arrays/ItemsMin
  *
  *Documentation:End
  */

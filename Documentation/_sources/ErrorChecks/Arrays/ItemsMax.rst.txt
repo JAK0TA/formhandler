@@ -1,0 +1,52 @@
+
+.. _itemsmax:
+
+========
+ItemsMax
+========
+
+Checks if a field contains not more than the configured amount of items. (e.g. checkboxes)
+
+..  code-block:: typoscript
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidatorModel
+        config {
+          fields {
+            interests.errorChecks {
+              itemsMax {
+                model = ItemsMaxModel
+                itemsMax = 10
+              }
+            }
+          }
+        }
+      }
+    }
+
+**Properties**
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **itemsMax**
+     - Sets the max amount of items a field value can contain.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - Integer
+   * - *Default*
+     - 0
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
