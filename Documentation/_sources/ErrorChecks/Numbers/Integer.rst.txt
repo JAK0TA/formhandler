@@ -1,0 +1,31 @@
+
+.. _integer:
+
+=======
+Integer
+=======
+
+Checks if a field contains a valid integer value.
+
+..  code-block:: typoscript
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidatorModel
+        config {
+          fields {
+            age.errorChecks {
+              integer {
+                model = IntegerModel
+              }
+            }
+          }
+        }
+      }
+    }
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:

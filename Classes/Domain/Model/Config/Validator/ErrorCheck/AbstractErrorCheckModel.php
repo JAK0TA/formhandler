@@ -38,12 +38,16 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *:ref:`Strings`
  *  These error checks allow various checks suitable for strings, f.e. checking if a string is at least 10 characters long or if a string contains a specific word.
  *
+ *:ref:`Numbers`
+ *  If you want to perform error checks on numbers, e.g. if a field value is a valid integer, these checks are right for you.
+ *
  *.. toctree::
  *   :maxdepth: 2
  *   :hidden:
  *
  *   General
  *   Strings
+ *   Numbers
  *
  *Documentation:End
  */
@@ -177,6 +181,51 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *   Strings/LengthMax
  *   Strings/LengthMin
  *   Strings/PregMatch
+ *
+ *Documentation:End
+ */
+/** Documentation:Start:ErrorChecks/Numbers.rst.
+ *
+ *.. _numbers:
+ *
+ *=======
+ *Numbers
+ *=======
+ *
+ *If you want to perform error checks on numbers, e.g. if a field value is a valid integer, these checks are right for you.
+ *
+ *..  code-block:: typoscript
+ *
+ *    Example Code:
+ *
+ *    validators {
+ *      DefaultValidator {
+ *        model = DefaultValidatorModel
+ *        config {
+ *          fields {
+ *            age.errorChecks {
+ *              integer {
+ *                model = IntegerModel
+ *              }
+ *              valueBetween {
+ *                model = ValueBetweenModel
+ *                valueMax = 100
+ *                valueMin = 18
+ *              }
+ *            }
+ *          }
+ *        }
+ *      }
+ *    }
+ *
+ *:ref:`Integer`
+ *  Checks if a field contains a valid integer value.
+ *
+ *.. toctree::
+ *   :maxdepth: 2
+ *   :hidden:
+ *
+ *   Numbers/Integer
  *
  *Documentation:End
  */

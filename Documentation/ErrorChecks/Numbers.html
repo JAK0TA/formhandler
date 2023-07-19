@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Error Checks &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
+  <title>Numbers &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -21,8 +21,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="General" href="General.html" />
-    <link rel="prev" title="VarDumpDebugger" href="../Debuggers/VarDumpDebugger.html" /> 
+    <link rel="next" title="Integer" href="Numbers/Integer.html" />
+    <link rel="prev" title="PregMatch" href="Strings/PregMatch.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,10 +49,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../Migration/Index.html">Migration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../GeneralOptions/Index.html">General Options</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Debuggers/Index.html">Debuggers</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Error Checks</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="Index.html">Error Checks</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="General.html">General</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Strings.html">Strings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Numbers.html">Numbers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Numbers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Numbers/Integer.html">Integer</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Finishers/Index.html">Finishers</a></li>
@@ -77,9 +80,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../Index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Error Checks</li>
+          <li class="breadcrumb-item"><a href="Index.html">Error Checks</a></li>
+      <li class="breadcrumb-item active">Numbers</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/ErrorChecks/Index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/ErrorChecks/Numbers.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -87,25 +91,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="error-checks">
-<span id="id1"></span><h1>Error Checks<a class="headerlink" href="#error-checks" title="Permalink to this heading">¶</a></h1>
-<table class="docutils align-left" style="width: 100%">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 80%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>TypoScript Path</strong></p></td>
-<td><p>plugin.tx_formhandler_form.settings.predefinedForms.[x].steps.[x].validators.[x].config.fields.[x].errorChecks</p></td>
-</tr>
-</tbody>
-</table>
+  <section id="numbers">
+<span id="id1"></span><h1>Numbers<a class="headerlink" href="#numbers" title="Permalink to this heading">¶</a></h1>
+<p>If you want to perform error checks on numbers, e.g. if a field value is a valid integer, these checks are right for you.</p>
+<div class="highlight-typoscript notranslate"><div class="highlight"><pre><span></span>Example Code<span class="o">:</span>
+
+validators <span class="ss">{</span>
+  DefaultValidator <span class="ss">{</span>
+    model <span class="o">=</span> DefaultValidatorModel
+    config <span class="ss">{</span>
+      fields <span class="ss">{</span>
+        age<span class="p">.</span>errorChecks <span class="ss">{</span>
+          integer <span class="ss">{</span>
+            model <span class="o">=</span> IntegerModel
+          <span class="ss">}</span>
+          valueBetween <span class="ss">{</span>
+            model <span class="o">=</span> ValueBetweenModel
+            valueMax <span class="o">=</span> <span class="mi">100</span>
+            valueMin <span class="o">=</span> <span class="mi">18</span>
+          <span class="ss">}</span>
+        <span class="ss">}</span>
+      <span class="ss">}</span>
+    <span class="ss">}</span>
+  <span class="ss">}</span>
+<span class="ss">}</span>
+</pre></div>
+</div>
 <dl class="simple">
-<dt><a class="reference internal" href="General.html#general"><span class="std std-ref">General</span></a></dt><dd><p>These checks perform basic validation routines like checking if a field is filled out or if a field value is a valid email address.</p>
-</dd>
-<dt><a class="reference internal" href="Strings.html#strings"><span class="std std-ref">Strings</span></a></dt><dd><p>These error checks allow various checks suitable for strings, f.e. checking if a string is at least 10 characters long or if a string contains a specific word.</p>
-</dd>
-<dt><a class="reference internal" href="Numbers.html#numbers"><span class="std std-ref">Numbers</span></a></dt><dd><p>If you want to perform error checks on numbers, e.g. if a field value is a valid integer, these checks are right for you.</p>
+<dt><a class="reference internal" href="Numbers/Integer.html#integer"><span class="std std-ref">Integer</span></a></dt><dd><p>Checks if a field contains a valid integer value.</p>
 </dd>
 </dl>
 <div class="toctree-wrapper compound">
@@ -116,8 +129,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../Debuggers/VarDumpDebugger.html" class="btn btn-neutral float-left" title="VarDumpDebugger" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="General.html" class="btn btn-neutral float-right" title="General" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Strings/PregMatch.html" class="btn btn-neutral float-left" title="PregMatch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Numbers/Integer.html" class="btn btn-neutral float-right" title="Integer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
