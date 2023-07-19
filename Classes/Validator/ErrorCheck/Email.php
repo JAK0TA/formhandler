@@ -17,9 +17,9 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractError
 use Typoheads\Formhandler\Utility\Utility;
 
 class Email extends AbstractErrorCheck {
-  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$emailErrorCheckConfig, mixed $email): bool {
-    if (is_string($email) && strlen($email) > 0) {
-      return Utility::validEmail($email);
+  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$errorCheckConfig, mixed $value): bool {
+    if (is_string($value) && strlen($value) > 0) {
+      return Utility::validEmail($value);
     }
 
     return false;

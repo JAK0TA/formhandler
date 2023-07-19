@@ -17,15 +17,15 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractError
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\LengthMaxModel;
 
 class LengthMax extends AbstractErrorCheck {
-  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$lengthMaxErrorCheckConfig, mixed $value): bool {
-    if (!$lengthMaxErrorCheckConfig instanceof LengthMaxModel) {
+  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$errorCheckConfig, mixed $value): bool {
+    if (!$errorCheckConfig instanceof LengthMaxModel) {
       return false;
     }
 
     if (is_string($value)
         && mb_strlen(trim($value), 'utf-8') > 0
-        && $lengthMaxErrorCheckConfig->lengthMax > 0
-        && mb_strlen(trim($value), 'utf-8') <= $lengthMaxErrorCheckConfig->lengthMax
+        && $errorCheckConfig->lengthMax > 0
+        && mb_strlen(trim($value), 'utf-8') <= $errorCheckConfig->lengthMax
     ) {
       return true;
     }

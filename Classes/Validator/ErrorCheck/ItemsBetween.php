@@ -17,17 +17,17 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractError
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\ItemsBetweenModel;
 
 class ItemsBetween extends AbstractErrorCheck {
-  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$itemsBetweenErrorCheckConfig, mixed $value): bool {
-    if (!$itemsBetweenErrorCheckConfig instanceof ItemsBetweenModel) {
+  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$errorCheckConfig, mixed $value): bool {
+    if (!$errorCheckConfig instanceof ItemsBetweenModel) {
       return false;
     }
 
     if (is_array($value)) {
       $valueCount = count($value);
-      if ($itemsBetweenErrorCheckConfig->itemsMax > 0
-        && $valueCount <= $itemsBetweenErrorCheckConfig->itemsMax
-        && $itemsBetweenErrorCheckConfig->itemsMin > 0
-        && $valueCount >= $itemsBetweenErrorCheckConfig->itemsMin
+      if ($errorCheckConfig->itemsMax > 0
+        && $valueCount <= $errorCheckConfig->itemsMax
+        && $errorCheckConfig->itemsMin > 0
+        && $valueCount >= $errorCheckConfig->itemsMin
       ) {
         return true;
       }

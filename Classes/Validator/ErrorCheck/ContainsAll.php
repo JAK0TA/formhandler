@@ -17,14 +17,14 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractError
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\ContainsAllModel;
 
 class ContainsAll extends AbstractErrorCheck {
-  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$containsAllErrorCheckConfig, mixed $value): bool {
-    if (!$containsAllErrorCheckConfig instanceof ContainsAllModel) {
+  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$errorCheckConfig, mixed $value): bool {
+    if (!$errorCheckConfig instanceof ContainsAllModel) {
       return false;
     }
 
     $value = strval($value);
 
-    foreach ($containsAllErrorCheckConfig->values as $needle) {
+    foreach ($errorCheckConfig->values as $needle) {
       if (false === stristr($value, $needle)) {
         return false;
       }

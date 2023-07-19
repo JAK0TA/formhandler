@@ -17,8 +17,8 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractError
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\FloatModel;
 
 class FloatValue extends AbstractErrorCheck {
-  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$floatErrorCheckConfig, mixed $value): bool {
-    if (!$floatErrorCheckConfig instanceof FloatModel) {
+  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$errorCheckConfig, mixed $value): bool {
+    if (!$errorCheckConfig instanceof FloatModel) {
       return false;
     }
 

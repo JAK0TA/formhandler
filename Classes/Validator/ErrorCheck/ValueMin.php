@@ -17,8 +17,8 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractError
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\ValueMinModel;
 
 class ValueMin extends AbstractErrorCheck {
-  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$valueMinErrorCheckConfig, mixed $value): bool {
-    if (!$valueMinErrorCheckConfig instanceof ValueMinModel) {
+  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$errorCheckConfig, mixed $value): bool {
+    if (!$errorCheckConfig instanceof ValueMinModel) {
       return false;
     }
 
@@ -28,8 +28,8 @@ class ValueMin extends AbstractErrorCheck {
     }
 
     if (
-      $valueMinErrorCheckConfig->valueMin > 0
-      && $valueTemp >= $valueMinErrorCheckConfig->valueMin
+      $errorCheckConfig->valueMin > 0
+      && $valueTemp >= $errorCheckConfig->valueMin
     ) {
       return true;
     }

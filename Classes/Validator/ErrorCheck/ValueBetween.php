@@ -17,8 +17,8 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractError
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\ValueBetweenModel;
 
 class ValueBetween extends AbstractErrorCheck {
-  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$valueBetweenErrorCheckConfig, mixed $value): bool {
-    if (!$valueBetweenErrorCheckConfig instanceof ValueBetweenModel) {
+  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$errorCheckConfig, mixed $value): bool {
+    if (!$errorCheckConfig instanceof ValueBetweenModel) {
       return false;
     }
 
@@ -28,10 +28,10 @@ class ValueBetween extends AbstractErrorCheck {
     }
 
     if (
-      $valueBetweenErrorCheckConfig->valueMax > 0
-      && $valueTemp <= $valueBetweenErrorCheckConfig->valueMax
-      && $valueBetweenErrorCheckConfig->valueMin > 0
-      && $valueTemp >= $valueBetweenErrorCheckConfig->valueMin
+      $errorCheckConfig->valueMax > 0
+      && $valueTemp <= $errorCheckConfig->valueMax
+      && $errorCheckConfig->valueMin > 0
+      && $valueTemp >= $errorCheckConfig->valueMin
     ) {
       return true;
     }

@@ -17,12 +17,12 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractError
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\ContainsOneModel;
 
 class ContainsOne extends AbstractErrorCheck {
-  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$containsOneErrorCheckConfig, mixed $value): bool {
-    if (!$containsOneErrorCheckConfig instanceof ContainsOneModel) {
+  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$errorCheckConfig, mixed $value): bool {
+    if (!$errorCheckConfig instanceof ContainsOneModel) {
       return false;
     }
 
-    if (in_array($value, $containsOneErrorCheckConfig->values)) {
+    if (in_array($value, $errorCheckConfig->values)) {
       return true;
     }
 

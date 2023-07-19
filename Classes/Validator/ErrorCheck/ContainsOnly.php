@@ -17,8 +17,8 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractError
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\ContainsOnlyModel;
 
 class ContainsOnly extends AbstractErrorCheck {
-  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$containsOnlyErrorCheckConfig, mixed $value): bool {
-    if (!$containsOnlyErrorCheckConfig instanceof ContainsOnlyModel) {
+  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$errorCheckConfig, mixed $value): bool {
+    if (!$errorCheckConfig instanceof ContainsOnlyModel) {
       return false;
     }
 
@@ -26,7 +26,7 @@ class ContainsOnly extends AbstractErrorCheck {
 
     if (is_array($array)) {
       foreach ($array as $char) {
-        if (!in_array(trim($char), $containsOnlyErrorCheckConfig->characters)) {
+        if (!in_array(trim($char), $errorCheckConfig->characters)) {
           return false;
         }
       }

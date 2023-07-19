@@ -17,8 +17,8 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractError
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\IntegerModel;
 
 class Integer extends AbstractErrorCheck {
-  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$integerErrorCheckConfig, mixed $value): bool {
-    if (!$integerErrorCheckConfig instanceof IntegerModel) {
+  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$errorCheckConfig, mixed $value): bool {
+    if (!$errorCheckConfig instanceof IntegerModel) {
       return false;
     }
 

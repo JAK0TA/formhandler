@@ -17,8 +17,8 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractError
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\ValueMaxModel;
 
 class ValueMax extends AbstractErrorCheck {
-  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$valueMaxErrorCheckConfig, mixed $value): bool {
-    if (!$valueMaxErrorCheckConfig instanceof ValueMaxModel) {
+  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$errorCheckConfig, mixed $value): bool {
+    if (!$errorCheckConfig instanceof ValueMaxModel) {
       return false;
     }
 
@@ -28,8 +28,8 @@ class ValueMax extends AbstractErrorCheck {
     }
 
     if (
-      $valueMaxErrorCheckConfig->valueMax > 0
-      && $valueTemp <= $valueMaxErrorCheckConfig->valueMax
+      $errorCheckConfig->valueMax > 0
+      && $valueTemp <= $errorCheckConfig->valueMax
     ) {
       return true;
     }

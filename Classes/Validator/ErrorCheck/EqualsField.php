@@ -17,13 +17,13 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractError
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\EqualsFieldModel;
 
 class EqualsField extends AbstractErrorCheck {
-  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$equalsFieldErrorCheckConfig, mixed $value): bool {
-    if (!$equalsFieldErrorCheckConfig instanceof EqualsFieldModel) {
+  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$errorCheckConfig, mixed $value): bool {
+    if (!$errorCheckConfig instanceof EqualsFieldModel) {
       return false;
     }
 
     $fieldValue = $formConfig->formValues;
-    foreach ($equalsFieldErrorCheckConfig->field as $fieldPathKey) {
+    foreach ($errorCheckConfig->field as $fieldPathKey) {
       if (!is_array($fieldValue) || !isset($fieldValue[$fieldPathKey])) {
         return false;
       }

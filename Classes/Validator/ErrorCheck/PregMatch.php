@@ -17,14 +17,14 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractError
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\PregMatchModel;
 
 class PregMatch extends AbstractErrorCheck {
-  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$pregMatchErrorCheckConfig, mixed $value): bool {
-    if (!$pregMatchErrorCheckConfig instanceof PregMatchModel) {
+  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$errorCheckConfig, mixed $value): bool {
+    if (!$errorCheckConfig instanceof PregMatchModel) {
       return false;
     }
 
     if (is_string($value)
-        && !empty($pregMatchErrorCheckConfig->pattern)
-        && (false !== preg_match($pregMatchErrorCheckConfig->pattern, $value))
+        && !empty($errorCheckConfig->pattern)
+        && (false !== preg_match($errorCheckConfig->pattern, $value))
     ) {
       return true;
     }

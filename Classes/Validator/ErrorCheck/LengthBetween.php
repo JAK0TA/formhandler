@@ -17,17 +17,17 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractError
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\LengthBetweenModel;
 
 class LengthBetween extends AbstractErrorCheck {
-  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$lengthBetweenErrorCheckConfig, mixed $value): bool {
-    if (!$lengthBetweenErrorCheckConfig instanceof LengthBetweenModel) {
+  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$errorCheckConfig, mixed $value): bool {
+    if (!$errorCheckConfig instanceof LengthBetweenModel) {
       return false;
     }
 
     if (is_string($value)
         && mb_strlen(trim($value), 'utf-8') > 0
-        && $lengthBetweenErrorCheckConfig->lengthMax > 0
-        && mb_strlen(trim($value), 'utf-8') <= $lengthBetweenErrorCheckConfig->lengthMax
-        && $lengthBetweenErrorCheckConfig->lengthMin > 0
-        && mb_strlen(trim($value), 'utf-8') >= $lengthBetweenErrorCheckConfig->lengthMin
+        && $errorCheckConfig->lengthMax > 0
+        && mb_strlen(trim($value), 'utf-8') <= $errorCheckConfig->lengthMax
+        && $errorCheckConfig->lengthMin > 0
+        && mb_strlen(trim($value), 'utf-8') >= $errorCheckConfig->lengthMin
     ) {
       return true;
     }

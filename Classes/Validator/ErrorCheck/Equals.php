@@ -17,12 +17,12 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractError
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\EqualsModel;
 
 class Equals extends AbstractErrorCheck {
-  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$equalsErrorCheckConfig, mixed $value): bool {
-    if (!$equalsErrorCheckConfig instanceof EqualsModel) {
+  public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$errorCheckConfig, mixed $value): bool {
+    if (!$errorCheckConfig instanceof EqualsModel) {
       return false;
     }
 
-    if ($value == $equalsErrorCheckConfig->value) {
+    if ($value == $errorCheckConfig->value) {
       return true;
     }
 
