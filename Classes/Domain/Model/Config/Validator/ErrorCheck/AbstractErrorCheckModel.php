@@ -218,6 +218,9 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *      }
  *    }
  *
+ *:ref:`Float`
+ *  Checks if a field contains a valid float value.
+ *
  *:ref:`Integer`
  *  Checks if a field contains a valid integer value.
  *
@@ -225,6 +228,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *   :maxdepth: 2
  *   :hidden:
  *
+ *   Numbers/Float
  *   Numbers/Integer
  *
  *Documentation:End

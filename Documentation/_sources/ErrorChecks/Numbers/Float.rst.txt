@@ -1,0 +1,31 @@
+
+.. _float:
+
+=====
+Float
+=====
+
+Checks if a field contains a valid float value.
+
+..  code-block:: typoscript
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidatorModel
+        config {
+          fields {
+            mass.errorChecks {
+              float {
+                model = FloatModel
+              }
+            }
+          }
+        }
+      }
+    }
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:

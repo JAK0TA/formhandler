@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Integer &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
+  <title>Float &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -21,8 +21,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Finishers" href="../../Finishers/Index.html" />
-    <link rel="prev" title="Float" href="Float.html" /> 
+    <link rel="next" title="Integer" href="Integer.html" />
+    <link rel="prev" title="Numbers" href="../Numbers.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -53,10 +53,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../General.html">General</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Strings.html">Strings</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../Numbers.html">Numbers</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="Float.html">Float</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Integer</a><ul class="simple">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Float</a><ul class="simple">
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="Integer.html">Integer</a></li>
 </ul>
 </li>
 </ul>
@@ -85,9 +85,9 @@
       <li><a href="../../Index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../Index.html">Error Checks</a></li>
           <li class="breadcrumb-item"><a href="../Numbers.html">Numbers</a></li>
-      <li class="breadcrumb-item active">Integer</li>
+      <li class="breadcrumb-item active">Float</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/ErrorChecks/Numbers/Integer.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/ErrorChecks/Numbers/Float.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -95,9 +95,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="integer">
-<span id="id1"></span><h1>Integer<a class="headerlink" href="#integer" title="Permalink to this heading">¶</a></h1>
-<p>Checks if a field contains a valid integer value.</p>
+  <section id="float">
+<span id="id1"></span><h1>Float<a class="headerlink" href="#float" title="Permalink to this heading">¶</a></h1>
+<p>Checks if a field contains a valid float value.</p>
 <div class="highlight-typoscript notranslate"><div class="highlight"><pre><span></span>Example Code<span class="o">:</span>
 
 validators <span class="ss">{</span>
@@ -105,9 +105,9 @@ validators <span class="ss">{</span>
     model <span class="o">=</span> DefaultValidatorModel
     config <span class="ss">{</span>
       fields <span class="ss">{</span>
-        age<span class="p">.</span>errorChecks <span class="ss">{</span>
-          integer <span class="ss">{</span>
-            model <span class="o">=</span> IntegerModel
+        mass<span class="p">.</span>errorChecks <span class="ss">{</span>
+          float <span class="ss">{</span>
+            model <span class="o">=</span> FloatModel
           <span class="ss">}</span>
         <span class="ss">}</span>
       <span class="ss">}</span>
@@ -124,8 +124,8 @@ validators <span class="ss">{</span>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Float.html" class="btn btn-neutral float-left" title="Float" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../../Finishers/Index.html" class="btn btn-neutral float-right" title="Finishers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../Numbers.html" class="btn btn-neutral float-left" title="Numbers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Integer.html" class="btn btn-neutral float-right" title="Integer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

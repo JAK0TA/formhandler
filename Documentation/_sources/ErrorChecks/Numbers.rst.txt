@@ -31,6 +31,9 @@ If you want to perform error checks on numbers, e.g. if a field value is a valid
       }
     }
 
+:ref:`Float`
+  Checks if a field contains a valid float value.
+
 :ref:`Integer`
   Checks if a field contains a valid integer value.
 
@@ -38,4 +41,5 @@ If you want to perform error checks on numbers, e.g. if a field value is a valid
    :maxdepth: 2
    :hidden:
 
+   Numbers/Float
    Numbers/Integer
