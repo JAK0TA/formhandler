@@ -59,7 +59,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\ValueMax;
  *   :header-rows: 0
  *   :stub-columns: 0
  *
- *   * - **lengthMax**
+ *   * - **valueMax**
  *     - Sets the max value a field value can be.
  *   * -
  *     -
