@@ -1,0 +1,31 @@
+
+.. _time:
+
+====
+Time
+====
+
+Checks if a field value is a valid time. Format must be HH:MM:SS or HH:MM e.g 13:07:19 or 13:07.
+
+..  code-block:: typoscript
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidatorModel
+        config {
+          fields {
+            start_time.errorChecks {
+              time {
+                model = TimeModel
+              }
+            }
+          }
+        }
+      }
+    }
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:

@@ -21,6 +21,9 @@ Error Checks
 :ref:`Arrays`
   Array checks are useful when dealing with arrays of check boxes and similar cases.
 
+:ref:`Date & Time <DateTime>`
+  Using these error checks you can force the user to enter a valid date or time. You can even check for a valid date range.
+
 :ref:`Numbers`
   If you want to perform error checks on numbers, e.g. if a field value is a valid integer, these checks are right for you.
 
@@ -33,5 +36,6 @@ Error Checks
 
    General
    Arrays
+   DateTime
    Numbers
    Strings

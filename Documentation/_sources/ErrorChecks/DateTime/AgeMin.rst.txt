@@ -1,0 +1,54 @@
+
+.. _agemin:
+
+======
+AgeMin
+======
+
+Checks if a given date is at least the specified number of years.
+
+..  code-block:: typoscript
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidatorModel
+        config {
+          fields {
+            birthdate.errorChecks {
+              ageMin {
+                model = AgeMinModel
+                ageMin = 18
+              }
+            }
+          }
+        }
+      }
+    }
+
+**Properties**
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **ageMin**
+     - Sets the min years to check a field date value for.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - Integer
+   * - *Default*
+     - 0
+   * - *Note*
+     - Date field format must be YYYY-MM-DD e.g 2000-07-19.
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:

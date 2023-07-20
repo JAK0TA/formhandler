@@ -38,6 +38,9 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *:ref:`Arrays`
  *  Array checks are useful when dealing with arrays of check boxes and similar cases.
  *
+ *:ref:`Date & Time <DateTime>`
+ *  Using these error checks you can force the user to enter a valid date or time. You can even check for a valid date range.
+ *
  *:ref:`Numbers`
  *  If you want to perform error checks on numbers, e.g. if a field value is a valid integer, these checks are right for you.
  *
@@ -50,6 +53,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *
  *   General
  *   Arrays
+ *   DateTime
  *   Numbers
  *   Strings
  *
@@ -165,6 +169,43 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *   Arrays/ItemsBetween
  *   Arrays/ItemsMax
  *   Arrays/ItemsMin
+ *
+ *Documentation:End
+ */
+/** Documentation:Start:ErrorChecks/DateTime.rst.
+ *
+ *.. _datetime:
+ *
+ *===========
+ *Date & Time
+ *===========
+ *
+ *Using these error checks you can force the user to enter a valid date or time. You can even check for a valid date range.
+ *
+ *:ref:`AgeMax`
+ *  Checks if a given date is less or equal the specified number of years.
+ *
+ *:ref:`AgeMin`
+ *  Checks if a given date is at least the specified number of years.
+ *
+ *:ref:`Date`
+ *  Checks if a field value is a valid date.
+ *
+ *:ref:`DateRange`
+ *  Checks if a field value is between or equal a configured date range.
+ *
+ *:ref:`Time`
+ *  Checks if a field value is a valid time.
+ *
+ *.. toctree::
+ *   :maxdepth: 2
+ *   :hidden:
+ *
+ *   DateTime/AgeMax
+ *   DateTime/AgeMin
+ *   DateTime/Date
+ *   DateTime/DateRange
+ *   DateTime/Time
  *
  *Documentation:End
  */

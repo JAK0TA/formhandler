@@ -1,0 +1,31 @@
+
+.. _date:
+
+====
+Date
+====
+
+Checks if a field value is a valid date. Format must be YYYY-MM-DD e.g 2023-07-19.
+
+..  code-block:: typoscript
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidatorModel
+        config {
+          fields {
+            birthdate.errorChecks {
+              date {
+                model = DateModel
+              }
+            }
+          }
+        }
+      }
+    }
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:

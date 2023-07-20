@@ -1,0 +1,33 @@
+
+.. _datetime:
+
+===========
+Date & Time
+===========
+
+Using these error checks you can force the user to enter a valid date or time. You can even check for a valid date range.
+
+:ref:`AgeMax`
+  Checks if a given date is less or equal the specified number of years.
+
+:ref:`AgeMin`
+  Checks if a given date is at least the specified number of years.
+
+:ref:`Date`
+  Checks if a field value is a valid date.
+
+:ref:`DateRange`
+  Checks if a field value is between or equal a configured date range.
+
+:ref:`Time`
+  Checks if a field value is a valid time.
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   DateTime/AgeMax
+   DateTime/AgeMin
+   DateTime/Date
+   DateTime/DateRange
+   DateTime/Time
