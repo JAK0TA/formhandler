@@ -69,25 +69,6 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *
  *These checks perform basic validation routines like checking if a field is filled out or if a field value is a valid email address.
  *
- *..  code-block:: typoscript
- *
- *    Example Code:
- *
- *    validators {
- *      DefaultValidator {
- *        model = DefaultValidatorModel
- *        config {
- *          fields {
- *            firstname.errorChecks {
- *              required {
- *                model = RequiredModel
- *              }
- *            }
- *          }
- *        }
- *      }
- *    }
- *
  *:ref:`Email`
  *  Checks if a field contains a valid email and if a MX record exists for the domain of an email address.
  *
@@ -128,30 +109,6 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *======
  *
  *Array checks are useful when dealing with arrays of check boxes and similar cases.
- *
- *..  code-block:: typoscript
- *
- *    Example Code:
- *
- *    validators {
- *      DefaultValidator {
- *        model = DefaultValidatorModel
- *        config {
- *          fields {
- *            interests.errorChecks {
- *              itemsMin {
- *                model = ItemsMinModel
- *                itemsMin = 1
- *              }
- *              itemsMax {
- *                model = ItemsMaxModel
- *                itemsMax = 5
- *              }
- *            }
- *          }
- *        }
- *      }
- *    }
  *
  *:ref:`ItemsBetween`
  *  Checks if a field contains values between or equal the configured amount of items. (e.g. checkboxes)
@@ -219,30 +176,6 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *
  *These error checks allow various checks suitable for strings, f.e. checking if a string is at least 10 characters long or if a string contains a specific word.
  *
- *..  code-block:: typoscript
- *
- *    Example Code:
- *
- *    validators {
- *      DefaultValidator {
- *        model = DefaultValidatorModel
- *        config {
- *          fields {
- *            firstname.errorChecks {
- *              lengthMin {
- *                model = LengthMinModel
- *                lengthMin = 10
- *              }
- *              lengthMax {
- *                model = LengthMaxModel
- *                lengthMax = 20
- *              }
- *            }
- *          }
- *        }
- *      }
- *    }
- *
  *:ref:`ContainsAll`
  *  Checks if a field contains all of the configured values.
  *
@@ -291,30 +224,6 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *=======
  *
  *If you want to perform error checks on numbers, e.g. if a field value is a valid integer, these checks are right for you.
- *
- *..  code-block:: typoscript
- *
- *    Example Code:
- *
- *    validators {
- *      DefaultValidator {
- *        model = DefaultValidatorModel
- *        config {
- *          fields {
- *            age.errorChecks {
- *              integer {
- *                model = IntegerModel
- *              }
- *              valueBetween {
- *                model = ValueBetweenModel
- *                valueMax = 100
- *                valueMin = 18
- *              }
- *            }
- *          }
- *        }
- *      }
- *    }
  *
  *:ref:`Float`
  *  Checks if a field contains a valid float value.

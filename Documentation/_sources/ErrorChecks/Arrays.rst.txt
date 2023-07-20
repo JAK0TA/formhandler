@@ -7,30 +7,6 @@ Arrays
 
 Array checks are useful when dealing with arrays of check boxes and similar cases.
 
-..  code-block:: typoscript
-
-    Example Code:
-
-    validators {
-      DefaultValidator {
-        model = DefaultValidatorModel
-        config {
-          fields {
-            interests.errorChecks {
-              itemsMin {
-                model = ItemsMinModel
-                itemsMin = 1
-              }
-              itemsMax {
-                model = ItemsMaxModel
-                itemsMax = 5
-              }
-            }
-          }
-        }
-      }
-    }
-
 :ref:`ItemsBetween`
   Checks if a field contains values between or equal the configured amount of items. (e.g. checkboxes)
 

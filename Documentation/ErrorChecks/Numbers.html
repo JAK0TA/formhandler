@@ -100,29 +100,6 @@
   <section id="numbers">
 <span id="id1"></span><h1>Numbers<a class="headerlink" href="#numbers" title="Permalink to this heading">¶</a></h1>
 <p>If you want to perform error checks on numbers, e.g. if a field value is a valid integer, these checks are right for you.</p>
-<div class="highlight-typoscript notranslate"><div class="highlight"><pre><span></span>Example Code<span class="o">:</span>
-
-validators <span class="ss">{</span>
-  DefaultValidator <span class="ss">{</span>
-    model <span class="o">=</span> DefaultValidatorModel
-    config <span class="ss">{</span>
-      fields <span class="ss">{</span>
-        age<span class="p">.</span>errorChecks <span class="ss">{</span>
-          integer <span class="ss">{</span>
-            model <span class="o">=</span> IntegerModel
-          <span class="ss">}</span>
-          valueBetween <span class="ss">{</span>
-            model <span class="o">=</span> ValueBetweenModel
-            valueMax <span class="o">=</span> <span class="mi">100</span>
-            valueMin <span class="o">=</span> <span class="mi">18</span>
-          <span class="ss">}</span>
-        <span class="ss">}</span>
-      <span class="ss">}</span>
-    <span class="ss">}</span>
-  <span class="ss">}</span>
-<span class="ss">}</span>
-</pre></div>
-</div>
 <dl class="simple">
 <dt><a class="reference internal" href="Numbers/Float.html#float"><span class="std std-ref">Float</span></a></dt><dd><p>Checks if a field contains a valid float value.</p>
 </dd>

@@ -103,29 +103,6 @@
   <section id="strings">
 <span id="id1"></span><h1>Strings<a class="headerlink" href="#strings" title="Permalink to this heading">¶</a></h1>
 <p>These error checks allow various checks suitable for strings, f.e. checking if a string is at least 10 characters long or if a string contains a specific word.</p>
-<div class="highlight-typoscript notranslate"><div class="highlight"><pre><span></span>Example Code<span class="o">:</span>
-
-validators <span class="ss">{</span>
-  DefaultValidator <span class="ss">{</span>
-    model <span class="o">=</span> DefaultValidatorModel
-    config <span class="ss">{</span>
-      fields <span class="ss">{</span>
-        firstname<span class="p">.</span>errorChecks <span class="ss">{</span>
-          lengthMin <span class="ss">{</span>
-            model <span class="o">=</span> LengthMinModel
-            lengthMin <span class="o">=</span> <span class="mi">10</span>
-          <span class="ss">}</span>
-          lengthMax <span class="ss">{</span>
-            model <span class="o">=</span> LengthMaxModel
-            lengthMax <span class="o">=</span> <span class="mi">20</span>
-          <span class="ss">}</span>
-        <span class="ss">}</span>
-      <span class="ss">}</span>
-    <span class="ss">}</span>
-  <span class="ss">}</span>
-<span class="ss">}</span>
-</pre></div>
-</div>
 <dl class="simple">
 <dt><a class="reference internal" href="Strings/ContainsAll.html#containsall"><span class="std std-ref">ContainsAll</span></a></dt><dd><p>Checks if a field contains all of the configured values.</p>
 </dd>

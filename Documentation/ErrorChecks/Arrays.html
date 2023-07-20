@@ -98,29 +98,6 @@
   <section id="arrays">
 <span id="id1"></span><h1>Arrays<a class="headerlink" href="#arrays" title="Permalink to this heading">¶</a></h1>
 <p>Array checks are useful when dealing with arrays of check boxes and similar cases.</p>
-<div class="highlight-typoscript notranslate"><div class="highlight"><pre><span></span>Example Code<span class="o">:</span>
-
-validators <span class="ss">{</span>
-  DefaultValidator <span class="ss">{</span>
-    model <span class="o">=</span> DefaultValidatorModel
-    config <span class="ss">{</span>
-      fields <span class="ss">{</span>
-        interests<span class="p">.</span>errorChecks <span class="ss">{</span>
-          itemsMin <span class="ss">{</span>
-            model <span class="o">=</span> ItemsMinModel
-            itemsMin <span class="o">=</span> <span class="mi">1</span>
-          <span class="ss">}</span>
-          itemsMax <span class="ss">{</span>
-            model <span class="o">=</span> ItemsMaxModel
-            itemsMax <span class="o">=</span> <span class="mi">5</span>
-          <span class="ss">}</span>
-        <span class="ss">}</span>
-      <span class="ss">}</span>
-    <span class="ss">}</span>
-  <span class="ss">}</span>
-<span class="ss">}</span>
-</pre></div>
-</div>
 <dl class="simple">
 <dt><a class="reference internal" href="Arrays/ItemsBetween.html#itemsbetween"><span class="std std-ref">ItemsBetween</span></a></dt><dd><p>Checks if a field contains values between or equal the configured amount of items. (e.g. checkboxes)</p>
 </dd>

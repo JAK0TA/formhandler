@@ -7,30 +7,6 @@ Strings
 
 These error checks allow various checks suitable for strings, f.e. checking if a string is at least 10 characters long or if a string contains a specific word.
 
-..  code-block:: typoscript
-
-    Example Code:
-
-    validators {
-      DefaultValidator {
-        model = DefaultValidatorModel
-        config {
-          fields {
-            firstname.errorChecks {
-              lengthMin {
-                model = LengthMinModel
-                lengthMin = 10
-              }
-              lengthMax {
-                model = LengthMaxModel
-                lengthMax = 20
-              }
-            }
-          }
-        }
-      }
-    }
-
 :ref:`ContainsAll`
   Checks if a field contains all of the configured values.
 
