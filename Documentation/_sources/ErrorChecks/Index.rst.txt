@@ -21,6 +21,9 @@ Error Checks
 :ref:`Arrays`
   Array checks are useful when dealing with arrays of check boxes and similar cases.
 
+:ref:`Database`
+  These checks allow you to ensure that a database record exists or doesn't exist.
+
 :ref:`Date & Time <DateTime>`
   Using these error checks you can force the user to enter a valid date or time. You can even check for a valid date range.
 
@@ -36,6 +39,7 @@ Error Checks
 
    General
    Arrays
+   Database
    DateTime
    Numbers
    Strings

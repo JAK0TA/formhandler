@@ -1,0 +1,124 @@
+
+.. _tablelookup:
+
+===========
+TableLookup
+===========
+
+Checks if the value of a field is or is not in a configured field in a configured table.
+
+..  code-block:: typoscript
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidatorModel
+        config {
+          fields {
+            email.errorChecks {
+              tableLookup {
+                model = TableLookupModel
+                table = fe_users
+                field = email
+                exists = False
+                excludeHidden = True
+                additionalWhere = FIND_IN_SET(1, usergroup)
+              }
+            }
+          }
+        }
+      }
+    }
+
+**Properties**
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **table**
+     - The name of the database table.
+   * -
+     -
+   * - *Mandatory*
+     - True
+   * - *Data Type*
+     - String
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **field**
+     - The name of the field in the database table.
+   * -
+     -
+   * - *Mandatory*
+     - True
+   * - *Data Type*
+     - String
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **exists**
+     - Set true if the value must already exist.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - Boolean
+   * - *Default*
+     - False
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **excludeHidden**
+     - Set true to exclude hidden records from lookup.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - Boolean
+   * - *Default*
+     - False
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **additionalWhere**
+     - Add your own conditions here to fit your needs. Like only lookup a certain user group, etc.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - String
+   * - *Default*
+     - Empty String
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:

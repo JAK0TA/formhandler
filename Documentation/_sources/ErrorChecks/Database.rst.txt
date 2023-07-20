@@ -1,0 +1,21 @@
+
+.. _database:
+
+========
+Database
+========
+
+| These checks allow you to ensure that a database record exists or doesn't exist.
+| This is useful for unique constraints like username or email address.
+
+| Please be aware of the fact that MySQL searches are in most cases not case sensitive!
+| (https://dev.mysql.com/doc/refman/8.1/en/case-sensitivity.html)
+
+:ref:`TableLookup`
+  Checks if the value of a field is or is not in a configured field in a configured table.
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   Database/TableLookup

@@ -51,6 +51,18 @@ class Utility implements SingletonInterface {
     );
   }
 
+  public static function prepareAndWhereString(string $andWhere): string {
+    $andWhere = trim($andWhere);
+    if (str_starts_with($andWhere, 'and ') || str_starts_with($andWhere, 'AND ')) {
+      $andWhere = trim(substr($andWhere, 3));
+    }
+    if (strlen($andWhere) > 0) {
+      $andWhere = ' AND '.$andWhere;
+    }
+
+    return $andWhere;
+  }
+
   /**
    * @param array<int|string, mixed>|bool|float|int|object|string $values
    *

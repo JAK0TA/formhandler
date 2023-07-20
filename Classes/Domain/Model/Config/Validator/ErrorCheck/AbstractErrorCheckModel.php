@@ -38,6 +38,9 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *:ref:`Arrays`
  *  Array checks are useful when dealing with arrays of check boxes and similar cases.
  *
+ *:ref:`Database`
+ *  These checks allow you to ensure that a database record exists or doesn't exist.
+ *
  *:ref:`Date & Time <DateTime>`
  *  Using these error checks you can force the user to enter a valid date or time. You can even check for a valid date range.
  *
@@ -53,6 +56,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *
  *   General
  *   Arrays
+ *   Database
  *   DateTime
  *   Numbers
  *   Strings
@@ -126,6 +130,31 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *   Arrays/ItemsBetween
  *   Arrays/ItemsMax
  *   Arrays/ItemsMin
+ *
+ *Documentation:End
+ */
+/** Documentation:Start:ErrorChecks/Database.rst.
+ *
+ *.. _database:
+ *
+ *========
+ *Database
+ *========
+ *
+ *| These checks allow you to ensure that a database record exists or doesn't exist.
+ *| This is useful for unique constraints like username or email address.
+ *
+ *| Please be aware of the fact that MySQL searches are in most cases not case sensitive!
+ *| (https://dev.mysql.com/doc/refman/8.1/en/case-sensitivity.html)
+ *
+ *:ref:`TableLookup`
+ *  Checks if the value of a field is or is not in a configured field in a configured table.
+ *
+ *.. toctree::
+ *   :maxdepth: 2
+ *   :hidden:
+ *
+ *   Database/TableLookup
  *
  *Documentation:End
  */
