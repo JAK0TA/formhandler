@@ -21,7 +21,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="NotEqualsField" href="NotEqualsField.html" />
+    <link rel="next" title="Required" href="Required.html" />
     <link rel="prev" title="Equals" href="Equals.html" /> 
 </head>
 
@@ -56,7 +56,6 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">EqualsField</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="NotEqualsField.html">NotEqualsField</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Required.html">Required</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Url.html">Url</a></li>
 </ul>
@@ -104,7 +103,7 @@
              
   <section id="equalsfield">
 <span id="id1"></span><h1>EqualsField<a class="headerlink" href="#equalsfield" title="Permalink to this heading">¶</a></h1>
-<p>Checks if a field value equals another field value.</p>
+<p>Checks if a field value equals or not equals another field value.</p>
 <div class="highlight-typoscript notranslate"><div class="highlight"><pre><span></span>Example Code<span class="o">:</span>
 
 validators <span class="ss">{</span>
@@ -118,6 +117,13 @@ validators <span class="ss">{</span>
             field <span class="o">=</span> <span class="mi">1</span><span class="p">.</span>password
           <span class="ss">}</span>
         <span class="ss">}</span>
+        username<span class="p">.</span>errorChecks <span class="ss">{</span>
+          equalsField <span class="ss">{</span>
+            model <span class="o">=</span> EqualsField
+            equal <span class="o">=</span> False
+            field <span class="o">=</span> <span class="mi">1</span><span class="p">.</span>password
+          <span class="ss">}</span>
+        <span class="ss">}</span>
       <span class="ss">}</span>
     <span class="ss">}</span>
   <span class="ss">}</span>
@@ -125,6 +131,29 @@ validators <span class="ss">{</span>
 </pre></div>
 </div>
 <p><strong>Properties</strong></p>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>equal</strong></p></td>
+<td><p>Set false to negate the comparison</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>Boolean</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Default</em></p></td>
+<td><p>True</p></td>
+</tr>
+</tbody>
+</table>
 <table class="docutils align-left" style="width: 100%">
 <colgroup>
 <col style="width: 20%" />
@@ -157,7 +186,7 @@ validators <span class="ss">{</span>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="Equals.html" class="btn btn-neutral float-left" title="Equals" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="NotEqualsField.html" class="btn btn-neutral float-right" title="NotEqualsField" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Required.html" class="btn btn-neutral float-right" title="Required" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -5,7 +5,7 @@
 Equals
 ======
 
-Checks if a field equals the configured value.
+Checks if a field equals or not equals the configured value.
 
 ..  code-block:: typoscript
 
@@ -22,12 +22,37 @@ Checks if a field equals the configured value.
                 value = Yes
               }
             }
+            newsletter.errorChecks {
+              equals {
+                model = Equals
+                equal = False
+                value = No
+              }
+            }
           }
         }
       }
     }
 
 **Properties**
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **equal**
+     - Set false to negate the comparison
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - Boolean
+   * - *Default*
+     - True
 
 .. list-table::
    :align: left

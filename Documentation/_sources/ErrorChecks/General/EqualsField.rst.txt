@@ -5,7 +5,7 @@
 EqualsField
 ===========
 
-Checks if a field value equals another field value.
+Checks if a field value equals or not equals another field value.
 
 ..  code-block:: typoscript
 
@@ -22,12 +22,37 @@ Checks if a field value equals another field value.
                 field = 1.password
               }
             }
+            username.errorChecks {
+              equalsField {
+                model = EqualsField
+                equal = False
+                field = 1.password
+              }
+            }
           }
         }
       }
     }
 
 **Properties**
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **equal**
+     - Set false to negate the comparison
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - Boolean
+   * - *Default*
+     - True
 
 .. list-table::
    :align: left
