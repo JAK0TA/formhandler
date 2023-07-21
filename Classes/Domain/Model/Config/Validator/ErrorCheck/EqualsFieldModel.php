@@ -23,7 +23,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\EqualsField;
  *EqualsField
  *===========
  *
- *Checks if a field value equals another field value.
+ *Checks if a field value equals or not equals another field value.
  *
  *..  code-block:: typoscript
  *
@@ -40,12 +40,37 @@ use Typoheads\Formhandler\Validator\ErrorCheck\EqualsField;
  *                field = 1.password
  *              }
  *            }
+ *            username.errorChecks {
+ *              equalsField {
+ *                model = EqualsField
+ *                equal = False
+ *                field = 1.password
+ *              }
+ *            }
  *          }
  *        }
  *      }
  *    }
  *
  ***Properties**
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **equal**
+ *     - Set false to negate the comparison
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - False
+ *   * - *Data Type*
+ *     - Boolean
+ *   * - *Default*
+ *     - True
  *
  *.. list-table::
  *   :align: left
@@ -72,6 +97,8 @@ use Typoheads\Formhandler\Validator\ErrorCheck\EqualsField;
  *Documentation:End
  */
 class EqualsFieldModel extends AbstractErrorCheckModel {
+  public readonly bool $equal;
+
   /** @var string[] */
   public readonly array $field;
 
@@ -80,6 +107,7 @@ class EqualsFieldModel extends AbstractErrorCheckModel {
    */
   public function __construct(array $settings) {
     $this->name = 'EqualsField';
+    $this->equal = filter_var($settings['equal'] ?? true, FILTER_VALIDATE_BOOLEAN) ?: true;
     $this->field = GeneralUtility::trimExplode('.', strval($settings['field'] ?? ''));
   }
 

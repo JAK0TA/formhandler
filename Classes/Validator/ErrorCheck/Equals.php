@@ -22,7 +22,10 @@ class Equals extends AbstractErrorCheck {
       return false;
     }
 
-    if ($value == $errorCheckConfig->value) {
+    if ($errorCheckConfig->equal && $value == $errorCheckConfig->value) {
+      return true;
+    }
+    if (!$errorCheckConfig->equal && $value != $errorCheckConfig->value) {
       return true;
     }
 

@@ -25,13 +25,20 @@ class EqualsField extends AbstractErrorCheck {
     $fieldValue = $formConfig->formValues;
     foreach ($errorCheckConfig->field as $fieldPathKey) {
       if (!is_array($fieldValue) || !isset($fieldValue[$fieldPathKey])) {
+        if (!$errorCheckConfig->equal) {
+          return true;
+        }
+
         return false;
       }
 
       $fieldValue = $fieldValue[$fieldPathKey];
     }
 
-    if ($value == $fieldValue) {
+    if ($errorCheckConfig->equal && $value == $fieldValue) {
+      return true;
+    }
+    if (!$errorCheckConfig->equal && $value != $fieldValue) {
       return true;
     }
 

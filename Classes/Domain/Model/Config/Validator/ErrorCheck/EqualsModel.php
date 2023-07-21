@@ -22,7 +22,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\Equals;
  *Equals
  *======
  *
- *Checks if a field equals the configured value.
+ *Checks if a field equals or not equals the configured value.
  *
  *..  code-block:: typoscript
  *
@@ -39,12 +39,37 @@ use Typoheads\Formhandler\Validator\ErrorCheck\Equals;
  *                value = Yes
  *              }
  *            }
+ *            newsletter.errorChecks {
+ *              equals {
+ *                model = Equals
+ *                equal = False
+ *                value = No
+ *              }
+ *            }
  *          }
  *        }
  *      }
  *    }
  *
  ***Properties**
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **equal**
+ *     - Set false to negate the comparison
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - False
+ *   * - *Data Type*
+ *     - Boolean
+ *   * - *Default*
+ *     - True
  *
  *.. list-table::
  *   :align: left
@@ -71,6 +96,8 @@ use Typoheads\Formhandler\Validator\ErrorCheck\Equals;
  *Documentation:End
  */
 class EqualsModel extends AbstractErrorCheckModel {
+  public readonly bool $equal;
+
   public readonly string $value;
 
   /**
@@ -78,6 +105,7 @@ class EqualsModel extends AbstractErrorCheckModel {
    */
   public function __construct(array $settings) {
     $this->name = 'Equals';
+    $this->equal = filter_var($settings['equal'] ?? true, FILTER_VALIDATE_BOOLEAN) ?: true;
     $this->value = strval($settings['value'] ?? '');
   }
 
