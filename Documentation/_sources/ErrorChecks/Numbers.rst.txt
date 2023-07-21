@@ -13,14 +13,14 @@ If you want to perform error checks on numbers, e.g. if a field value is a valid
 :ref:`Integer`
   Checks if a field contains a valid integer value.
 
-:ref:`ValueBetween`
-  Checks if the value of a field is between or equal the configured values.
-
 :ref:`ValueMax`
   Checks if the value of a field is less or equal than the configured value.
 
 :ref:`ValueMin`
   Checks if the value of a field is at least the configured value.
+
+:ref:`ValueRange`
+  Checks if the value of a field is between or equal the configured values.
 
 .. toctree::
    :maxdepth: 2
@@ -28,6 +28,6 @@ If you want to perform error checks on numbers, e.g. if a field value is a valid
 
    Numbers/Float
    Numbers/Integer
-   Numbers/ValueBetween
    Numbers/ValueMax
    Numbers/ValueMin
+   Numbers/ValueRange

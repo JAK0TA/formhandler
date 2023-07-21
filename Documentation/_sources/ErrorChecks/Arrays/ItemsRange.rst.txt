@@ -1,8 +1,8 @@
 
-.. _itemsbetween:
+.. _itemsrange:
 
 ============
-ItemsBetween
+ItemsRange
 ============
 
 Checks if a field contains values between or equal the configured amount of items. (e.g. checkboxes)
@@ -17,8 +17,8 @@ Checks if a field contains values between or equal the configured amount of item
         config {
           fields {
             interests.errorChecks {
-              itemsBetween {
-                model = ItemsBetween
+              itemsRange {
+                model = ItemsRange
                 itemsMax = 10
                 itemsMin = 1
               }

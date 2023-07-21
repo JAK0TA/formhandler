@@ -7,19 +7,19 @@ Arrays
 
 Array checks are useful when dealing with arrays of check boxes and similar cases.
 
-:ref:`ItemsBetween`
-  Checks if a field contains values between or equal the configured amount of items. (e.g. checkboxes)
-
 :ref:`ItemsMax`
   Checks if a field contains not more than the configured amount of items. (e.g. checkboxes)
 
 :ref:`ItemsMin`
   Checks if a field contains at least the configured amount of items. (e.g. checkboxes)
 
+:ref:`ItemsRange`
+  Checks if a field contains values between or equal the configured amount of items. (e.g. checkboxes)
+
 .. toctree::
    :maxdepth: 2
    :hidden:
 
-   Arrays/ItemsBetween
    Arrays/ItemsMax
    Arrays/ItemsMin
+   Arrays/ItemsRange

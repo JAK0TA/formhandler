@@ -1,11 +1,11 @@
 
-.. _lengthbetween:
+.. _valuerange:
 
-=============
-LengthBetween
-=============
+============
+ValueRange
+============
 
-Checks if the length of the value of a field is between or equal the configured values.
+Checks if the value of a field is between or equal the configured values.
 
 ..  code-block:: typoscript
 
@@ -16,11 +16,11 @@ Checks if the length of the value of a field is between or equal the configured 
         model = DefaultValidator
         config {
           fields {
-            post-code.errorChecks {
-              lengthBetween {
-                model = LengthBetween
-                lengthMax = 10
-                lengthMin = 7
+            age.errorChecks {
+              valueRange {
+                model = ValueRange
+                valueMax = 100
+                valueMin = 18
               }
             }
           }
@@ -37,14 +37,14 @@ Checks if the length of the value of a field is between or equal the configured 
    :header-rows: 0
    :stub-columns: 0
 
-   * - **lengthMax**
-     - Sets the max string length a field value can be.
+   * - **valueMax**
+     - Sets the max value a field value can be.
    * -
      -
    * - *Mandatory*
      - False
    * - *Data Type*
-     - Integer
+     - Float|Integer
    * - *Default*
      - 0
 
@@ -55,14 +55,14 @@ Checks if the length of the value of a field is between or equal the configured 
    :header-rows: 0
    :stub-columns: 0
 
-   * - **lengthMin**
-     - Sets the min string length a field value must be.
+   * - **valueMin**
+     - Sets the min value a field value must be.
    * -
      -
    * - *Mandatory*
      - False
    * - *Data Type*
-     - Integer
+     - Float|Integer
    * - *Default*
      - 0
 

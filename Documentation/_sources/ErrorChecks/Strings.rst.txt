@@ -19,14 +19,14 @@ These error checks allow various checks suitable for strings, f.e. checking if a
 :ref:`ContainsOnly`
   Checks if a field contains only the configured characters.
 
-:ref:`LengthBetween`
-  Checks if the length of the value of a field is between or equal the configured values.
-
 :ref:`LengthMax`
   Checks if the value of a field has less than the configured length.
 
 :ref:`LengthMin`
   Checks if the value of a field has at least the configured length.
+
+:ref:`LengthRange`
+  Checks if the length of the value of a field is between or equal the configured values.
 
 :ref:`PregMatch`
   Checks a field value using the configured perl regular expression.
@@ -39,7 +39,7 @@ These error checks allow various checks suitable for strings, f.e. checking if a
    Strings/ContainsNone
    Strings/ContainsOne
    Strings/ContainsOnly
-   Strings/LengthBetween
    Strings/LengthMax
    Strings/LengthMin
+   Strings/LengthRange
    Strings/PregMatch

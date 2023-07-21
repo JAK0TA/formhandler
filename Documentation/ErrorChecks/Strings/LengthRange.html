@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LengthBetween &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
+  <title>LengthRange &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -21,8 +21,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="LengthMax" href="LengthMax.html" />
-    <link rel="prev" title="ContainsOnly" href="ContainsOnly.html" /> 
+    <link rel="next" title="PregMatch" href="PregMatch.html" />
+    <link rel="prev" title="LengthMin" href="LengthMin.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -60,11 +60,11 @@
 <li class="toctree-l3"><a class="reference internal" href="ContainsNone.html">ContainsNone</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ContainsOne.html">ContainsOne</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ContainsOnly.html">ContainsOnly</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">LengthBetween</a><ul class="simple">
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="LengthMax.html">LengthMax</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LengthMin.html">LengthMin</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">LengthRange</a><ul class="simple">
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="PregMatch.html">PregMatch</a></li>
 </ul>
 </li>
@@ -94,9 +94,9 @@
       <li><a href="../../Index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../Index.html">Error Checks</a></li>
           <li class="breadcrumb-item"><a href="../Strings.html">Strings</a></li>
-      <li class="breadcrumb-item active">LengthBetween</li>
+      <li class="breadcrumb-item active">LengthRange</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/ErrorChecks/Strings/LengthBetween.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/ErrorChecks/Strings/LengthRange.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -104,8 +104,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="lengthbetween">
-<span id="id1"></span><h1>LengthBetween<a class="headerlink" href="#lengthbetween" title="Permalink to this heading">¶</a></h1>
+  <section id="lengthrange">
+<span id="id1"></span><h1>LengthRange<a class="headerlink" href="#lengthrange" title="Permalink to this heading">¶</a></h1>
 <p>Checks if the length of the value of a field is between or equal the configured values.</p>
 <div class="highlight-typoscript notranslate"><div class="highlight"><pre><span></span>Example Code<span class="o">:</span>
 
@@ -115,8 +115,8 @@ validators <span class="ss">{</span>
     config <span class="ss">{</span>
       fields <span class="ss">{</span>
         post-code<span class="p">.</span>errorChecks <span class="ss">{</span>
-          lengthBetween <span class="ss">{</span>
-            model <span class="o">=</span> LengthBetween
+          lengthRange <span class="ss">{</span>
+            model <span class="o">=</span> LengthRange
             lengthMax <span class="o">=</span> <span class="mi">10</span>
             lengthMin <span class="o">=</span> <span class="mi">7</span>
           <span class="ss">}</span>
@@ -182,8 +182,8 @@ validators <span class="ss">{</span>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="ContainsOnly.html" class="btn btn-neutral float-left" title="ContainsOnly" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="LengthMax.html" class="btn btn-neutral float-right" title="LengthMax" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="LengthMin.html" class="btn btn-neutral float-left" title="LengthMin" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="PregMatch.html" class="btn btn-neutral float-right" title="PregMatch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
