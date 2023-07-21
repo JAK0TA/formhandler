@@ -14,23 +14,26 @@ namespace Typoheads\Formhandler\Validator\ErrorCheck;
 
 use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractErrorCheckModel;
-use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\ItemsBetweenModel;
+use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\ValueRangeModel;
 
-class ItemsBetween extends AbstractErrorCheck {
+class ValueRange extends AbstractErrorCheck {
   public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$errorCheckConfig, mixed $value): bool {
-    if (!$errorCheckConfig instanceof ItemsBetweenModel) {
+    if (!$errorCheckConfig instanceof ValueRangeModel) {
       return false;
     }
 
-    if (is_array($value)) {
-      $valueCount = count($value);
-      if ($errorCheckConfig->itemsMax > 0
-        && $valueCount <= $errorCheckConfig->itemsMax
-        && $errorCheckConfig->itemsMin > 0
-        && $valueCount >= $errorCheckConfig->itemsMin
-      ) {
-        return true;
-      }
+    $valueTemp = filter_var($value ?? 0, FILTER_VALIDATE_INT);
+    if (false === $valueTemp) {
+      $valueTemp = filter_var($value ?? 0, FILTER_VALIDATE_FLOAT) ?: 0;
+    }
+
+    if (
+      $errorCheckConfig->valueMax > 0
+      && $valueTemp <= $errorCheckConfig->valueMax
+      && $errorCheckConfig->valueMin > 0
+      && $valueTemp >= $errorCheckConfig->valueMin
+    ) {
+      return true;
     }
 
     return false;

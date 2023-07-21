@@ -12,14 +12,14 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck;
 
-use Typoheads\Formhandler\Validator\ErrorCheck\ItemsBetween;
+use Typoheads\Formhandler\Validator\ErrorCheck\ItemsRange;
 
-/** Documentation:Start:ErrorChecks/Arrays/ItemsBetween.rst.
+/** Documentation:Start:ErrorChecks/Arrays/ItemsRange.rst.
  *
- *.. _itemsbetween:
+ *.. _itemsrange:
  *
  *============
- *ItemsBetween
+ *ItemsRange
  *============
  *
  *Checks if a field contains values between or equal the configured amount of items. (e.g. checkboxes)
@@ -34,8 +34,8 @@ use Typoheads\Formhandler\Validator\ErrorCheck\ItemsBetween;
  *        config {
  *          fields {
  *            interests.errorChecks {
- *              itemsBetween {
- *                model = ItemsBetween
+ *              itemsRange {
+ *                model = ItemsRange
  *                itemsMax = 10
  *                itemsMin = 1
  *              }
@@ -89,7 +89,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\ItemsBetween;
  *
  *Documentation:End
  */
-class ItemsBetweenModel extends AbstractErrorCheckModel {
+class ItemsRangeModel extends AbstractErrorCheckModel {
   public readonly int $itemsMax;
 
   public readonly int $itemsMin;
@@ -98,12 +98,12 @@ class ItemsBetweenModel extends AbstractErrorCheckModel {
    * @param array<string, mixed> $settings
    */
   public function __construct(array $settings) {
-    $this->name = 'ItemsBetween';
+    $this->name = 'ItemsRange';
     $this->itemsMax = filter_var($settings['itemsMax'] ?? 0, FILTER_VALIDATE_INT) ?: 0;
     $this->itemsMin = filter_var($settings['itemsMin'] ?? 0, FILTER_VALIDATE_INT) ?: 0;
   }
 
   public function class(): string {
-    return ItemsBetween::class;
+    return ItemsRange::class;
   }
 }

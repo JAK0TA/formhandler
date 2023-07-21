@@ -12,14 +12,14 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck;
 
-use Typoheads\Formhandler\Validator\ErrorCheck\ValueBetween;
+use Typoheads\Formhandler\Validator\ErrorCheck\ValueRange;
 
-/** Documentation:Start:ErrorChecks/Numbers/ValueBetween.rst.
+/** Documentation:Start:ErrorChecks/Numbers/ValueRange.rst.
  *
- *.. _valuebetween:
+ *.. _valuerange:
  *
  *============
- *ValueBetween
+ *ValueRange
  *============
  *
  *Checks if the value of a field is between or equal the configured values.
@@ -34,8 +34,8 @@ use Typoheads\Formhandler\Validator\ErrorCheck\ValueBetween;
  *        config {
  *          fields {
  *            age.errorChecks {
- *              valueBetween {
- *                model = ValueBetween
+ *              valueRange {
+ *                model = ValueRange
  *                valueMax = 100
  *                valueMin = 18
  *              }
@@ -89,7 +89,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\ValueBetween;
  *
  *Documentation:End
  */
-class ValueBetweenModel extends AbstractErrorCheckModel {
+class ValueRangeModel extends AbstractErrorCheckModel {
   public readonly float|int $valueMax;
 
   public readonly float|int $valueMin;
@@ -98,7 +98,7 @@ class ValueBetweenModel extends AbstractErrorCheckModel {
    * @param array<string, mixed> $settings
    */
   public function __construct(array $settings) {
-    $this->name = 'ValueBetween';
+    $this->name = 'ValueRange';
 
     $valueMax = filter_var($settings['valueMax'] ?? 0, FILTER_VALIDATE_INT);
     if (false === $valueMax) {
@@ -114,6 +114,6 @@ class ValueBetweenModel extends AbstractErrorCheckModel {
   }
 
   public function class(): string {
-    return ValueBetween::class;
+    return ValueRange::class;
   }
 }

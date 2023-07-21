@@ -114,22 +114,22 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *
  *Array checks are useful when dealing with arrays of check boxes and similar cases.
  *
- *:ref:`ItemsBetween`
- *  Checks if a field contains values between or equal the configured amount of items. (e.g. checkboxes)
- *
  *:ref:`ItemsMax`
  *  Checks if a field contains not more than the configured amount of items. (e.g. checkboxes)
  *
  *:ref:`ItemsMin`
  *  Checks if a field contains at least the configured amount of items. (e.g. checkboxes)
  *
+ *:ref:`ItemsRange`
+ *  Checks if a field contains values between or equal the configured amount of items. (e.g. checkboxes)
+ *
  *.. toctree::
  *   :maxdepth: 2
  *   :hidden:
  *
- *   Arrays/ItemsBetween
  *   Arrays/ItemsMax
  *   Arrays/ItemsMin
+ *   Arrays/ItemsRange
  *
  *Documentation:End
  */
@@ -217,14 +217,14 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *:ref:`ContainsOnly`
  *  Checks if a field contains only the configured characters.
  *
- *:ref:`LengthBetween`
- *  Checks if the length of the value of a field is between or equal the configured values.
- *
  *:ref:`LengthMax`
  *  Checks if the value of a field has less than the configured length.
  *
  *:ref:`LengthMin`
  *  Checks if the value of a field has at least the configured length.
+ *
+ *:ref:`LengthRange`
+ *  Checks if the length of the value of a field is between or equal the configured values.
  *
  *:ref:`PregMatch`
  *  Checks a field value using the configured perl regular expression.
@@ -237,9 +237,9 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *   Strings/ContainsNone
  *   Strings/ContainsOne
  *   Strings/ContainsOnly
- *   Strings/LengthBetween
  *   Strings/LengthMax
  *   Strings/LengthMin
+ *   Strings/LengthRange
  *   Strings/PregMatch
  *
  *Documentation:End
@@ -260,14 +260,14 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *:ref:`Integer`
  *  Checks if a field contains a valid integer value.
  *
- *:ref:`ValueBetween`
- *  Checks if the value of a field is between or equal the configured values.
- *
  *:ref:`ValueMax`
  *  Checks if the value of a field is less or equal than the configured value.
  *
  *:ref:`ValueMin`
  *  Checks if the value of a field is at least the configured value.
+ *
+ *:ref:`ValueRange`
+ *  Checks if the value of a field is between or equal the configured values.
  *
  *.. toctree::
  *   :maxdepth: 2
@@ -275,9 +275,9 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *
  *   Numbers/Float
  *   Numbers/Integer
- *   Numbers/ValueBetween
  *   Numbers/ValueMax
  *   Numbers/ValueMin
+ *   Numbers/ValueRange
  *
  *Documentation:End
  */

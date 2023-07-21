@@ -12,14 +12,14 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck;
 
-use Typoheads\Formhandler\Validator\ErrorCheck\LengthBetween;
+use Typoheads\Formhandler\Validator\ErrorCheck\LengthRange;
 
-/** Documentation:Start:ErrorChecks/Strings/LengthBetween.rst.
+/** Documentation:Start:ErrorChecks/Strings/LengthRange.rst.
  *
- *.. _lengthbetween:
+ *.. _lengthrange:
  *
  *=============
- *LengthBetween
+ *LengthRange
  *=============
  *
  *Checks if the length of the value of a field is between or equal the configured values.
@@ -34,8 +34,8 @@ use Typoheads\Formhandler\Validator\ErrorCheck\LengthBetween;
  *        config {
  *          fields {
  *            post-code.errorChecks {
- *              lengthBetween {
- *                model = LengthBetween
+ *              lengthRange {
+ *                model = LengthRange
  *                lengthMax = 10
  *                lengthMin = 7
  *              }
@@ -89,7 +89,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\LengthBetween;
  *
  *Documentation:End
  */
-class LengthBetweenModel extends AbstractErrorCheckModel {
+class LengthRangeModel extends AbstractErrorCheckModel {
   public readonly int $lengthMax;
 
   public readonly int $lengthMin;
@@ -98,12 +98,12 @@ class LengthBetweenModel extends AbstractErrorCheckModel {
    * @param array<string, mixed> $settings
    */
   public function __construct(array $settings) {
-    $this->name = 'LengthBetween';
+    $this->name = 'LengthRange';
     $this->lengthMax = intval($settings['lengthMax'] ?? 0);
     $this->lengthMin = intval($settings['lengthMin'] ?? 0);
   }
 
   public function class(): string {
-    return LengthBetween::class;
+    return LengthRange::class;
   }
 }

@@ -14,11 +14,11 @@ namespace Typoheads\Formhandler\Validator\ErrorCheck;
 
 use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractErrorCheckModel;
-use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\LengthBetweenModel;
+use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\LengthRangeModel;
 
-class LengthBetween extends AbstractErrorCheck {
+class LengthRange extends AbstractErrorCheck {
   public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$errorCheckConfig, mixed $value): bool {
-    if (!$errorCheckConfig instanceof LengthBetweenModel) {
+    if (!$errorCheckConfig instanceof LengthRangeModel) {
       return false;
     }
 
