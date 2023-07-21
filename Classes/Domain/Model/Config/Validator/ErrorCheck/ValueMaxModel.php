@@ -30,18 +30,18 @@ use Typoheads\Formhandler\Validator\ErrorCheck\ValueMax;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            age.errorChecks {
  *              valueMax {
- *                model = ValueMaxModel
+ *                model = ValueMax
  *                valueMax = 100
  *              }
  *            }
  *            mass.errorChecks {
  *              valueMax {
- *                model = ValueMaxModel
+ *                model = ValueMax
  *                valueMax = 10.99
  *              }
  *            }

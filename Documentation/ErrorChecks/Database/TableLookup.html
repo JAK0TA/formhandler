@@ -104,12 +104,12 @@
 
 validators <span class="ss">{</span>
   DefaultValidator <span class="ss">{</span>
-    model <span class="o">=</span> DefaultValidatorModel
+    model <span class="o">=</span> DefaultValidator
     config <span class="ss">{</span>
       fields <span class="ss">{</span>
         email<span class="p">.</span>errorChecks <span class="ss">{</span>
           tableLookup <span class="ss">{</span>
-            model <span class="o">=</span> TableLookupModel
+            model <span class="o">=</span> TableLookup
             table <span class="o">=</span> fe_users
             field <span class="o">=</span> email
             exists <span class="o">=</span> False

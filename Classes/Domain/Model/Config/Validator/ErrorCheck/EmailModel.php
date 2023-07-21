@@ -34,15 +34,15 @@ use Typoheads\Formhandler\Validator\ErrorCheck\Email;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            email.errorChecks {
  *              required {
- *                model = RequiredModel
+ *                model = Required
  *              }
  *              email {
- *                model = EmailModel
+ *                model = Email
  *              }
  *            }
  *          }

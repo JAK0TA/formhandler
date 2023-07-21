@@ -60,7 +60,7 @@ class FieldModel {
       }
 
       /** @var AbstractErrorCheckModel $errorCheckModel */
-      $errorCheckModel = GeneralUtility::makeInstance($utility->classString(strval($errorCheck['model']), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Validator\\ErrorCheck\\'), (array) $errorCheck);
+      $errorCheckModel = GeneralUtility::makeInstance($utility->classString(strval($errorCheck['model']).'Model', 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Validator\\ErrorCheck\\'), (array) $errorCheck);
 
       if (!empty($validator->restrictErrorChecks()) && !in_array($errorCheckModel->class(), $this->validator->restrictErrorChecks())) {
         continue;

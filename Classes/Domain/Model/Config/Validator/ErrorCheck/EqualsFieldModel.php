@@ -31,12 +31,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\EqualsField;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            password_repeat.errorChecks {
  *              equalsField {
- *                model = EqualsFieldModel
+ *                model = EqualsField
  *                field = 1.password
  *              }
  *            }

@@ -30,12 +30,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\LengthMin;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            post-code.errorChecks {
  *              lengthMin {
- *                model = LengthMinModel
+ *                model = LengthMin
  *                lengthMin = 4
  *              }
  *            }

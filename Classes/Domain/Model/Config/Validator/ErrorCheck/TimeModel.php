@@ -30,12 +30,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\Time;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            start_time.errorChecks {
  *              time {
- *                model = TimeModel
+ *                model = Time
  *              }
  *            }
  *          }

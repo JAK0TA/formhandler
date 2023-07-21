@@ -30,12 +30,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\LengthMax;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            post-code.errorChecks {
  *              lengthMax {
- *                model = LengthMaxModel
+ *                model = LengthMax
  *                lengthMax = 7
  *              }
  *            }

@@ -31,12 +31,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\TableLookup;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            email.errorChecks {
  *              tableLookup {
- *                model = TableLookupModel
+ *                model = TableLookup
  *                table = fe_users
  *                field = email
  *                exists = False

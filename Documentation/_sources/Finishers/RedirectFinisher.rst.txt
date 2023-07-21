@@ -23,7 +23,7 @@ Redirects to specified page after successful form submission.
 
     finishers {
       Redirect {
-        model = RedirectFinisherModel
+        model = RedirectFinisher
         config {
           returns = true
           correctRedirectUrl = false

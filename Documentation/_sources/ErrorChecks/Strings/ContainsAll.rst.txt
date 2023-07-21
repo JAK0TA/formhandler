@@ -13,12 +13,12 @@ Checks if a field contains all of the configured values.
 
     validators {
       DefaultValidator {
-        model = DefaultValidatorModel
+        model = DefaultValidator
         config {
           fields {
             message.errorChecks {
               containsAll {
-                model = ContainsAllModel
+                model = ContainsAll
                 values = Hello,Regards
               }
             }

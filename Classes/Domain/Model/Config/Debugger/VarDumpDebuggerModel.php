@@ -41,7 +41,7 @@ use Typoheads\Formhandler\Debugger\VarDumpDebugger;
  *    plugin.tx_formhandler_form.settings.predefinedForms.devExample {
  *      debuggers {
  *        VarDumpDebugger {
- *          model = VarDumpDebuggerModel
+ *          model = VarDumpDebugger
  *          config {
  *            active = true
  *            maxDepth = 20

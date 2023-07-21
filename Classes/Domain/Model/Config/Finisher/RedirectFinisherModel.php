@@ -40,7 +40,7 @@ use Typoheads\Formhandler\Finisher\RedirectFinisher;
  *
  *    finishers {
  *      Redirect {
- *        model = RedirectFinisherModel
+ *        model = RedirectFinisher
  *        config {
  *          returns = true
  *          correctRedirectUrl = false

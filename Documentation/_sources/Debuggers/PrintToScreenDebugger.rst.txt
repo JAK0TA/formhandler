@@ -24,7 +24,7 @@ Will print out the debug messages to screen.
     plugin.tx_formhandler_form.settings.predefinedForms.devExample {
       debuggers {
         PrintToScreenDebugger {
-          model = PrintToScreenDebuggerModel
+          model = PrintToScreenDebugger
           config {
             active = true
             maxDepth = 10

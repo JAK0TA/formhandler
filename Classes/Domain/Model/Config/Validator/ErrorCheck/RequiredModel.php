@@ -30,12 +30,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\Required;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            name.errorChecks {
  *              required {
- *                model = RequiredModel
+ *                model = Required
  *              }
  *            }
  *          }

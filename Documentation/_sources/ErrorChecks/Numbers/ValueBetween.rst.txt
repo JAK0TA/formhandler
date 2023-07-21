@@ -13,12 +13,12 @@ Checks if the value of a field is between or equal the configured values.
 
     validators {
       DefaultValidator {
-        model = DefaultValidatorModel
+        model = DefaultValidator
         config {
           fields {
             age.errorChecks {
               valueBetween {
-                model = ValueBetweenModel
+                model = ValueBetween
                 valueMax = 100
                 valueMin = 18
               }

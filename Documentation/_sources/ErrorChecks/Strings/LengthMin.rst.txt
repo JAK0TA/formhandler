@@ -13,12 +13,12 @@ Checks if the value of a field has at least the configured length.
 
     validators {
       DefaultValidator {
-        model = DefaultValidatorModel
+        model = DefaultValidator
         config {
           fields {
             post-code.errorChecks {
               lengthMin {
-                model = LengthMinModel
+                model = LengthMin
                 lengthMin = 4
               }
             }

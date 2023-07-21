@@ -13,12 +13,12 @@ Checks if a field value equals another field value.
 
     validators {
       DefaultValidator {
-        model = DefaultValidatorModel
+        model = DefaultValidator
         config {
           fields {
             password_repeat.errorChecks {
               equalsField {
-                model = EqualsFieldModel
+                model = EqualsField
                 field = 1.password
               }
             }

@@ -30,12 +30,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\LengthBetween;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            post-code.errorChecks {
  *              lengthBetween {
- *                model = LengthBetweenModel
+ *                model = LengthBetween
  *                lengthMax = 10
  *                lengthMin = 7
  *              }

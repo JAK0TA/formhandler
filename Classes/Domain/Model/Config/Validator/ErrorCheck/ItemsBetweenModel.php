@@ -30,12 +30,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\ItemsBetween;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            interests.errorChecks {
  *              itemsBetween {
- *                model = ItemsBetweenModel
+ *                model = ItemsBetween
  *                itemsMax = 10
  *                itemsMin = 1
  *              }

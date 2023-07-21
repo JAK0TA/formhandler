@@ -31,12 +31,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\ContainsOne;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            privacy_policy.errorChecks {
  *              containsOne {
- *                model = ContainsOneModel
+ *                model = ContainsOne
  *                values = Yes,Ja
  *              }
  *            }

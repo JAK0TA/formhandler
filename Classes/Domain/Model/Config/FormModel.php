@@ -67,7 +67,7 @@ use Typoheads\Formhandler\Utility\Utility;
  *          templateForm = DevExampleForm/DevExampleHTMLStep1
  *          validators {
  *            DefaultValidator {
- *              model = DefaultValidatorModel
+ *              model = DefaultValidator
  *              config {
  *                messageLimit = 1
  *                messageLimits {
@@ -77,65 +77,65 @@ use Typoheads\Formhandler\Utility\Utility;
  *                  customer.fields {
  *                    firstname.errorChecks {
  *                      required {
- *                        model = RequiredModel
+ *                        model = Required
  *                      }
  *                      lengthMax {
- *                        model = LengthMaxModel
+ *                        model = LengthMax
  *                        lengthMax = 20
  *                      }
  *                    }
  *                    lastname.errorChecks {
  *                      required {
- *                        model = RequiredModel
+ *                        model = Required
  *                      }
  *                      lengthMax {
- *                        model = LengthMaxModel
+ *                        model = LengthMax
  *                        lengthMax = 20
  *                      }
  *                    }
  *                    streetAddress.errorChecks {
  *                      required {
- *                        model = RequiredModel
+ *                        model = Required
  *                      }
  *                    }
  *                    postalCode.errorChecks {
  *                      required {
- *                        model = RequiredModel
+ *                        model = Required
  *                      }
  *                    }
  *                    city.errorChecks {
  *                      required {
- *                        model = RequiredModel
+ *                        model = Required
  *                      }
  *                      lengthMax {
- *                        model = LengthMaxModel
+ *                        model = LengthMax
  *                        lengthMax = 70
  *                      }
  *                    }
  *                    country.errorChecks {
  *                      required {
- *                        model = RequiredModel
+ *                        model = Required
  *                      }
  *                    }
  *                    telephone.errorChecks {
  *                      required {
- *                        model = RequiredModel
+ *                        model = Required
  *                      }
  *                      lengthMax {
- *                        model = LengthMaxModel
+ *                        model = LengthMax
  *                        lengthMax = 20
  *                      }
  *                    }
  *                    email.errorChecks {
  *                      required {
- *                        model = RequiredModel
+ *                        model = Required
  *                      }
  *                      lengthMax {
- *                        model = LengthMaxModel
+ *                        model = LengthMax
  *                        lengthMax = 50
  *                      }
  *                      email {
- *                        model = EmailModel
+ *                        model = Email
  *                      }
  *                    }
  *                  }
@@ -148,10 +148,10 @@ use Typoheads\Formhandler\Utility\Utility;
  *
  *      finishers {
  *        Mail {
- *          model = MailFinisherModel
+ *          model = MailFinisher
  *        }
  *        Redirect {
- *          model = RedirectFinisherModel
+ *          model = RedirectFinisher
  *          config {
  *            returns = true
  *            correctRedirectUrl = false
@@ -398,7 +398,7 @@ class FormModel {
         }
 
         /** @var AbstractDebuggerModel $debuggerModel */
-        $debuggerModel = GeneralUtility::makeInstance($utility::classString(strval($debugger['model']), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Debugger\\'), $debugger['config'] ?? []);
+        $debuggerModel = GeneralUtility::makeInstance($utility::classString(strval($debugger['model']).'Model', 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Debugger\\'), $debugger['config'] ?? []);
 
         $this->debuggers[] = GeneralUtility::makeInstance($debuggerModel->class())->init($this, $debuggerModel);
       }
@@ -410,7 +410,7 @@ class FormModel {
         }
 
         /** @var AbstractLoggerModel $loggerModel */
-        $loggerModel = GeneralUtility::makeInstance($utility::classString(strval($logger['model']), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Logger\\'), $logger['config'] ?? []);
+        $loggerModel = GeneralUtility::makeInstance($utility::classString(strval($logger['model']).'Model', 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Logger\\'), $logger['config'] ?? []);
 
         $this->loggers[] = $loggerModel;
       }
@@ -422,7 +422,7 @@ class FormModel {
         }
 
         /** @var AbstractPreProcessorModel $preProcessorModel */
-        $preProcessorModel = GeneralUtility::makeInstance($utility::classString(strval($preProcessor['model']), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\PreProcessor\\'), $preProcessor['config'] ?? []);
+        $preProcessorModel = GeneralUtility::makeInstance($utility::classString(strval($preProcessor['model']).'Model', 'Typoheads\\Formhandler\\Domain\\Model\\Config\\PreProcessor\\'), $preProcessor['config'] ?? []);
 
         $this->preProcessors[] = $preProcessorModel;
       }
@@ -434,7 +434,7 @@ class FormModel {
         }
 
         /** @var AbstractInterceptorModel $initInterceptorModel */
-        $initInterceptorModel = GeneralUtility::makeInstance($utility::classString(strval($initInterceptor['model']), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Interceptor\\'), $initInterceptor['config'] ?? []);
+        $initInterceptorModel = GeneralUtility::makeInstance($utility::classString(strval($initInterceptor['model']).'Model', 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Interceptor\\'), $initInterceptor['config'] ?? []);
 
         $this->initInterceptors[] = $initInterceptorModel;
       }
@@ -446,7 +446,7 @@ class FormModel {
         }
 
         /** @var AbstractInterceptorModel $saveInterceptorModel */
-        $saveInterceptorModel = GeneralUtility::makeInstance($utility::classString(strval($saveInterceptor['model']), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Interceptor\\'), $saveInterceptor['config'] ?? []);
+        $saveInterceptorModel = GeneralUtility::makeInstance($utility::classString(strval($saveInterceptor['model']).'Model', 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Interceptor\\'), $saveInterceptor['config'] ?? []);
 
         $this->saveInterceptors[] = $saveInterceptorModel;
       }
@@ -469,7 +469,7 @@ class FormModel {
         }
 
         /** @var AbstractFinisherModel $finisherModel */
-        $finisherModel = GeneralUtility::makeInstance($utility::classString(strval($finisher['model']), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Finisher\\'), $finisher['config'] ?? []);
+        $finisherModel = GeneralUtility::makeInstance($utility::classString(strval($finisher['model']).'Model', 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Finisher\\'), $finisher['config'] ?? []);
 
         $this->finishers[] = $finisherModel;
       }

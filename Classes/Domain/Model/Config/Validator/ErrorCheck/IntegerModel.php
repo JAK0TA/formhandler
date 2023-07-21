@@ -30,12 +30,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\Integer;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            age.errorChecks {
  *              integer {
- *                model = IntegerModel
+ *                model = Integer
  *              }
  *            }
  *          }

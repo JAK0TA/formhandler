@@ -13,12 +13,12 @@ Checks if a field equals the configured value.
 
     validators {
       DefaultValidator {
-        model = DefaultValidatorModel
+        model = DefaultValidator
         config {
           fields {
             privacy_policy.errorChecks {
               equals {
-                model = EqualsModel
+                model = Equals
                 value = Yes
               }
             }

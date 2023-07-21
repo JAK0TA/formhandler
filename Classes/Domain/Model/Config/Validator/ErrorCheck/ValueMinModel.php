@@ -30,18 +30,18 @@ use Typoheads\Formhandler\Validator\ErrorCheck\ValueMin;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            age.errorChecks {
  *              valueMin {
- *                model = ValueMinModel
+ *                model = ValueMin
  *                valueMin = 18
  *              }
  *            }
  *            mass.errorChecks {
  *              valueMin {
- *                model = ValueMinModel
+ *                model = ValueMin
  *                valueMin = 1.5
  *              }
  *            }

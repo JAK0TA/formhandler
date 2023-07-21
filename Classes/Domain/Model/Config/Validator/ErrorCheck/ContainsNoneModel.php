@@ -31,12 +31,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\ContainsNone;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            message.errorChecks {
  *              containsNone {
- *                model = ContainsNoneModel
+ *                model = ContainsNone
  *                values = motherforking,shirtballs,badword
  *              }
  *            }

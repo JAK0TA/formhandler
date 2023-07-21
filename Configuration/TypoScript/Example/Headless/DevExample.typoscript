@@ -8,7 +8,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
 
   preProcessors {
     setSalutations {
-      model = SetSelectOptionsPreProcessorModel
+      model = SetSelectOptionsPreProcessor
       config {
         name = salutation
         options {
@@ -24,7 +24,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
       }
     }
     setCountry {
-      model = SetSelectOptionsPreProcessorModel
+      model = SetSelectOptionsPreProcessor
       config {
         name = country
         options {
@@ -43,7 +43,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
 
   loggers {
     Database {
-      model = DatabaseLoggerModel
+      model = DatabaseLogger
     }
   }
 
@@ -51,7 +51,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
     1 {
       validators {
         DefaultValidator {
-          model = DefaultValidatorModel
+          model = DefaultValidator
           messageLimit = 2
           messageLimits {
             
@@ -61,70 +61,70 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
               customer.fields {
                 salutation.errorChecks {
                   required {
-                    model = RequiredModel
+                    model = Required
                   }
                 }
                 firstname.errorChecks {
                   required {
-                    model = RequiredModel
+                    model = Required
                   }
                   lengthMax {
-                    model = LengthMaxModel
+                    model = LengthMax
                     lengthMax = 20
                   }
                 }
                 lastname.errorChecks {
                   required {
-                    model = RequiredModel
+                    model = Required
                   }
                   lengthMax {
-                    model = LengthMaxModel
+                    model = LengthMax
                     lengthMax = 20
                   }
                 }
                 streetAddress.errorChecks {
                   required {
-                    model = RequiredModel
+                    model = Required
                   }
                 }
                 postalCode.errorChecks {
                   required {
-                    model = RequiredModel
+                    model = Required
                   }
                 }
                 city.errorChecks {
                   required {
-                    model = RequiredModel
+                    model = Required
                   }
                   lengthMax {
-                    model = LengthMaxModel
+                    model = LengthMax
                     lengthMax = 70
                   }
                 }
                 country.errorChecks {
                   required {
-                    model = RequiredModel
+                    model = Required
                   }
                 }
                 telephone.errorChecks {
                   required {
-                    model = RequiredModel
+                    model = Required
                   }
                   lengthMax {
-                    model = LengthMaxModel
+                    model = LengthMax
                     lengthMax = 20
                   }
                 }
                 email.errorChecks {
                   required {
-                    model = RequiredModel
+                    model = Required
                   }
                   lengthMax {
-                    model = LengthMaxModel
+                    model = LengthMax
                     lengthMax = 50
                   }
                   email {
-                    model = EmailModel
+                    model = Email
                   }
                 }
               }
@@ -136,7 +136,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
     2 {
       validators {
         DefaultValidator {
-          model = DefaultValidatorModel
+          model = DefaultValidator
           config {
             fields {
 
@@ -149,26 +149,26 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
                       fields {
                         salutation.errorCheck {
                           required {
-                            model = RequiredModel
+                            model = Required
                           }
                         }
 
                         firstname.errorCheck {
                           required {
-                            model = RequiredModel
+                            model = Required
                           }
                           lengthMax {
-                            model = LengthMaxModel
+                            model = LengthMax
                             lengthMax = 255
                           }
                         }
 
                         lastname.errorCheck {
                           required {
-                            model = RequiredModel
+                            model = Required
                           }
                           lengthMax {
-                            model = LengthMaxModel
+                            model = LengthMax
                             lengthMax = 255
                           }
                         }
@@ -177,7 +177,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
                   }
                   errorCheck {
                     required {
-                      model = RequiredModel
+                      model = Required
                     }
                   }
                 }
@@ -190,53 +190,53 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
     3 {
       validators {
         DefaultValidator {
-          model = DefaultValidatorModel
+          model = DefaultValidator
           config {
             fields {
               payment.fields.direct.fields {
                 salutation.errorCheck {
                   required {
-                    model = RequiredModel
+                    model = Required
                   }
                 }
 
                 firstname.errorCheck {
                   required {
-                    model = RequiredModel
+                    model = Required
                   }
                   lengthMax {
-                    model = LengthMaxModel
+                    model = LengthMax
                     lengthMax = 255
                   }
                 }
 
                 lastname.errorCheck {
                   required {
-                    model = RequiredModel
+                    model = Required
                   }
                   lengthMax {
-                    model = LengthMaxModel
+                    model = LengthMax
                     lengthMax = 255
                   }
                 }
 
                 country.errorCheck {
                   required {
-                    model = RequiredModel
+                    model = Required
                   }
                   lengthMax {
-                    model = LengthMaxModel
+                    model = LengthMax
                     lengthMax = 255
                   }
                 }
 
                 email.errorCheck {
                   lengthMax {
-                    model = LengthMaxModel
+                    model = LengthMax
                     lengthMax = 255
                   }
                   email {
-                    model = EmailModel
+                    model = Email
                   }
                 }
               }
@@ -248,21 +248,21 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
     4 {
       validators {
         DefaultValidator {
-          model = DefaultValidatorModel
+          model = DefaultValidator
           config {
             fields {
               message.errorChecks {
                 required {
-                  model = RequiredModel
+                  model = Required
                 }
               }
 
               privacy_policy.errorChecks {
                 required {
-                  model = RequiredModel
+                  model = Required
                 }
                 containsOne {
-                  model = ContainsOneModel
+                  model = ContainsOne
                   words = Yes,Ja
                 }
               }
@@ -275,10 +275,10 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExampleHeadless {
 
   finishers {
     Mail {
-      model = MailFinisherModel
+      model = MailFinisher
     }    
     Redirect {
-      model = RedirectFinisherModel
+      model = RedirectFinisher
       config {
         returns = true
         correctRedirectUrl = false

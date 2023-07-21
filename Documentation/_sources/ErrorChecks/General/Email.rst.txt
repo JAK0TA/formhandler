@@ -17,15 +17,15 @@ This doesn't ensure that the mailbox "user@example.tld" exists or that the MX re
 
     validators {
       DefaultValidator {
-        model = DefaultValidatorModel
+        model = DefaultValidator
         config {
           fields {
             email.errorChecks {
               required {
-                model = RequiredModel
+                model = Required
               }
               email {
-                model = EmailModel
+                model = Email
               }
             }
           }

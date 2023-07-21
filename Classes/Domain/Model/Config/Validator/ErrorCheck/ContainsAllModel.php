@@ -31,12 +31,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\ContainsAll;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            message.errorChecks {
  *              containsAll {
- *                model = ContainsAllModel
+ *                model = ContainsAll
  *                values = Hello,Regards
  *              }
  *            }

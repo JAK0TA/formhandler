@@ -13,12 +13,12 @@ Checks if a field contains values between or equal the configured amount of item
 
     validators {
       DefaultValidator {
-        model = DefaultValidatorModel
+        model = DefaultValidator
         config {
           fields {
             interests.errorChecks {
               itemsBetween {
-                model = ItemsBetweenModel
+                model = ItemsBetween
                 itemsMax = 10
                 itemsMin = 1
               }

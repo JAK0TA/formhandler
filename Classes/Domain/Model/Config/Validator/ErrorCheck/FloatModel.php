@@ -30,12 +30,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\FloatValue;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            mass.errorChecks {
  *              float {
- *                model = FloatModel
+ *                model = Float
  *              }
  *            }
  *          }

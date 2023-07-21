@@ -30,12 +30,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\ItemsMax;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            interests.errorChecks {
  *              itemsMax {
- *                model = ItemsMaxModel
+ *                model = ItemsMax
  *                itemsMax = 10
  *              }
  *            }

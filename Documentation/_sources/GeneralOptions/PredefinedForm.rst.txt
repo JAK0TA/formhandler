@@ -38,7 +38,7 @@ Predefine form settings and make them selectable in plugin record.
           templateForm = DevExampleForm/DevExampleHTMLStep1
           validators {
             DefaultValidator {
-              model = DefaultValidatorModel
+              model = DefaultValidator
               config {
                 messageLimit = 1
                 messageLimits {
@@ -48,65 +48,65 @@ Predefine form settings and make them selectable in plugin record.
                   customer.fields {
                     firstname.errorChecks {
                       required {
-                        model = RequiredModel
+                        model = Required
                       }
                       lengthMax {
-                        model = LengthMaxModel
+                        model = LengthMax
                         lengthMax = 20
                       }
                     }
                     lastname.errorChecks {
                       required {
-                        model = RequiredModel
+                        model = Required
                       }
                       lengthMax {
-                        model = LengthMaxModel
+                        model = LengthMax
                         lengthMax = 20
                       }
                     }
                     streetAddress.errorChecks {
                       required {
-                        model = RequiredModel
+                        model = Required
                       }
                     }
                     postalCode.errorChecks {
                       required {
-                        model = RequiredModel
+                        model = Required
                       }
                     }
                     city.errorChecks {
                       required {
-                        model = RequiredModel
+                        model = Required
                       }
                       lengthMax {
-                        model = LengthMaxModel
+                        model = LengthMax
                         lengthMax = 70
                       }
                     }
                     country.errorChecks {
                       required {
-                        model = RequiredModel
+                        model = Required
                       }
                     }
                     telephone.errorChecks {
                       required {
-                        model = RequiredModel
+                        model = Required
                       }
                       lengthMax {
-                        model = LengthMaxModel
+                        model = LengthMax
                         lengthMax = 20
                       }
                     }
                     email.errorChecks {
                       required {
-                        model = RequiredModel
+                        model = Required
                       }
                       lengthMax {
-                        model = LengthMaxModel
+                        model = LengthMax
                         lengthMax = 50
                       }
                       email {
-                        model = EmailModel
+                        model = Email
                       }
                     }
                   }
@@ -119,10 +119,10 @@ Predefine form settings and make them selectable in plugin record.
 
       finishers {
         Mail {
-          model = MailFinisherModel
+          model = MailFinisher
         }
         Redirect {
-          model = RedirectFinisherModel
+          model = RedirectFinisher
           config {
             returns = true
             correctRedirectUrl = false

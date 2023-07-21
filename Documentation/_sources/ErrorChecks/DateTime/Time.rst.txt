@@ -13,12 +13,12 @@ Checks if a field value is a valid time. Format must be HH:MM:SS or HH:MM e.g 13
 
     validators {
       DefaultValidator {
-        model = DefaultValidatorModel
+        model = DefaultValidator
         config {
           fields {
             start_time.errorChecks {
               time {
-                model = TimeModel
+                model = Time
               }
             }
           }

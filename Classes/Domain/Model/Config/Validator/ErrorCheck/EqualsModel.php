@@ -30,12 +30,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\Equals;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            privacy_policy.errorChecks {
  *              equals {
- *                model = EqualsModel
+ *                model = Equals
  *                value = Yes
  *              }
  *            }

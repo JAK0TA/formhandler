@@ -30,12 +30,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\ItemsMin;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            interests.errorChecks {
  *              itemsMin {
- *                model = ItemsMinModel
+ *                model = ItemsMin
  *                itemsMin = 1
  *              }
  *            }

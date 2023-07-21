@@ -13,12 +13,12 @@ Checks if a field contains a valid url.
 
     validators {
       DefaultValidator {
-        model = DefaultValidatorModel
+        model = DefaultValidator
         config {
           fields {
             homepage.errorChecks {
               url {
-                model = UrlModel
+                model = Url
               }
             }
           }

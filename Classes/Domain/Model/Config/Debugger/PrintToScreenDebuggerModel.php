@@ -42,7 +42,7 @@ use Typoheads\Formhandler\Definitions\Severity;
  *    plugin.tx_formhandler_form.settings.predefinedForms.devExample {
  *      debuggers {
  *        PrintToScreenDebugger {
- *          model = PrintToScreenDebuggerModel
+ *          model = PrintToScreenDebugger
  *          config {
  *            active = true
  *            maxDepth = 10

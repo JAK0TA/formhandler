@@ -13,12 +13,12 @@ Checks if the value of a field is or is not in a configured field in a configure
 
     validators {
       DefaultValidator {
-        model = DefaultValidatorModel
+        model = DefaultValidator
         config {
           fields {
             email.errorChecks {
               tableLookup {
-                model = TableLookupModel
+                model = TableLookup
                 table = fe_users
                 field = email
                 exists = False

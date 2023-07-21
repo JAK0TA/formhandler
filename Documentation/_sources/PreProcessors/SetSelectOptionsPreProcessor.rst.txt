@@ -23,7 +23,7 @@ Sets a named Options array for select boxes.
 
     preProcessors {
       setSalutations {
-        model = SetSelectOptionsPreProcessorModel
+        model = SetSelectOptionsPreProcessor
         config {
           name = salutation
           options {
@@ -39,7 +39,7 @@ Sets a named Options array for select boxes.
         }
       }
       setCountry {
-        model = SetSelectOptionsPreProcessorModel
+        model = SetSelectOptionsPreProcessor
         config {
           name = country
           options {

@@ -30,12 +30,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\DateRange;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            birthdate.errorChecks {
  *              dateRange {
- *                model = DateRangeModel
+ *                model = DateRange
  *                dateMax = 1995-10-24
  *                dateMin = 1950-1-1
  *              }

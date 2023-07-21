@@ -31,12 +31,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\NotEqualsField;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            password.errorChecks {
  *              notEqualsField {
- *                model = NotEqualsFieldModel
+ *                model = NotEqualsField
  *                field = 1.username
  *              }
  *            }

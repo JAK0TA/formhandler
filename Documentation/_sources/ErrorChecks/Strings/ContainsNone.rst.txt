@@ -13,12 +13,12 @@ Checks if a field contains none of the configured values.
 
     validators {
       DefaultValidator {
-        model = DefaultValidatorModel
+        model = DefaultValidator
         config {
           fields {
             message.errorChecks {
               containsNone {
-                model = ContainsNoneModel
+                model = ContainsNone
                 values = motherforking,shirtballs,badword
               }
             }

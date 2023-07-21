@@ -30,12 +30,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\Url;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            homepage.errorChecks {
  *              url {
- *                model = UrlModel
+ *                model = Url
  *              }
  *            }
  *          }

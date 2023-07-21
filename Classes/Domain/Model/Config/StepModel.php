@@ -82,8 +82,12 @@ class StepModel {
 
     $validators = [];
     foreach ($settings['validators'] as $validator) {
+      if (empty($validator['model'])) {
+        $validator['model'] = 'DefaultValidator';
+      }
+
       /** @var AbstractValidatorModel $validatorModel */
-      $validatorModel = GeneralUtility::makeInstance($utility::classString(strval($validator['model'] ?? 'Typoheads\\Formhandler\\Domain\Model\\Config\\Validator\\DefaultValidator'), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Validator\\'), $formConfig, $validator['config'] ?? []);
+      $validatorModel = GeneralUtility::makeInstance($utility::classString(strval($validator['model'].'Model'), 'Typoheads\\Formhandler\\Domain\\Model\\Config\\Validator\\'), $formConfig, $validator['config'] ?? []);
 
       $validators[] = $validatorModel;
     }

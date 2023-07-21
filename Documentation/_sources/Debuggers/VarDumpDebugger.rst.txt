@@ -24,7 +24,7 @@ Will print out the debug messages to screen as VarDump.
     plugin.tx_formhandler_form.settings.predefinedForms.devExample {
       debuggers {
         VarDumpDebugger {
-          model = VarDumpDebuggerModel
+          model = VarDumpDebugger
           config {
             active = true
             maxDepth = 20

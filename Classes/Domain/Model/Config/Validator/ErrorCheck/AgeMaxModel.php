@@ -30,12 +30,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AgeMax;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            birthdate.errorChecks {
  *              ageMax {
- *                model = AgeMaxModel
+ *                model = AgeMax
  *                ageMax = 14
  *              }
  *            }

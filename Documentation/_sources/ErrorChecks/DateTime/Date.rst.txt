@@ -13,12 +13,12 @@ Checks if a field value is a valid date. Format must be YYYY-MM-DD e.g 2023-07-1
 
     validators {
       DefaultValidator {
-        model = DefaultValidatorModel
+        model = DefaultValidator
         config {
           fields {
             birthdate.errorChecks {
               date {
-                model = DateModel
+                model = Date
               }
             }
           }

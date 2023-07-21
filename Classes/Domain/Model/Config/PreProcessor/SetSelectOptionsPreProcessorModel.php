@@ -40,7 +40,7 @@ use Typoheads\Formhandler\PreProcessor\SetSelectOptionsPreProcessor;
  *
  *    preProcessors {
  *      setSalutations {
- *        model = SetSelectOptionsPreProcessorModel
+ *        model = SetSelectOptionsPreProcessor
  *        config {
  *          name = salutation
  *          options {
@@ -56,7 +56,7 @@ use Typoheads\Formhandler\PreProcessor\SetSelectOptionsPreProcessor;
  *        }
  *      }
  *      setCountry {
- *        model = SetSelectOptionsPreProcessorModel
+ *        model = SetSelectOptionsPreProcessor
  *        config {
  *          name = country
  *          options {

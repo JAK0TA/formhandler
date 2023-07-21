@@ -13,12 +13,12 @@ Checks if the length of the value of a field is between or equal the configured 
 
     validators {
       DefaultValidator {
-        model = DefaultValidatorModel
+        model = DefaultValidator
         config {
           fields {
             post-code.errorChecks {
               lengthBetween {
-                model = LengthBetweenModel
+                model = LengthBetween
                 lengthMax = 10
                 lengthMin = 7
               }

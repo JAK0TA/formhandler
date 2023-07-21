@@ -30,12 +30,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AgeMin;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            birthdate.errorChecks {
  *              ageMin {
- *                model = AgeMinModel
+ *                model = AgeMin
  *                ageMin = 18
  *              }
  *            }

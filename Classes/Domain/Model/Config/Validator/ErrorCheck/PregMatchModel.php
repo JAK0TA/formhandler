@@ -32,12 +32,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\PregMatch;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            post-code.errorChecks {
  *              pregMatch {
- *                model = PregMatchModel
+ *                model = PregMatch
  *                pattern = /^DE-.*$/
  *              }
  *            }

@@ -30,12 +30,12 @@ use Typoheads\Formhandler\Validator\ErrorCheck\ValueBetween;
  *
  *    validators {
  *      DefaultValidator {
- *        model = DefaultValidatorModel
+ *        model = DefaultValidator
  *        config {
  *          fields {
  *            age.errorChecks {
  *              valueBetween {
- *                model = ValueBetweenModel
+ *                model = ValueBetween
  *                valueMax = 100
  *                valueMin = 18
  *              }
