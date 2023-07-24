@@ -489,6 +489,12 @@ class FormController extends ActionController {
       if (is_array($selectsOptions)) {
         $this->formConfig->selectsOptions = $selectsOptions;
       }
+
+      $fieldsErrors = $this->formConfig->session->get('fieldsErrors');
+      if (is_array($fieldsErrors)) {
+        $this->formConfig->fieldsErrors = $fieldsErrors;
+      }
+
       $this->formConfig->step = intval(
         (
           (array) ($this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY] ?? [])
@@ -629,11 +635,15 @@ class FormController extends ActionController {
 
   private function validators(): bool {
     $isValid = true;
+    $this->formConfig->fieldsErrors = [];
+
     foreach ($this->formConfig->steps[$this->formConfig->step]->validators as $validator) {
       if (!GeneralUtility::makeInstance($validator->class())->process($this->formConfig, $validator)) {
         $isValid = false;
       }
     }
+
+    $this->formConfig->session->set('fieldsErrors', $this->formConfig->fieldsErrors);
 
     return $isValid;
   }
