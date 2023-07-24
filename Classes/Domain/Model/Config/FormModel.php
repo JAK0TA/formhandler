@@ -301,6 +301,8 @@ class FormModel {
   /** @var AbstractFinisherModel[] */
   public array $finishers = [];
 
+  public bool $firstAccess = true;
+
   public string $formId = '';
 
   public string $formName = '';

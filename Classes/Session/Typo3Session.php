@@ -13,12 +13,16 @@ declare(strict_types=1);
 namespace Typoheads\Formhandler\Session;
 
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Typoheads\Formhandler\Utility\Utility;
 
 class Typo3Session extends AbstractSession {
   private string $cacheIdentifier;
 
   /** @var array<string, mixed> */
   private array $data = [];
+
+  private string $randomIdIdentifier;
 
   public function __construct(
     private readonly FrontendInterface $cache,
@@ -44,9 +48,13 @@ class Typo3Session extends AbstractSession {
   }
 
   public function reset(): Typo3Session {
-    $this->data = [];
-    $this->cache->remove($this->cacheIdentifier);
-    $this->started = false;
+    if ($this->started) {
+      $this->data = [];
+      $this->cache->remove($this->cacheIdentifier);
+      $this->cache->remove($this->randomIdIdentifier);
+
+      $this->started = false;
+    }
 
     return $this;
   }
@@ -80,24 +88,40 @@ class Typo3Session extends AbstractSession {
     return $this;
   }
 
-  public function start(string $randomId): Typo3Session {
+  public function start(): Typo3Session {
     if ($this->started) {
       // TODO: Report Error
       return $this;
     }
+
+    $this->randomIdIdentifier = 'tx_formhandler_'.$this->formConfig->formId.'_randomId';
+
+    if (empty($this->formConfig->randomId)) {
+      $randomId = $this->cache->get($this->randomIdIdentifier);
+      if (is_string($randomId) && !empty($randomId)) {
+        $this->formConfig->firstAccess = false;
+        $this->formConfig->randomId = $randomId;
+      } else {
+        $this->formConfig->randomId = GeneralUtility::makeInstance(Utility::class)::generateRandomId($this->formConfig);
+        $this->cache->set($this->randomIdIdentifier, $this->formConfig->randomId, [], $this->getLifetime());
+      }
+    } else {
+      $this->formConfig->firstAccess = false;
+    }
+
     $this->formConfig->debugMessage(
       key: 'Session started: %s',
-      printfArgs: [$randomId]
+      printfArgs: [$this->formConfig->randomId]
     );
 
-    $this->cacheIdentifier = 'formhandler_'.$randomId;
+    $this->cacheIdentifier = 'tx_formhandler_'.$this->formConfig->randomId;
     $data = $this->cache->get($this->cacheIdentifier);
 
     if (is_array($data)) {
       $this->data = $data;
       $this->formConfig->debugMessage(
         key: 'Session data for: %s',
-        printfArgs: [$randomId],
+        printfArgs: [$this->formConfig->randomId],
         data: $data,
       );
     }

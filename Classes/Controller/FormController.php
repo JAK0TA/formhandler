@@ -465,20 +465,15 @@ class FormController extends ActionController {
   }
 
   private function formSession(): void {
-    $firstStart = false;
-    if (empty($this->formConfig->randomId)) {
-      $firstStart = true;
-      $this->formConfig->randomId = GeneralUtility::makeInstance(Utility::class)::generateRandomId($this->formConfig);
-    }
-    $this->formConfig->debugMessage(
-      key: 'Session first start',
-      data: $firstStart,
-    );
-
     $this->formConfig->session = GeneralUtility::makeInstance(Typo3Session::class)
       ->init($this->formConfig)
-      ->start($this->formConfig->randomId)
+      ->start()
     ;
+
+    $this->formConfig->debugMessage(
+      key: 'Session first start',
+      data: $this->formConfig->firstAccess,
+    );
 
     if ($this->formConfig->session->exists()) {
       $selectsOptions = $this->formConfig->session->get('selectsOptions');
@@ -491,14 +486,13 @@ class FormController extends ActionController {
         )['step'] ??
         $this->formConfig->session->get('step') ?: 1
       );
+
       $this->formConfig->formValues = (array) ($this->formConfig->session->get('formValues') ?: []);
     } else {
       // Form session is invalid or first form access reset form
-      if (!$firstStart) {
+      if (!$this->formConfig->firstAccess) {
         // Form session is invalid create new one
-        $randomId = GeneralUtility::makeInstance(Utility::class)::generateRandomId($this->formConfig);
-        $this->formConfig->session->reset()->start($randomId);
-        $this->formConfig->randomId = $randomId;
+        $this->formConfig->session->reset()->start();
       }
 
       $this->formConfig->step = 1;
