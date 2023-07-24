@@ -364,33 +364,42 @@ class FormController extends ActionController {
 
     $this->initJsonResponse();
 
-    if ($this->formSubmitted() && $this->validators()) {
-      // Check for last step before changing step count
-      $isLast = $this->formStepIsLast();
+    if ($this->formSubmitted()) {
+      if ($this->validators()) {
+        // Check for last step before changing step count
+        $isLast = $this->formStepIsLast();
 
-      $this->formStepChange();
+        $this->formStepChange();
 
-      if ($isLast) {
-        $this->saveInterceptors();
-        $this->loggers();
-        if (($response = $this->finishers()) !== null) {
+        if ($isLast) {
+          $this->saveInterceptors();
+          $this->loggers();
+
+          $response = $this->finishers();
+
+          // Reset form session
+          $this->formConfig->session->reset()->start();
+
+          if (null !== $response) {
+            if ('json' == $this->formConfig->responseType) {
+              $this->jsonResponse->success = true;
+
+              // TODO: Use new model to check for Response type and Finisher name so headless knows which Finisher returned
+              if ($response instanceof RedirectResponse) {
+                $this->jsonResponse->redirectPage = $response->getHeaderLine('location');
+                $this->jsonResponse->redirectCode = $response->getStatusCode();
+              }
+
+              return $this->jsonResponse(json_encode($this->jsonResponse) ?: '{}');
+            }
+
+            return $response;
+          }
           if ('json' == $this->formConfig->responseType) {
             $this->jsonResponse->success = true;
-            // TODO: Use new model to check for Response type and Finisher name so headless knows which Finisher returned
-            if ($response instanceof RedirectResponse) {
-              $this->jsonResponse->redirectPage = $response->getHeaderLine('location');
-              $this->jsonResponse->redirectCode = $response->getStatusCode();
-            }
 
             return $this->jsonResponse(json_encode($this->jsonResponse) ?: '{}');
           }
-
-          return $response;
-        }
-        if ('json' == $this->formConfig->responseType) {
-          $this->jsonResponse->success = true;
-
-          return $this->jsonResponse(json_encode($this->jsonResponse) ?: '{}');
         }
       }
     }
