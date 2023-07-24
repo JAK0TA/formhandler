@@ -402,6 +402,10 @@ class FormController extends ActionController {
           }
         }
       }
+
+      return new RedirectResponse(
+        '#'.$this->formConfig->formId
+      );
     }
 
     $this->prepareFormSets();
