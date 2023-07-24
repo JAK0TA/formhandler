@@ -360,6 +360,8 @@ class FormController extends ActionController {
 
     $this->initInterceptors();
 
+    // TODO: Add AjaxHandler
+
     $this->initJsonResponse();
 
     if ($this->formSubmitted() && $this->validators()) {
