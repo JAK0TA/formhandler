@@ -1,43 +1,40 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-  <form action="{formUrl}#{formId}" id="{formId}" method="post" class="formhandler">
-    <f:render partial="FieldSet" arguments="{fieldSets: fieldSets}" />
-    <h1>Step 1</h1>
+  <h1>Step 1</h1>
 
-    <div class="">
-      <f:render partial="FormField/Select" arguments="{selectOptions: 'salutation', fieldNameFromPath: '1.customer.salutation', langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
-    </div>
-    <div class="">
-      <f:render partial="FormField/InputText" arguments="{fieldNameFromPath: '1.customer.firstname', langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
-    </div>
-    <div class="">
-      <f:render partial="FormField/InputText" arguments="{fieldNameFromPath: '1.customer.lastname', langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
-    </div>
-    <div class="">
-      <f:render partial="FormField/InputText" arguments="{fieldNameFromPath: '1.customer.streetAddress', langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
-    </div>
-    <div class="">
-      <f:render partial="FormField/InputText" arguments="{fieldNameFromPath: '1.customer.postalCode', langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
-    </div>
-    <div class="">
-      <f:render partial="FormField/InputText" arguments="{fieldNameFromPath: '1.customer.city', maxlength: 70, langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
-    </div>
-    <div class="">
-      <f:render partial="FormField/Select" arguments="{selectOptions: 'country', fieldNameFromPath: '1.customer.country', langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
-    </div>
-    <div class="">
-      <f:render partial="FormField/InputText" arguments="{fieldNameFromPath: '1.customer.telephone', maxlength: 20, langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
-    </div>
-    <div class="">
-      <f:render partial="FormField/InputEmail" arguments="{fieldNameFromPath: '1.customer.email', maxlength: 50, langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
-    </div>
-    <div class="">
-      <f:render partial="FormField/Submit" arguments="{stepType: 'prev', formConfig: _all}" />
-    </div>
-    <div class="">
-      <f:render partial="FormField/Submit" arguments="{stepType: 'next', formConfig: _all}" />
-    </div>
-    <div class="">
-      <f:render partial="FormField/Submit" arguments="{submit: 'step1Submit', submitTitle: 'step1SubmitTitle', langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
-    </div>
-  </form>
+  <div class="">
+    <f:render partial="FormField/Select" arguments="{selectOptions: 'salutation', fieldNameFromPath: '1.customer.salutation', langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
+  </div>
+  <div class="">
+    <f:render partial="FormField/InputText" arguments="{fieldNameFromPath: '1.customer.firstname', langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
+  </div>
+  <div class="">
+    <f:render partial="FormField/InputText" arguments="{fieldNameFromPath: '1.customer.lastname', langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
+  </div>
+  <div class="">
+    <f:render partial="FormField/InputText" arguments="{fieldNameFromPath: '1.customer.streetAddress', langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
+  </div>
+  <div class="">
+    <f:render partial="FormField/InputText" arguments="{fieldNameFromPath: '1.customer.postalCode', langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
+  </div>
+  <div class="">
+    <f:render partial="FormField/InputText" arguments="{fieldNameFromPath: '1.customer.city', maxlength: 70, langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
+  </div>
+  <div class="">
+    <f:render partial="FormField/Select" arguments="{selectOptions: 'country', fieldNameFromPath: '1.customer.country', langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
+  </div>
+  <div class="">
+    <f:render partial="FormField/InputText" arguments="{fieldNameFromPath: '1.customer.telephone', maxlength: 20, langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
+  </div>
+  <div class="">
+    <f:render partial="FormField/InputEmail" arguments="{fieldNameFromPath: '1.customer.email', maxlength: 50, langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
+  </div>
+  <div class="">
+    <f:render partial="FormField/Submit" arguments="{stepType: 'prev', formConfig: _all}" />
+  </div>
+  <div class="">
+    <f:render partial="FormField/Submit" arguments="{stepType: 'next', formConfig: _all}" />
+  </div>
+  <div class="">
+    <f:render partial="FormField/Submit" arguments="{submit: 'step1Submit', submitTitle: 'step1SubmitTitle', langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
+  </div>
 </html>

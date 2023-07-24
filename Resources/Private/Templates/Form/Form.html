@@ -1,4 +1,7 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
   <f:if condition="{debugOutput} != ''">{debugOutput -> f:format.raw()}</f:if>
-  <f:render partial="{templateForm}" arguments="{_all}" />
+  <form action="{formUrl}#{formId}" id="{formId}" method="post" class="formhandler" enctype="multipart/form-data">
+    <f:render partial="FieldSet" arguments="{fieldSets: fieldSets}" />
+    <f:render partial="{templateForm}" arguments="{_all}" />
+  </form>
 </html>
