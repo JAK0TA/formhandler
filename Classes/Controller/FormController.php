@@ -544,6 +544,8 @@ class FormController extends ActionController {
     } else {
       $this->formConfig->step = !$this->formStepIsLast() ? $this->formConfig->step + 1 : $this->formConfig->step;
     }
+
+    $this->formConfig->session->set('step', $this->formConfig->step);
   }
 
   private function formStepIsLast(): bool {
