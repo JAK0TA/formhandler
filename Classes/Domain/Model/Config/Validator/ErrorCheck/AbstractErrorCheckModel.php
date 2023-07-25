@@ -191,6 +191,43 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *
  *Documentation:End
  */
+/** Documentation:Start:ErrorChecks/Numbers.rst.
+ *
+ *.. _numbers:
+ *
+ *=======
+ *Numbers
+ *=======
+ *
+ *If you want to perform error checks on numbers, e.g. if a field value is a valid integer, these checks are right for you.
+ *
+ *:ref:`Float`
+ *  Checks if a field contains a valid float value.
+ *
+ *:ref:`Integer`
+ *  Checks if a field contains a valid integer value.
+ *
+ *:ref:`ValueMax`
+ *  Checks if the value of a field is less or equal than the configured value.
+ *
+ *:ref:`ValueMin`
+ *  Checks if the value of a field is at least the configured value.
+ *
+ *:ref:`ValueRange`
+ *  Checks if the value of a field is between or equal the configured values.
+ *
+ *.. toctree::
+ *   :maxdepth: 2
+ *   :hidden:
+ *
+ *   Numbers/Float
+ *   Numbers/Integer
+ *   Numbers/ValueMax
+ *   Numbers/ValueMin
+ *   Numbers/ValueRange
+ *
+ *Documentation:End
+ */
 /** Documentation:Start:ErrorChecks/Strings.rst.
  *
  *.. _strings:
@@ -237,43 +274,6 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *   Strings/LengthMin
  *   Strings/LengthRange
  *   Strings/PregMatch
- *
- *Documentation:End
- */
-/** Documentation:Start:ErrorChecks/Numbers.rst.
- *
- *.. _numbers:
- *
- *=======
- *Numbers
- *=======
- *
- *If you want to perform error checks on numbers, e.g. if a field value is a valid integer, these checks are right for you.
- *
- *:ref:`Float`
- *  Checks if a field contains a valid float value.
- *
- *:ref:`Integer`
- *  Checks if a field contains a valid integer value.
- *
- *:ref:`ValueMax`
- *  Checks if the value of a field is less or equal than the configured value.
- *
- *:ref:`ValueMin`
- *  Checks if the value of a field is at least the configured value.
- *
- *:ref:`ValueRange`
- *  Checks if the value of a field is between or equal the configured values.
- *
- *.. toctree::
- *   :maxdepth: 2
- *   :hidden:
- *
- *   Numbers/Float
- *   Numbers/Integer
- *   Numbers/ValueMax
- *   Numbers/ValueMin
- *   Numbers/ValueRange
  *
  *Documentation:End
  */
