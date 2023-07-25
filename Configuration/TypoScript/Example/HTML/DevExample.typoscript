@@ -97,6 +97,10 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
                     model = FileCountMax
                     fileCountMax = 3
                   }
+                  fileCountMin {
+                    model = FileCountMin
+                    fileCountMin = 1
+                  }
                 }
                 screenshot2.errorChecks {
                   fileTypesAllowed {

@@ -208,6 +208,8 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *:ref:`FileCountMax`
  *  Checks if the files uploaded from a field are less than or equal the configured value.
  *
+ *:ref:`FileCountMin`
+ *  Checks if the files uploaded from a field are more than or equal the configured value.
  *
  *:ref:`FileTypesAllowed`
  *  Checks if the filetype of an uploaded file is allowed.
@@ -217,6 +219,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *   :hidden:
  *
  *   FileUpload/FileCountMax
+ *   FileUpload/FileCountMin
  *   FileUpload/FileTypesAllowed
  *
  *Documentation:End

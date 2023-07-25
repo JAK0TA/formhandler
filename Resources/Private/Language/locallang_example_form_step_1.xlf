@@ -7,6 +7,9 @@
       <trans-unit id="error_1.customer.screenshot1_FileCountMax" resname="error_1.customer.screenshot1_FileCountMax">
         <source>Please remove files, max file count mismatch.</source>
       </trans-unit>
+      <trans-unit id="error_1.customer.screenshot1_FileCountMin" resname="error_1.customer.screenshot1_FileCountMin">
+        <source>Please upload files, min file count mismatch.</source>
+      </trans-unit>
       <trans-unit id="error_1.customer.screenshot1_FileTypesAllowed" resname="error_1.customer.screenshot1_FileTypesAllowed">
         <source>Allowed file type mismatch.</source>
       </trans-unit>
