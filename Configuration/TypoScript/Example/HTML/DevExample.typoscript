@@ -121,12 +121,13 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
                   }
                 }
                 firstname.errorChecks {
-                  required {
-                    model = Required
-                  }
                   lengthMax {
                     model = LengthMax
                     lengthMax = 20
+                  }
+                  lengthMin {
+                    model = LengthMin
+                    lengthMin = 10
                   }
                 }
                 lastname.errorChecks {

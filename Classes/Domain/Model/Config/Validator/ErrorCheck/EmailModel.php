@@ -62,8 +62,7 @@ class EmailModel extends AbstractErrorCheckModel {
    */
   public function __construct(array $settings) {
     $this->name = 'Email';
-    if (isset($settings['FIXME'])) {
-    }
+    $settings = $settings;
   }
 
   public function class(): string {

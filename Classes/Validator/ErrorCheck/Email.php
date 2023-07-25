@@ -18,7 +18,11 @@ use Typoheads\Formhandler\Utility\Utility;
 
 class Email extends AbstractErrorCheck {
   public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$errorCheckConfig, string $fieldNamePathBrackets, string $fieldNamePathDots, mixed $value): bool {
-    if (is_string($value) && strlen($value) > 0) {
+    if (empty($value)) {
+      return true;
+    }
+
+    if (is_string($value)) {
       return Utility::validEmail($value);
     }
 

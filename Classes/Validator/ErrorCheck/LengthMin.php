@@ -22,8 +22,11 @@ class LengthMin extends AbstractErrorCheck {
       return false;
     }
 
+    if (empty($value)) {
+      return true;
+    }
+
     if (is_string($value)
-        && $errorCheckConfig->lengthMin > 0
         && mb_strlen(trim($value), 'utf-8') >= $errorCheckConfig->lengthMin
     ) {
       return true;

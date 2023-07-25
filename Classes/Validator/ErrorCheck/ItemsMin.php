@@ -22,8 +22,11 @@ class ItemsMin extends AbstractErrorCheck {
       return false;
     }
 
+    if (empty($value)) {
+      return true;
+    }
+
     if (is_array($value)
-      && $errorCheckConfig->itemsMin > 0
       && count($value) >= $errorCheckConfig->itemsMin
     ) {
       return true;

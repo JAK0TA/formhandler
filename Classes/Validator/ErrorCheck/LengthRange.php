@@ -22,12 +22,13 @@ class LengthRange extends AbstractErrorCheck {
       return false;
     }
 
+    if (empty($value)) {
+      return true;
+    }
+
     if (is_string($value)
-        && mb_strlen(trim($value), 'utf-8') > 0
-        && $errorCheckConfig->lengthMax > 0
-        && mb_strlen(trim($value), 'utf-8') <= $errorCheckConfig->lengthMax
-        && $errorCheckConfig->lengthMin > 0
-        && mb_strlen(trim($value), 'utf-8') >= $errorCheckConfig->lengthMin
+      && mb_strlen(trim($value), 'utf-8') <= $errorCheckConfig->lengthMax
+      && mb_strlen(trim($value), 'utf-8') >= $errorCheckConfig->lengthMin
     ) {
       return true;
     }

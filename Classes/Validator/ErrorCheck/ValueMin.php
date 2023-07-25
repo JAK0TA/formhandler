@@ -22,15 +22,16 @@ class ValueMin extends AbstractErrorCheck {
       return false;
     }
 
-    $valueTemp = filter_var($value ?? 0, FILTER_VALIDATE_INT);
-    if (false === $valueTemp) {
-      $valueTemp = filter_var($value ?? 0, FILTER_VALIDATE_FLOAT) ?: 0;
+    if (empty($value)) {
+      return true;
     }
 
-    if (
-      $errorCheckConfig->valueMin > 0
-      && $valueTemp >= $errorCheckConfig->valueMin
-    ) {
+    $valueTemp = filter_var($value, FILTER_VALIDATE_INT);
+    if (false === $valueTemp) {
+      $valueTemp = filter_var($value, FILTER_VALIDATE_FLOAT) ?: 0;
+    }
+
+    if ($valueTemp >= $errorCheckConfig->valueMin) {
       return true;
     }
 

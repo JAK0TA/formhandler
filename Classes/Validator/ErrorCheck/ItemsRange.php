@@ -22,11 +22,13 @@ class ItemsRange extends AbstractErrorCheck {
       return false;
     }
 
+    if (empty($value)) {
+      return true;
+    }
+
     if (is_array($value)) {
       $valueCount = count($value);
-      if ($errorCheckConfig->itemsMax > 0
-        && $valueCount <= $errorCheckConfig->itemsMax
-        && $errorCheckConfig->itemsMin > 0
+      if ($valueCount <= $errorCheckConfig->itemsMax
         && $valueCount >= $errorCheckConfig->itemsMin
       ) {
         return true;

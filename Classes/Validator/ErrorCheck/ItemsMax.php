@@ -22,8 +22,11 @@ class ItemsMax extends AbstractErrorCheck {
       return false;
     }
 
+    if (empty($value)) {
+      return true;
+    }
+
     if (is_array($value)
-      && $errorCheckConfig->itemsMax > 0
       && count($value) <= $errorCheckConfig->itemsMax
     ) {
       return true;

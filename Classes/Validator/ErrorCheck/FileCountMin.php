@@ -22,11 +22,12 @@ class FileCountMin extends AbstractErrorCheck {
       return false;
     }
 
-    if (0 == $errorCheckConfig->fileCountMin) {
+    $fileCount = count($formConfig->formUploads->files[$fieldNamePathBrackets] ?? []);
+    if (0 == $fileCount) {
       return true;
     }
 
-    if (count($formConfig->formUploads->files[$fieldNamePathBrackets] ?? []) >= $errorCheckConfig->fileCountMin
+    if ($fileCount >= $errorCheckConfig->fileCountMin
     ) {
       return true;
     }

@@ -22,10 +22,12 @@ class FileCountMax extends AbstractErrorCheck {
       return false;
     }
 
-    if (
-      !isset($formConfig->formUploads->files[$fieldNamePathBrackets])
-      || count($formConfig->formUploads->files[$fieldNamePathBrackets]) <= $errorCheckConfig->fileCountMax
-    ) {
+    $fileCount = count($formConfig->formUploads->files[$fieldNamePathBrackets] ?? []);
+    if (0 == $fileCount) {
+      return true;
+    }
+
+    if ($fileCount <= $errorCheckConfig->fileCountMax) {
       return true;
     }
 

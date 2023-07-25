@@ -22,15 +22,17 @@ class ValueRange extends AbstractErrorCheck {
       return false;
     }
 
-    $valueTemp = filter_var($value ?? 0, FILTER_VALIDATE_INT);
+    if (empty($value)) {
+      return true;
+    }
+
+    $valueTemp = filter_var($value, FILTER_VALIDATE_INT);
     if (false === $valueTemp) {
-      $valueTemp = filter_var($value ?? 0, FILTER_VALIDATE_FLOAT) ?: 0;
+      $valueTemp = filter_var($value, FILTER_VALIDATE_FLOAT) ?: 0;
     }
 
     if (
-      $errorCheckConfig->valueMax > 0
-      && $valueTemp <= $errorCheckConfig->valueMax
-      && $errorCheckConfig->valueMin > 0
+      $valueTemp <= $errorCheckConfig->valueMax
       && $valueTemp >= $errorCheckConfig->valueMin
     ) {
       return true;
