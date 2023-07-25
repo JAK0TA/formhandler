@@ -84,6 +84,7 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
           config {
             messageLimit = 1
             messageLimits {
+              1.customer.screenshot1 = 2
               1.customer.email = 2
             }
             fields {
@@ -95,11 +96,11 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
                   }
                   fileCountMax {
                     model = FileCountMax
-                    fileCountMax = 3
+                    fileCountMax = 5
                   }
                   fileCountMin {
                     model = FileCountMin
-                    fileCountMin = 1
+                    fileCountMin = 2
                   }
                 }
                 screenshot2.errorChecks {
