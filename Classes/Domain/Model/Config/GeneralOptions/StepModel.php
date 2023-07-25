@@ -10,9 +10,10 @@ declare(strict_types=1);
  * of the License, or any later version.
  */
 
-namespace Typoheads\Formhandler\Domain\Model\Config;
+namespace Typoheads\Formhandler\Domain\Model\Config\GeneralOptions;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 use Typoheads\Formhandler\Domain\Model\Config\Validator\AbstractValidatorModel;
 use Typoheads\Formhandler\Utility\Utility;
 

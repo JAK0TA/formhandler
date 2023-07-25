@@ -10,7 +10,7 @@ declare(strict_types=1);
  * of the License, or any later version.
  */
 
-namespace Typoheads\Formhandler\Domain\Model\Config;
+namespace Typoheads\Formhandler\Domain\Model\Config\GeneralOptions;
 
 class MailModel {
   public string $bccEmail = '';

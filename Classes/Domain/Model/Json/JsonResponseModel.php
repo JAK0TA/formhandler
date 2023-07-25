@@ -12,10 +12,10 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Domain\Model\Json;
 
-use Typoheads\Formhandler\Domain\Model\Config\FieldSetModel;
 use Typoheads\Formhandler\Domain\Model\Config\FormUpload;
+use Typoheads\Formhandler\Domain\Model\Config\GeneralOptions\FieldSetModel;
 use Typoheads\Formhandler\Domain\Model\Config\GeneralOptions\FileUploadModel;
-use Typoheads\Formhandler\Domain\Model\Config\SelectOptionModel;
+use Typoheads\Formhandler\Domain\Model\Config\GeneralOptions\SelectOptionModel;
 
 class JsonResponseModel {
   public string $extensionKey = '';

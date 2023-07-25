@@ -13,9 +13,9 @@ declare(strict_types=1);
 namespace Typoheads\Formhandler\PreProcessor;
 
 use Typoheads\Formhandler\Domain\Model\Config\FormModel;
+use Typoheads\Formhandler\Domain\Model\Config\GeneralOptions\SelectOptionModel;
 use Typoheads\Formhandler\Domain\Model\Config\PreProcessor\AbstractPreProcessorModel;
 use Typoheads\Formhandler\Domain\Model\Config\PreProcessor\SetSelectOptionsPreProcessorModel;
-use Typoheads\Formhandler\Domain\Model\Config\SelectOptionModel;
 
 class SetSelectOptionsPreProcessor extends AbstractPreProcessor {
   public function process(FormModel &$formConfig, AbstractPreProcessorModel &$preProcessorConfig): void {

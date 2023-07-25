@@ -10,18 +10,12 @@ declare(strict_types=1);
  * of the License, or any later version.
  */
 
-namespace Typoheads\Formhandler\Domain\Model\Config;
+namespace Typoheads\Formhandler\Domain\Model\Config\GeneralOptions;
 
-use Typoheads\Formhandler\Definitions\FormhandlerExtensionConfig;
-
-class FieldSetModel {
-  public readonly string $extensionKey;
-
+class SelectOptionModel {
   public function __construct(
-    public readonly string $name,
     public readonly string $value,
-    public readonly string $id = '',
+    public readonly string $title,
   ) {
-    $this->extensionKey = FormhandlerExtensionConfig::EXTENSION_KEY;
   }
 }
