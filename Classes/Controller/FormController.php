@@ -370,6 +370,8 @@ class FormController extends ActionController {
     $this->formSession();
 
     if (null !== ($response = $this->processFileRemoval())) {
+      $this->validators();
+
       return $response;
     }
 
