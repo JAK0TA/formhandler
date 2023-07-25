@@ -70,7 +70,7 @@ class DefaultValidator extends AbstractValidator {
             continue;
           }
 
-          $formConfig->fieldsErrors[$fieldNamePathBrackets][] = $errorCheck->name;
+          $formConfig->fieldsErrors[$fieldNamePathBrackets][] = $errorCheck->name();
         }
       }
       if (!empty($field->fields)) {
