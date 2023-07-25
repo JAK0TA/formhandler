@@ -44,6 +44,9 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *:ref:`Date & Time <DateTime>`
  *  Using these error checks you can force the user to enter a valid date or time. You can even check for a valid date range.
  *
+ *:ref:`FileUpload`
+ *  These are all available error checks dealing with file uploads. You can restrict allowed file types, set min and max uploadable files for one upload field and more.
+ *
  *:ref:`Numbers`
  *  If you want to perform error checks on numbers, e.g. if a field value is a valid integer, these checks are right for you.
  *
@@ -58,6 +61,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *   Arrays
  *   Database
  *   DateTime
+ *   FileUpload
  *   Numbers
  *   Strings
  *
@@ -188,6 +192,27 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *   DateTime/Date
  *   DateTime/DateRange
  *   DateTime/Time
+ *
+ *Documentation:End
+ */
+/** Documentation:Start:ErrorChecks/FileUpload.rst.
+ *
+ *.. _fileupload:
+ *
+ *===========
+ *File Upload
+ *===========
+ *
+ *These are all available error checks dealing with file uploads. You can restrict allowed file types, set min and max uploadable files for one upload field and more.
+ *
+ *:ref:`FileTypesAllowed`
+ *  Checks if the filetype of an uploaded file is allowed.
+ *
+ *.. toctree::
+ *   :maxdepth: 2
+ *   :hidden:
+ *
+ *   FileUpload/FileTypesAllowed
  *
  *Documentation:End
  */

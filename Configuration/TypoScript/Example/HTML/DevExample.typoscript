@@ -88,6 +88,18 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
             }
             fields {
               customer.fields {
+                screenshot1.errorChecks {
+                  FileTypesAllowed {
+                    model = FileTypesAllowed
+                    fileTypes = .jpg
+                  }
+                }
+                screenshot2.errorChecks {
+                  FileTypesAllowed {
+                    model = FileTypesAllowed
+                    fileTypes = image/*
+                  }
+                }
                 salutation.errorChecks {
                   required {
                     model = Required

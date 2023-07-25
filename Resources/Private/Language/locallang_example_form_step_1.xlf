@@ -4,6 +4,14 @@
   <file source-language="en" datatype="plaintext" original="EXT:formhandler/Resources/Private/Language/locallang_example_form.xlf" date="2023-06-22T11:48:40Z" product-name="formhandler">
     <header />
     <body>
+      <trans-unit id="error_1.customer.screenshot1_FileTypesAllowed" resname="error_1.customer.screenshot1_FileTypesAllowed">
+        <source>Allowed file type mismatch.</source>
+      </trans-unit>
+
+      <trans-unit id="error_1.customer.screenshot2_FileTypesAllowed" resname="error_1.customer.screenshot2_FileTypesAllowed">
+        <source>Allowed file type mismatch.</source>
+      </trans-unit>
+
       <trans-unit id="1.customer.salutation" resname="1.customer.salutation">
         <source>Salutation</source>
       </trans-unit>
