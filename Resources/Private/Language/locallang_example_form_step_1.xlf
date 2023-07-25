@@ -17,6 +17,9 @@
       <trans-unit id="error_1.customer.screenshot2_FileCountMax" resname="error_1.customer.screenshot2_FileCountMax">
         <source>Please remove files, max file count mismatch.</source>
       </trans-unit>
+      <trans-unit id="error_1.customer.screenshot2_FileRequired" resname="error_1.customer.screenshot2_FileRequired">
+        <source>You forgot to upload a file.</source>
+      </trans-unit>
       <trans-unit id="error_1.customer.screenshot2_FileTypesAllowed" resname="error_1.customer.screenshot2_FileTypesAllowed">
         <source>Allowed file type mismatch.</source>
       </trans-unit>

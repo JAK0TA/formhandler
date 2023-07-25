@@ -111,6 +111,9 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
                     model = FileCountMax
                     fileCountMax = 1
                   }
+                  fileRequired {
+                    model = FileRequired
+                  }
                 }
                 salutation.errorChecks {
                   required {
