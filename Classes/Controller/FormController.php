@@ -650,8 +650,7 @@ class FormController extends ActionController {
   private function prepareFieldsRequired(string $fieldNamePath, FieldModel $field): void {
     $fieldNamePath .= '['.$field->name.']';
     foreach ($field->errorChecks as $errorCheck) {
-      // TODO: Maybe add $errorCheck->isRequired()?
-      if ('Required' == $errorCheck->name) {
+      if ($errorCheck->isRequired()) {
         $this->fieldsRequired[$fieldNamePath] = true;
       }
     }

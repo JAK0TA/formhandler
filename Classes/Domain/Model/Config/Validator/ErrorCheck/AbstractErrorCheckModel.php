@@ -313,6 +313,8 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
 abstract class AbstractErrorCheckModel {
   public string $name;
 
+  protected bool $isRequired = false;
+
   /**
    * @param array<string, mixed> $settings
    */
@@ -322,4 +324,8 @@ abstract class AbstractErrorCheckModel {
    * @return class-string<AbstractErrorCheck>
    */
   abstract public function class(): string;
+
+  public function isRequired(): bool {
+    return $this->isRequired;
+  }
 }

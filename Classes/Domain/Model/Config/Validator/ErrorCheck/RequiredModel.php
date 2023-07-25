@@ -55,6 +55,7 @@ class RequiredModel extends AbstractErrorCheckModel {
    */
   public function __construct(array $settings) {
     $this->name = 'Required';
+    $this->isRequired = true;
     if (isset($settings['FIXME'])) {
     }
   }
