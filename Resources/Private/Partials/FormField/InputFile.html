@@ -13,7 +13,7 @@
   </f:if>
   <div class="type-file form-group">
     <f:for each="{formConfig.formUploads.files.{fieldName}}" as="formUpload">
-      <div>{formUpload.name} 
+      <div><span {f:if(condition: '{formUpload.error}', then: 'class="error"', else: '')}>{formUpload.name}</span> 
         <f:if condition="{formConfig.fileUpload.removalActive}">
           <a href="?{formConfig.extensionKey}[removeFileField]={fieldName}&{formConfig.extensionKey}[removeFile]={formUpload.name}">{formConfig.fileUpload.removalText}</a></div>
         </f:if>
