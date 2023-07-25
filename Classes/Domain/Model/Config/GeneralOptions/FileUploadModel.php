@@ -12,13 +12,13 @@ declare(strict_types=1);
 
 namespace Typoheads\Formhandler\Domain\Model\Config\GeneralOptions;
 
-/** Documentation:Start:GeneralOptions/FileUpload.rst.
+/** Documentation:Start:GeneralOptions/FileUploadSettings.rst.
  *
- *.. _fileupload:
+ *.. _fileuploadsettings:
  *
- *==========
- *FileUpload
- *==========
+ *====================
+ *File Upload Settings
+ *====================
  *
  *Settings to handle file uploads.
  *

@@ -129,6 +129,9 @@ use Typoheads\Formhandler\Utility\Utility;
  *:ref:`Predefined-Form`
  *  Predefine form settings and make them selectable in plugin record.
  *
+ *:ref:`FileUploadSettings`
+ *  Settings to handle file uploads.
+ *
  *:ref:`Step`
  *  Multistep forms settings
  *
@@ -138,7 +141,7 @@ use Typoheads\Formhandler\Utility\Utility;
  *
  *   Settings
  *   PredefinedForm
- *   FileUpload
+ *   FileUploadSettings
  *   Step
  *
  *Documentation:End
