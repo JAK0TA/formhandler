@@ -89,15 +89,23 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
             fields {
               customer.fields {
                 screenshot1.errorChecks {
-                  FileTypesAllowed {
+                  fileTypesAllowed {
                     model = FileTypesAllowed
                     fileTypes = .jpg
                   }
+                  fileCountMax {
+                    model = FileCountMax
+                    fileCountMax = 3
+                  }
                 }
                 screenshot2.errorChecks {
-                  FileTypesAllowed {
+                  fileTypesAllowed {
                     model = FileTypesAllowed
                     fileTypes = image/*
+                  }
+                  fileCountMax {
+                    model = FileCountMax
+                    fileCountMax = 1
                   }
                 }
                 salutation.errorChecks {

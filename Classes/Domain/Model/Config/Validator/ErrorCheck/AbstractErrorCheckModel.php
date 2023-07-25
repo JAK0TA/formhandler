@@ -205,6 +205,10 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *
  *These are all available error checks dealing with file uploads. You can restrict allowed file types, set min and max uploadable files for one upload field and more.
  *
+ *:ref:`FileCountMax`
+ *  Checks if the files uploaded from a field are less than or equal the configured value.
+ *
+ *
  *:ref:`FileTypesAllowed`
  *  Checks if the filetype of an uploaded file is allowed.
  *
@@ -212,6 +216,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *   :maxdepth: 2
  *   :hidden:
  *
+ *   FileUpload/FileCountMax
  *   FileUpload/FileTypesAllowed
  *
  *Documentation:End
