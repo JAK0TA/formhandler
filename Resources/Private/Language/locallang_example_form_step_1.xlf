@@ -10,7 +10,7 @@
       <trans-unit id="error_1.customer.screenshot1_FileCountMin" resname="error_1.customer.screenshot1_FileCountMin">
         <source>Please upload files, min file count mismatch.</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.screenshot1_FileTypesAllowed" resname="error_1.customer.screenshot1_FileTypesAllowed">
+      <trans-unit id="error_1.customer.screenshot1_FileTypes" resname="error_1.customer.screenshot1_FileTypes">
         <source>Allowed file type mismatch.</source>
       </trans-unit>
 
@@ -20,7 +20,7 @@
       <trans-unit id="error_1.customer.screenshot2_FileRequired" resname="error_1.customer.screenshot2_FileRequired">
         <source>You forgot to upload a file.</source>
       </trans-unit>
-      <trans-unit id="error_1.customer.screenshot2_FileTypesAllowed" resname="error_1.customer.screenshot2_FileTypesAllowed">
+      <trans-unit id="error_1.customer.screenshot2_FileTypes" resname="error_1.customer.screenshot2_FileTypes">
         <source>Allowed file type mismatch.</source>
       </trans-unit>
 

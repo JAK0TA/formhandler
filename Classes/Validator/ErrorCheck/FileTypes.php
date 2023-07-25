@@ -14,11 +14,11 @@ namespace Typoheads\Formhandler\Validator\ErrorCheck;
 
 use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractErrorCheckModel;
-use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\FileTypesAllowedModel;
+use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\FileTypesModel;
 
-class FileTypesAllowed extends AbstractErrorCheck {
+class FileTypes extends AbstractErrorCheck {
   public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$errorCheckConfig, string $fieldNamePathBrackets, string $fieldNamePathDots, mixed $value): bool {
-    if (!$errorCheckConfig instanceof FileTypesAllowedModel) {
+    if (!$errorCheckConfig instanceof FileTypesModel) {
       return false;
     }
 

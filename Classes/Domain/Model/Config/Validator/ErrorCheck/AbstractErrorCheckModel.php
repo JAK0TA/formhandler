@@ -214,8 +214,8 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *:ref:`FileRequired`
  *  Checks if a file has been uploaded from this field.
  *
- *:ref:`FileTypesAllowed`
- *  Checks if the filetype of an uploaded file is allowed.
+ *:ref:`FileTypes`
+ *  Checks if the file type of an uploaded file is allowed.
  *
  *.. toctree::
  *   :maxdepth: 2
@@ -224,7 +224,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *   FileUpload/FileCountMax
  *   FileUpload/FileCountMin
  *   FileUpload/FileRequired
- *   FileUpload/FileTypesAllowed
+ *   FileUpload/FileTypes
  *
  *Documentation:End
  */

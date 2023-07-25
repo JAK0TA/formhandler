@@ -14,17 +14,17 @@ namespace Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck;
 
 use Symfony\Component\Mime\MimeTypes;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use Typoheads\Formhandler\Validator\ErrorCheck\FileTypesAllowed;
+use Typoheads\Formhandler\Validator\ErrorCheck\FileTypes;
 
-/** Documentation:Start:ErrorChecks/FileUpload/FileTypesAllowed.rst.
+/** Documentation:Start:ErrorChecks/FileUpload/FileTypes.rst.
  *
- *.. _filetypesallowed:
+ *.. _filetypes:
  *
- *================
- *FileTypesAllowed
- *================
+ *=========
+ *FileTypes
+ *=========
  *
- *Checks if the filetype of an uploaded file is allowed.
+ *Checks if the file type of an uploaded file is allowed.
  *
  *..  code-block:: typoscript
  *
@@ -36,8 +36,8 @@ use Typoheads\Formhandler\Validator\ErrorCheck\FileTypesAllowed;
  *        config {
  *          fields {
  *            image.errorChecks {
- *              fileTypesAllowed {
- *                model = fileTypesAllowed
+ *              fileTypes {
+ *                model = FileTypes
  *                fileTypes = .jpg,.gif,.png,image/*
  *              }
  *            }
@@ -79,7 +79,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\FileTypesAllowed;
  *
  *Documentation:End
  */
-class FileTypesAllowedModel extends AbstractErrorCheckModel {
+class FileTypesModel extends AbstractErrorCheckModel {
   /** @var string[] */
   public readonly array $fileTypes;
 
@@ -87,7 +87,7 @@ class FileTypesAllowedModel extends AbstractErrorCheckModel {
    * @param array<string, mixed> $settings
    */
   public function __construct(array $settings) {
-    $this->name = 'FileTypesAllowed';
+    $this->name = 'FileTypes';
 
     $mimes = new MimeTypes();
 
@@ -105,6 +105,6 @@ class FileTypesAllowedModel extends AbstractErrorCheckModel {
   }
 
   public function class(): string {
-    return FileTypesAllowed::class;
+    return FileTypes::class;
   }
 }
