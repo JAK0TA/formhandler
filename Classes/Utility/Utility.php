@@ -44,6 +44,24 @@ class Utility implements SingletonInterface {
     return $classString;
   }
 
+  /**
+   * Performs search and replace settings defined in TypoScript.
+   *
+   * @param FormModel $formConfig The form config
+   * @param string    $fileName   The file name
+   *
+   * @return string The replaced file name
+   */
+  public static function doFileNameReplace(FormModel $formConfig, string $fileName): string {
+    if ($formConfig->fileUpload->nameCleanUpUsePregReplace) {
+      $fileName = preg_replace($formConfig->fileUpload->nameCleanUpSearch, $formConfig->fileUpload->nameCleanUpReplace, $fileName);
+    } else {
+      $fileName = str_replace($formConfig->fileUpload->nameCleanUpSearch, $formConfig->fileUpload->nameCleanUpReplace, $fileName);
+    }
+
+    return $fileName ?? '';
+  }
+
   public static function generateRandomId(FormModel $formConfig): string {
     return md5(
       $formConfig->formValuesPrefix.

@@ -27,6 +27,8 @@ call_user_func(static function (): void {
   $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['formhandler_cache']['backend'] ??= SimpleFileBackend::class;
 
   $GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'][] = FormhandlerExtensionConfig::EXTENSION_KEY.'[randomId]';
+  $GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'][] = FormhandlerExtensionConfig::EXTENSION_KEY.'[removeFile]';
+  $GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'][] = FormhandlerExtensionConfig::EXTENSION_KEY.'[removeFileField]';
   $GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'][] = FormhandlerExtensionConfig::EXTENSION_KEY.'[step]';
 
   // Register "formhandler:" namespace

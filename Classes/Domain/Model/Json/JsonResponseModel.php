@@ -13,18 +13,26 @@ declare(strict_types=1);
 namespace Typoheads\Formhandler\Domain\Model\Json;
 
 use Typoheads\Formhandler\Domain\Model\Config\FieldSetModel;
+use Typoheads\Formhandler\Domain\Model\Config\FormUpload;
+use Typoheads\Formhandler\Domain\Model\Config\GeneralOptions\FileUploadModel;
 use Typoheads\Formhandler\Domain\Model\Config\SelectOptionModel;
 
 class JsonResponseModel {
+  public string $extensionKey = '';
+
   /** @var array<string, string[]> */
   public array $fieldsErrors = [];
 
   /** @var FieldSetModel[] */
   public array $fieldSets = [];
 
+  public FileUploadModel $fileUpload;
+
   public string $formId = '';
 
   public string $formName = '';
+
+  public FormUpload $formUploads;
 
   public string $formUrl = '';
 

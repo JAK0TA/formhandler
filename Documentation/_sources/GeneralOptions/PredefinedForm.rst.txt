@@ -30,6 +30,9 @@ Predefine form settings and make them selectable in plugin record.
       templateMailHtml = DevExample/MailHtml
       templateMailText = DevExample/MailText
 
+      fileUpload {
+      }
+
       debuggers {
       }
 
@@ -177,7 +180,8 @@ Predefine form settings and make them selectable in plugin record.
    :stub-columns: 0
 
    * - **formValuesPrefix**
-     - Prefix of form fields. Use this if you use a prefix for your forms to avoid conflicts with other plugins. Settings this option you will be able to use only the fieldname in all markers and do not need to add prefix.
+     - | Prefix of form fields. Use this if you use a prefix for your forms to avoid conflicts with other plugins.
+       | Settings this option you will be able to use only the fieldname in all markers and do not need to add prefix.
    * -
      -
    * - *Mandatory*
@@ -212,6 +216,22 @@ Predefine form settings and make them selectable in plugin record.
    :header-rows: 0
    :stub-columns: 0
 
+   * - **fileUpload**
+     - Settings to handle file uploads.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - :ref:`FileUpload <FileUpload>`
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
    * - **debuggers**
      - A list of :ref:`Debuggers` for the predefined forms.
    * -
@@ -229,7 +249,8 @@ Predefine form settings and make them selectable in plugin record.
    :stub-columns: 0
 
    * - **steps**
-     - You can split a form into as many steps as you like and add as many :ref:`Validators` as you like to each step, but even if the form has just one step it must be defined to add :ref:`Validators`.
+     - | You can split a form into as many steps as you like and add as many :ref:`Validators` as you like to each step,
+       | but even if the form has just one step it must be defined to add :ref:`Validators`.
    * -
      -
    * - *Mandatory*

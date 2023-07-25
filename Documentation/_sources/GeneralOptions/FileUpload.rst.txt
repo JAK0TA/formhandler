@@ -1,0 +1,212 @@
+
+.. _fileupload:
+
+==========
+FileUpload
+==========
+
+Settings to handle file uploads.
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **TypoScript Path**
+     - plugin.tx_formhandler_form.settings.predefinedForms.[x].fileUpload
+
+..  code-block::
+
+    Example Code:
+
+    plugin.tx_formhandler_form.settings.predefinedForms.devExample {
+      fileUpload {
+        nameCleanUp {
+          search = /[^A-Za-z0-9_.-]/
+          separator =
+          replace =
+          usePregReplace = true
+        }
+        removal {
+          active = true
+          text = X
+        }
+        total {
+          countMax =
+          sizeMax =
+        }
+        withSameName = ignore
+      }
+    }
+
+**Properties**
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **nameCleanUp.search**
+     - Separated list of characters or regex to replace in file names of uploaded files.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - String
+   * - *Default*
+     - Space character and %20
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **nameCleanUp.separator**
+     - Custom separator for several search patterns.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - String
+   * - *Default*
+     - ,
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **nameCleanUp.replace**
+     - Separated list of characters to use as a replacement for the characters or regex configured in nameCleanUp.search.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - String
+   * - *Default*
+     - _
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **nameCleanUp.usePregReplace**
+     - If True, uses preg_replace to search and replace string in a filename in favor of a simple str_replace.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - Boolean
+   * - *Default*
+     - False
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **removal.active**
+     - | If True, enables file removal without using an AjaxHandler.
+       | This will just display an “X” or anything entered in removal.text next to a file name of an uploaded file, so the user can remove it.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - Boolean
+   * - *Default*
+     - False
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **removal.text**
+     - Enter a custom text shown as the text of the remove link. Used in combination with removal.active.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - String
+   * - *Default*
+     - X
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **total.countMax**
+     - The total amount of files allowed for upload.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - False|Integer
+   * - *Default*
+     - False
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **total.sizeMax**
+     - The size of all uploaded file allowed for upload. (in Byte)
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - False|Integer
+   * - *Default*
+     - False
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **withSameName**
+     - | Specify how to deal with files with the same name being uploaded.
+       |
+       | The possible values are:
+       | ignore => Files with the same name are ignored.
+       | replace => Files with the same name replace the existing ones.
+       | append => Files with the same name are appended to the list of uploaded files.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - String
+   * - *Default*
+     - ignore

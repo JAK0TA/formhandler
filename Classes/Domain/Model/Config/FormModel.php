@@ -20,6 +20,7 @@ use Typoheads\Formhandler\Definitions\FormhandlerExtensionConfig;
 use Typoheads\Formhandler\Definitions\Severity;
 use Typoheads\Formhandler\Domain\Model\Config\Debugger\AbstractDebuggerModel;
 use Typoheads\Formhandler\Domain\Model\Config\Finisher\AbstractFinisherModel;
+use Typoheads\Formhandler\Domain\Model\Config\GeneralOptions\FileUploadModel;
 use Typoheads\Formhandler\Domain\Model\Config\Interceptor\AbstractInterceptorModel;
 use Typoheads\Formhandler\Domain\Model\Config\Logger\AbstractLoggerModel;
 use Typoheads\Formhandler\Domain\Model\Config\PreProcessor\AbstractPreProcessorModel;
@@ -58,6 +59,9 @@ use Typoheads\Formhandler\Utility\Utility;
  *      templateForm = DevExample/Default
  *      templateMailHtml = DevExample/MailHtml
  *      templateMailText = DevExample/MailText
+ *
+ *      fileUpload {
+ *      }
  *
  *      debuggers {
  *      }
@@ -206,7 +210,8 @@ use Typoheads\Formhandler\Utility\Utility;
  *   :stub-columns: 0
  *
  *   * - **formValuesPrefix**
- *     - Prefix of form fields. Use this if you use a prefix for your forms to avoid conflicts with other plugins. Settings this option you will be able to use only the fieldname in all markers and do not need to add prefix.
+ *     - | Prefix of form fields. Use this if you use a prefix for your forms to avoid conflicts with other plugins.
+ *       | Settings this option you will be able to use only the fieldname in all markers and do not need to add prefix.
  *   * -
  *     -
  *   * - *Mandatory*
@@ -241,6 +246,22 @@ use Typoheads\Formhandler\Utility\Utility;
  *   :header-rows: 0
  *   :stub-columns: 0
  *
+ *   * - **fileUpload**
+ *     - Settings to handle file uploads.
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - False
+ *   * - *Data Type*
+ *     - :ref:`FileUpload <FileUpload>`
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
  *   * - **debuggers**
  *     - A list of :ref:`Debuggers` for the predefined forms.
  *   * -
@@ -258,7 +279,8 @@ use Typoheads\Formhandler\Utility\Utility;
  *   :stub-columns: 0
  *
  *   * - **steps**
- *     - You can split a form into as many steps as you like and add as many :ref:`Validators` as you like to each step, but even if the form has just one step it must be defined to add :ref:`Validators`.
+ *     - | You can split a form into as many steps as you like and add as many :ref:`Validators` as you like to each step,
+ *       | but even if the form has just one step it must be defined to add :ref:`Validators`.
  *   * -
  *     -
  *   * - *Mandatory*
@@ -298,6 +320,8 @@ class FormModel {
   /** @var FieldSetModel[] */
   public array $fieldSets = [];
 
+  public FileUploadModel $fileUpload;
+
   /** @var AbstractFinisherModel[] */
   public array $finishers = [];
 
@@ -306,6 +330,8 @@ class FormModel {
   public string $formId = '';
 
   public string $formName = '';
+
+  public FormUpload $formUploads;
 
   public string $formUrl = '';
 
@@ -368,6 +394,7 @@ class FormModel {
   public function __construct(array $settings) {
     // Get flexform settings
     $this->admin = GeneralUtility::makeInstance(MailModel::class, $settings['admin'] ?? []);
+    $this->formUploads = new FormUpload();
     $this->predefinedForm = strval($settings['predefinedForm'] ?? '');
     $this->redirectPage = intval($settings['redirectPage'] ?? 0);
     $this->requiredFields = strval($settings['requiredFields'] ?? '');
@@ -392,6 +419,9 @@ class FormModel {
       $templateForm = strval($settings['predefinedForms'][$this->predefinedForm]['templateForm'] ?? '');
 
       $utility = GeneralUtility::makeInstance(Utility::class);
+
+      // File upload settings
+      $this->fileUpload = GeneralUtility::makeInstance(FileUploadModel::class, $settings['predefinedForms'][$this->predefinedForm]['fileUpload'] ?? []);
 
       // Get form debugger
       foreach ($settings['predefinedForms'][$this->predefinedForm]['debuggers'] ?? [] as $debugger) {

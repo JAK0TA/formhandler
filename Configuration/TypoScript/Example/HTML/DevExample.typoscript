@@ -7,6 +7,24 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
   templateMailHtml = DevExample/MailHtml
   templateMailText = DevExample/MailText
 
+  fileUpload {
+    nameCleanUp {
+      search = /[^A-Za-z0-9_.-]/
+      separator = 
+      replace = 
+      usePregReplace = true
+    }
+    removal {
+      active = true
+      text = X
+    }
+    total {
+      countMax = 
+      sizeMax = 
+    }
+    withSameName = ignore
+  }
+
   preProcessors {
     setSalutations {
       model = SetSelectOptionsPreProcessor

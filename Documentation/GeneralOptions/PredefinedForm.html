@@ -21,7 +21,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Step" href="Step.html" />
+    <link rel="next" title="FileUpload" href="FileUpload.html" />
     <link rel="prev" title="Settings" href="Settings.html" /> 
 </head>
 
@@ -50,6 +50,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="Index.html">General Options</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Settings.html">Settings</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Predefined Form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FileUpload.html">FileUpload</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Step.html">Step</a></li>
 </ul>
 </li>
@@ -112,6 +113,9 @@
   templateForm <span class="o">=</span> <span class="s">DevExample/Default</span>
   templateMailHtml <span class="o">=</span> <span class="s">DevExample/MailHtml</span>
   templateMailText <span class="o">=</span> <span class="s">DevExample/MailText</span>
+
+  fileUpload <span class="ss">{</span>
+  <span class="ss">}</span>
 
   debuggers <span class="ss">{</span>
   <span class="ss">}</span>
@@ -267,7 +271,11 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>formValuesPrefix</strong></p></td>
-<td><p>Prefix of form fields. Use this if you use a prefix for your forms to avoid conflicts with other plugins. Settings this option you will be able to use only the fieldname in all markers and do not need to add prefix.</p></td>
+<td><div class="line-block">
+<div class="line">Prefix of form fields. Use this if you use a prefix for your forms to avoid conflicts with other plugins.</div>
+<div class="line">Settings this option you will be able to use only the fieldname in all markers and do not need to add prefix.</div>
+</div>
+</td>
 </tr>
 <tr class="row-even"><td></td>
 <td></td>
@@ -312,6 +320,26 @@
 <col style="width: 80%" />
 </colgroup>
 <tbody>
+<tr class="row-odd"><td><p><strong>fileUpload</strong></p></td>
+<td><p>Settings to handle file uploads.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p><a class="reference internal" href="FileUpload.html#fileupload"><span class="std std-ref">FileUpload</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
 <tr class="row-odd"><td><p><strong>debuggers</strong></p></td>
 <td><p>A list of <a class="reference internal" href="../Debuggers/Index.html#debuggers"><span class="std std-ref">Debuggers</span></a> for the predefined forms.</p></td>
 </tr>
@@ -333,7 +361,11 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>steps</strong></p></td>
-<td><p>You can split a form into as many steps as you like and add as many <a class="reference internal" href="../Validators/Index.html#validators"><span class="std std-ref">Validators</span></a> as you like to each step, but even if the form has just one step it must be defined to add <a class="reference internal" href="../Validators/Index.html#validators"><span class="std std-ref">Validators</span></a>.</p></td>
+<td><div class="line-block">
+<div class="line">You can split a form into as many steps as you like and add as many <a class="reference internal" href="../Validators/Index.html#validators"><span class="std std-ref">Validators</span></a> as you like to each step,</div>
+<div class="line">but even if the form has just one step it must be defined to add <a class="reference internal" href="../Validators/Index.html#validators"><span class="std std-ref">Validators</span></a>.</div>
+</div>
+</td>
 </tr>
 <tr class="row-even"><td></td>
 <td></td>
@@ -376,7 +408,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="Settings.html" class="btn btn-neutral float-left" title="Settings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Step.html" class="btn btn-neutral float-right" title="Step" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="FileUpload.html" class="btn btn-neutral float-right" title="FileUpload" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -19,8 +19,11 @@ use TYPO3\CMS\Core\Http\Response;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Typoheads\Formhandler\Definitions\FormhandlerExtensionConfig;
+use Typoheads\Formhandler\Definitions\Severity;
 use Typoheads\Formhandler\Domain\Model\Config\FieldSetModel;
 use Typoheads\Formhandler\Domain\Model\Config\FormModel;
+use Typoheads\Formhandler\Domain\Model\Config\FormUpload;
+use Typoheads\Formhandler\Domain\Model\Config\FormUploadFile;
 use Typoheads\Formhandler\Domain\Model\Config\Validator\Field\FieldModel;
 use Typoheads\Formhandler\Domain\Model\Json\JsonResponseModel;
 use Typoheads\Formhandler\Session\Typo3Session;
@@ -135,6 +138,7 @@ use Typoheads\Formhandler\Utility\Utility;
  *
  *   Settings
  *   PredefinedForm
+ *   FileUpload
  *   Step
  *
  *Documentation:End
@@ -341,6 +345,12 @@ class FormController extends ActionController {
     $queryParams = (array) $this->request->getQueryParams();
 
     if (is_array($queryParams[FormhandlerExtensionConfig::EXTENSION_KEY] ?? false)) {
+      if (isset($queryParams[FormhandlerExtensionConfig::EXTENSION_KEY]['removeFile'])) {
+        $this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['removeFile'] = strval($queryParams[FormhandlerExtensionConfig::EXTENSION_KEY]['removeFile']);
+      }
+      if (isset($queryParams[FormhandlerExtensionConfig::EXTENSION_KEY]['removeFileField'])) {
+        $this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['removeFileField'] = strval($queryParams[FormhandlerExtensionConfig::EXTENSION_KEY]['removeFileField']);
+      }
       if (isset($queryParams[FormhandlerExtensionConfig::EXTENSION_KEY]['randomId'])) {
         $this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['randomId'] = strval($queryParams[FormhandlerExtensionConfig::EXTENSION_KEY]['randomId']);
       }
@@ -356,6 +366,10 @@ class FormController extends ActionController {
     // Check if form session exists or start new if first form access
     $this->formSession();
 
+    if (null !== ($response = $this->processFileRemoval())) {
+      return $response;
+    }
+
     $this->mergeParsedBodyWithSession();
 
     $this->initInterceptors();
@@ -365,6 +379,8 @@ class FormController extends ActionController {
     $this->initJsonResponse();
 
     if ($this->formSubmitted()) {
+      $this->processUploadedFiles();
+
       if ($this->validators()) {
         // Check for last step before changing step count
         $isLast = $this->formStepIsLast();
@@ -414,6 +430,8 @@ class FormController extends ActionController {
       $this->jsonResponse->steps = $this->formConfig->steps;
       $this->jsonResponse->fieldsErrors = $this->formConfig->fieldsErrors;
       $this->jsonResponse->fieldSets = $this->formConfig->fieldSets;
+      $this->jsonResponse->fileUpload = $this->formConfig->fileUpload;
+      $this->jsonResponse->formUploads = $this->formConfig->formUploads;
       $this->jsonResponse->formValues = $this->formConfig->formValues;
 
       $this->formConfig->processDebugLog();
@@ -433,11 +451,14 @@ class FormController extends ActionController {
     $this->view->assignMultiple(
       [
         'debugOutput' => $debugOutput,
+        'extensionKey' => FormhandlerExtensionConfig::EXTENSION_KEY,
         'fieldsRequired' => $this->fieldsRequired,
         'fieldsErrors' => $this->formConfig->fieldsErrors,
         'fieldSets' => $this->formConfig->fieldSets,
+        'fileUpload' => $this->formConfig->fileUpload,
         'formId' => $this->formConfig->formId,
         'formName' => $this->formConfig->formName,
+        'formUploads' => $this->formConfig->formUploads,
         'formUrl' => $this->formConfig->formUrl,
         'formValuesPrefix' => $this->formConfig->formValuesPrefix,
         'langFileDefault' => $this->formConfig->langFileDefault,
@@ -507,6 +528,11 @@ class FormController extends ActionController {
       );
 
       $this->formConfig->formValues = (array) ($this->formConfig->session->get('formValues') ?: []);
+
+      $formUploads = $this->formConfig->session->get('formUploads');
+      if ($formUploads instanceof FormUpload) {
+        $this->formConfig->formUploads = $formUploads;
+      }
     } else {
       // Form session is invalid or first form access reset form
       if (!$this->formConfig->firstAccess) {
@@ -532,6 +558,7 @@ class FormController extends ActionController {
         [
           'selectsOptions' => $this->formConfig->selectsOptions,
           'formValues' => $this->formConfig->formValues,
+          'formUploads' => $this->formConfig->formUploads,
           'step' => $this->formConfig->step,
         ]
       );
@@ -573,6 +600,7 @@ class FormController extends ActionController {
   private function initJsonResponse(): void {
     if ('json' == $this->formConfig->responseType) {
       $this->jsonResponse = new JsonResponseModel();
+      $this->jsonResponse->extensionKey = FormhandlerExtensionConfig::EXTENSION_KEY;
       $this->jsonResponse->formId = $this->formConfig->formId;
       $this->jsonResponse->formName = $this->formConfig->formName;
       $this->jsonResponse->formUrl = $this->formConfig->formUrl;
@@ -633,6 +661,192 @@ class FormController extends ActionController {
     $this->formConfig->fieldSets[] = new FieldSetModel('step', (string) $this->formConfig->step);
   }
 
+  /**
+   * @param array<int|string, mixed> $uploadsName
+   * @param array<int|string, mixed> $uploadsTempName
+   * @param array<int|string, mixed> $uploadsType
+   * @param array<int|string, mixed> $uploadsSize
+   * @param array<string, mixed>     $flatFilesArray
+   */
+  private function prepareUploadedFiles(
+    array $uploadsName,
+    array $uploadsTempName,
+    array $uploadsType,
+    array $uploadsSize,
+    string $fieldNamePath = '',
+    array &$flatFilesArray = [],
+  ): void {
+    foreach ($uploadsName as $key => $value) {
+      if (is_array($value)) {
+        $this->prepareUploadedFiles(
+          $uploadsName[$key], // @phpstan-ignore-line
+          $uploadsTempName[$key], // @phpstan-ignore-line
+          $uploadsType[$key], // @phpstan-ignore-line
+          $uploadsSize[$key], // @phpstan-ignore-line
+          empty($fieldNamePath) ? "[{$key}]" : $fieldNamePath."[{$key}]",
+          $flatFilesArray,
+        );
+      } elseif (!empty($value)) {
+        $flatFilesArray[$fieldNamePath][$key]['name'] = $value;
+        $flatFilesArray[$fieldNamePath][$key]['tmp_name'] = $uploadsTempName[$key];
+        $flatFilesArray[$fieldNamePath][$key]['type'] = $uploadsType[$key];
+        $flatFilesArray[$fieldNamePath][$key]['size'] = $uploadsSize[$key];
+      }
+    }
+  }
+
+  /**
+   * Removes files from the internal file storage.
+   */
+  private function processFileRemoval(): ?RedirectResponse {
+    if (is_array($this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY])) {
+      $removeFile = strval($this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['removeFile'] ?? '');
+      $removeFileField = strval($this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY]['removeFileField'] ?? '');
+
+      if (empty($removeFile) || empty($removeFileField)) {
+        return null;
+      }
+
+      foreach ($this->formConfig->formUploads->files[$removeFileField] as $key => $file) {
+        if ($file->name == $removeFile) {
+          $this->formConfig->formUploads->fileTotalSize -= $file->size;
+          --$this->formConfig->formUploads->fileTotalCount;
+
+          if (file_exists($file->temp) && is_writable($file->temp)) {
+            unlink($file->temp);
+          }
+
+          array_splice($this->formConfig->formUploads->files[$removeFileField], $key, 1);
+
+          // Save formUploads to session
+          $this->formConfig->session->set('formUploads', $this->formConfig->formUploads);
+
+          break;
+        }
+      }
+
+      return new RedirectResponse(
+        $this->uriBuilder->build().'#'.$this->formConfig->formId
+      );
+    }
+
+    return null;
+  }
+
+  /**
+   * Processes uploaded files, moves them to a temporary upload folder, renames them if they already exist and
+   * stores the information in user session.
+   */
+  private function processUploadedFiles(): void {
+    // TODO: Create task to delete old temp files
+    // TODO: Create task to delete deleted mails in BE and uploaded files
+
+    // Check fo uploaded files
+    if (empty($_FILES) || !isset($_FILES[$this->formConfig->formValuesPrefix]) || !is_array($_FILES[$this->formConfig->formValuesPrefix]) || !isset($_FILES[$this->formConfig->formValuesPrefix]['name'])) {
+      return;
+    }
+
+    // Flatten the $_FILES array
+    $flatFilesArray = [];
+    $this->prepareUploadedFiles(
+      $_FILES[$this->formConfig->formValuesPrefix]['name'],
+      $_FILES[$this->formConfig->formValuesPrefix]['tmp_name'],
+      $_FILES[$this->formConfig->formValuesPrefix]['type'],
+      $_FILES[$this->formConfig->formValuesPrefix]['size'],
+      '',
+      $flatFilesArray,
+    );
+
+    // Create temp folder if not exits
+    $tempFolder = getcwd().'/uploads/'.FormhandlerExtensionConfig::EXTENSION_PLUGIN_SIGNATURE.'/temp/'.$this->formConfig->randomId;
+
+    if (!file_exists($tempFolder)) {
+      GeneralUtility::mkdir_deep($tempFolder);
+    }
+
+    if (!file_exists($tempFolder)) {
+      // Log error if upload folder could not be created
+      $this->formConfig->debugMessage(
+        key: 'folder_doesnt_exist',
+        data: [$tempFolder],
+        severity: Severity::Error
+      );
+
+      // TODO: Hold with error
+      return;
+    }
+
+    // Loop all upload fields
+    foreach ($flatFilesArray as $fieldNamePath => $fieldFiles) {
+      $fieldNamePath = strval($fieldNamePath);
+
+      // Loop all upload files fo a field
+      foreach ($fieldFiles as $fieldFile) {
+        // Rename file name if needed
+        $fieldFile['name'] = Utility::doFileNameReplace($this->formConfig, $fieldFile['name']);
+
+        // Check if new uploaded file already exits for this form
+        $exists = file_exists($tempFolder.'/'.$fieldFile['name']);
+
+        if (!$exists || 'replace' === $this->formConfig->fileUpload->withSameName || 'append' === $this->formConfig->fileUpload->withSameName) {
+          // Extract filename if . exists
+          $filename = substr($fieldFile['name'], 0, strrpos($fieldFile['name'], '.') ?: strlen($fieldFile['name']));
+
+          if (strlen($filename) > 0) {
+            $ext = substr($fieldFile['name'], strrpos($fieldFile['name'], '.') ?: strlen($fieldFile['name']));
+            $suffix = 1;
+
+            // build file name
+            $uploadedFileName = $filename.$ext;
+
+            if ($exists && 'append' == $this->formConfig->fileUpload->withSameName) {
+              // rename if exists
+              while (file_exists($tempFolder.'/'.$uploadedFileName)) {
+                $uploadedFileName = $filename.'_'.$suffix.$ext;
+                ++$suffix;
+              }
+            }
+
+            // Mode the file and fix permissions
+            move_uploaded_file($fieldFile['tmp_name'], $tempFolder.'/'.$uploadedFileName);
+            GeneralUtility::fixPermissions($tempFolder.'/'.$uploadedFileName);
+
+            if ($exists && 'replace' == $this->formConfig->fileUpload->withSameName) {
+              // Replace processed upload with new uploaded file
+              foreach ($this->formConfig->formUploads->files[$fieldNamePath] as &$file) {
+                if ($file->name == $uploadedFileName) {
+                  $this->formConfig->formUploads->fileTotalSize -= $file->size;
+
+                  $file->name = $uploadedFileName;
+                  $file->size = $fieldFile['size'];
+                  $file->temp = $tempFolder.'/'.$uploadedFileName;
+                  $file->type = $fieldFile['type'];
+                  $this->formConfig->formUploads->fileTotalSize += $file->size;
+
+                  break;
+                }
+              }
+            } else {
+              // Add new upload to processed uploads
+              $formUploadFile = new FormUploadFile();
+              $formUploadFile->name = $uploadedFileName;
+              $formUploadFile->size = $fieldFile['size'];
+              $formUploadFile->temp = $tempFolder.'/'.$uploadedFileName;
+              $formUploadFile->type = $fieldFile['type'];
+
+              $this->formConfig->formUploads->files[$fieldNamePath][] = $formUploadFile;
+              ++$this->formConfig->formUploads->fileTotalCount;
+              $this->formConfig->formUploads->fileTotalSize += $formUploadFile->size;
+            }
+          }
+        }
+      }
+    }
+
+    // Save formUploads to session
+    $this->formConfig->session->set('formUploads', $this->formConfig->formUploads);
+  }
+
   private function saveInterceptors(): void {
     foreach ($this->formConfig->saveInterceptors as $saveInterceptor) {
       GeneralUtility::makeInstance($saveInterceptor->class())->process($this->formConfig, $saveInterceptor);
@@ -648,6 +862,8 @@ class FormController extends ActionController {
         $isValid = false;
       }
     }
+
+    // TODO: Add Check for new total file count and size if set
 
     $this->formConfig->session->set('fieldsErrors', $this->formConfig->fieldsErrors);
 

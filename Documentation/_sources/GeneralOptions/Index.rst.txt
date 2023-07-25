@@ -20,4 +20,5 @@ General Options
 
    Settings
    PredefinedForm
+   FileUpload
    Step

@@ -14,6 +14,7 @@ namespace Typoheads\Formhandler\Session;
 
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Typoheads\Formhandler\Definitions\FormhandlerExtensionConfig;
 use Typoheads\Formhandler\Utility\Utility;
 
 class Typo3Session extends AbstractSession {
@@ -94,7 +95,7 @@ class Typo3Session extends AbstractSession {
       return $this;
     }
 
-    $this->randomIdIdentifier = 'tx_formhandler_'.$this->formConfig->formId.'_randomId';
+    $this->randomIdIdentifier = FormhandlerExtensionConfig::EXTENSION_PLUGIN_SIGNATURE.'_'.$this->formConfig->formId.'_randomId';
 
     if (empty($this->formConfig->randomId)) {
       $randomId = $this->cache->get($this->randomIdIdentifier);
@@ -114,7 +115,7 @@ class Typo3Session extends AbstractSession {
       printfArgs: [$this->formConfig->randomId]
     );
 
-    $this->cacheIdentifier = 'tx_formhandler_'.$this->formConfig->randomId;
+    $this->cacheIdentifier = FormhandlerExtensionConfig::EXTENSION_PLUGIN_SIGNATURE.'_'.$this->formConfig->randomId;
     $data = $this->cache->get($this->cacheIdentifier);
 
     if (is_array($data)) {

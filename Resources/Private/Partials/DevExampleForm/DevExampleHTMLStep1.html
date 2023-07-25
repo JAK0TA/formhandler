@@ -2,6 +2,12 @@
   <h1>Step 1</h1>
 
   <div class="">
+    <f:render partial="FormField/InputFile" arguments="{fieldNameFromPath: '1.customer.screenshot1', multiple: 'true', langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
+  </div>
+  <div class="">
+    <f:render partial="FormField/InputFile" arguments="{fieldNameFromPath: '1.customer.screenshot2', langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
+  </div>
+  <div class="">
     <f:render partial="FormField/Select" arguments="{selectOptions: 'salutation', fieldNameFromPath: '1.customer.salutation', langFile: 'locallang_example_form_step_1.xlf', formConfig: _all}" />
   </div>
   <div class="">

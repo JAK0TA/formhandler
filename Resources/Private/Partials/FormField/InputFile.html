@@ -1,0 +1,34 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+  <f:variable name="fieldName" value="{fieldNameFromPath -> formhandler:fieldNameFromPath()}" />
+  <f:if condition="{multiple}">
+    <f:then>
+      <f:variable name="multiple" value="multiple" />
+    </f:then>
+    <f:else>
+      <f:variable name="multiple" value="" />
+    </f:else>
+  </f:if>
+  <f:if condition="{langFile} == ''">
+    <f:variable name="langFile" value="{formConfig.langFileDefault}" />
+  </f:if>
+  <div class="type-file form-group">
+    <f:for each="{formConfig.formUploads.files.{fieldName}}" as="formUpload">
+      <div>{formUpload.name} 
+        <f:if condition="{formConfig.fileUpload.removalActive}">
+          <a href="?{formConfig.extensionKey}[removeFileField]={fieldName}&{formConfig.extensionKey}[removeFile]={formUpload.name}">{formConfig.fileUpload.removalText}</a></div>
+        </f:if>
+    </f:for>
+    <input class="form-input" title="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldNameFromPath}_title')}" type="file" {multiple} accept="{accept}" id="{formConfig.formValuesPrefix}_{fieldNameFromPath}" name="{formConfig.formValuesPrefix}{fieldName}[]" />
+    <label for="{formConfig.formValuesPrefix}_{fieldNameFromPath}"
+      ><f:translate key="LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldNameFromPath}" />
+      <f:if condition="{formConfig.fieldsRequired.{fieldName}} == true">
+        <f:render partial="Required" />
+      </f:if>
+    </label>
+    <div class="error">
+      <f:for each="{formConfig.fieldsErrors.{fieldName}}" as="fieldError">
+        <f:translate key="LLL:EXT:formhandler/Resources/Private/Language/{langFile}:error_{fieldNameFromPath}_{fieldError}" />
+      </f:for>
+    </div>
+  </div>
+</html>

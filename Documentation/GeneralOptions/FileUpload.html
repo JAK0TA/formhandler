@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PrintToScreenDebugger &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
+  <title>FileUpload &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -21,8 +21,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="VarDumpDebugger" href="VarDumpDebugger.html" />
-    <link rel="prev" title="Debuggers" href="Index.html" /> 
+    <link rel="next" title="Step" href="Step.html" />
+    <link rel="prev" title="Predefined Form" href="PredefinedForm.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,12 +47,14 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Installation/Index.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Migration/Index.html">Migration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../GeneralOptions/Index.html">General Options</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="Index.html">Debuggers</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">PrintToScreenDebugger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="VarDumpDebugger.html">VarDumpDebugger</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Index.html">General Options</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PredefinedForm.html">Predefined Form</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">FileUpload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Step.html">Step</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../Debuggers/Index.html">Debuggers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ErrorChecks/Index.html">Error Checks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Finishers/Index.html">Finishers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Interceptors/Index.html">Interceptors</a></li>
@@ -76,10 +78,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../Index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="Index.html">Debuggers</a></li>
-      <li class="breadcrumb-item active">PrintToScreenDebugger</li>
+          <li class="breadcrumb-item"><a href="Index.html">General Options</a></li>
+      <li class="breadcrumb-item active">FileUpload</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/Debuggers/PrintToScreenDebugger.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/GeneralOptions/FileUpload.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -87,9 +89,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="printtoscreendebugger">
-<span id="id1"></span><h1>PrintToScreenDebugger<a class="headerlink" href="#printtoscreendebugger" title="Permalink to this heading">¶</a></h1>
-<p>Will print out the debug messages to screen.</p>
+  <section id="fileupload">
+<span id="id1"></span><h1>FileUpload<a class="headerlink" href="#fileupload" title="Permalink to this heading">¶</a></h1>
+<p>Settings to handle file uploads.</p>
 <table class="docutils align-left" style="width: 100%">
 <colgroup>
 <col style="width: 20%" />
@@ -97,28 +99,31 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>TypoScript Path</strong></p></td>
-<td><p>plugin.tx_formhandler_form.settings.predefinedForms.[x].debuggers.PrintToScreenDebugger</p></td>
+<td><p>plugin.tx_formhandler_form.settings.predefinedForms.[x].fileUpload</p></td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-typoscript notranslate"><div class="highlight"><pre><span></span>Example Code<span class="o">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Example</span> <span class="n">Code</span><span class="p">:</span>
 
-<span class="nb">plugin</span><span class="p">.</span>tx_formhandler_form<span class="p">.</span>settings<span class="p">.</span>predefinedForms<span class="p">.</span>devExample <span class="ss">{</span>
-  debuggers <span class="ss">{</span>
-    PrintToScreenDebugger <span class="ss">{</span>
-      model <span class="o">=</span> PrintToScreenDebugger
-      config <span class="ss">{</span>
-        active <span class="o">=</span> true
-        maxDepth <span class="o">=</span> <span class="mi">10</span>
-        severityWrap <span class="ss">{</span>
-          <span class="mi">1</span> <span class="o">=</span> <span class="s">&lt;span</span> <span class="s">class=&quot;level-info&quot;&gt;</span><span class="o">|</span><span class="s">&lt;/span&gt;</span>
-          <span class="mi">2</span> <span class="o">=</span> <span class="s">&lt;span</span> <span class="s">class=&quot;level-warning&quot;&gt;</span><span class="o">|</span><span class="s">&lt;/span&gt;</span>
-          <span class="mi">3</span> <span class="o">=</span> <span class="s">&lt;span</span> <span class="s">class=&quot;level-error&quot;&gt;</span><span class="o">|</span><span class="s">&lt;/span&gt;</span>
-        <span class="ss">}</span>
-      <span class="ss">}</span>
-    <span class="ss">}</span>
-  <span class="ss">}</span>
-<span class="ss">}</span>
+<span class="n">plugin</span><span class="o">.</span><span class="n">tx_formhandler_form</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">predefinedForms</span><span class="o">.</span><span class="n">devExample</span> <span class="p">{</span>
+  <span class="n">fileUpload</span> <span class="p">{</span>
+    <span class="n">nameCleanUp</span> <span class="p">{</span>
+      <span class="n">search</span> <span class="o">=</span> <span class="o">/</span><span class="p">[</span><span class="o">^</span><span class="n">A</span><span class="o">-</span><span class="n">Za</span><span class="o">-</span><span class="n">z0</span><span class="o">-</span><span class="mi">9</span><span class="n">_</span><span class="o">.-</span><span class="p">]</span><span class="o">/</span>
+      <span class="n">separator</span> <span class="o">=</span>
+      <span class="n">replace</span> <span class="o">=</span>
+      <span class="n">usePregReplace</span> <span class="o">=</span> <span class="n">true</span>
+    <span class="p">}</span>
+    <span class="n">removal</span> <span class="p">{</span>
+      <span class="n">active</span> <span class="o">=</span> <span class="n">true</span>
+      <span class="n">text</span> <span class="o">=</span> <span class="n">X</span>
+    <span class="p">}</span>
+    <span class="n">total</span> <span class="p">{</span>
+      <span class="n">countMax</span> <span class="o">=</span>
+      <span class="n">sizeMax</span> <span class="o">=</span>
+    <span class="p">}</span>
+    <span class="n">withSameName</span> <span class="o">=</span> <span class="n">ignore</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p><strong>Properties</strong></p>
@@ -128,8 +133,77 @@
 <col style="width: 80%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>active</strong></p></td>
-<td><p>Status of the debugger</p></td>
+<tr class="row-odd"><td><p><strong>nameCleanUp.search</strong></p></td>
+<td><p>Separated list of characters or regex to replace in file names of uploaded files.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>String</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Default</em></p></td>
+<td><p>Space character and %20</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>nameCleanUp.separator</strong></p></td>
+<td><p>Custom separator for several search patterns.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>String</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Default</em></p></td>
+<td><p>,</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>nameCleanUp.replace</strong></p></td>
+<td><p>Separated list of characters to use as a replacement for the characters or regex configured in nameCleanUp.search.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>String</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Default</em></p></td>
+<td><p>_</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>nameCleanUp.usePregReplace</strong></p></td>
+<td><p>If True, uses preg_replace to search and replace string in a filename in favor of a simple str_replace.</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td></td>
@@ -151,124 +225,124 @@
 <col style="width: 80%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>maxDepth</strong></p></td>
-<td><p>Sets the max recursion depth of the dump. De- or increase the number according to your needs and memory limit.</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
-<td><p>False</p></td>
-</tr>
-<tr class="row-even"><td><p><em>Data Type</em></p></td>
-<td><p>Integer</p></td>
-</tr>
-<tr class="row-odd"><td><p><em>Default</em></p></td>
-<td><p>8</p></td>
-</tr>
-</tbody>
-</table>
-<table class="docutils align-left" style="width: 100%">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 80%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>messageWrap</strong></p></td>
-<td><p>Wrap for a single debug message</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
-<td><p>False</p></td>
-</tr>
-<tr class="row-even"><td><p><em>Data Type</em></p></td>
-<td><p>String</p></td>
-</tr>
-<tr class="row-odd"><td><p><em>Default</em></p></td>
-<td><p>&lt;div style=”font-weight:bold;”&gt;|&lt;/div&gt;</p></td>
-</tr>
-</tbody>
-</table>
-<table class="docutils align-left" style="width: 100%">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 80%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>sectionHeaderWrap</strong></p></td>
-<td><p>Wrap for a section header</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
-<td><p>False</p></td>
-</tr>
-<tr class="row-even"><td><p><em>Data Type</em></p></td>
-<td><p>String</p></td>
-</tr>
-<tr class="row-odd"><td><p><em>Default</em></p></td>
-<td><p>&lt;h2 style=”background:#333; color:#cdcdcd; height:23px; padding:10px 7px 7px 7px; margin:0;”&gt;|&lt;/h2&gt;</p></td>
-</tr>
-</tbody>
-</table>
-<table class="docutils align-left" style="width: 100%">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 80%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>sectionWrap</strong></p></td>
-<td><p>Wrap for a section (e.g. all log messages of a component are wrapped in a section)</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
-<td><p>False</p></td>
-</tr>
-<tr class="row-even"><td><p><em>Data Type</em></p></td>
-<td><p>String</p></td>
-</tr>
-<tr class="row-odd"><td><p><em>Default</em></p></td>
-<td><p>&lt;div style=”border:1px solid #ccc; padding:7px; background:#dedede;”&gt;|&lt;/div&gt;</p></td>
-</tr>
-</tbody>
-</table>
-<table class="docutils align-left" style="width: 100%">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 80%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>blacklistedPropertyNames</strong></p></td>
-<td><p>Use this to configure different appearance of different log severity levels.</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
-<td><p>False</p></td>
-</tr>
-<tr class="row-even"><td><p><em>Data Type</em></p></td>
-<td><p>Array&lt;Integer, String&gt;</p></td>
-</tr>
-<tr class="row-odd"><td><p><em>Default</em></p></td>
+<tr class="row-odd"><td><p><strong>removal.active</strong></p></td>
 <td><div class="line-block">
-<div class="line">severityWrap {</div>
-<div class="line-block">
-<div class="line">1 = &lt;span class=”level-info”&gt;|&lt;/span&gt;</div>
-<div class="line">2 = &lt;span class=”level-warning”&gt;|&lt;/span&gt;</div>
-<div class="line">3 = &lt;span class=”level-error”&gt;|&lt;/span&gt;</div>
-</div>
-<div class="line">}</div>
+<div class="line">If True, enables file removal without using an AjaxHandler.</div>
+<div class="line">This will just display an “X” or anything entered in removal.text next to a file name of an uploaded file, so the user can remove it.</div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><em>Note</em></p></td>
-<td><p>The key Integer in Array&lt;Integer, String&gt; is the severity level (1-3).</p></td>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>Boolean</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Default</em></p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>removal.text</strong></p></td>
+<td><p>Enter a custom text shown as the text of the remove link. Used in combination with removal.active.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>String</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Default</em></p></td>
+<td><p>X</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>total.countMax</strong></p></td>
+<td><p>The total amount of files allowed for upload.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>False|Integer</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Default</em></p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>total.sizeMax</strong></p></td>
+<td><p>The size of all uploaded file allowed for upload. (in Byte)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>False|Integer</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Default</em></p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-left" style="width: 100%">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>withSameName</strong></p></td>
+<td><div class="line-block">
+<div class="line">Specify how to deal with files with the same name being uploaded.</div>
+<div class="line"><br /></div>
+<div class="line">The possible values are:</div>
+<div class="line">ignore =&gt; Files with the same name are ignored.</div>
+<div class="line">replace =&gt; Files with the same name replace the existing ones.</div>
+<div class="line">append =&gt; Files with the same name are appended to the list of uploaded files.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Data Type</em></p></td>
+<td><p>String</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Default</em></p></td>
+<td><p>ignore</p></td>
 </tr>
 </tbody>
 </table>
@@ -278,8 +352,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Index.html" class="btn btn-neutral float-left" title="Debuggers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="VarDumpDebugger.html" class="btn btn-neutral float-right" title="VarDumpDebugger" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="PredefinedForm.html" class="btn btn-neutral float-left" title="Predefined Form" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Step.html" class="btn btn-neutral float-right" title="Step" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -166,9 +166,9 @@ use Typoheads\Formhandler\Definitions\Severity;
  *     - Array<Integer, String>
  *   * - *Default*
  *     - | severityWrap {
- *       | 1 = <span class="level-info">|</span>
- *       | 2 = <span class="level-warning">|</span>
- *       | 3 = <span class="level-error">|</span>
+ *       |  1 = <span class="level-info">|</span>
+ *       |  2 = <span class="level-warning">|</span>
+ *       |  3 = <span class="level-error">|</span>
  *       | }
  *   * - *Note*
  *     - The key Integer in Array<Integer, String> is the severity level (1-3).
