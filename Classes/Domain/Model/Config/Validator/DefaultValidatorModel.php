@@ -26,8 +26,145 @@ use Typoheads\Formhandler\Validator\DefaultValidator;
  *DefaultValidator
  *================
  *
+ *This is the default :ref:`Validator <Validators>`, it supports all available :ref:`error checks <Error-Checks>`.
  *
+ *..  code-block:: typoscript
  *
+ *    Example Code:
+ *
+ *    validators {
+ *      DefaultValidator {
+ *        model = DefaultValidator
+ *        config {
+ *          messageLimit = 1
+ *          messageLimits {
+ *            1.email = 2
+ *          }
+ *          restrictErrorChecks =
+ *          disableErrorCheckFields =
+ *          fields {
+ *            firstName.errorChecks {
+ *              lengthMax {
+ *                model = LengthMax
+ *                lengthMax = 20
+ *              }
+ *              lengthMin {
+ *                model = LengthMin
+ *                lengthMin = 10
+ *              }
+ *            }
+ *            email.errorChecks {
+ *              required {
+ *                model = Required
+ *              }
+ *              email {
+ *                model = Email
+ *              }
+ *            }
+ *          }
+ *        }
+ *      }
+ *    }
+ *
+ ***Properties**
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **messageLimit**
+ *     - Sets the default limits of error messages for all and fields.
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - False
+ *   * - *Data Type*
+ *     - Integer
+ *   * - *Default*
+ *     - 1
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **messageLimits**
+ *     - List containing the field name path and limit of error messages for specific fields.
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - False
+ *   * - *Data Type*
+ *     - Array<String, Integer>
+ *   * - *Default*
+ *     - Empty Array
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **restrictErrorChecks**
+ *     - | Comma separated list containing the :ref:`error checks <Error-Checks>` to perform.
+ *       | If this is set, only these :ref:`error checks <Error-Checks>` will be executed, all other configured :ref:`error checks <Error-Checks>` will be ignored.
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - False
+ *   * - *Data Type*
+ *     - String
+ *   * - *Default*
+ *     - Empty String
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **disableErrorCheckFields**
+ *     - | Comma separated list containing the field name path to disable :ref:`error checks <Error-Checks>` for.
+ *       | If this is set, all configured :ref:`error checks <Error-Checks>` will be ignored, these fields.
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - False
+ *   * - *Data Type*
+ *     - String
+ *   * - *Default*
+ *     - Empty String
+ *
+ *.. list-table::
+ *   :align: left
+ *   :width: 100%
+ *   :widths: 20 80
+ *   :header-rows: 0
+ *   :stub-columns: 0
+ *
+ *   * - **fields**
+ *     - List containing the :ref:`fields <Field>` and :ref:`error checks <Error-Checks>`.
+ *   * -
+ *     -
+ *   * - *Mandatory*
+ *     - False
+ *   * - *Data Type*
+ *     - Array<String, :ref:`Field`>
+ *   * - *Default*
+ *     - Empty Array
+ *
+ *.. toctree::
+ *   :maxdepth: 2
+ *   :hidden:
+ *
+ *   Field
  *
  *Documentation:End
  */
