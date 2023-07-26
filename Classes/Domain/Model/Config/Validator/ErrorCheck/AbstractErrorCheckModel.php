@@ -315,6 +315,8 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *Documentation:End
  */
 abstract class AbstractErrorCheckModel {
+  protected string $fileTypes = '';
+
   protected bool $isRequired = false;
 
   protected string $name;
@@ -328,6 +330,10 @@ abstract class AbstractErrorCheckModel {
    * @return class-string<AbstractErrorCheck>
    */
   abstract public function class(): string;
+
+  public function fileTypes(): string {
+    return $this->fileTypes;
+  }
 
   public function isRequired(): bool {
     return $this->isRequired;

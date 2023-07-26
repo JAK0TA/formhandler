@@ -18,7 +18,7 @@
           <a href="?{formConfig.extensionKey}[removeFileField]={fieldName}&{formConfig.extensionKey}[removeFile]={formUpload.name}">{formConfig.fileUpload.removalText}</a></div>
         </f:if>
     </f:for>
-    <input class="form-input" title="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldNameFromPath}_title')}" type="file" {multiple} accept="{accept}" id="{formConfig.formValuesPrefix}_{fieldNameFromPath}" name="{formConfig.formValuesPrefix}{fieldName}[]" />
+    <input class="form-input" title="{f:translate(key: 'LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldNameFromPath}_title')}" type="file" {multiple} accept="{formConfig.fieldsFileTypes.{fieldName}}" id="{formConfig.formValuesPrefix}_{fieldNameFromPath}" name="{formConfig.formValuesPrefix}{fieldName}[]" />
     <label for="{formConfig.formValuesPrefix}_{fieldNameFromPath}"
       ><f:translate key="LLL:EXT:formhandler/Resources/Private/Language/{langFile}:{fieldNameFromPath}" />
       <f:if condition="{formConfig.fieldsRequired.{fieldName}} == true">

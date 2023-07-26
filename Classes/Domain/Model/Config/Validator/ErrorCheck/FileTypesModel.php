@@ -81,27 +81,28 @@ use Typoheads\Formhandler\Validator\ErrorCheck\FileTypes;
  */
 class FileTypesModel extends AbstractErrorCheckModel {
   /** @var string[] */
-  public readonly array $fileTypes;
+  public readonly array $fileTypesArray;
 
   /**
    * @param array<string, mixed> $settings
    */
   public function __construct(array $settings) {
     $this->name = 'FileTypes';
+    $this->fileTypes = strval($settings['fileTypes'] ?? '');
 
     $mimes = new MimeTypes();
 
-    $fileTypes = GeneralUtility::trimExplode(',', strval($settings['fileTypes'] ?? ''), true);
-    foreach ($fileTypes as $key => &$fileType) {
+    $fileTypesArray = GeneralUtility::trimExplode(',', $this->fileTypes, true);
+    foreach ($fileTypesArray as $key => &$fileType) {
       if ('.' == $fileType[0]) {
         $ext = substr($fileType, 1);
-        unset($fileTypes[$key]);
-        array_push($fileTypes, ...$mimes->getMimeTypes($ext));
+        unset($fileTypesArray[$key]);
+        array_push($fileTypesArray, ...$mimes->getMimeTypes($ext));
       } elseif ('/*' == substr($fileType, -2)) {
         $fileType = substr($fileType, 0, -1);
       }
     }
-    $this->fileTypes = $fileTypes;
+    $this->fileTypesArray = $fileTypesArray;
   }
 
   public function class(): string {

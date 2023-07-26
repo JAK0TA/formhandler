@@ -313,6 +313,9 @@ use Typoheads\Formhandler\Utility\Utility;
  *Documentation:End
  */
 class FormController extends ActionController {
+  /** @var array<string, string> */
+  protected $fieldsFileTypes = [];
+
   /** @var array<string, bool> */
   protected $fieldsRequired = [];
 
@@ -446,7 +449,7 @@ class FormController extends ActionController {
 
     foreach ($this->formConfig->steps[$this->formConfig->step]->validators as $validator) {
       foreach ($validator->fields as $field) {
-        $this->prepareFieldsRequired('['.$this->formConfig->step.']', $field);
+        $this->prepareFieldsFileTypesAndRequired('['.$this->formConfig->step.']', $field);
       }
     }
 
@@ -457,8 +460,9 @@ class FormController extends ActionController {
       [
         'debugOutput' => $debugOutput,
         'extensionKey' => FormhandlerExtensionConfig::EXTENSION_KEY,
-        'fieldsRequired' => $this->fieldsRequired,
         'fieldsErrors' => $this->formConfig->fieldsErrors,
+        'fieldsFileTypes' => $this->fieldsFileTypes,
+        'fieldsRequired' => $this->fieldsRequired,
         'fieldSets' => $this->formConfig->fieldSets,
         'fileUpload' => $this->formConfig->fileUpload,
         'formId' => $this->formConfig->formId,
@@ -647,15 +651,18 @@ class FormController extends ActionController {
     );
   }
 
-  private function prepareFieldsRequired(string $fieldNamePath, FieldModel $field): void {
+  private function prepareFieldsFileTypesAndRequired(string $fieldNamePath, FieldModel $field): void {
     $fieldNamePath .= '['.$field->name.']';
     foreach ($field->errorChecks as $errorCheck) {
       if ($errorCheck->isRequired()) {
         $this->fieldsRequired[$fieldNamePath] = true;
       }
+      if (!empty($fileTypes = $errorCheck->fileTypes())) {
+        $this->fieldsFileTypes[$fieldNamePath] = $fileTypes;
+      }
     }
     foreach ($field->fields as $field) {
-      $this->prepareFieldsRequired($fieldNamePath, $field);
+      $this->prepareFieldsFileTypesAndRequired($fieldNamePath, $field);
     }
   }
 

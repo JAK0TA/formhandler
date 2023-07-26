@@ -22,13 +22,13 @@ class FileTypes extends AbstractErrorCheck {
       return false;
     }
 
-    if (empty($errorCheckConfig->fileTypes) || !isset($formConfig->formUploads->files[$fieldNamePathBrackets])) {
+    if (empty($errorCheckConfig->fileTypesArray) || !isset($formConfig->formUploads->files[$fieldNamePathBrackets])) {
       return true;
     }
 
     $isValid = true;
     foreach ($formConfig->formUploads->files[$fieldNamePathBrackets] as $file) {
-      foreach ($errorCheckConfig->fileTypes as $fileType) {
+      foreach ($errorCheckConfig->fileTypesArray as $fileType) {
         if (str_starts_with($file->type, $fileType)) {
           continue 2;
         }
