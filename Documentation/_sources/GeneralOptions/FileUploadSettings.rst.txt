@@ -1,9 +1,9 @@
 
-.. _fileupload:
+.. _fileuploadsettings:
 
-==========
-FileUpload
-==========
+====================
+File Upload Settings
+====================
 
 Settings to handle file uploads.
 

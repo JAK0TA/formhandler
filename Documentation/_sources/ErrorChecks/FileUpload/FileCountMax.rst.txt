@@ -1,0 +1,52 @@
+
+.. _filecountmax:
+
+============
+FileCountMax
+============
+
+Checks if the files uploaded from a field are less than or equal the configured value.
+
+..  code-block:: typoscript
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidator
+        config {
+          fields {
+            image.errorChecks {
+              fileCountMax {
+                model = FileCountMax
+                fileCountMax = 3
+              }
+            }
+          }
+        }
+      }
+    }
+
+**Properties**
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **fileCountMax**
+     - Sets the max amount of files a field can upload.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - Integer
+   * - *Default*
+     - 0
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:

@@ -1,0 +1,52 @@
+
+.. _filesizemin:
+
+===========
+FileSizeMin
+===========
+
+Checks if the size of an uploaded file is at least the configured value.
+
+..  code-block:: typoscript
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidator
+        config {
+          fields {
+            image.errorChecks {
+              fileSizeMin {
+                model = FileSizeMin
+                fileSizeMin = 1048576
+              }
+            }
+          }
+        }
+      }
+    }
+
+**Properties**
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **fileSizeMin**
+     - Sets the min size a uploaded file must be. (in Byte)
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - False|Integer
+   * - *Default*
+     - False
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:

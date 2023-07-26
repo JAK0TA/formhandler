@@ -11,6 +11,9 @@ General Options
 :ref:`Predefined-Form`
   Predefine form settings and make them selectable in plugin record.
 
+:ref:`FileUploadSettings`
+  Settings to handle file uploads.
+
 :ref:`Step`
   Multistep forms settings
 
@@ -20,5 +23,5 @@ General Options
 
    Settings
    PredefinedForm
-   FileUpload
+   FileUploadSettings
    Step

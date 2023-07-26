@@ -1,0 +1,37 @@
+
+.. _fileupload:
+
+===========
+File Upload
+===========
+
+These are all available error checks dealing with file uploads. You can restrict allowed file types, set min and max uploadable files for one upload field and more.
+
+:ref:`FileCountMax`
+  Checks if the files uploaded from a field are less than or equal the configured value.
+
+:ref:`FileCountMin`
+  Checks if the files uploaded from a field are more than or equal the configured value.
+
+:ref:`FileRequired`
+  Checks if a file has been uploaded from this field.
+
+:ref:`FileSizeMax`
+  Checks if the size of an uploaded file is less or equal than the configured value.
+
+:ref:`FileSizeMin`
+  Checks if the size of an uploaded file is at least the configured value.
+
+:ref:`FileTypes`
+  Checks if the file type of an uploaded file is allowed.
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   FileUpload/FileCountMax
+   FileUpload/FileCountMin
+   FileUpload/FileRequired
+   FileUpload/FileSizeMax
+   FileUpload/FileSizeMin
+   FileUpload/FileTypes

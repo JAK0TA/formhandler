@@ -1,0 +1,31 @@
+
+.. _filerequired:
+
+============
+FileRequired
+============
+
+Checks if a file has been uploaded from this field..
+
+..  code-block:: typoscript
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidator
+        config {
+          fields {
+            image.errorChecks {
+              fileRequired {
+                model = FileRequired
+              }
+            }
+          }
+        }
+      }
+    }
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:

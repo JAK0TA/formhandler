@@ -1,0 +1,59 @@
+
+.. _filetypes:
+
+=========
+FileTypes
+=========
+
+Checks if the file type of an uploaded file is allowed.
+
+..  code-block:: typoscript
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidator
+        config {
+          fields {
+            image.errorChecks {
+              fileTypes {
+                model = FileTypes
+                fileTypes = .jpg,.gif,.png,image/*
+              }
+            }
+          }
+        }
+      }
+    }
+
+**Properties**
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **fileTypes**
+     - | Comma separated list containing one or more of these unique file type specifiers.
+       |
+       | A valid case-insensitive filename extension, starting with a period (".") character. For example: .jpg, .pdf, or .doc.
+       |
+       | A valid MIME type string, with no extensions.
+       | The string audio/* meaning "any audio file".
+       | The string video/* meaning "any video file".
+       | The string image/* meaning "any image file".
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - String
+   * - *Default*
+     - Empty String
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
