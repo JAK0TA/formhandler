@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DefaultValidator &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
+  <title>Field &mdash; Formhandler 9.0.0 (Alpha) documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -21,8 +21,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Field" href="Field.html" />
-    <link rel="prev" title="Validators" href="Index.html" /> 
+    <link rel="next" title="View Helpers" href="../ViewHelpers/Index.html" />
+    <link rel="prev" title="DefaultValidator" href="DefaultValidator.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -55,8 +55,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../Loggers/Index.html">Loggers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../PreProcessors/Index.html">Pre Processors</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="Index.html">Validators</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">DefaultValidator</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Field.html">Field</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="DefaultValidator.html">DefaultValidator</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Field</a></li>
 </ul>
 </li>
 </ul>
@@ -79,9 +79,10 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../Index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="Index.html">Validators</a></li>
-      <li class="breadcrumb-item active">DefaultValidator</li>
+          <li class="breadcrumb-item"><a href="DefaultValidator.html">DefaultValidator</a></li>
+      <li class="breadcrumb-item active">Field</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/Validators/DefaultValidator.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/Validators/Field.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -89,38 +90,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="defaultvalidator">
-<span id="id1"></span><h1>DefaultValidator<a class="headerlink" href="#defaultvalidator" title="Permalink to this heading">¶</a></h1>
-<p>This is the default <a class="reference internal" href="Index.html#validators"><span class="std std-ref">Validator</span></a>, it supports all available <a class="reference internal" href="../ErrorChecks/Index.html#error-checks"><span class="std std-ref">error checks</span></a>.</p>
+  <section id="field">
+<span id="id1"></span><h1>Field<a class="headerlink" href="#field" title="Permalink to this heading">¶</a></h1>
+<p>Field config and error checks.</p>
 <div class="highlight-typoscript notranslate"><div class="highlight"><pre><span></span>Example Code<span class="o">:</span>
 
 validators <span class="ss">{</span>
   DefaultValidator <span class="ss">{</span>
     model <span class="o">=</span> DefaultValidator
     config <span class="ss">{</span>
-      messageLimit <span class="o">=</span> <span class="mi">1</span>
-      messageLimits <span class="ss">{</span>
-        <span class="mi">1</span><span class="p">.</span>email <span class="o">=</span> <span class="mi">2</span>
-      <span class="ss">}</span>
-      restrictErrorChecks <span class="o">=</span>
-      disableErrorCheckFields <span class="o">=</span>
       fields <span class="ss">{</span>
-        firstName<span class="p">.</span>errorChecks <span class="ss">{</span>
-          lengthMax <span class="ss">{</span>
-            model <span class="o">=</span> LengthMax
-            lengthMax <span class="o">=</span> <span class="mi">20</span>
+        participants <span class="ss">{</span>
+          errorChecks <span class="ss">{</span>
+            itemsMax <span class="ss">{</span>
+              model <span class="o">=</span> ItemsMax
+              itemsMax <span class="o">=</span> <span class="mi">5</span>
+            <span class="ss">}</span>
+            itemsMin <span class="ss">{</span>
+              model <span class="o">=</span> ItemsMin
+              itemsMin <span class="o">=</span> <span class="mi">1</span>
+            <span class="ss">}</span>
           <span class="ss">}</span>
-          lengthMin <span class="ss">{</span>
-            model <span class="o">=</span> LengthMin
-            lengthMin <span class="o">=</span> <span class="mi">10</span>
-          <span class="ss">}</span>
-        <span class="ss">}</span>
-        email<span class="p">.</span>errorChecks <span class="ss">{</span>
-          required <span class="ss">{</span>
-            model <span class="o">=</span> Required
-          <span class="ss">}</span>
-          email <span class="ss">{</span>
-            model <span class="o">=</span> Email
+          fieldArray <span class="o">=</span> True
+          fields <span class="ss">{</span>
+            firstName<span class="p">.</span>errorChecks <span class="ss">{</span>
+              required <span class="ss">{</span>
+                model <span class="o">=</span> Required
+              <span class="ss">}</span>
+            <span class="ss">}</span>
+            lastName<span class="p">.</span>errorChecks <span class="ss">{</span>
+              required <span class="ss">{</span>
+                model <span class="o">=</span> Required
+              <span class="ss">}</span>
+            <span class="ss">}</span>
           <span class="ss">}</span>
         <span class="ss">}</span>
       <span class="ss">}</span>
@@ -136,8 +138,8 @@ validators <span class="ss">{</span>
 <col style="width: 80%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>messageLimit</strong></p></td>
-<td><p>Sets the default limits of error messages for all and fields.</p></td>
+<tr class="row-odd"><td><p><strong>errorChecks</strong></p></td>
+<td><p>List containing the <a class="reference internal" href="../ErrorChecks/Index.html#error-checks"><span class="std std-ref">error checks</span></a> for this field.</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td></td>
@@ -146,30 +148,7 @@ validators <span class="ss">{</span>
 <td><p>False</p></td>
 </tr>
 <tr class="row-even"><td><p><em>Data Type</em></p></td>
-<td><p>Integer</p></td>
-</tr>
-<tr class="row-odd"><td><p><em>Default</em></p></td>
-<td><p>1</p></td>
-</tr>
-</tbody>
-</table>
-<table class="docutils align-left" style="width: 100%">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 80%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>messageLimits</strong></p></td>
-<td><p>List containing the field name path and limit of error messages for specific fields.</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
-<td><p>False</p></td>
-</tr>
-<tr class="row-even"><td><p><em>Data Type</em></p></td>
-<td><p>Array&lt;String, Integer&gt;</p></td>
+<td><p>Array&lt;String, <a class="reference internal" href="#field"><span class="std std-ref">Field</span></a>&gt;</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Default</em></p></td>
 <td><p>Empty Array</p></td>
@@ -182,12 +161,8 @@ validators <span class="ss">{</span>
 <col style="width: 80%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>restrictErrorChecks</strong></p></td>
-<td><div class="line-block">
-<div class="line">Comma separated list containing the <a class="reference internal" href="../ErrorChecks/Index.html#error-checks"><span class="std std-ref">error checks</span></a> to perform.</div>
-<div class="line">If this is set, only these <a class="reference internal" href="../ErrorChecks/Index.html#error-checks"><span class="std std-ref">error checks</span></a> will be executed, all other configured <a class="reference internal" href="../ErrorChecks/Index.html#error-checks"><span class="std std-ref">error checks</span></a> will be ignored.</div>
-</div>
-</td>
+<tr class="row-odd"><td><p><strong>fieldArray</strong></p></td>
+<td><p>Set true if this field is an array of sub fields.</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td></td>
@@ -196,37 +171,10 @@ validators <span class="ss">{</span>
 <td><p>False</p></td>
 </tr>
 <tr class="row-even"><td><p><em>Data Type</em></p></td>
-<td><p>String</p></td>
+<td><p>Boolean</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Default</em></p></td>
-<td><p>Empty String</p></td>
-</tr>
-</tbody>
-</table>
-<table class="docutils align-left" style="width: 100%">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 80%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>disableErrorCheckFields</strong></p></td>
-<td><div class="line-block">
-<div class="line">Comma separated list containing the field name path to disable <a class="reference internal" href="../ErrorChecks/Index.html#error-checks"><span class="std std-ref">error checks</span></a> for.</div>
-<div class="line">If this is set, all configured <a class="reference internal" href="../ErrorChecks/Index.html#error-checks"><span class="std std-ref">error checks</span></a> will be ignored, these fields.</div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><em>Mandatory</em></p></td>
 <td><p>False</p></td>
-</tr>
-<tr class="row-even"><td><p><em>Data Type</em></p></td>
-<td><p>String</p></td>
-</tr>
-<tr class="row-odd"><td><p><em>Default</em></p></td>
-<td><p>Empty String</p></td>
 </tr>
 </tbody>
 </table>
@@ -237,32 +185,30 @@ validators <span class="ss">{</span>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>fields</strong></p></td>
-<td><p>List containing the <a class="reference internal" href="Field.html#field"><span class="std std-ref">fields</span></a> and <a class="reference internal" href="../ErrorChecks/Index.html#error-checks"><span class="std std-ref">error checks</span></a>.</p></td>
+<td><p>List containing the <a class="reference internal" href="#field"><span class="std std-ref">fields</span></a> and <a class="reference internal" href="../ErrorChecks/Index.html#error-checks"><span class="std std-ref">error checks</span></a> for subfields.</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><em>Mandatory</em></p></td>
-<td><p>False</p></td>
+<td><p>Only if fieldArray is True.</p></td>
 </tr>
 <tr class="row-even"><td><p><em>Data Type</em></p></td>
-<td><p>Array&lt;String, <a class="reference internal" href="Field.html#field"><span class="std std-ref">Field</span></a>&gt;</p></td>
+<td><p>Array&lt;String, <a class="reference internal" href="#field"><span class="std std-ref">Field</span></a>&gt;</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Default</em></p></td>
 <td><p>Empty Array</p></td>
 </tr>
 </tbody>
 </table>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Index.html" class="btn btn-neutral float-left" title="Validators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Field.html" class="btn btn-neutral float-right" title="Field" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="DefaultValidator.html" class="btn btn-neutral float-left" title="DefaultValidator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../ViewHelpers/Index.html" class="btn btn-neutral float-right" title="View Helpers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

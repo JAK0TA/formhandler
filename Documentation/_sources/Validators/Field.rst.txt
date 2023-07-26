@@ -1,0 +1,103 @@
+
+.. _field:
+
+=====
+Field
+=====
+
+Field config and error checks.
+
+..  code-block:: typoscript
+
+    Example Code:
+
+    validators {
+      DefaultValidator {
+        model = DefaultValidator
+        config {
+          fields {
+            participants {
+              errorChecks {
+                itemsMax {
+                  model = ItemsMax
+                  itemsMax = 5
+                }
+                itemsMin {
+                  model = ItemsMin
+                  itemsMin = 1
+                }
+              }
+              fieldArray = True
+              fields {
+                firstName.errorChecks {
+                  required {
+                    model = Required
+                  }
+                }
+                lastName.errorChecks {
+                  required {
+                    model = Required
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+**Properties**
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **errorChecks**
+     - List containing the :ref:`error checks <Error-Checks>` for this field.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - Array<String, :ref:`Field`>
+   * - *Default*
+     - Empty Array
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **fieldArray**
+     - Set true if this field is an array of sub fields.
+   * -
+     -
+   * - *Mandatory*
+     - False
+   * - *Data Type*
+     - Boolean
+   * - *Default*
+     - False
+
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **fields**
+     - List containing the :ref:`fields <Field>` and :ref:`error checks <Error-Checks>` for subfields.
+   * -
+     -
+   * - *Mandatory*
+     - Only if fieldArray is True.
+   * - *Data Type*
+     - Array<String, :ref:`Field`>
+   * - *Default*
+     - Empty Array

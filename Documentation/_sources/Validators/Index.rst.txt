@@ -7,6 +7,19 @@ Validators
 
 You can enter as many :ref:`Validators` as you like. Each entry requires a model name of the :ref:`Validator <Validators>`. Optionally you can enter a specific configuration for the :ref:`Validator <Validators>` in the config section. For detailed information about the available error checks have a look at the section :ref:`Error Checks <Error-Checks>`.
 
+.. list-table::
+   :align: left
+   :width: 100%
+   :widths: 20 80
+   :header-rows: 0
+   :stub-columns: 0
+
+   * - **TypoScript Path**
+     - plugin.tx_formhandler_form.settings.predefinedForms.[x].steps.[x].validators
+
+:ref:`DefaultValidator`
+  This is the default :ref:`Validator <Validators>`, it supports all available :ref:`error checks <Error-Checks>`.
+
 .. toctree::
    :maxdepth: 2
    :hidden:
