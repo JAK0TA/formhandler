@@ -17,7 +17,7 @@ use Typoheads\Formhandler\Domain\Model\Config\Validator\ErrorCheck\AbstractError
 
 class FileRequired extends AbstractErrorCheck {
   public function isValid(FormModel &$formConfig, AbstractErrorCheckModel &$errorCheckConfig, string $fieldNamePathBrackets, string $fieldNamePathDots, mixed $value): bool {
-    if (count($formConfig->formUploads->files[$fieldNamePathBrackets] ?? []) > 1) {
+    if (count($formConfig->formUploads->files[$fieldNamePathBrackets] ?? []) > 0) {
       return true;
     }
 
