@@ -23,6 +23,9 @@
       <trans-unit id="error_1.customer.screenshot2_FileSizeMax" resname="error_1.customer.screenshot2_FileSizeMax">
         <source>You uploaded a file bigger than the allowed max file size.</source>
       </trans-unit>
+      <trans-unit id="error_1.customer.screenshot2_FileSizeMin" resname="error_1.customer.screenshot2_FileSizeMin">
+        <source>You uploaded a file smaller than the allowed min file size.</source>
+      </trans-unit>
       <trans-unit id="error_1.customer.screenshot2_FileTypes" resname="error_1.customer.screenshot2_FileTypes">
         <source>Allowed file type mismatch.</source>
       </trans-unit>

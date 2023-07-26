@@ -119,6 +119,10 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
                     model = FileSizeMax
                     fileSizeMax = 2097152
                   }
+                  fileSizeMin {
+                    model = FileSizeMin
+                    fileSizeMin = 1048576
+                  }
                 }
                 salutation.errorChecks {
                   required {

@@ -217,6 +217,9 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *:ref:`FileSizeMax`
  *  Checks if the size of an uploaded file is less or equal than the configured value.
  *
+ *:ref:`FileSizeMin`
+ *  Checks if the size of an uploaded file is at least the configured value.
+ *
  *:ref:`FileTypes`
  *  Checks if the file type of an uploaded file is allowed.
  *
@@ -228,6 +231,7 @@ use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
  *   FileUpload/FileCountMin
  *   FileUpload/FileRequired
  *   FileUpload/FileSizeMax
+ *   FileUpload/FileSizeMin
  *   FileUpload/FileTypes
  *
  *Documentation:End
