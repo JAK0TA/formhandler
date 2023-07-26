@@ -19,8 +19,8 @@ plugin.tx_formhandler_form.settings.predefinedForms.devExample {
       text = X
     }
     total {
-      countMax = 
-      sizeMax = 
+      countMax = 3
+      sizeMax = 5242880
     }
     withSameName = ignore
   }

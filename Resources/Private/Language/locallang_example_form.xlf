@@ -4,6 +4,12 @@
   <file source-language="en" datatype="plaintext" original="EXT:formhandler/Resources/Private/Language/locallang_example_form.xlf" date="2023-06-22T11:48:40Z" product-name="formhandler">
     <header />
     <body>
+      <trans-unit id="error_FormError_FileTotalCountMax" resname="error_FormError_FileTotalCountMax">
+        <source>Please remove files, you uploaded more files than the allowed max total.</source>
+      </trans-unit>
+      <trans-unit id="error_FormError_FileTotalSizeMax" resname="error_FormError_FileTotalSizeMax">
+        <source>Please reduce file size, you total upload is bigger than the allowed max total size.</source>
+      </trans-unit>
       <trans-unit id="submit" resname="submit">
         <source>Send</source>
       </trans-unit>

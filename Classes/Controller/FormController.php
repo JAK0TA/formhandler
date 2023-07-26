@@ -26,6 +26,8 @@ use Typoheads\Formhandler\Domain\Model\Config\FormUploadFile;
 use Typoheads\Formhandler\Domain\Model\Config\GeneralOptions\FieldSetModel;
 use Typoheads\Formhandler\Domain\Model\Config\Validator\Field\FieldModel;
 use Typoheads\Formhandler\Domain\Model\Json\JsonResponseModel;
+use Typoheads\Formhandler\FormErrorCheck\FileTotalCountMax;
+use Typoheads\Formhandler\FormErrorCheck\FileTotalSizeMax;
 use Typoheads\Formhandler\Session\Typo3Session;
 use Typoheads\Formhandler\Utility\Utility;
 
@@ -439,6 +441,7 @@ class FormController extends ActionController {
       $this->jsonResponse->fieldsErrors = $this->formConfig->fieldsErrors;
       $this->jsonResponse->fieldSets = $this->formConfig->fieldSets;
       $this->jsonResponse->fileUpload = $this->formConfig->fileUpload;
+      $this->jsonResponse->formErrors = $this->formConfig->formErrors;
       $this->jsonResponse->formUploads = $this->formConfig->formUploads;
       $this->jsonResponse->formValues = $this->formConfig->formValues;
 
@@ -465,6 +468,7 @@ class FormController extends ActionController {
         'fieldsRequired' => $this->fieldsRequired,
         'fieldSets' => $this->formConfig->fieldSets,
         'fileUpload' => $this->formConfig->fileUpload,
+        'formErrors' => $this->formConfig->formErrors,
         'formId' => $this->formConfig->formId,
         'formName' => $this->formConfig->formName,
         'formUploads' => $this->formConfig->formUploads,
@@ -527,6 +531,11 @@ class FormController extends ActionController {
       $fieldsErrors = $this->formConfig->session->get('fieldsErrors');
       if (is_array($fieldsErrors)) {
         $this->formConfig->fieldsErrors = $fieldsErrors;
+      }
+
+      $formErrors = $this->formConfig->session->get('formErrors');
+      if (is_array($formErrors)) {
+        $this->formConfig->formErrors = $formErrors;
       }
 
       $this->formConfig->step = intval(
@@ -874,9 +883,19 @@ class FormController extends ActionController {
       }
     }
 
-    // TODO: Add Check for new total file count and size if set
+    $this->formConfig->formErrors = [];
+    if (!GeneralUtility::makeInstance(FileTotalCountMax::class)->isValid($this->formConfig)) {
+      $isValid = false;
+      $this->formConfig->formErrors[] = 'FileTotalCountMax';
+    }
+
+    if (!GeneralUtility::makeInstance(FileTotalSizeMax::class)->isValid($this->formConfig)) {
+      $isValid = false;
+      $this->formConfig->formErrors[] = 'FileTotalSizeMax';
+    }
 
     $this->formConfig->session->set('fieldsErrors', $this->formConfig->fieldsErrors);
+    $this->formConfig->session->set('formErrors', $this->formConfig->formErrors);
 
     return $isValid;
   }

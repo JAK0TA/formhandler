@@ -331,6 +331,9 @@ class FormModel {
 
   public bool $firstAccess = true;
 
+  /** @var array<string, string> */
+  public array $formErrors = [];
+
   public string $formId = '';
 
   public string $formName = '';

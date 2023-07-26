@@ -1,6 +1,11 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
   <f:if condition="{debugOutput} != ''">{debugOutput -> f:format.raw()}</f:if>
   <form action="{formUrl}#{formId}" id="{formId}" method="post" class="formhandler" enctype="multipart/form-data">
+    <div class="error">
+      <f:for each="{formErrors}" as="formError">
+        <f:translate key="LLL:EXT:formhandler/Resources/Private/Language/{langFileDefault}:error_FormError_{formError}" />
+      </f:for>
+    </div>
     <f:render partial="FieldSet" arguments="{fieldSets: fieldSets}" />
     <f:render partial="{templateForm}" arguments="{_all}" />
   </form>
