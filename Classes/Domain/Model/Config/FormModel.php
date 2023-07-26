@@ -331,7 +331,7 @@ class FormModel {
 
   public bool $firstAccess = true;
 
-  /** @var array<string, string> */
+  /** @var array<int, string> */
   public array $formErrors = [];
 
   public string $formId = '';

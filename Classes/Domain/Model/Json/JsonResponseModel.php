@@ -28,7 +28,7 @@ class JsonResponseModel {
 
   public FileUploadModel $fileUpload;
 
-  /** @var array<string, string> */
+  /** @var array<int, string> */
   public array $formErrors = [];
 
   public string $formId = '';
