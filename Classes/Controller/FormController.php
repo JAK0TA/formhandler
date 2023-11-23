@@ -652,7 +652,7 @@ class FormController extends ActionController {
   }
 
   private function mergeParsedBodyWithSession(): void {
-    if (!is_array($this->parsedBody[$this->formConfig->formValuesPrefix] ?? false)) {
+    if (!is_array($this->parsedBody[$this->formConfig->formValuesPrefix] ?? false) || !isset($this->parsedBody[$this->formConfig->formValuesPrefix][$this->formConfig->step])) {
       return;
     }
 
