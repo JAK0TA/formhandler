@@ -1118,7 +1118,7 @@ class GeneralUtility implements SingletonInterface {
       } elseif (isset($settings['langFile.']) && is_array($settings['langFile.'])) {
         foreach ($settings['langFile.'] as $key => $langFile) {
           if (false === strpos((string) $key, '.')) {
-            if (is_array($settings['langFile.'][$key.'.'])) {
+            if (is_array($settings['langFile.'][$key.'.'] ?? false)) {
               array_push($langFiles, self::getSingle($settings['langFile.'], $key));
             } else {
               array_push($langFiles, self::resolveRelPathFromSiteRoot($langFile));
