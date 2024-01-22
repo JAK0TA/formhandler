@@ -297,7 +297,7 @@ class GeneralUtility implements SingletonInterface {
       }
     }
 
-    $url = Globals::getCObj()?->getTypoLink_URL((string)$redirect, $addParams) ?? '';
+    $url = Globals::getCObj()?->getTypoLink_URL((string) $redirect, $addParams) ?? '';
 
     // correct the URL by replacing &amp;
     if ($correctRedirectUrl) {
@@ -651,7 +651,7 @@ class GeneralUtility implements SingletonInterface {
   /**
    * @param array<string, mixed>|string $arr
    */
-  public static function getSingle(array|string $arr, string|int $key): string {
+  public static function getSingle(array|string $arr, int|string $key): string {
     if (!is_array($arr)) {
       return $arr;
     }
@@ -860,8 +860,7 @@ class GeneralUtility implements SingletonInterface {
       || 'IMG_RESOURCE' === $str || 'IMGTEXT' === $str || 'LOAD_REGISTER' === $str || 'MEDIA' === $str
       || 'MULTIMEDIA' === $str || 'OTABLE' === $str || 'QTOBJECT' === $str || 'RECORDS' === $str
       || 'RESTORE_REGISTER' === $str || 'SEARCHRESULT' === $str || 'SVG' === $str || 'SWFOBJECT' === $str
-      || 'TEMPLATE' === $str || 'TEXT' === $str || 'USER' === $str || 'USER_INT' === $str
-    ;
+      || 'TEMPLATE' === $str || 'TEXT' === $str || 'USER' === $str || 'USER_INT' === $str;
   }
 
   /**
@@ -1035,9 +1034,9 @@ class GeneralUtility implements SingletonInterface {
   /**
    * Returns part of $sheetArray pointed to by the keys in $fieldNameArray.
    *
-   * @param array<string, mixed> $sheetArray   Multidimensiona array, typically FlexForm contents
-   * @param array<string|int, mixed> $fieldNameArr Array where each value points to a key in the FlexForms content - the input array will have the value returned pointed to by these keys. All integer keys will not take their integer counterparts, but rather traverse the current position in the array an return element number X (whether this is right behavior is not settled yet...)
-   * @param string               $value        Value for outermost key, typ. "vDEF" depending on language.
+   * @param array<string, mixed>     $sheetArray   Multidimensiona array, typically FlexForm contents
+   * @param array<int|string, mixed> $fieldNameArr Array where each value points to a key in the FlexForms content - the input array will have the value returned pointed to by these keys. All integer keys will not take their integer counterparts, but rather traverse the current position in the array an return element number X (whether this is right behavior is not settled yet...)
+   * @param string                   $value        Value for outermost key, typ. "vDEF" depending on language.
    *
    * @return string The value, typ. string.
    *
