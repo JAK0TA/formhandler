@@ -595,9 +595,9 @@ class GeneralUtility implements SingletonInterface {
     for ($i = 1; $i < $numberOfLevels && isset($value); ++$i) {
       $currentKey = trim($keys[$i]);
       if (is_object($value)) {
-        $value = $value->{$currentKey};
+        $value = $value->{$currentKey} ?? '';
       } elseif (is_array($value)) {
-        $value = $value[$currentKey];
+        $value = $value[$currentKey] ?? '';
       } else {
         $value = '';
 
