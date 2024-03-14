@@ -365,6 +365,30 @@ class GeneralUtility implements SingletonInterface {
     self::debugMessage('No redirectPage set.');
   }
 
+  /**
+   * @param array<string, mixed> $conditionSettings
+   * @param array<string, mixed> $gp
+   */
+  public static function evaluateConditions(array $conditionSettings, array $gp): false {
+    $conditionSettings = is_array($conditionSettings) ? (array) $conditionSettings : [];
+    $conditions = $conditionSettings['conditions.'] ?? [];
+    $orConditions = [];
+    foreach ($conditions as $subIdx => $andConditions) {
+      $results = [];
+      foreach ($andConditions as $subSubIdx => $andCondition) {
+        $result = strval(self::getConditionResult($andCondition, $gp));
+        $results[] = ($result ? 'TRUE' : 'FALSE');
+      }
+      $orConditions[] = '('.implode(' && ', $results).')';
+    }
+    $finalCondition = '('.implode(' || ', $orConditions).')';
+
+    $evaluation = false;
+    eval('$evaluation = '.$finalCondition.';');
+
+    return $evaluation;
+  }
+
   public static function generateHash(): string {
     $result = '';
     $charPool = '0123456789abcdefghijklmnopqrstuvwxyz';
@@ -928,24 +952,17 @@ class GeneralUtility implements SingletonInterface {
     }
     foreach ($settings['if.'] as $idx => $conditionSettings) {
       $conditionSettings = is_array($conditionSettings) ? (array) $conditionSettings : [];
-      $conditions = $conditionSettings['conditions.'] ?? [];
-      $orConditions = [];
-      foreach ($conditions as $subIdx => $andConditions) {
-        $results = [];
-        foreach ($andConditions as $subSubIdx => $andCondition) {
-          $result = strval(self::getConditionResult($andCondition, $gp));
-          $results[] = ($result ? 'TRUE' : 'FALSE');
-        }
-        $orConditions[] = '('.implode(' && ', $results).')';
-      }
-      $finalCondition = '('.implode(' || ', $orConditions).')';
 
-      $evaluation = false;
-      eval('$evaluation = '.$finalCondition.';');
+      $evaluation = self::evaluateConditions($conditionSettings, $gp);
 
       // @phpstan-ignore-next-line
       if ($evaluation) {
         $newSettings = $conditionSettings['isTrue.'] ?? '';
+        if (is_array($newSettings)) {
+          $settings = self::mergeConfiguration($settings, $newSettings);
+        }
+      } elseif (is_array($conditionSettings['elseIf.'] ?? '') && self::evaluateConditions($conditionSettings['elseIf.'], $gp)) {
+        $newSettings = $conditionSettings['elseIf.']['isTrue.'] ?? '';
         if (is_array($newSettings)) {
           $settings = self::mergeConfiguration($settings, $newSettings);
         }
