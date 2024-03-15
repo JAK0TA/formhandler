@@ -369,15 +369,14 @@ class GeneralUtility implements SingletonInterface {
    * @param array<string, mixed> $conditionSettings
    * @param array<string, mixed> $gp
    */
-  public static function evaluateConditions(array $conditionSettings, array $gp): false {
-    $conditionSettings = is_array($conditionSettings) ? (array) $conditionSettings : [];
-    $conditions = $conditionSettings['conditions.'] ?? [];
+  private static function evaluateConditions(array $conditionSettings, array $gp): bool {   
+    $conditions =  is_array($conditionSettings['conditions.']) ? (array) $conditionSettings['conditions.'] : [];
     $orConditions = [];
-    foreach ($conditions as $subIdx => $andConditions) {
+    foreach ($conditions as $andConditions) {
       $results = [];
-      foreach ($andConditions as $subSubIdx => $andCondition) {
-        $result = strval(self::getConditionResult($andCondition, $gp));
-        $results[] = ($result ? 'TRUE' : 'FALSE');
+      $andConditions = is_array($andConditions) ? $andConditions : [];
+      foreach ($andConditions as $andCondition) {
+        $results[] = self::getConditionResult($andCondition, $gp) ? 'TRUE' : 'FALSE';
       }
       $orConditions[] = '('.implode(' && ', $results).')';
     }
@@ -386,6 +385,7 @@ class GeneralUtility implements SingletonInterface {
     $evaluation = false;
     eval('$evaluation = '.$finalCondition.';');
 
+    // @phpstan-ignore-next-line
     return $evaluation;
   }
 
@@ -950,12 +950,10 @@ class GeneralUtility implements SingletonInterface {
     if (!isset($settings['if.']) || !is_array($settings['if.'])) {
       return $settings;
     }
-    foreach ($settings['if.'] as $idx => $conditionSettings) {
+    foreach ($settings['if.'] as $conditionSettings) {
       $conditionSettings = is_array($conditionSettings) ? (array) $conditionSettings : [];
 
       $evaluation = self::evaluateConditions($conditionSettings, $gp);
-
-      // @phpstan-ignore-next-line
       if ($evaluation) {
         $newSettings = $conditionSettings['isTrue.'] ?? '';
         if (is_array($newSettings)) {
