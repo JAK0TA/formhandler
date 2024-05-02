@@ -991,7 +991,7 @@ class Form extends AbstractView {
           $markers = array_merge($markers, $this->getSelectedMarkers($v, $level, $currPrefix));
           --$level;
         } else {
-          $v = htmlspecialchars(strval($v));
+          $v = htmlspecialchars(strval($v), ENT_QUOTES | ENT_SUBSTITUTE, null, false);
           $markers['###'.$currPrefix.'_'.$v.'###'] = $activeString;
           $markers['###'.strtoupper($currPrefix).'###'] = $markers['###'.$currPrefix.'_'.$v.'###'];
         }
@@ -1065,7 +1065,7 @@ class Form extends AbstractView {
         } else {
           if ($doEncode) {
             if (!in_array($k, $this->disableEncodingFields)) {
-              $v = htmlspecialchars(strval($v));
+              $v = htmlspecialchars(strval($v), ENT_QUOTES | ENT_SUBSTITUTE, null, false);
             }
           }
           $markers['###'.$currPrefix.'###'] = trim(strval($v));

@@ -1217,12 +1217,12 @@ class GeneralUtility implements SingletonInterface {
             } else {
               $value = serialize($value);
             }
-            $value = htmlspecialchars($value);
+            $value = htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, null, false);
           }
         }
       }
     } else {
-      $values = htmlspecialchars($values);
+      $values = htmlspecialchars($values, ENT_QUOTES | ENT_SUBSTITUTE, null, false);
     }
 
     return $values;
