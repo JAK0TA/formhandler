@@ -609,6 +609,10 @@ class GeneralUtility implements SingletonInterface {
       $value = '';
     }
 
+    if ('' === $value && in_array(substr($keyString, 0, 1), ['"', "'"]) && in_array(substr($keyString, -1, 1), ['"', "'"])) {
+      $value = $keyString;
+    }
+
     return $value;
   }
 
