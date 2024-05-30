@@ -1160,6 +1160,11 @@ class Form extends AbstractController {
 
     $this->globals->setRandomID(strval($this->gp['randomID'] ?? ''));
 
+    // process files
+    if ($this->currentStep >= $this->lastStep) {
+      $this->processFiles();
+    }
+
     // run validation
     $this->errors = [];
     $valid = [true];
@@ -1204,11 +1209,6 @@ class Form extends AbstractController {
           }
         }
       }
-    }
-
-    // process files
-    if ($this->currentStep >= $this->lastStep) {
-      $this->processFiles();
     }
 
     // if form is valid
