@@ -28,7 +28,9 @@ class FileMinCount extends AbstractErrorCheck {
     $currentStep = intval($this->globals->getSession()?->get('currentStep') ?? 1);
     $lastStep = intval($this->globals->getSession()?->get('lastStep') ?? 1);
     $minCount = intval($this->utilityFuncs->getSingle((array) ($this->settings['params'] ?? []), 'minCount'));
-    if (isset($files[$this->formFieldName]) && is_array($files[$this->formFieldName]) && $currentStep > $lastStep) {
+    if (is_array($files[$this->formFieldName])
+            && $currentStep > $lastStep
+    ) {
       foreach ($_FILES as $idx => $info) {
         if (!is_array($info['name'][$this->formFieldName])) {
           $info['name'][$this->formFieldName] = [$info['name'][$this->formFieldName]];
@@ -40,9 +42,6 @@ class FileMinCount extends AbstractErrorCheck {
           $checkFailed = $this->getCheckFailed();
         }
       }
-    } elseif((!isset($files[$this->formFieldName]) || !is_array($files[$this->formFieldName])) && $minCount > 0) {
-      // No files for this field at all, at least 1 expected. Fail the check
-      return $this->getCheckFailed();
     }
 
     return $checkFailed;
