@@ -29,11 +29,12 @@ class FileRequired extends AbstractErrorCheck {
       if (!is_array($files['name'][$this->formFieldName])) {
         $files['name'][$this->formFieldName] = [$files['name'][$this->formFieldName]];
       }
-      if (is_array($files['name'][$this->formFieldName]) && !empty($files['name'][$this->formFieldName][0])) {
+      if (isset($files['name'][$this->formFieldName]) && is_array($files['name'][$this->formFieldName]) && !empty($files['name'][$this->formFieldName][0])) {
         $found = true;
       }
     }
-    if (!$found && !is_array($sessionFiles[$this->formFieldName]) && 0 === count((array) $sessionFiles[$this->formFieldName])) {
+
+    if (!$found && (empty($sessionFiles) || !isset($sessionFiles[$this->formFieldName]) || !is_array($sessionFiles[$this->formFieldName]) || 0 === count($sessionFiles[$this->formFieldName]))) {
       $checkFailed = $this->getCheckFailed();
     }
 
