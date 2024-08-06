@@ -837,10 +837,16 @@ class Form extends AbstractController {
           // for all file names
 
           /** @var string $field */
-          foreach ($files['name'] as $field => $uploadedFiles) {
+          foreach ($files['name'] as $field => &$uploadedFiles) {
             // If only a single file is uploaded
             if (!is_array($uploadedFiles)) {
               $uploadedFiles = [$uploadedFiles];
+            }
+            if (!is_array($files['size'][$field])) {
+              $files['size'][$field] = [$files['size'][$field]];
+            }
+            if (!is_array($files['type'][$field])) {
+              $files['type'][$field] = [$files['type'][$field]];
             }
 
             if (!isset($this->errors[$field])) {
@@ -856,7 +862,7 @@ class Form extends AbstractController {
                 return;
               }
 
-              foreach ($uploadedFiles as $idx => $name) {
+              foreach ($uploadedFiles as $idx => &$name) {
                 $exists = false;
                 if (is_array($sessionFiles[$field] ?? false)) {
                   foreach ($sessionFiles[$field] as $fileId => $fileOptions) {
@@ -882,7 +888,8 @@ class Form extends AbstractController {
                         ++$suffix;
                       }
                     }
-                    $files['name'][$field][$idx] = $uploadedFileName;
+
+                    $name = $uploadedFileName;
 
                     // move from temp folder to temp upload folder
                     if (!is_array($files['tmp_name'][$field])) {
@@ -890,7 +897,7 @@ class Form extends AbstractController {
                     }
                     move_uploaded_file($files['tmp_name'][$field][$idx], $uploadPath.$uploadedFileName);
                     GeneralUtility::fixPermissions($uploadPath.$uploadedFileName);
-                    $files['uploaded_name'][$field][$idx] = $uploadedFileName;
+                    $name = $uploadedFileName;
 
                     // set values for session
                     $tmp['name'] = $name;
