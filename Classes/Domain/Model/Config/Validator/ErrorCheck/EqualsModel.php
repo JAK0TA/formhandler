@@ -105,7 +105,7 @@ class EqualsModel extends AbstractErrorCheckModel {
    */
   public function __construct(array $settings) {
     $this->name = 'Equals';
-    $this->equal = filter_var($settings['equal'] ?? true, FILTER_VALIDATE_BOOLEAN) ?: true;
+    $this->equal = filter_var($settings['equal'] ?? true, FILTER_VALIDATE_BOOLEAN);
     $this->value = strval($settings['value'] ?? '');
   }
 
