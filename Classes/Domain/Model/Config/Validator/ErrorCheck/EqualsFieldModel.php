@@ -107,7 +107,7 @@ class EqualsFieldModel extends AbstractErrorCheckModel {
    */
   public function __construct(array $settings) {
     $this->name = 'EqualsField';
-    $this->equal = filter_var($settings['equal'] ?? true, FILTER_VALIDATE_BOOLEAN) ?: true;
+    $this->equal = filter_var($settings['equal'] ?? true, FILTER_VALIDATE_BOOLEAN);
     $this->field = GeneralUtility::trimExplode('.', strval($settings['field'] ?? ''));
   }
 
