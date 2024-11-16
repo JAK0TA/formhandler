@@ -60,7 +60,7 @@ class PHP extends AbstractSession {
           (
             !isset($this->gp['submitted']) || !$this->gp['submitted']
           )
-          && $this->globals->getFormValuesPrefix() === $sesData['formValuesPrefix']
+          && $this->globals->getFormValuesPrefix() === ($sesData['formValuesPrefix'] ?? '')
           && $sesData['creationTstamp'] < $threshold
         ) {
           unset($_SESSION['formhandler'][$hashedID]);
