@@ -57,9 +57,7 @@ class PHP extends AbstractSession {
       foreach ($_SESSION['formhandler'] as $hashedID => $sesData) {
         $threshold = $this->getOldSessionThreshold();
         if (
-          (
-            !isset($this->gp['submitted']) || !$this->gp['submitted']
-          )
+          !($this->gp['submitted'] ?? false)
           && $this->globals->getFormValuesPrefix() === ($sesData['formValuesPrefix'] ?? '')
           && $sesData['creationTstamp'] < $threshold
         ) {
