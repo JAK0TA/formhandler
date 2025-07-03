@@ -76,7 +76,7 @@ class Form extends AbstractView {
         // Searches the index of Tx_Formhandler_Validator_Default
         foreach ((array) $settings['validators.'] as $index => $validator) {
           $currentValidatorClass = $this->utilityFuncs->getPreparedClassName((array) $validator);
-          if ('Typoheads\\Formhandler\\Validator\\DefaultValidator' === $currentValidatorClass) {
+          if ('Typoheads\Formhandler\Validator\DefaultValidator' === $currentValidatorClass) {
             break;
           }
         }
@@ -329,6 +329,7 @@ class Form extends AbstractView {
     if (!empty($errors)) {
       $this->fillIsErrorMarkers($errors);
       $this->fillErrorMarkers($errors);
+      $this->fillIsAriaInvalidMarkers($errors);
     }
 
     $this->fillIsSuccessMarkers($errors);
@@ -816,6 +817,29 @@ class Form extends AbstractView {
         $markers['###feuser_'.strtolower($k).'###'] = $v;
       }
     }
+  }
+
+  /**
+   * Substitutes markers
+   *        ###aria_is_invalid_[fieldname]###
+   * in $this->template.
+   *
+   * @param array<string, mixed> $errors
+   */
+  protected function fillIsAriaInvalidMarkers(array &$errors): void {
+    $markers = [];
+    preg_match_all('/###aria_is_invalid_(.*?)###/i', $this->template, $invalidMarkersToFill);
+
+    foreach ($invalidMarkersToFill[0] as $index => $markerToFill) {
+      $fieldName = $invalidMarkersToFill[1][$index] ?? 'null';
+      if (array_key_exists($fieldName, $errors)) {
+        $markers[$markerToFill] = 'aria-invalid="true"';
+      } else {
+        $markers[$markerToFill] = 'aria-invalid="false"';
+      }
+    }
+
+    $this->template = $this->markerBasedTemplateService->substituteMarkerArray($this->template, $markers);
   }
 
   /**
