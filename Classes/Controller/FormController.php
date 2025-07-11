@@ -503,7 +503,7 @@ class FormController extends ActionController {
   }
 
   /**
-   * @param array<string, mixed> $valuesToSet
+   * @param array<mixed> $valuesToSet
    */
   private function emailOverride(array $valuesToSet): void {
     /** @var false|MailFinisherModel */
