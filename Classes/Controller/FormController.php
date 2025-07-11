@@ -21,6 +21,7 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
 use Typoheads\Formhandler\Definitions\FormhandlerExtensionConfig;
 use Typoheads\Formhandler\Definitions\Severity;
+use Typoheads\Formhandler\Domain\Model\Config\Finisher\MailFinisherModel;
 use Typoheads\Formhandler\Domain\Model\Config\FormModel;
 use Typoheads\Formhandler\Domain\Model\Config\FormUpload;
 use Typoheads\Formhandler\Domain\Model\Config\FormUploadFile;
@@ -501,6 +502,38 @@ class FormController extends ActionController {
     return $this->htmlResponse();
   }
 
+  /**
+   * @param array<string, mixed> $valuesToSet
+   */
+  private function emailOverride(array $valuesToSet): void {
+    /** @var false|MailFinisherModel */
+    $emailFinisher = array_filter($this->formConfig->finishers, function ($finisher) {
+      return $finisher instanceof MailFinisherModel;
+    })[0] ?? false;
+
+    if (!$emailFinisher) {
+      return;
+    }
+
+    // user mail conf
+    if (is_array($valuesToSet['user'] ?? false)) {
+      foreach ($valuesToSet['user'] as $key => $value) {
+        if (isset($emailFinisher->userMailConfig[strval($key)])) {
+          $emailFinisher->userMailConfig[strval($key)] = strval($value);
+        }
+      }
+    }
+
+    // admin mail conf
+    if (is_array($valuesToSet['admin'] ?? false)) {
+      foreach ($valuesToSet['admin'] as $key => $value) {
+        if (isset($emailFinisher->adminMailConfig[strval($key)])) {
+          $emailFinisher->adminMailConfig[strval($key)] = strval($value);
+        }
+      }
+    }
+  }
+
   // TODO: Change return type to new model of Response and Finisher name so headless knows which Finisher returned
   private function finishers(): ?Response {
     foreach ($this->formConfig->finishers as $finisher) {
@@ -549,8 +582,8 @@ class FormController extends ActionController {
       $this->formConfig->step = intval(
         (
           (array) ($this->parsedBody[FormhandlerExtensionConfig::EXTENSION_KEY] ?? [])
-        )['step'] ??
-        $this->formConfig->session->get('step') ?: 1
+        )['step']
+        ?? $this->formConfig->session->get('step') ?: 1
       );
 
       $this->formConfig->formValues = (array) ($this->formConfig->session->get('formValues') ?: []);
@@ -674,15 +707,29 @@ class FormController extends ActionController {
 
     foreach ($this->formConfig->conditionBlocks as $conditionBlock) {
       $evaluation = $utility->conditionEvaluate($conditionBlock, $this->formConfig);
+
       if ($evaluation) {
         foreach ($conditionBlock->isTrue as $key => $value) {
           if (empty($value)) {
             continue;
           }
-          if ('disableErrorCheckFields' == $key) {
-            foreach (explode(',', $value) ?: [] as $disableErrorCheckField) {
-              $this->formConfig->disableErrorCheckFields[$disableErrorCheckField] = '';
-            }
+
+          switch ($key) {
+            case 'disableErrorCheckFields':
+              foreach (explode(',', strval($value)) ?: [] as $disableErrorCheckField) {
+                $this->formConfig->disableErrorCheckFields[$disableErrorCheckField] = '';
+              }
+
+              break;
+
+            case 'emailOverride':
+            case 'emailOverwrite':
+              $this->emailOverride((array) $value);
+
+              break;
+
+            default:
+              break;
           }
         }
       } else {
@@ -690,14 +737,29 @@ class FormController extends ActionController {
           if (empty($value)) {
             continue;
           }
-          if ('disableErrorCheckFields' == $key) {
-            foreach (explode(',', $value) ?: [] as $disableErrorCheckField) {
-              $this->formConfig->disableErrorCheckFields[$disableErrorCheckField] = '';
-            }
+
+          switch ($key) {
+            case 'disableErrorCheckFields':
+              foreach (explode(',', strval($value)) ?: [] as $disableErrorCheckField) {
+                $this->formConfig->disableErrorCheckFields[$disableErrorCheckField] = '';
+              }
+
+              break;
+
+            case 'emailoverride':
+            case 'emailoverwrite':
+              $this->emailOverride((array) $value);
+
+              break;
+
+            default:
+              break;
           }
         }
       }
     }
+
+    exit;
   }
 
   private function prepareFieldsFileTypesAndRequired(string $fieldNamePath, FieldModel $field): void {

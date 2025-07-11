@@ -115,10 +115,10 @@ class ConditionBlockModel {
   /** @var array<string, array<string, string>> */
   public readonly array $conditions;
 
-  /** @var array<string, string> */
+  /** @var array<string, mixed> */
   public readonly array $else;
 
-  /** @var array<string, string> */
+  /** @var array<string, mixed> */
   public readonly array $isTrue;
 
   /**
