@@ -31,10 +31,10 @@ use Typoheads\Formhandler\Utility\Utility;
  */
 class MailFinisherModel extends AbstractFinisherModel {
   /** @var array{toEmail: string, subject: string, senderEmail: string, senderName: string, replyToEmail: string, replyToName: string, ccEmail: string, ccName: string, bccEmail: string, bccName: string, returnPath: string, templateMailHtml: string, templateMailText: string, attachments: array<string, array{fileOrField: string, mime: null|string, renameTo: null|string}>, embedFiles: array<string, array{fileOrField: string, mime: null|string, renameTo: null|string}>} */
-  public readonly array $adminMailConfig;
+  public array $adminMailConfig;
 
   /** @var array{toEmail: string, subject: string, senderEmail: string, senderName: string, replyToEmail: string, replyToName: string, ccEmail: string, ccName: string, bccEmail: string, bccName: string, returnPath: string, templateMailHtml: string, templateMailText: string, attachments: array<string, array{fileOrField: string, mime: null|string, renameTo: null|string}>, embedFiles: array<string, array{fileOrField: string, mime: null|string, renameTo: null|string}>} */
-  public readonly array $userMailConfig;
+  public array $userMailConfig;
 
   private Utility $utility;
 
