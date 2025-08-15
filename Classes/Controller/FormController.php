@@ -758,8 +758,6 @@ class FormController extends ActionController {
         }
       }
     }
-
-    exit;
   }
 
   private function prepareFieldsFileTypesAndRequired(string $fieldNamePath, FieldModel $field): void {
