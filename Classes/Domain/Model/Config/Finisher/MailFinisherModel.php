@@ -39,15 +39,19 @@ class MailFinisherModel extends AbstractFinisherModel {
   private Utility $utility;
 
   /**
-   * @param array<string, mixed> $settings
+   * @param array<string, mixed>                                                                                                                                                                                                                                                                                                                                                                                                                                                       $settings
+   * @param array{toEmail: string, subject: string, senderEmail: string, senderName: string, replyToEmail: string, replyToName: string, ccEmail: string, ccName: string, bccEmail: string, bccName: string, returnPath: string, templateMailHtml: string, templateMailText: string, attachments: array<string, array{fileOrField: string, mime: null|string, renameTo: null|string}>, embedFiles: array<string, array{fileOrField: string, mime: null|string, renameTo: null|string}>} $adminMailConfig
+   * @param array{toEmail: string, subject: string, senderEmail: string, senderName: string, replyToEmail: string, replyToName: string, ccEmail: string, ccName: string, bccEmail: string, bccName: string, returnPath: string, templateMailHtml: string, templateMailText: string, attachments: array<string, array{fileOrField: string, mime: null|string, renameTo: null|string}>, embedFiles: array<string, array{fileOrField: string, mime: null|string, renameTo: null|string}>} $userMailConfig
    */
   public function __construct(
     private readonly array $settings,
+    ?array $adminMailConfig = null,
+    ?array $userMailConfig = null,
   ) {
     $this->utility = GeneralUtility::makeInstance(Utility::class);
     $this->returns = filter_var($settings['returns'] ?? false, FILTER_VALIDATE_BOOLEAN);
-    $this->adminMailConfig = $this->parseEmailTypeSettings(isset($this->settings['admin']) && is_array($this->settings['admin']) ? $this->settings['admin'] : []);
-    $this->userMailConfig = $this->parseEmailTypeSettings(isset($this->settings['user']) && is_array($this->settings['user']) ? $this->settings['user'] : []);
+    $this->adminMailConfig = (null !== $adminMailConfig) ? $adminMailConfig : $this->parseEmailTypeSettings(isset($this->settings['admin']) && is_array($this->settings['admin']) ? $this->settings['admin'] : []);
+    $this->userMailConfig = (null !== $userMailConfig) ? $userMailConfig : $this->parseEmailTypeSettings(isset($this->settings['user']) && is_array($this->settings['user']) ? $this->settings['user'] : []);
   }
 
   public function class(): string {
