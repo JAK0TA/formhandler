@@ -25,10 +25,12 @@ use Typoheads\Formhandler\Utility\Utility;
 class EmailOverrideInterceptor extends AbstractInterceptor implements LoggerAwareInterface {
   use LoggerAwareTrait;
 
+  /** @var array{toEmail: string, subject: string, senderEmail: string, senderName: string, replyToEmail: string, replyToName: string, ccEmail: string, ccName: string, bccEmail: string, bccName: string, returnPath: string, templateMailHtml: string, templateMailText: string, attachments: array<string, array{fileOrField: string, mime: null|string, renameTo: null|string}>, embedFiles: array<string, array{fileOrField: string, mime: null|string, renameTo: null|string}>} */
   protected array $adminMailConfig;
 
   protected bool $returns;
 
+  /** @var array{toEmail: string, subject: string, senderEmail: string, senderName: string, replyToEmail: string, replyToName: string, ccEmail: string, ccName: string, bccEmail: string, bccName: string, returnPath: string, templateMailHtml: string, templateMailText: string, attachments: array<string, array{fileOrField: string, mime: null|string, renameTo: null|string}>, embedFiles: array<string, array{fileOrField: string, mime: null|string, renameTo: null|string}>} */
   protected array $userMailConfig;
 
   protected Utility $utility;
@@ -49,9 +51,9 @@ class EmailOverrideInterceptor extends AbstractInterceptor implements LoggerAwar
      */
     $allMailFinisherConfigs = array_filter($formConfig->finishers, function ($finisher) {
       return $finisher instanceof MailFinisherModel;
-    }) ?? false;
+    });
 
-    if (false === $allMailFinisherConfigs) {
+    if (empty($allMailFinisherConfigs)) {
       return false;
     }
 
@@ -87,7 +89,7 @@ class EmailOverrideInterceptor extends AbstractInterceptor implements LoggerAwar
       // results from array_filter keep their original keys. Use that key to override the config
       $formConfig->finishers[key($allMailFinisherConfigs)] = $this->createNewMailConfig();
     } catch (\Exception $e) {
-      $this->logger->error($e->getMessage());
+      $this->logger?->error($e->getMessage());
 
       $formConfig->debugMessage('Mailfinisher Error', [$e->getMessage()], Severity::Error);
 
@@ -97,7 +99,7 @@ class EmailOverrideInterceptor extends AbstractInterceptor implements LoggerAwar
     return true;
   }
 
-  protected function createNewMailConfig() {
+  protected function createNewMailConfig(): MailFinisherModel {
     return GeneralUtility::makeInstance(
       MailFinisherModel::class,
       ['returns' => $this->returns],
@@ -106,7 +108,10 @@ class EmailOverrideInterceptor extends AbstractInterceptor implements LoggerAwar
     );
   }
 
-  protected function handleOverride(string $configToAffect, $overrideConfig) {
+  /**
+   * @param array<string, string> $overrideConfig
+   */
+  protected function handleOverride(string $configToAffect, array $overrideConfig): void {
     $configToAffect = &$this->{$configToAffect.'MailConfig'} ?? false;
 
     if (false === $configToAffect) {

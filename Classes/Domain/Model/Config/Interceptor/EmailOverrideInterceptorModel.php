@@ -42,7 +42,7 @@ class EmailOverrideInterceptorModel extends AbstractInterceptorModel {
 
     $conditionBlocks = [];
 
-    foreach ($settings ?? [] as $conditionBlock) {
+    foreach ($settings as $conditionBlock) {
       if (!isset($conditionBlock['conditions']) || (!isset($conditionBlock['isTrue']) && !isset($conditionBlock['else']))) {
         continue;
       }
