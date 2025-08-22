@@ -370,7 +370,7 @@ class MailFinisher extends AbstractFinisher implements LoggerAwareInterface {
       $mailer = GeneralUtility::makeInstance(Mailer::class);
       $mailer->send($beforeSendEvent->getEmailObject());
     } catch (\Exception $e) {
-      $this->logger->error($e->getMessage());
+      $this->logger?->error($e->getMessage());
 
       $this->formConfig->debugMessage('Mailfinisher Error', [$e->getMessage()], Severity::Error);
     }
