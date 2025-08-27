@@ -13,7 +13,6 @@ declare(strict_types=1);
 namespace Typoheads\Formhandler\Controller;
 
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Backend\Attribute\Controller;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Core\Http\PropagateResponseException;
 use TYPO3\CMS\Core\Imaging\IconFactory;
@@ -25,7 +24,6 @@ use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use Typoheads\Formhandler\Domain\Model\Log;
 use Typoheads\Formhandler\Domain\Repository\LogRepository;
 
-#[Controller]
 final class AdministrationController extends ActionController {
   public function __construct(
     protected readonly ModuleTemplateFactory $moduleTemplateFactory,

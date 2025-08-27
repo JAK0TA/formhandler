@@ -40,8 +40,7 @@ return [
         'renderType' => 'checkboxToggle',
         'items' => [
           [
-            0 => '',
-            1 => '',
+            'label' => '',
             'invertStateDisplay' => true,
           ],
         ],
@@ -94,12 +93,6 @@ return [
       'config' => [
         'type' => 'check',
         'renderType' => 'checkboxToggle',
-        'items' => [
-          [
-            0 => '',
-            1 => '',
-          ],
-        ],
       ],
     ],
     'crdate' => [
