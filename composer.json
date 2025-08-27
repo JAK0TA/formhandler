@@ -25,7 +25,7 @@
   },
   "require-dev": {
     "typo3/cms-backend": "^12.4 || ^13.4",
-    "symfony/mailer": "^7.1",
+    "symfony/mailer": "^6.4 || ^7.0",
     "phpstan/phpstan": "^1.12",
     "saschaegerer/phpstan-typo3": "^1.10",
     "helmich/typo3-typoscript-lint": "^3",
