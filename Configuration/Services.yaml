@@ -17,3 +17,6 @@ services:
   Typoheads\Formhandler\Session\Typo3Session:
     arguments:
       $cache: '@cache.formhandler_cache'
+
+  Typoheads\Formhandler\Controller\AdministrationController:
+    tags: ['backend.controller']
